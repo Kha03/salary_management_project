@@ -50,7 +50,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1200, 674));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Chấm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,7 +86,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton6.setText("Xuất Excell");
+        jButton6.setText("Xuất Pdf");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,18 +218,18 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         //table chấm công
         modelChamCong = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "10.000.000", "123", "30", "120000"},
+                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "10.000.000", "123", "30", "5","120000"},
                  
                 },
                 new String[]{
-                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Lương chính","Phụ cấp","Ngày công thực tế","Lương thực lãnh"
+                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Lương chính","Phụ cấp","Ngày công thực tế","Giờ tăng ca","Lương thực lãnh"
                 }
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false,false
             };
 
             @Override

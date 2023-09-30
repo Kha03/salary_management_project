@@ -158,6 +158,14 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
         });
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, -1));
 
@@ -314,14 +322,24 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox6ActionPerformed
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-            // TODO add your handling code here:
+        // TODO add your handling code here:
         jTextField2.setBorder(Border_Selected.getFocuBofocusBorder());
     }//GEN-LAST:event_jTextField2FocusGained
-    private void initCommon(){
-     
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        // TODO add your handling code here:
+        jTextField2.setBorder(Border_Selected.getOriginalBorder());
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+       // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void initCommon() {
+        border_Selected = new Border_Selected();
     }
-   // private Border_Selected border;
+    // private Border_Selected border;
     private DefaultTableModel model;
+    private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
