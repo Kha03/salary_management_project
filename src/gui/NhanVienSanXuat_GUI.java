@@ -43,7 +43,6 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
@@ -148,6 +147,11 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 60, -1));
 
         jTextField1.setForeground(new java.awt.Color(0, 96, 0));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 310, -1));
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -161,10 +165,6 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 230, -1));
-
-        jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField5.setText("jTextField1");
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 310, -1));
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 96, 0));
@@ -258,6 +258,10 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
     private void setTable() {
         //setTable ở đây
         model = new DefaultTableModel(
@@ -341,7 +345,6 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
