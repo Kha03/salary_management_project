@@ -353,7 +353,7 @@ public class LuongCoBan_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        PhuCapInternalFrame_GUI phuCapInternalFrame_GUI = new PhuCapInternalFrame_GUI();
+        PhuCap_GUI phuCapInternalFrame_GUI = new PhuCap_GUI();
         jDesktopPane1.add(phuCapInternalFrame_GUI);
         phuCapInternalFrame_GUI.setLocation(450, 180);
         phuCapInternalFrame_GUI.setVisible(true);

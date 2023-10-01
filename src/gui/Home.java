@@ -151,9 +151,19 @@ public class Home extends javax.swing.JFrame {
         jMenu9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem8.setText("Lương Hành Chính");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem8);
 
         jMenuItem9.setText("Lương Sản Xuất");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem9);
 
         jMenuBar1.add(jMenu9);
@@ -229,6 +239,15 @@ public class Home extends javax.swing.JFrame {
         cardLayout.show(jPanel1, "LCB");
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(jPanel1, "TLHC");
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        cardLayout.show(jPanel1, "TLSX");        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     private void initLayouts() {
         cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
@@ -241,8 +260,10 @@ public class Home extends javax.swing.JFrame {
         luongCoBan_GUI = new LuongCoBan_GUI();
         phongBan_GUI = new PhongBan_GUI();
         phanXuong_GUI = new PhanXuong_GUI();
+        tinhLuongSanXuat_GUI = new TinhLuongSanXuat_GUI();
         tinhLuongHanhChinh_GUI = new TinhLuongHanhChinh_GUI();
-        
+
+        jPanel1.add(tinhLuongSanXuat_GUI, "TLSX");
         jPanel1.add(tinhLuongHanhChinh_GUI, "TLHC");
         jPanel1.add(luongCoBan_GUI, "LCB");
         jPanel1.add(chamCongSanPham_GUI, "CCSP");
@@ -286,6 +307,7 @@ public class Home extends javax.swing.JFrame {
     private ChamCongSanPham_GUI chamCongSanPham_GUI;
     private LuongCoBan_GUI luongCoBan_GUI;
     private TinhLuongHanhChinh_GUI tinhLuongHanhChinh_GUI;
+    private TinhLuongSanXuat_GUI tinhLuongSanXuat_GUI;
     private CardLayout cardLayout;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu10;
