@@ -67,7 +67,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1200, 510));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1365, 570));
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -95,19 +95,19 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 100, 100, 30));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 90, 100, 30));
 
         jButton5.setBackground(new java.awt.Color(152, 249, 152));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setText("Lọc");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 60, 30));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 60, 30));
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 50, 30));
+        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 50, 30));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -115,43 +115,43 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jButton14.setText("Tạo Bảng Lương");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 140, 180, 30));
+        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 130, 180, 30));
 
         jButton13.setBackground(new java.awt.Color(152, 249, 152));
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton13.setText("Làm Mới");
         jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, 120, 30));
+        add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 120, 30));
 
         jButton16.setBackground(new java.awt.Color(152, 249, 152));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         jButton16.setText("Xóa");
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 90, 30));
+        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 130, 90, 30));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 130, 30));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 130, 30));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Năm:");
         jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 60, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 60, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Tìm:");
         jLabel15.setToolTipText("");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 120, -1));
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Bảng Lương Nhân Viên Hành Chính");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1010, 40));
-        add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 65, 20));
-        add(jMonthChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, 20));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 40));
+        add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 65, 20));
+        add(jMonthChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 20));
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -162,27 +162,27 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, 100, 30));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 90, 100, 30));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Tháng:");
         jLabel17.setToolTipText("");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 60, -1));
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 60, -1));
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 230, 27));
+        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 230, 27));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Phòng Ban:");
         jLabel18.setToolTipText("");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 85, 20));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, 85, 20));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 99, 0));
         jLabel23.setText("Kế toán");
         jLabel23.setToolTipText("");
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 140, 20));
+        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 140, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

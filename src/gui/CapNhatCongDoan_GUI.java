@@ -75,7 +75,7 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(jTable3);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 280));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 210, 340));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Công Đoạn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
@@ -93,23 +93,22 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 1010, 410));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 1155, 470));
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
-        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 140, -1));
+        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, 170, -1));
 
         jButton9.setBackground(new java.awt.Color(152, 249, 152));
         jButton9.setText("Cập Nhật Công Đoạn Sản Phẩm");
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setDisabledIcon(null);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 210, 30));
+        add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 210, 30));
 
         jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -126,13 +125,13 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jTable6.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane6.setViewportView(jTable6);
 
-        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 397));
+        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 397));
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 50, 30));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 50, 30));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -166,63 +165,63 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Sản Phẩm:");
         jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 120, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 150, 120, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Tìm:");
         jLabel15.setToolTipText("");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 40, -1));
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 40, -1));
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 160, -1));
+        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Cập Nhật Công Đoạn Sản Phẩm");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1010, 40));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1160, 40));
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 160, -1));
+        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 160, -1));
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 160, -1));
+        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tên Công Đoạn:");
         jLabel16.setToolTipText("");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 120, -1));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 120, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Giá Tiền:");
         jLabel17.setToolTipText("");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 120, -1));
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 120, -1));
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 160, -1));
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 180, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Mã Công Đoạn:");
         jLabel18.setToolTipText("");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 120, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 120, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("Hợp Đồng:");
         jLabel19.setToolTipText("");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 120, -1));
+        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, 120, -1));
 
         jComboBox5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox5.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
-        add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 140, -1));
+        add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 140, -1));
 
         jComboBox6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
-        add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 140, -1));
+        add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, 170, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -236,13 +235,13 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jList1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(jList1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 60, 149, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 70, 149, 200));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 99, 0));
         jLabel1.setText("Công Đoạn SP:");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 150, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 50, 150, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

@@ -81,7 +81,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(jTable3);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 280));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 340));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Phân Công", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
@@ -99,7 +99,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 830, 410));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 990, 470));
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -116,7 +116,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane5.setViewportView(jTable5);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 40, 180, 355));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 40, 180, 355));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 99, 0));
@@ -126,12 +126,12 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 240, -1, -1));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 240, 80, -1));
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 150, -1));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 150, -1));
 
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
@@ -141,13 +141,13 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jComboBox3ActionPerformed(evt);
             }
         });
-        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 120, -1));
+        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 140, -1));
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
         jDateChooser1.setDateFormatString("dd/mm/yyyy");
         jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 130, -1));
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 130, -1));
 
         jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
@@ -157,7 +157,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jCheckBox2ActionPerformed(evt);
             }
         });
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 50, 20));
+        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 50, 20));
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -168,18 +168,18 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, -1, -1));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
-        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 140, -1));
+        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 140, -1));
 
         jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
         jDateChooser2.setDateFormatString("dd/mm/yyyy");
         jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 130, -1));
+        add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 130, -1));
 
         jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jCheckBox3.setForeground(new java.awt.Color(0, 96, 0));
@@ -189,7 +189,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jCheckBox3ActionPerformed(evt);
             }
         });
-        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 220, 20));
+        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 220, 20));
 
         jButton9.setBackground(new java.awt.Color(152, 249, 152));
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -198,7 +198,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setDisabledIcon(null);
         jButton9.setEnabled(false);
-        add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 170, 30));
+        add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 170, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -206,7 +206,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton10.setText("Xóa Nhân Viên");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.setEnabled(false);
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 170, 30));
+        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 170, 30));
 
         jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -240,7 +240,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable7.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane7.setViewportView(jTable7);
 
-        add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 400, 180, 280));
+        add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 400, 180, 340));
 
         jComboBox5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox5.setForeground(new java.awt.Color(0, 99, 0));
@@ -250,13 +250,13 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jComboBox5ActionPerformed(evt);
             }
         });
-        add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 130, -1));
+        add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 170, -1));
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 50, 30));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 50, 30));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -264,44 +264,44 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton14.setText("Tạo");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 120, 30));
+        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 120, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         jButton15.setText("Cập Nhật");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 130, 30));
+        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 130, 30));
 
         jButton8.setBackground(new java.awt.Color(152, 249, 152));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton8.setText("Làm Mới");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 200, 120, 30));
+        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 120, 30));
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         jButton11.setText("Xóa");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 90, 30));
+        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, 90, 30));
 
         jButton16.setBackground(new java.awt.Color(152, 249, 152));
         jButton16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton16.setText("Lọc");
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 60, -1));
+        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 60, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Ngày Phân Công:");
         jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 120, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 120, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Tìm:");
         jLabel15.setToolTipText("");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 40, -1));
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 40, -1));
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 96, 0));
@@ -310,19 +310,19 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jTextField2ActionPerformed(evt);
             }
         });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 240, 80, -1));
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 240, 80, -1));
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 160, -1));
+        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 160, -1));
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 110, -1));
+        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, 140, -1));
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 120, -1));
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
