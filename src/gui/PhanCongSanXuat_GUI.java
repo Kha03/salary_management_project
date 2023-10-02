@@ -41,8 +41,6 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jComboBox4 = new javax.swing.JComboBox<>();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jCheckBox3 = new javax.swing.JCheckBox();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -189,24 +187,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                 jCheckBox3ActionPerformed(evt);
             }
         });
-        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 220, 20));
-
-        jButton9.setBackground(new java.awt.Color(152, 249, 152));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton9.setText("Thêm Nhân Viên");
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setDisabledIcon(null);
-        jButton9.setEnabled(false);
-        add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 170, 30));
-
-        jButton10.setBackground(new java.awt.Color(152, 249, 152));
-        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        jButton10.setText("Xóa Nhân Viên");
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.setEnabled(false);
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 170, 30));
+        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 220, 20));
 
         jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -532,7 +513,6 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelCongDoan;
     private DefaultTableModel modelSanPham;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -540,7 +520,6 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox<String> jComboBox1;

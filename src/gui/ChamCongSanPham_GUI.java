@@ -345,11 +345,11 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         //table chấm công
         modelChamCong = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Cắt giấy", "2", "2", "100.000"},
-                    {"2", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Luộc rau", "1", "50", "100.000"},
-                    {"3", "Điêu khắc", "Trịnh Minh Kha", "123", "12/2/2023", "máy tính", "Cắt giấy", "2", "21", "100.000"},},
+                    {"1", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Cắt giấy", "1000", "2", "2", "100.000"},
+                    {"2", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Luộc rau", "1000", "1", "50", "100.000"},
+                    {"3", "Điêu khắc", "Trịnh Minh Kha", "123", "12/2/2023", "máy tính", "Cắt giấy", "1000", "2", "21", "100.000"},},
                 new String[]{
-                    "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày làm", "Sản phẩm", "Công đoạn", "Ca", "Số lượng", "Tiền lương"
+                    "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày làm", "Sản phẩm", "Công đoạn", "Đơn giá", "Ca", "Số lượng", "Tiền lương"
                 }
         ) {
             Class[] types = new Class[]{
@@ -360,10 +360,11 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
+                java.lang.String.class,
                 java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             @Override
