@@ -114,7 +114,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Tạo");
+        jButton14.setText("Thêm");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
         jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 120, 30));
