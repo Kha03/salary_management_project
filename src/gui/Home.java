@@ -45,6 +45,7 @@ public class Home extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -55,8 +56,6 @@ public class Home extends javax.swing.JFrame {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -106,6 +105,14 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem5);
+
+        jMenuItem10.setText("Phụ Cấp Nhân Viên");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem10);
 
         jMenuBar1.add(jMenu4);
 
@@ -179,19 +186,6 @@ public class Home extends javax.swing.JFrame {
         jMenu9.add(jMenuItem9);
 
         jMenuBar1.add(jMenu9);
-
-        jMenu7.setText("Quản Lí Lương Cơ Bản");
-        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem10.setText("Khoảng Lương");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem10);
-
-        jMenuBar1.add(jMenu7);
 
         jMenu11.setText("Sản Xuất");
         jMenu11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -318,7 +312,7 @@ public class Home extends javax.swing.JFrame {
         chamCongHanhChinh_GUI = new ChamCongHanhChinh_GUI();
         chamCongSanPham_GUI = new ChamCongSanPham_GUI();
         phanCongSanXuat_GUI = new PhanCongSanXuat_GUI();
-        luongCoBan_GUI = new LuongCoBan_GUI();
+        luongCoBan_GUI = new PhuCap_GUI();
         phongBan_GUI = new PhongBan_GUI();
         phanXuong_GUI = new PhanXuong_GUI();
         tinhLuongSanXuat_GUI = new TinhLuongSanXuat_GUI();
@@ -349,7 +343,6 @@ public class Home extends javax.swing.JFrame {
             jMenuBar1.remove(jMenu5);
             jMenuBar1.remove(jMenu8);
             jMenuBar1.remove(jMenu9);
-            jMenuBar1.remove(jMenu7);
         }
     }
 
@@ -385,7 +378,7 @@ public class Home extends javax.swing.JFrame {
     private ChamCongHanhChinh_GUI chamCongHanhChinh_GUI;
     private PhanCongSanXuat_GUI phanCongSanXuat_GUI;
     private ChamCongSanPham_GUI chamCongSanPham_GUI;
-    private LuongCoBan_GUI luongCoBan_GUI;
+    private PhuCap_GUI luongCoBan_GUI;
     private TinhLuongHanhChinh_GUI tinhLuongHanhChinh_GUI;
     private TinhLuongSanXuat_GUI tinhLuongSanXuat_GUI;
     private CardLayout cardLayout;
@@ -396,7 +389,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
