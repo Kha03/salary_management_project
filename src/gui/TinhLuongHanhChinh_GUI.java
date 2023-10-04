@@ -38,11 +38,11 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
-        jMonthChooser2 = new com.toedter.calendar.JMonthChooser();
         jButton7 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
@@ -97,7 +97,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setText("Lọc");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 60, 30));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 60, 30));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -124,14 +124,13 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Năm:");
         jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 60, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Bảng Lương Nhân Viên Hành Chính");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 40));
-        add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 65, 20));
-        add(jMonthChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 20));
+        add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 65, 20));
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -159,6 +158,9 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jLabel23.setText("Kế toán");
         jLabel23.setToolTipText("");
         add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 160, 20));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 50, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -253,12 +255,12 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel5;
-    private com.toedter.calendar.JMonthChooser jMonthChooser2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable4;

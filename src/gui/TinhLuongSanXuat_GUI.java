@@ -31,7 +31,6 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jMonthChooser2 = new com.toedter.calendar.JMonthChooser();
         jLabel16 = new javax.swing.JLabel();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jLabel5 = new javax.swing.JLabel();
@@ -45,6 +44,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jTable5 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
@@ -85,8 +85,6 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         });
         jDesktopPane1.add(jButton7);
         jButton7.setBounds(1250, 90, 100, 30);
-        jDesktopPane1.add(jMonthChooser2);
-        jMonthChooser2.setBounds(360, 120, 125, 20);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tháng:");
@@ -94,7 +92,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel16);
         jLabel16.setBounds(300, 120, 60, 20);
         jDesktopPane1.add(jYearChooser1);
-        jYearChooser1.setBounds(540, 120, 65, 20);
+        jYearChooser1.setBounds(470, 120, 65, 20);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,7 +104,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jLabel14.setText("Năm:");
         jLabel14.setToolTipText("");
         jDesktopPane1.add(jLabel14);
-        jLabel14.setBounds(500, 120, 50, 20);
+        jLabel14.setBounds(430, 120, 50, 20);
 
         jButton16.setBackground(new java.awt.Color(152, 249, 152));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -154,7 +152,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jButton5.setText("Lọc");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDesktopPane1.add(jButton5);
-        jButton5.setBounds(610, 120, 60, 30);
+        jButton5.setBounds(540, 120, 60, 30);
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -191,6 +189,10 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
 
         jDesktopPane1.add(jScrollPane4);
         jScrollPane4.setBounds(0, 170, 1366, 570);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        jDesktopPane1.add(jComboBox1);
+        jComboBox1.setBounds(360, 120, 50, 22);
 
         add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 741));
     }// </editor-fold>//GEN-END:initComponents
@@ -305,13 +307,13 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel5;
-    private com.toedter.calendar.JMonthChooser jMonthChooser2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable4;

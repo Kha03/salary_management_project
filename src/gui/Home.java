@@ -63,6 +63,7 @@ public class Home extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Phần mềm tính lương");
@@ -229,6 +230,15 @@ public class Home extends javax.swing.JFrame {
 
         jMenu10.setText("Báo Cáo Và Thống Kê");
         jMenu10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jMenuItem14.setText("Báo Cáo Khoản Chi Lương");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem14);
+
         jMenuBar1.add(jMenu10);
 
         setJMenuBar(jMenuBar1);
@@ -309,6 +319,11 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(jPanel1, "BCL");
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     private void initLayouts() {
         cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
@@ -326,7 +341,9 @@ public class Home extends javax.swing.JFrame {
         hopDong_GUI = new HopDong_GUI();
         sanPham_GUI = new SanPham_GUI();
         capNhatCongDoan_GUI = new CapNhatCongDoan_GUI();
+        baoCaoLuong_GUI = new BaoCaoLuong_GUI();
 
+        jPanel1.add(baoCaoLuong_GUI, "BCL");
         jPanel1.add(hopDong_GUI, "HDSX");
         jPanel1.add(sanPham_GUI, "SPSX");
         jPanel1.add(capNhatCongDoan_GUI, "CNCD");
@@ -387,6 +404,7 @@ public class Home extends javax.swing.JFrame {
     private PhuCap_GUI luongCoBan_GUI;
     private TinhLuongHanhChinh_GUI tinhLuongHanhChinh_GUI;
     private TinhLuongSanXuat_GUI tinhLuongSanXuat_GUI;
+    private BaoCaoLuong_GUI baoCaoLuong_GUI;
     private CardLayout cardLayout;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu10;
@@ -404,6 +422,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

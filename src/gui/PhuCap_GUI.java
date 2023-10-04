@@ -289,7 +289,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
                     {"1", "124", "Tiền điện thoại", "", true, " 10000"},
                     {"1", "125", "Ăn uống", "1/2023", false, " 10000"}},
                 new String[]{
-                    "STT", "Mã phụ cấp", "Tên phụ cấp", "Tháng", "Cố định", "Số Tiền"}
+                    "STT", "Mã phụ cấp", "Tên phụ cấp", "Tháng hưởng", "Cố định", "Số Tiền"}
         ) {
             Class[] types = new Class[]{
                 java.lang.String.class,
