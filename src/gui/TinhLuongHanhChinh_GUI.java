@@ -32,19 +32,15 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jTable5 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jMonthChooser2 = new com.toedter.calendar.JMonthChooser();
         jButton7 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
 
@@ -103,12 +99,6 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 60, 30));
 
-        jButton11.setBackground(new java.awt.Color(152, 249, 152));
-        jButton11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 50, 30));
-
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
@@ -131,20 +121,10 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 130, 90, 30));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 130, 30));
-
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Năm:");
         jLabel14.setToolTipText("");
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 60, -1));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Tìm:");
-        jLabel15.setToolTipText("");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -169,20 +149,16 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jLabel17.setToolTipText("");
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 60, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 230, 27));
-
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Phòng Ban:");
         jLabel18.setToolTipText("");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, 85, 20));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 110, 20));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 99, 0));
         jLabel23.setText("Kế toán");
         jLabel23.setToolTipText("");
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 140, 20));
+        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 160, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -231,16 +207,16 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         //table chấm công
         modelChamCong = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "10.000.000", "123", "30", "5", "120000"},},
+                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "10.000.000", "26", "123", "30", "5", "120000"},},
                 new String[]{
-                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Lương chính", "Phụ cấp", "Ngày công thực tế", "Tiền tăng ca", "Lương thực lãnh"
+                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Lương cơ bản", "Số ngày công chuẩn", "Phụ cấp", "Ngày công thực tế", "Tiền tăng ca", "Lương thực lãnh"
                 }
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             @Override
@@ -261,8 +237,9 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jTable4.getColumnModel().getColumn(4).setPreferredWidth(100);
         jTable4.getColumnModel().getColumn(5).setPreferredWidth(100);
         jTable4.getColumnModel().getColumn(6).setPreferredWidth(100);
-        jTable4.getColumnModel().getColumn(7).setPreferredWidth(80);
+        jTable4.getColumnModel().getColumn(7).setPreferredWidth(100);
         jTable4.getColumnModel().getColumn(8).setPreferredWidth(80);
+        jTable4.getColumnModel().getColumn(9).setPreferredWidth(80);
         jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
 
     }
@@ -270,16 +247,13 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelDonVi;
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel23;
@@ -289,7 +263,6 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField6;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     // End of variables declaration//GEN-END:variables
 }

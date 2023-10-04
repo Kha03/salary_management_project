@@ -35,14 +35,10 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton16 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -70,13 +66,13 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jLabel23.setText("Kế toán");
         jLabel23.setToolTipText("");
         jDesktopPane1.add(jLabel23);
-        jLabel23.setBounds(820, 120, 120, 20);
+        jLabel23.setBounds(400, 70, 120, 20);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Phân Xưởng:");
         jLabel17.setToolTipText("");
         jDesktopPane1.add(jLabel17);
-        jLabel17.setBounds(720, 120, 100, 20);
+        jLabel17.setBounds(300, 70, 100, 20);
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -106,28 +102,11 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel5);
         jLabel5.setBounds(190, 0, 1170, 40);
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        jDesktopPane1.add(jTextField5);
-        jTextField5.setBounds(480, 60, 230, 27);
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Tìm:");
-        jLabel15.setToolTipText("");
-        jDesktopPane1.add(jLabel15);
-        jLabel15.setBounds(300, 60, 50, 20);
-
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Năm:");
         jLabel14.setToolTipText("");
         jDesktopPane1.add(jLabel14);
         jLabel14.setBounds(500, 120, 50, 20);
-
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        jDesktopPane1.add(jComboBox1);
-        jComboBox1.setBounds(340, 60, 130, 30);
 
         jButton16.setBackground(new java.awt.Color(152, 249, 152));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -147,7 +126,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jButton13);
-        jButton13.setBounds(940, 90, 120, 30);
+        jButton13.setBounds(810, 130, 120, 30);
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -157,13 +136,6 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         jButton14.setDisabledIcon(null);
         jDesktopPane1.add(jButton14);
         jButton14.setBounds(1170, 130, 180, 30);
-
-        jButton11.setBackground(new java.awt.Color(152, 249, 152));
-        jButton11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jDesktopPane1.add(jButton11);
-        jButton11.setBounds(720, 60, 50, 30);
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -326,7 +298,6 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelDonVi;
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -334,10 +305,8 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel23;
@@ -347,7 +316,6 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField5;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     // End of variables declaration//GEN-END:variables
 }

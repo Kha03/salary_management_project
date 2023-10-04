@@ -57,8 +57,9 @@ public class Home extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
@@ -187,16 +188,8 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu9);
 
-        jMenu11.setText("Sản Xuất");
+        jMenu11.setText("Thông Tin Sản Phẩm");
         jMenu11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem11.setText("Hợp Đồng");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
-            }
-        });
-        jMenu11.add(jMenuItem11);
 
         jMenuItem12.setText("Sản Phẩm");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +200,19 @@ public class Home extends javax.swing.JFrame {
         jMenu11.add(jMenuItem12);
 
         jMenuBar1.add(jMenu11);
+
+        jMenu13.setText("Thông Tin Hợp Đồng");
+        jMenu13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jMenuItem11.setText("Hợp Đồng");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu13.add(jMenuItem11);
+
+        jMenuBar1.add(jMenu13);
 
         jMenu12.setText("Công Đoạn");
         jMenu12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -386,6 +392,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;

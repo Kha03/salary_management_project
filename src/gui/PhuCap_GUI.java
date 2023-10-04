@@ -42,6 +42,9 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jTextField5 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -89,13 +92,13 @@ public class PhuCap_GUI extends javax.swing.JPanel {
 
         jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jCheckBox3.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox3.setText("Toàn bộ ");
+        jCheckBox3.setText("Cố Định");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 90, 20));
+        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 170, 20));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -153,6 +156,25 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jTextField8.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 150, -1));
 
+        jCheckBox4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jCheckBox4.setForeground(new java.awt.Color(0, 96, 0));
+        jCheckBox4.setText("Toàn bộ Nhân Viên");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 170, 20));
+
+        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 150, -1));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setText("Tháng Hưởng:");
+        jLabel15.setToolTipText("");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 110, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 1160, 230));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Thông Tin Khoản Lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
@@ -187,6 +209,10 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
     private void setTable() {
         //khoi tạo phụ cấp compnent
 
@@ -196,11 +222,11 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         modelNhanVien = new DefaultTableModel(
                 new Object[][]{
                     {"1", "Kha"},
-                    {"2", "Thành"},
-                    {"3", "Vân"},
-                    {"4", "Dha"},},
+                    {"2", "Đạt"},
+                    {"3", "Hưng"},
+                    {"4", "Hưng"},},
                 new String[]{
-                    "STT", "Họ và tên"
+                    "STT", "Tên nhân viên"
                 }
         ) {
             Class[] types = new Class[]{
@@ -259,19 +285,21 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         //table chấm công
         modelChamCong = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "123", "Xăng xe", " 10000"},
-                    {"1", "124", "Tiền điện thoại", " 10000"},
-                    {"1", "125", "Ăn uống", " 10000"}},
+                    {"1", "123", "Xăng xe", "", true, " 10000"},
+                    {"1", "124", "Tiền điện thoại", "", true, " 10000"},
+                    {"1", "125", "Ăn uống", "1/2023", false, " 10000"}},
                 new String[]{
-                    "STT", "Mã phụ cấp", "Tên phụ cấp", "Số Tiền"}
+                    "STT", "Mã phụ cấp", "Tên phụ cấp", "Tháng", "Cố định", "Số Tiền"}
         ) {
             Class[] types = new Class[]{
                 java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
+                java.lang.String.class,
+                java.lang.Boolean.class,
                 java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             @Override
@@ -301,8 +329,10 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;
@@ -315,6 +345,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

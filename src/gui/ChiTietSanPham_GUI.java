@@ -271,9 +271,9 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
     private void setTable() {
         modelChiTietLuong = new DefaultTableModel(
                 new Object[][]{
-                    {"1","1/9", "Điện thoại", "Kiểm tra", "100","10","10"},},
+                    {"1", "lắp ráp", "123", "120", "100"},},
                 new String[]{
-                    "STT", "Ngày", "Sản phẩm", "Công đoạn","Đơn giá","Số lượng","Tiền lương"
+                    "STT", "Công đoạn", "Mã công đoạn", "Đơn giá", "Tiến độ"
                 }
         ) {
             Class[] types = new Class[]{
@@ -281,12 +281,8 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
                 java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
-                java.lang.String.class,
-                 java.lang.String.class,
                 java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false,
-                false,
                 false,
                 false,
                 false,
