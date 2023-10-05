@@ -209,16 +209,16 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         //table chấm công
         modelChamCong = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "10.000.000", "26", "123", "30", "5", "120000"},},
+                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "1.5", "10.000.000", "26", "123", "30", "5", "120000"},},
                 new String[]{
-                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Lương cơ bản", "Số ngày công chuẩn", "Phụ cấp", "Ngày công thực tế", "Tiền tăng ca", "Lương thực lãnh"
+                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Hệ số lương", "Lương cơ bản", "Số ngày công chuẩn", "Phụ cấp", "Ngày công thực tế", "Tiền tăng ca", "Lương thực lãnh"
                 }
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             @Override
@@ -236,12 +236,13 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jTable4.getColumnModel().getColumn(1).setPreferredWidth(110);
         jTable4.getColumnModel().getColumn(2).setPreferredWidth(130);
         jTable4.getColumnModel().getColumn(3).setPreferredWidth(100);
-        jTable4.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jTable4.getColumnModel().getColumn(4).setPreferredWidth(60);
         jTable4.getColumnModel().getColumn(5).setPreferredWidth(100);
         jTable4.getColumnModel().getColumn(6).setPreferredWidth(100);
         jTable4.getColumnModel().getColumn(7).setPreferredWidth(100);
-        jTable4.getColumnModel().getColumn(8).setPreferredWidth(80);
+        jTable4.getColumnModel().getColumn(8).setPreferredWidth(100);
         jTable4.getColumnModel().getColumn(9).setPreferredWidth(80);
+        jTable4.getColumnModel().getColumn(10).setPreferredWidth(100);
         jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
 
     }

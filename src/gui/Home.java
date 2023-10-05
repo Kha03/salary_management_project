@@ -45,10 +45,12 @@ public class Home extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -87,7 +89,7 @@ public class Home extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Quản Lý Nhân Viên");
+        jMenu4.setText("Nhân Viên");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/man.png"))); // NOI18N
@@ -108,17 +110,22 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem5);
 
+        jMenuBar1.add(jMenu4);
+
+        jMenu6.setText("Phụ Cấp");
+        jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         jMenuItem10.setText("Phụ Cấp Nhân Viên");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem10);
+        jMenu6.add(jMenuItem10);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenu6);
 
-        jMenu5.setText("Quản Lý Đơn Vị");
+        jMenu5.setText("Đơn Vị");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem1.setText("Phòng Ban");
@@ -137,15 +144,20 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem2);
 
-        jMenuItem3.setText("Phân Công Sản Xuất");
+        jMenuBar1.add(jMenu5);
+
+        jMenu7.setText("Phân Công Sản Xuất");
+        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jMenuItem3.setText("Phân Công Nhân Viên");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem3);
+        jMenu7.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Chấm Công");
         jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -189,10 +201,10 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu9);
 
-        jMenu11.setText("Thông Tin Sản Phẩm");
+        jMenu11.setText("Sản Phẩm");
         jMenu11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jMenuItem12.setText("Sản Phẩm");
+        jMenuItem12.setText("Thông Tin Sản Phẩm");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem12ActionPerformed(evt);
@@ -202,10 +214,10 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu11);
 
-        jMenu13.setText("Thông Tin Hợp Đồng");
+        jMenu13.setText("Hợp Đồng");
         jMenu13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jMenuItem11.setText("Hợp Đồng");
+        jMenuItem11.setText("Thông Tin Hợp Đồng");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
@@ -414,6 +426,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
