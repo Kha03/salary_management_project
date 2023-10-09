@@ -354,7 +354,9 @@ public class Home extends javax.swing.JFrame {
         sanPham_GUI = new SanPham_GUI();
         capNhatCongDoan_GUI = new CapNhatCongDoan_GUI();
         baoCaoLuong_GUI = new BaoCaoLuong_GUI();
-
+        home_GUI = new Home_GUI();
+        
+         jPanel1.add(home_GUI, "TC");
         jPanel1.add(baoCaoLuong_GUI, "BCL");
         jPanel1.add(hopDong_GUI, "HDSX");
         jPanel1.add(sanPham_GUI, "SPSX");
@@ -384,25 +386,26 @@ public class Home extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            UIManager.setLookAndFeel(new FlatMacLightLaf());
-        } catch (UnsupportedLookAndFeelException ex) {
-            System.err.println("Failed to initialize LaF");
-        }
-
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Home("23").setVisible(true);
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+////        try {
+////            UIManager.setLookAndFeel(new FlatMacLightLaf());
+////        } catch (UnsupportedLookAndFeelException ex) {
+////            System.err.println("Failed to initialize LaF");
+////        }
+//
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new Home("23").setVisible(true);
+//        });
+//    }
+    private Home_GUI home_GUI;
     private HopDong_GUI hopDong_GUI;
     private SanPham_GUI sanPham_GUI;
     private CapNhatCongDoan_GUI capNhatCongDoan_GUI;
