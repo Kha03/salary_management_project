@@ -31,7 +31,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbTrinhDo = new javax.swing.JComboBox<>();
         jComboBox6 = new javax.swing.JComboBox<>();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -51,12 +51,12 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        txtKinhNghiem = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
+        cbChucVu = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -87,15 +87,15 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân Viên ", "Tổ Trưởng", " " }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        cbTrinhDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbTrinhDo.setForeground(new java.awt.Color(0, 99, 0));
+        cbTrinhDo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trung học cơ sở", "Trung học phổ thông", "Cao Đẳng", "Đại Học" }));
+        cbTrinhDo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cbTrinhDoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 190, -1));
+        jPanel1.add(cbTrinhDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 190, -1));
 
         jComboBox6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(0, 99, 0));
@@ -197,13 +197,9 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jTextField9.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 190, -1));
 
-        jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 190, -1));
-
-        jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField11.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 190, -1));
+        txtKinhNghiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtKinhNghiem.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtKinhNghiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 190, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Chức Vụ:");
@@ -222,6 +218,16 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
         jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 190, -1));
+
+        cbChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbChucVu.setForeground(new java.awt.Color(0, 99, 0));
+        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân Viên ", "Tổ Trưởng", " " }));
+        cbChucVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChucVuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1180, 220));
 
@@ -245,9 +251,13 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void cbTrinhDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrinhDoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_cbTrinhDoActionPerformed
+
+    private void cbChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChucVuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbChucVuActionPerformed
     private void setTable() {
         //setTable ở đây
         model = new DefaultTableModel(
@@ -298,11 +308,12 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
     }
     private DefaultTableModel model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbChucVu;
+    private javax.swing.JComboBox<String> cbTrinhDo;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel1;
@@ -324,12 +335,11 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtKinhNghiem;
     // End of variables declaration//GEN-END:variables
 }

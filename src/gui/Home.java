@@ -45,6 +45,7 @@ public class Home extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -87,9 +88,18 @@ public class Home extends javax.swing.JFrame {
         jMenu3.setText("Trang Chủ");
         jMenu3.setToolTipText("");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Nhân Viên");
+        jMenu4.setText("Quản Lý Nhân Viên");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/man.png"))); // NOI18N
@@ -110,9 +120,18 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem5);
 
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/congNhan.png"))); // NOI18N
+        jMenuItem15.setText("Tìm Kiếm Nhân Viên");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem15);
+
         jMenuBar1.add(jMenu4);
 
-        jMenu6.setText("Phụ Cấp");
+        jMenu6.setText("Quản Lý Phụ Cấp");
         jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem10.setText("Phụ Cấp Nhân Viên");
@@ -125,7 +144,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
-        jMenu5.setText("Đơn Vị");
+        jMenu5.setText("Quản Lý Đơn Vị");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem1.setText("Phòng Ban");
@@ -201,7 +220,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu9);
 
-        jMenu11.setText("Sản Phẩm");
+        jMenu11.setText("Quản Lý Sản Phẩm");
         jMenu11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem12.setText("Thông Tin Sản Phẩm");
@@ -214,7 +233,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu11);
 
-        jMenu13.setText("Hợp Đồng");
+        jMenu13.setText("Quản Lý Hợp Đồng");
         jMenu13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem11.setText("Thông Tin Hợp Đồng");
@@ -227,7 +246,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu13);
 
-        jMenu12.setText("Công Đoạn");
+        jMenu12.setText("Quản Công Đoạn");
         jMenu12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem13.setText("Cập Nhật Công Đoạn");
@@ -336,6 +355,16 @@ public class Home extends javax.swing.JFrame {
         cardLayout.show(jPanel1, "BCL");
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+         cardLayout.show(jPanel1, "TKNV");
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
+        // TODO add your handling code here:
+         cardLayout.show(jPanel1, "TC");
+    }//GEN-LAST:event_jMenu3MenuSelected
+
     private void initLayouts() {
         cardLayout = new CardLayout();
         jPanel1.setLayout(cardLayout);
@@ -354,9 +383,11 @@ public class Home extends javax.swing.JFrame {
         sanPham_GUI = new SanPham_GUI();
         capNhatCongDoan_GUI = new CapNhatCongDoan_GUI();
         baoCaoLuong_GUI = new BaoCaoLuong_GUI();
+        timKiemNhanVien_GUI = new TimKiemNhanVien_GUI();
         home_GUI = new Home_GUI();
-        
-         jPanel1.add(home_GUI, "TC");
+
+        jPanel1.add(home_GUI, "TC");
+        jPanel1.add(timKiemNhanVien_GUI, "TKNV");
         jPanel1.add(baoCaoLuong_GUI, "BCL");
         jPanel1.add(hopDong_GUI, "HDSX");
         jPanel1.add(sanPham_GUI, "SPSX");
@@ -420,6 +451,7 @@ public class Home extends javax.swing.JFrame {
     private TinhLuongHanhChinh_GUI tinhLuongHanhChinh_GUI;
     private TinhLuongSanXuat_GUI tinhLuongSanXuat_GUI;
     private BaoCaoLuong_GUI baoCaoLuong_GUI;
+    private TimKiemNhanVien_GUI timKiemNhanVien_GUI;
     private CardLayout cardLayout;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu10;
@@ -440,6 +472,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
