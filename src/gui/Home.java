@@ -246,7 +246,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu13);
 
-        jMenu12.setText("Quản Công Đoạn");
+        jMenu12.setText("Quản Lý Công Đoạn");
         jMenu12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem13.setText("Cập Nhật Công Đoạn");
@@ -385,7 +385,9 @@ public class Home extends javax.swing.JFrame {
         baoCaoLuong_GUI = new BaoCaoLuong_GUI();
         timKiemNhanVien_GUI = new TimKiemNhanVien_GUI();
         home_GUI = new Home_GUI();
+        timKiemChamCong_GUI = new TimKiemChamCong_GUI();
 
+        jPanel1.add(timKiemChamCong_GUI, "TKCC");
         jPanel1.add(home_GUI, "TC");
         jPanel1.add(timKiemNhanVien_GUI, "TKNV");
         jPanel1.add(baoCaoLuong_GUI, "BCL");
@@ -436,6 +438,7 @@ public class Home extends javax.swing.JFrame {
 //            new Home("23").setVisible(true);
 //        });
 //    }
+    private TimKiemChamCong_GUI timKiemChamCong_GUI;
     private Home_GUI home_GUI;
     private HopDong_GUI hopDong_GUI;
     private SanPham_GUI sanPham_GUI;

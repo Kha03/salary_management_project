@@ -278,7 +278,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void setTable() {
         //setTable ở đây
-        model = new DefaultTableModel(
+        modelHc = new DefaultTableModel(
                 new Object[][]{
                     {"123", "Kha", "Nam", "12/20/2003", "123", "Gò vấp", "kha@gmail.com", "Tiếng anh", "kĩ thuật", "Nhân viên kĩ thuật", "Nhân Viên", "1.5", "5.000.000"},
                     {null, null, null, null, null, null, null, null, null, null, null},
@@ -307,25 +307,41 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable1.setModel(model);
+        jTable1.setModel(modelHc);
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(6).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(7).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(11).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(12).setCellRenderer(center);
+        //model sản xuất
+        modelSx = new DefaultTableModel(
+                new Object[][]{
+                    {"123", "Kha", "Nam", "12/20/2003", "123", "34", "43", "43", null, "43", "43"},
+                    {null, null, null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null, null, null}
+                },
+                new String[]{
+                    "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Phân Xưởng", "Chức Vụ", "Trình Độ", "Kinh Nghiệm"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false, false, false, false, false, false, false, false
+            };
 
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        };
     }
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
         // TODO add your handling code here:
@@ -367,6 +383,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         txtNgoaiNgu.setVisible(true);
         cbCapBac.setVisible(true);
         txtLuongCoBan.setVisible(true);
+        jTable1.setModel(modelHc);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void cbChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChucVuActionPerformed
@@ -395,6 +412,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         txtKinhNghiem.setVisible(true);
         cbChucVu.setVisible(true);
         cbPhanXuong.setVisible(true);
+        jTable1.setModel(modelSx);
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
     private void initCommon() {
@@ -406,7 +424,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     }
 
     // private Border_Selected border;
-    private DefaultTableModel model;
+    private DefaultTableModel modelHc;
+    private DefaultTableModel modelSx;
     private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnThayDoiTim;
