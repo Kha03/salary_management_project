@@ -205,11 +205,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMatKhauActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(txtDangNhap.getText().equalsIgnoreCase("123") && txtMatKhau.getText().equalsIgnoreCase("Kha")){
+      //  if(txtDangNhap.getText().equalsIgnoreCase("123") && txtMatKhau.getText().equalsIgnoreCase("Kha")){
             Home home = new Home();
             home.setVisible(true);
             setVisible(false);
-        }
+       // }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed

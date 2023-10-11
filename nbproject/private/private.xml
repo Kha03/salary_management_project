@@ -3,26 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/Home.java</file>
-            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/TimKiemChamCong_GUI.java</file>
-            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/ChamCongHanhChinh_GUI.java</file>
-=======
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/SanPham.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/CongDoan.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/ChamCongSanPham.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/LuongHanhChanh.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhuCap.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/NhanVien.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhanXuong.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/NhanVienSanXuat.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/LuongCongNhan.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/NhanVienHanhChanh.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/ChamCongNhanVien.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhongBan.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/HopDongSanXuat.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhanCongSanXuat.java</file>
->>>>>>> 57e0967ffb88e8bcdb0a6ac63296634bfdb3ec69
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/TimKiemBangLuong_GUI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -357,12 +357,12 @@ public class Home extends javax.swing.JFrame {
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
-         cardLayout.show(jPanel1, "TKNV");
+        cardLayout.show(jPanel1, "TKNV");
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
         // TODO add your handling code here:
-         cardLayout.show(jPanel1, "TC");
+        cardLayout.show(jPanel1, "TC");
     }//GEN-LAST:event_jMenu3MenuSelected
 
     private void initLayouts() {
@@ -386,7 +386,9 @@ public class Home extends javax.swing.JFrame {
         timKiemNhanVien_GUI = new TimKiemNhanVien_GUI();
         home_GUI = new Home_GUI();
         timKiemChamCong_GUI = new TimKiemChamCong_GUI();
+        timKiemBangLuong_GUI = new TimKiemBangLuong_GUI();
 
+        jPanel1.add(timKiemBangLuong_GUI, "TKBL");
         jPanel1.add(timKiemChamCong_GUI, "TKCC");
         jPanel1.add(home_GUI, "TC");
         jPanel1.add(timKiemNhanVien_GUI, "TKNV");
@@ -438,6 +440,7 @@ public class Home extends javax.swing.JFrame {
 //            new Home("23").setVisible(true);
 //        });
 //    }
+    private TimKiemBangLuong_GUI timKiemBangLuong_GUI;
     private TimKiemChamCong_GUI timKiemChamCong_GUI;
     private Home_GUI home_GUI;
     private HopDong_GUI hopDong_GUI;
