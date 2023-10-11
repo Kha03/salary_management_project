@@ -149,6 +149,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         cbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
         jPanel1.add(cbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
+        btnThayDoiTim.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(0, 96, 0));
         jRadioButton1.setText("Nhân Viên Sản Xuất");
@@ -164,6 +165,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chế Tạo", "Gia Công", "Sơn", " " }));
         jPanel1.add(cbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
+        btnThayDoiTim.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jRadioButton3.setForeground(new java.awt.Color(0, 96, 0));
         jRadioButton3.setSelected(true);
@@ -324,7 +326,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtTienTangCa.setVisible(false);
         lblLuongThucLanhHc.setVisible(false);
         lblLuongThucLanhHcV.setVisible(false);
-        jTable1.setModel(modelChamCongSanPham);
+        jTable1.setModel(modelLuongSx);
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
@@ -351,7 +353,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtTienTangCa.setVisible(true);
         lblLuongThucLanhHc.setVisible(true);
         lblLuongThucLanhHcV.setVisible(true);
-        jTable1.setModel(modelChamCongHanhChinh);
+        jTable1.setModel(modelLuongHc);
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void txtNgayCongThucTeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayCongThucTeActionPerformed
@@ -366,20 +368,19 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton15ActionPerformed
     private void setTable() {
         //setTable ở đây
-        modelChamCongHanhChinh = new DefaultTableModel(
+        //table chấm công
+        modelLuongHc = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", true, "5"},
-                    {"2", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", false, "0"},
-                    {"3", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", true, "2"},},
+                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "1.5", "10.000.000", "26", "123", "30", "5", "120000"},},
                 new String[]{
-                    "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày chấm", "Trạng thái", "Tăng ca"
+                    "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Hệ số lương", "Lương cơ bản", "Số ngày công chuẩn", "Phụ cấp", "Ngày công thực tế", "Tiền tăng ca", "Lương thực lãnh"
                 }
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             @Override
@@ -393,29 +394,31 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
             }
         };
         //model san pham
-        modelChamCongSanPham = new DefaultTableModel(
+       modelLuongSx = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Cắt giấy", "1000", "2", "100.000"},
-                    {"2", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Luộc rau", "1000", "50", "100.000"},
-                    {"3", "Điêu khắc", "Trịnh Minh Kha", "123", "12/2/2023", "máy tính", "Cắt giấy", "1000", "21", "100.000"},},
+                    {"1", "123", "Trịnh Minh Kha", "10000",
+                        "100",
+                        "10000",},},
                 new String[]{
-                    "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày làm", "Sản phẩm", "Công đoạn", "Đơn giá", "Số lượng", "Tiền lương"
+                    "STT", "Mã nhân viên", "Họ và tên", "Tổng lương theo sản phẩm",
+                    "Phụ cấp",
+                    "Lương thực lãnh"
                 }
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
                 java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class
-
-            };
+                java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false, false, false, false
-            };
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -427,7 +430,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable1.setModel(modelChamCongHanhChinh);
+        jTable1.setModel(modelLuongHc);
 
 //        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
 //        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
@@ -444,8 +447,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     }
 
     // private Border_Selected border;
-    private DefaultTableModel modelChamCongHanhChinh;
-    private DefaultTableModel modelChamCongSanPham;
+    private DefaultTableModel modelLuongHc;
+    private DefaultTableModel modelLuongSx;
     private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLuongThucLanhSxV;

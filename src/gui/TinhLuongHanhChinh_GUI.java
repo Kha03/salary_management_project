@@ -26,44 +26,51 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
-        jButton7 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        jButton5 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jButton15 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
-        setPreferredSize(new java.awt.Dimension(1200, 674));
+        setPreferredSize(new java.awt.Dimension(1366, 741));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane4.setViewportView(jTable4);
-
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1365, 570));
+        jDesktopPane1.setOpaque(false);
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -80,7 +87,174 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane5.setViewportView(jTable5);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 170));
+        jDesktopPane1.add(jScrollPane5);
+        jScrollPane5.setBounds(0, 0, 190, 240);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setText("Tháng:");
+        jLabel17.setToolTipText("");
+        jDesktopPane1.add(jLabel17);
+        jLabel17.setBounds(220, 50, 60, 20);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        jDesktopPane1.add(jComboBox1);
+        jComboBox1.setBounds(280, 50, 50, 22);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setText("Năm:");
+        jLabel14.setToolTipText("");
+        jDesktopPane1.add(jLabel14);
+        jLabel14.setBounds(340, 50, 60, 20);
+        jDesktopPane1.add(jYearChooser1);
+        jYearChooser1.setBounds(390, 50, 65, 20);
+
+        jButton5.setBackground(new java.awt.Color(152, 249, 152));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setText("Lọc");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton5);
+        jButton5.setBounds(470, 50, 60, 30);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Bảng Lương Nhân Viên Hành Chính");
+        jDesktopPane1.add(jLabel5);
+        jLabel5.setBounds(190, 0, 1180, 40);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setText("Phòng Ban:");
+        jLabel19.setToolTipText("");
+        jDesktopPane1.add(jLabel19);
+        jLabel19.setBounds(220, 90, 110, 20);
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel39.setText("Mã Nhân Viên:");
+        jLabel39.setToolTipText("");
+        jDesktopPane1.add(jLabel39);
+        jLabel39.setBounds(220, 130, 110, 20);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setText("Tên Nhân Viên:");
+        jLabel18.setToolTipText("");
+        jDesktopPane1.add(jLabel18);
+        jLabel18.setBounds(220, 170, 110, 20);
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel37.setText("Chức Vụ:");
+        jLabel37.setToolTipText("");
+        jDesktopPane1.add(jLabel37);
+        jLabel37.setBounds(220, 210, 70, 20);
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel38.setText("Nhân Viên Chăm Sóc Khách Hàng");
+        jLabel38.setToolTipText("");
+        jDesktopPane1.add(jLabel38);
+        jLabel38.setBounds(340, 210, 340, 20);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel23.setText("Kế toán");
+        jLabel23.setToolTipText("");
+        jDesktopPane1.add(jLabel23);
+        jLabel23.setBounds(340, 170, 160, 20);
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel24.setText("Kế toán");
+        jLabel24.setToolTipText("");
+        jDesktopPane1.add(jLabel24);
+        jLabel24.setBounds(340, 130, 160, 20);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setText("Ngày Công Chuẩn:");
+        jLabel22.setToolTipText("");
+        jDesktopPane1.add(jLabel22);
+        jLabel22.setBounds(550, 90, 140, 20);
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "hành chính", " " }));
+        jDesktopPane1.add(jComboBox2);
+        jComboBox2.setBounds(340, 90, 170, 26);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel27.setText("Ngày Công Thực Tế:");
+        jLabel27.setToolTipText("");
+        jDesktopPane1.add(jLabel27);
+        jLabel27.setBounds(550, 130, 150, 20);
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel29.setText("Hệ Số Lương:");
+        jLabel29.setToolTipText("");
+        jDesktopPane1.add(jLabel29);
+        jLabel29.setBounds(550, 170, 100, 20);
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel33.setText("Tiền Tăng Ca:");
+        jLabel33.setToolTipText("");
+        jDesktopPane1.add(jLabel33);
+        jLabel33.setBounds(760, 130, 110, 20);
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel31.setText("Tiền Phụ Cấp:");
+        jLabel31.setToolTipText("");
+        jDesktopPane1.add(jLabel31);
+        jLabel31.setBounds(760, 90, 110, 20);
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel28.setText("32");
+        jLabel28.setToolTipText("");
+        jDesktopPane1.add(jLabel28);
+        jLabel28.setBounds(700, 170, 70, 20);
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel26.setText("12");
+        jLabel26.setToolTipText("");
+        jDesktopPane1.add(jLabel26);
+        jLabel26.setBounds(700, 90, 40, 20);
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel32.setText("12212");
+        jLabel32.setToolTipText("");
+        jDesktopPane1.add(jLabel32);
+        jLabel32.setBounds(870, 90, 120, 20);
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel34.setText("121212");
+        jLabel34.setToolTipText("");
+        jDesktopPane1.add(jLabel34);
+        jLabel34.setBounds(870, 130, 120, 20);
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel35.setText("Lương Thực Lãnh:");
+        jLabel35.setToolTipText("");
+        jDesktopPane1.add(jLabel35);
+        jLabel35.setBounds(1000, 130, 130, 20);
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("Lương Cơ Bản:");
+        jLabel21.setToolTipText("");
+        jDesktopPane1.add(jLabel21);
+        jLabel21.setBounds(1000, 90, 110, 20);
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel25.setText("130.000.000 VND");
+        jLabel25.setToolTipText("");
+        jDesktopPane1.add(jLabel25);
+        jLabel25.setBounds(1130, 90, 150, 20);
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel36.setText("130.000.000 VND");
+        jLabel36.setToolTipText("");
+        jDesktopPane1.add(jLabel36);
+        jLabel36.setBounds(1130, 130, 150, 20);
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -91,46 +265,8 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 90, 100, 30));
-
-        jButton5.setBackground(new java.awt.Color(152, 249, 152));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setText("Lọc");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 60, 30));
-
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Tạo Bảng Lương");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 130, 180, 30));
-
-        jButton13.setBackground(new java.awt.Color(152, 249, 152));
-        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton13.setText("Làm Mới");
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 120, 30));
-
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        jButton16.setText("Xóa");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 130, 90, 30));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("Năm:");
-        jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 60, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Bảng Lương Nhân Viên Hành Chính");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 40));
-        add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 65, 20));
+        jDesktopPane1.add(jButton6);
+        jButton6.setBounds(1140, 175, 100, 30);
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -141,26 +277,72 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 90, 100, 30));
+        jDesktopPane1.add(jButton7);
+        jButton7.setBounds(1250, 175, 110, 30);
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setText("Tháng:");
-        jLabel17.setToolTipText("");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 60, -1));
+        jButton16.setBackground(new java.awt.Color(152, 249, 152));
+        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
+        jButton16.setText("Xóa");
+        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton16);
+        jButton16.setBounds(1270, 210, 90, 30);
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setText("Phòng Ban:");
-        jLabel18.setToolTipText("");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 110, 20));
+        jButton13.setBackground(new java.awt.Color(152, 249, 152));
+        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        jButton13.setText("Làm Mới");
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton13);
+        jButton13.setBounds(1140, 210, 120, 30);
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel23.setText("Kế toán");
-        jLabel23.setToolTipText("");
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 160, 20));
+        jButton14.setBackground(new java.awt.Color(152, 249, 152));
+        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
+        jButton14.setText("Tạo Bảng Lương");
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton14.setDisabledIcon(null);
+        jDesktopPane1.add(jButton14);
+        jButton14.setBounds(820, 210, 180, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 50, -1));
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTable4.setToolTipText("");
+        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane4.setViewportView(jTable4);
+
+        jDesktopPane1.add(jScrollPane4);
+        jScrollPane4.setBounds(0, 240, 1365, 500);
+
+        jButton15.setBackground(new java.awt.Color(152, 249, 152));
+        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton15.setText("Xem Chi Tiết");
+        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jButton15);
+        jButton15.setBounds(1010, 210, 120, 30);
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel30.setText("32");
+        jLabel30.setToolTipText("");
+        jDesktopPane1.add(jLabel30);
+        jLabel30.setBounds(700, 130, 40, 20);
+
+        add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 741));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -170,6 +352,12 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        ChiTietLuongHanhChinh_GUI chiTietLuongHanhChinh_GUI = new ChiTietLuongHanhChinh_GUI();
+        jDesktopPane1.add(chiTietLuongHanhChinh_GUI);
+        chiTietLuongHanhChinh_GUI.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
@@ -252,15 +440,37 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;

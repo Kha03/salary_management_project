@@ -6,12 +6,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ADMIN
  */
-public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
+public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form demo
      */
-    public ChiTietLuongCongNhan_GUI() {
+    public ChiTietLuongHanhChinh_GUI() {
         initComponents();
         setTable();
     }
@@ -49,9 +49,19 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Chi Tiết Lương Sản Phẩm");
+        setTitle("Chi Tiết Lương Hành Chính");
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1200, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +74,7 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 40, -1, 30));
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, -1, 30));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 99, 0));
@@ -95,7 +105,7 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1190, 490));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1190, 460));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setText("Xuất Pdf");
@@ -105,18 +115,18 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 40, -1, 30));
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 70, -1, 30));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel25.setText("12/2023");
+        jLabel25.setText("2/2023");
         jLabel25.setToolTipText("");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 70, 20));
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 10, 140, 20));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tháng:");
         jLabel16.setToolTipText("");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 60, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 60, -1));
         jLabel16.getAccessibleContext().setAccessibleName("Tổng Lương:");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -203,26 +213,81 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 120, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel21.setText("Tiền Thực Lãnh:");
+        jLabel21.setText("Hệ Số Lương:");
         jLabel21.setToolTipText("");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 120, -1));
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 100, -1));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(0, 99, 0));
         jLabel29.setText("123");
         jLabel29.setToolTipText("");
-        getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 140, 20));
+        getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 120, 20));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel22.setText("Tiền Phụ Cấp:");
+        jLabel22.setText("Lương Cơ Bản:");
         jLabel22.setToolTipText("");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 100, -1));
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 100, -1));
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(0, 99, 0));
         jLabel30.setText("123");
         jLabel30.setToolTipText("");
-        getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 140, 20));
+        getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 120, 20));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel31.setText("Tiền Phụ Cấp:");
+        jLabel31.setToolTipText("");
+        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 100, -1));
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel32.setText("123");
+        jLabel32.setToolTipText("");
+        getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 120, 20));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel33.setText("Tiền Tăng Ca:");
+        jLabel33.setToolTipText("");
+        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 100, -1));
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel34.setText("123");
+        jLabel34.setToolTipText("");
+        getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 120, 20));
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel35.setText("Ngày Công Chuẩn:");
+        jLabel35.setToolTipText("");
+        getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 140, -1));
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel36.setText("123");
+        jLabel36.setToolTipText("");
+        getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 60, 20));
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel37.setText("Ngày Công Thực Tế:");
+        jLabel37.setToolTipText("");
+        getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 140, -1));
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel38.setText("123");
+        jLabel38.setToolTipText("");
+        getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, 60, 20));
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel39.setText("Tiền Thực Lãnh:");
+        jLabel39.setToolTipText("");
+        getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel40.setText("123");
+        jLabel40.setToolTipText("");
+        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 120, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,23 +310,17 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
     private void setTable() {
         modelChiTietLuong = new DefaultTableModel(
                 new Object[][]{
-                    {"1","1/9", "Điện thoại", "Kiểm tra", "100","10","10"},},
+                    {"1", "1/9", true, "5"},},
                 new String[]{
-                    "STT", "Ngày", "Sản phẩm", "Công đoạn","Đơn giá","Số lượng","Tiền lương"
+                    "STT", "Ngày", "Trạng thái", "Giờ Tăng ca"
                 }
         ) {
             Class[] types = new Class[]{
                 java.lang.String.class,
                 java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                 java.lang.String.class,
+                java.lang.Boolean.class,
                 java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false,
-                false,
-                false,
                 false,
                 false,
                 false,
@@ -311,6 +370,16 @@ public class ChiTietLuongCongNhan_GUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable4;
