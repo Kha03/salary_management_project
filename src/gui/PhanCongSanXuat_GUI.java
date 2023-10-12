@@ -26,42 +26,64 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jButton14 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField4 = new javax.swing.JTextField();
+        jButton16 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jButton6 = new javax.swing.JButton();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
-        jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jDesktopPane1.setOpaque(false);
+
+        jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
+
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTable6.setToolTipText("");
+        jTable6.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        jTable6.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane6.setViewportView(jTable6);
+
+        jDesktopPane1.add(jScrollPane6);
+        jScrollPane6.setBounds(0, 0, 190, 397);
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -78,7 +100,8 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(jTable3);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 190, 340));
+        jDesktopPane1.add(jScrollPane3);
+        jScrollPane3.setBounds(0, 400, 190, 340);
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Phân Công", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
@@ -96,7 +119,126 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 990, 470));
+        jDesktopPane1.add(jScrollPane4);
+        jScrollPane4.setBounds(190, 270, 990, 470);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setText("Số Nhân Viên:");
+        jLabel14.setToolTipText("");
+        jDesktopPane1.add(jLabel14);
+        jLabel14.setBounds(240, 230, 120, 20);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 99, 0));
+        jLabel23.setText("24");
+        jLabel23.setToolTipText("");
+        jDesktopPane1.add(jLabel23);
+        jLabel23.setBounds(370, 230, 80, 20);
+
+        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
+        jDesktopPane1.add(jComboBox4);
+        jComboBox4.setBounds(370, 180, 170, 26);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setText("Sản Phẩm:");
+        jLabel19.setToolTipText("");
+        jDesktopPane1.add(jLabel19);
+        jLabel19.setBounds(240, 180, 120, 20);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel16.setText("Phân Xưởng:");
+        jLabel16.setToolTipText("");
+        jDesktopPane1.add(jLabel16);
+        jLabel16.setBounds(240, 130, 120, 20);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setText("Ngày Phân Công:");
+        jLabel15.setToolTipText("");
+        jDesktopPane1.add(jLabel15);
+        jLabel15.setBounds(240, 80, 120, 20);
+
+        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
+        jDateChooser2.setDateFormatString("dd/mm/yyyy");
+        jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jDesktopPane1.add(jDateChooser2);
+        jDateChooser2.setBounds(370, 80, 130, 22);
+
+        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
+        jCheckBox2.setText("Từ");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jCheckBox2);
+        jCheckBox2.setBounds(510, 80, 50, 20);
+
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
+        jDateChooser1.setDateFormatString("dd/mm/yyyy");
+        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jDesktopPane1.add(jDateChooser1);
+        jDateChooser1.setBounds(560, 80, 130, 22);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setText("Mã Sản Phẩm:");
+        jLabel18.setToolTipText("");
+        jDesktopPane1.add(jLabel18);
+        jLabel18.setBounds(560, 130, 120, 20);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setText("Công Đoạn:");
+        jLabel17.setToolTipText("");
+        jDesktopPane1.add(jLabel17);
+        jLabel17.setBounds(560, 180, 120, 20);
+
+        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jCheckBox3.setForeground(new java.awt.Color(0, 96, 0));
+        jCheckBox3.setText("Toàn bộ nhân viên");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jCheckBox3);
+        jCheckBox3.setBounds(520, 230, 220, 30);
+
+        jButton14.setBackground(new java.awt.Color(152, 249, 152));
+        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
+        jButton14.setText("Tạo");
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton14.setDisabledIcon(null);
+        jDesktopPane1.add(jButton14);
+        jButton14.setBounds(680, 230, 120, 30);
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
+        jDesktopPane1.add(jComboBox2);
+        jComboBox2.setBounds(670, 180, 170, 26);
+
+        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(0, 96, 0));
+        jDesktopPane1.add(jTextField4);
+        jTextField4.setBounds(670, 130, 170, 26);
+
+        jButton16.setBackground(new java.awt.Color(152, 249, 152));
+        jButton16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton16.setText("Lọc");
+        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton16);
+        jButton16.setBounds(700, 80, 60, 27);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Phân Công Sản Xuất");
+        jDesktopPane1.add(jLabel5);
+        jLabel5.setBounds(190, 0, 1180, 50);
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -113,82 +255,56 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane5.setViewportView(jTable5);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 40, 180, 355));
+        jDesktopPane1.add(jScrollPane5);
+        jScrollPane5.setBounds(1180, 5, 180, 390);
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 170, -1));
+        jButton15.setBackground(new java.awt.Color(152, 249, 152));
+        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
+        jButton15.setText("Cập Nhật");
+        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton15);
+        jButton15.setBounds(810, 230, 130, 30);
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
-        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 170, -1));
+        jButton8.setBackground(new java.awt.Color(152, 249, 152));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        jButton8.setText("Làm Mới");
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton8);
+        jButton8.setBounds(950, 230, 120, 30);
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser1.setDateFormatString("dd/mm/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 130, -1));
-
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox2.setText("Từ");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 50, 20));
+        jButton11.setBackground(new java.awt.Color(152, 249, 152));
+        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
+        jButton11.setText("Xóa");
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDesktopPane1.add(jButton11);
+        jButton11.setBounds(1080, 230, 90, 30);
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton6.setText("Xuất Bảng Phân Công");
+        jButton6.setText("Xem Chi Tiết");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 80, -1, -1));
+        jDesktopPane1.add(jButton6);
+        jButton6.setBounds(1050, 190, 120, 30);
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser2.setDateFormatString("dd/mm/yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 130, -1));
-
-        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox3.setText("Toàn bộ nhân viên");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        jButton7.setBackground(new java.awt.Color(152, 249, 152));
+        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton7.setText("Xuất Bảng Phân Công");
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                jButton7ActionPerformed(evt);
             }
         });
-        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 180, 220, -1));
-
-        jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
-
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTable6.setToolTipText("");
-        jTable6.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable6.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane6.setViewportView(jTable6);
-
-        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 397));
+        jDesktopPane1.add(jButton7);
+        jButton7.setBounds(990, 80, 180, 30);
 
         jScrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -205,109 +321,44 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jTable7.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane7.setViewportView(jTable7);
 
-        add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 400, 180, 340));
+        jDesktopPane1.add(jScrollPane7);
+        jScrollPane7.setBounds(1180, 400, 180, 340);
 
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Tạo");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 120, 30));
+        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jComboBox3);
+        jComboBox3.setBounds(370, 130, 170, 26);
 
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
-        jButton15.setText("Cập Nhật");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 130, 30));
-
-        jButton8.setBackground(new java.awt.Color(152, 249, 152));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton8.setText("Làm Mới");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 230, 120, 30));
-
-        jButton11.setBackground(new java.awt.Color(152, 249, 152));
-        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        jButton11.setText("Xóa");
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 230, 90, 30));
-
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton16.setText("Lọc");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 60, -1));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("Số Nhân Viên:");
-        jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 120, -1));
-
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 170, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Phân Công Sản Xuất");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1010, 50));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Ngày Phân Công:");
-        jLabel15.setToolTipText("");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 120, -1));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("Phân Xưởng:");
-        jLabel16.setToolTipText("");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 120, -1));
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setText("Công Đoạn:");
-        jLabel17.setToolTipText("");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 120, -1));
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setText("Mã Sản Phẩm:");
-        jLabel18.setToolTipText("");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 120, -1));
-
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
-        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 170, -1));
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel19.setText("Sản Phẩm:");
-        jLabel19.setToolTipText("");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 120, -1));
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel23.setText("24");
-        jLabel23.setToolTipText("");
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 160, 20));
+        add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 741));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI();
+        jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
@@ -487,6 +538,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -495,6 +547,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox4;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
