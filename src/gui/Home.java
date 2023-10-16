@@ -53,12 +53,15 @@ public class Home extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
@@ -176,6 +179,14 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem3);
 
+        jMenuItem16.setText("Tìm Kiếm Phân Công");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem16);
+
         jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Chấm Công");
@@ -197,6 +208,14 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem7);
 
+        jMenuItem17.setText("Tìm Kiếm Chấm Công");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem17);
+
         jMenuBar1.add(jMenu8);
 
         jMenu9.setText("Tính Lương");
@@ -217,6 +236,14 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jMenu9.add(jMenuItem9);
+
+        jMenuItem18.setText("Tìm Kiếm Bảng Lương");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem18);
 
         jMenuBar1.add(jMenu9);
 
@@ -246,7 +273,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu13);
 
-        jMenu12.setText("Quản Công Đoạn");
+        jMenu12.setText("Quản Lý Công Đoạn");
         jMenu12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenuItem13.setText("Cập Nhật Công Đoạn");
@@ -357,13 +384,28 @@ public class Home extends javax.swing.JFrame {
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
-         cardLayout.show(jPanel1, "TKNV");
+        cardLayout.show(jPanel1, "TKNV");
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
         // TODO add your handling code here:
-         cardLayout.show(jPanel1, "TC");
+        cardLayout.show(jPanel1, "TC");
     }//GEN-LAST:event_jMenu3MenuSelected
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(jPanel1, "TKPC");
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(jPanel1, "TKCC");
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(jPanel1, "TKBL");
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void initLayouts() {
         cardLayout = new CardLayout();
@@ -383,10 +425,16 @@ public class Home extends javax.swing.JFrame {
         sanPham_GUI = new SanPham_GUI();
         capNhatCongDoan_GUI = new CapNhatCongDoan_GUI();
         baoCaoLuong_GUI = new BaoCaoLuong_GUI();
-        timKiemNhanVien_GUI = new TimKiemNhanVien_GUI();
         home_GUI = new Home_GUI();
+        timKiemNhanVien_GUI = new TimKiemNhanVien_GUI();
+        timKiemChamCong_GUI = new TimKiemChamCong_GUI();
+        timKiemBangLuong_GUI = new TimKiemBangLuong_GUI();
+        timKiemPhanCong_GUI = new TimKiemPhanCong_GUI();
 
         jPanel1.add(home_GUI, "TC");
+        jPanel1.add(timKiemPhanCong_GUI, "TKPC");
+        jPanel1.add(timKiemBangLuong_GUI, "TKBL");
+        jPanel1.add(timKiemChamCong_GUI, "TKCC");
         jPanel1.add(timKiemNhanVien_GUI, "TKNV");
         jPanel1.add(baoCaoLuong_GUI, "BCL");
         jPanel1.add(hopDong_GUI, "HDSX");
@@ -436,6 +484,10 @@ public class Home extends javax.swing.JFrame {
 //            new Home("23").setVisible(true);
 //        });
 //    }
+    private TimKiemBangLuong_GUI timKiemBangLuong_GUI;
+    private TimKiemChamCong_GUI timKiemChamCong_GUI;
+    private TimKiemNhanVien_GUI timKiemNhanVien_GUI;
+    private TimKiemPhanCong_GUI timKiemPhanCong_GUI;
     private Home_GUI home_GUI;
     private HopDong_GUI hopDong_GUI;
     private SanPham_GUI sanPham_GUI;
@@ -451,7 +503,6 @@ public class Home extends javax.swing.JFrame {
     private TinhLuongHanhChinh_GUI tinhLuongHanhChinh_GUI;
     private TinhLuongSanXuat_GUI tinhLuongSanXuat_GUI;
     private BaoCaoLuong_GUI baoCaoLuong_GUI;
-    private TimKiemNhanVien_GUI timKiemNhanVien_GUI;
     private CardLayout cardLayout;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu10;
@@ -473,6 +524,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
