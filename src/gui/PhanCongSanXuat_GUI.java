@@ -256,7 +256,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jScrollPane5.setViewportView(jTable5);
 
         jDesktopPane1.add(jScrollPane5);
-        jScrollPane5.setBounds(1180, 5, 180, 390);
+        jScrollPane5.setBounds(1180, 5, 185, 390);
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -322,7 +322,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jScrollPane7.setViewportView(jTable7);
 
         jDesktopPane1.add(jScrollPane7);
-        jScrollPane7.setBounds(1180, 400, 180, 340);
+        jScrollPane7.setBounds(1180, 400, 185, 340);
 
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(0, 99, 0));

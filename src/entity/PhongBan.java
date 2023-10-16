@@ -17,9 +17,9 @@ public class PhongBan {
         this.truongPhong = truongPhong;
         this.nhanVien = nhanVien;
     }
-
-    
-
+    public PhongBan(String tenPhongBan){
+        this.tenPhongBan = tenPhongBan;
+    }
     public PhongBan() {
     }
 
