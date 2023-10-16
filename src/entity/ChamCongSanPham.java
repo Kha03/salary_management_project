@@ -1,5 +1,5 @@
-
 package entity;
+
 import java.util.Date;
 
 /**
@@ -7,6 +7,7 @@ import java.util.Date;
  * @author ACER
  */
 public class ChamCongSanPham {
+
     private String maCongSanPham;
     private NhanVienSanXuat nhanVienSanXuat;
     private SanPham sanPham;
@@ -14,8 +15,17 @@ public class ChamCongSanPham {
     private CongDoan congDoan;
     private float donGia;
     private int soLuong;
+    private float tongTien;
 
-    public ChamCongSanPham(String maCongSanPham, NhanVienSanXuat nhanVienSanXuat, SanPham sanPham, Date ngayLamViec, CongDoan congDoan, float donGia, int soLuong) {
+    public float getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(float tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public ChamCongSanPham(String maCongSanPham, NhanVienSanXuat nhanVienSanXuat, SanPham sanPham, Date ngayLamViec, CongDoan congDoan, float donGia, int soLuong,float tongTien) {
         this.maCongSanPham = maCongSanPham;
         this.nhanVienSanXuat = nhanVienSanXuat;
         this.sanPham = sanPham;
@@ -23,9 +33,8 @@ public class ChamCongSanPham {
         this.congDoan = congDoan;
         this.donGia = donGia;
         this.soLuong = soLuong;
+        this.tongTien = tongTien;
     }
-
-    
     
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
@@ -34,7 +43,6 @@ public class ChamCongSanPham {
     public int getSoLuong() {
         return soLuong;
     }
-
 
     public ChamCongSanPham() {
     }
@@ -62,8 +70,6 @@ public class ChamCongSanPham {
     public void setDonGia(float donGia) {
         this.donGia = donGia;
     }
-
-   
 
     public String getMaCongSanPham() {
         return maCongSanPham;
@@ -94,6 +100,4 @@ public class ChamCongSanPham {
         return "ChamCongSanPham{" + "maCongSanPham=" + maCongSanPham + ", nhanVienSanXuat=" + nhanVienSanXuat + ", sanPham=" + sanPham + ", ngayLamViec=" + ngayLamViec + ", congDoan=" + congDoan + ", donGia=" + donGia + ", soLuong=" + soLuong + '}';
     }
 
-    
-    
 }

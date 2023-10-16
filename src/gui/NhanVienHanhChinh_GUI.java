@@ -141,28 +141,10 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 90, 30));
 
         jTextField1.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 310, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 530, -1));
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
-            }
-        });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, -1));
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -233,20 +215,15 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Lương Cơ Sở Áp Dụng:");
         jLabel13.setToolTipText("");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 170, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 205, 170, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Lương Cơ Bản:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 120, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 205, 120, -1));
 
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.5", "1.6", "3.7", "4.8", "12.5", " " }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 80, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -257,7 +234,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jLabel31.setForeground(new java.awt.Color(0, 99, 0));
         jLabel31.setText("5.200.000");
         jLabel31.setToolTipText("");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 190, 20));
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 205, 190, 20));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Địa chỉ:");
@@ -268,7 +245,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jLabel32.setForeground(new java.awt.Color(0, 99, 0));
         jLabel32.setText("12.000.000đ");
         jLabel32.setToolTipText("");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 150, 20));
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 205, 150, 20));
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
@@ -344,37 +321,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(12).setCellRenderer(center);
 
     }
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getFocuBofocusBorder());
-    }//GEN-LAST:event_jTextField2FocusGained
-
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getOriginalBorder());
-    }//GEN-LAST:event_jTextField2FocusLost
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
     private void initCommon() {
-        border_Selected = new Border_Selected();
     }
     // private Border_Selected border;
     private DefaultTableModel model;
-    private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;

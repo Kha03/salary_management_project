@@ -1,12 +1,14 @@
-
 package entity;
+
 import java.util.Date;
 import java.util.List;
+
 /**
  *
  * @author ACER
  */
 public class LuongHanhChanh {
+
     private String maLuong;
     private NhanVienHanhChanh nhanVienHanhChanh;
     private List<ChamCongNhanVien> ngayCongNhanVien;
@@ -18,8 +20,9 @@ public class LuongHanhChanh {
     private int ngayCongThucTe;
     private float tienPhuCap;
     private float tienTangCa;
+    private float tongLuong;
 
-    public LuongHanhChanh(String maLuong, NhanVienHanhChanh nhanVienHanhChanh, List<ChamCongNhanVien> ngayCongNhanVien, Date thanhLap, String chucVu, float heSoLuong, float luongCoBan, int soNgayCongChuan, int ngayCongThucTe, float tienPhuCap, float tienTangCa) {
+    public LuongHanhChanh(String maLuong, NhanVienHanhChanh nhanVienHanhChanh, List<ChamCongNhanVien> ngayCongNhanVien, Date thanhLap, String chucVu, float heSoLuong, float luongCoBan, int soNgayCongChuan, int ngayCongThucTe, float tienPhuCap, float tienTangCa,float tongLuong) {
         this.maLuong = maLuong;
         this.nhanVienHanhChanh = nhanVienHanhChanh;
         this.ngayCongNhanVien = ngayCongNhanVien;
@@ -31,11 +34,18 @@ public class LuongHanhChanh {
         this.ngayCongThucTe = ngayCongThucTe;
         this.tienPhuCap = tienPhuCap;
         this.tienTangCa = tienTangCa;
+        this.tongLuong = tongLuong;
     }
 
-    
-
     public LuongHanhChanh() {
+    }
+
+    public float getTongLuong() {
+        return tongLuong;
+    }
+
+    public void setTongLuong(float tongLuong) {
+        this.tongLuong = tongLuong;
     }
 
     public void setMaLuong(String maLuong) {
@@ -49,8 +59,6 @@ public class LuongHanhChanh {
     public void setNgayCongNhanVien(List<ChamCongNhanVien> ngayCongNhanVien) {
         this.ngayCongNhanVien = ngayCongNhanVien;
     }
-
-    
 
     public void setThanhLap(Date thanhLap) {
         this.thanhLap = thanhLap;
@@ -96,8 +104,6 @@ public class LuongHanhChanh {
         return ngayCongNhanVien;
     }
 
-    
-
     public Date getThanhLap() {
         return thanhLap;
     }
@@ -134,5 +140,5 @@ public class LuongHanhChanh {
     public String toString() {
         return "LuongHanhChanh{" + "maLuong=" + maLuong + ", nhanVienHanhChanh=" + nhanVienHanhChanh + ", ngayCongNhanVien=" + ngayCongNhanVien + ", thanhLap=" + thanhLap + ", chucVu=" + chucVu + ", heSoLuong=" + heSoLuong + ", luongCoBan=" + luongCoBan + ", soNgayCongChuan=" + soNgayCongChuan + ", ngayCongThucTe=" + ngayCongThucTe + ", tienPhuCap=" + tienPhuCap + ", tienTangCa=" + tienTangCa + '}';
     }
-    
+
 }
