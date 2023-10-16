@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 
 import java.util.Date;
@@ -19,7 +16,7 @@ public class NhanVienHanhChanh extends NhanVien{
     private float luongCoBan;
     private float heSoLuong;
 
-    public NhanVienHanhChanh(String maNhanVienHanhChanh, String chucVu, String ngoaiNgu, String capBac, PhongBan phongBan, float luongCoBan, float heSoLuong, String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam) {
+    public NhanVienHanhChanh(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam,String maNhanVienHanhChanh, String chucVu, String ngoaiNgu, String capBac, PhongBan phongBan, float luongCoBan, float heSoLuong) {
         super(maSo, ho, ten, ngaySinh, gioiTinh, diaChi, dienThoai, email, ngayVaoLam);
         this.maNhanVienHanhChanh = maNhanVienHanhChanh;
         this.chucVu = chucVu;

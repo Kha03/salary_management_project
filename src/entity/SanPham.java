@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package entity;
 
+package entity;
+import java.util.*;
 /**
  *
  * @author ACER
@@ -12,11 +9,11 @@ public class SanPham {
     private String maSanPham;
     private String tenSanPham;
     private int soLuong;
-    private CongDoan congDoanThucHien;
+    private List<CongDoan> congDoanThucHien;
     private float donGia;
     private String donViTinh;
 
-    public SanPham(String maSanPham, String tenSanPham, int soLuong, CongDoan congDoanThucHien, float donGia, String donViTinh) {
+    public SanPham(String maSanPham, String tenSanPham, int soLuong, List<CongDoan> congDoanThucHien, float donGia, String donViTinh) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.soLuong = soLuong;
@@ -24,6 +21,8 @@ public class SanPham {
         this.donGia = donGia;
         this.donViTinh = donViTinh;
     }
+
+    
 
     public SanPham() {
     }
@@ -40,9 +39,11 @@ public class SanPham {
         this.soLuong = soLuong;
     }
 
-    public void setCongDoanThucHien(CongDoan congDoanThucHien) {
+    public void setCongDoanThucHien(List<CongDoan> congDoanThucHien) {
         this.congDoanThucHien = congDoanThucHien;
     }
+
+    
 
     public void setDonGia(float donGia) {
         this.donGia = donGia;
@@ -64,10 +65,11 @@ public class SanPham {
         return soLuong;
     }
 
-    public CongDoan getCongDoanThucHien() {
+    public List<CongDoan> getCongDoanThucHien() {
         return congDoanThucHien;
     }
 
+    
     public float getDonGia() {
         return donGia;
     }

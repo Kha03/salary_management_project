@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
-import java.util.Date;
+import java.util.*;
 /**
  *
  * @author ACER
@@ -12,7 +9,7 @@ public class PhuCap {
     private String maPhuCap;
     private String tenPhuCap;
     private float soTien;
-    private NhanVien nhanVien;
+    private List<NhanVien> nhanVien;
     private boolean coDinh;
     private Date thangHuong;
 
@@ -24,7 +21,7 @@ public class PhuCap {
         this.coDinh = coDinh;
     }
 
-    public PhuCap(String maPhuCap, String tenPhuCap, float soTien, NhanVien nhanVien, boolean coDinh, Date thangHuong) {
+    public PhuCap(String maPhuCap, String tenPhuCap, float soTien, List<NhanVien> nhanVien, boolean coDinh, Date thangHuong) {
         this.maPhuCap = maPhuCap;
         this.tenPhuCap = tenPhuCap;
         this.soTien = soTien;
@@ -32,9 +29,7 @@ public class PhuCap {
         this.coDinh = coDinh;
         this.thangHuong = thangHuong;
     }
-
     
-
     public PhuCap() {
     }
 
@@ -50,9 +45,11 @@ public class PhuCap {
         this.soTien = soTien;
     }
 
-    public void setNhanVien(NhanVien nhanVien) {
+    public void setNhanVien(List<NhanVien> nhanVien) {
         this.nhanVien = nhanVien;
     }
+
+    
 
 
     public void setThangHuong(Date thangHuong) {
@@ -71,9 +68,15 @@ public class PhuCap {
         return soTien;
     }
 
-    public NhanVien getNhanVien() {
+    public List<NhanVien> getNhanVien() {
         return nhanVien;
     }
+
+    public boolean isCoDinh() {
+        return coDinh;
+    }
+
+    
 
     public Date getThangHuong() {
         return thangHuong;

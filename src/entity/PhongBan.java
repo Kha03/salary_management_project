@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package entity;
 
+package entity;
+import java.util.*;
 /**
  *
  * @author ACER
@@ -12,14 +9,16 @@ public class PhongBan {
     private String maPhongBan;
     private String tenPhongBan;
     private NhanVienHanhChanh truongPhong;
-    private NhanVienHanhChanh nhanVien;
+    private List<NhanVienHanhChanh> nhanVien;
 
-    public PhongBan(String maPhongBan, String tenPhongBan, NhanVienHanhChanh truongPhong, NhanVienHanhChanh nhanVien) {
+    public PhongBan(String maPhongBan, String tenPhongBan, NhanVienHanhChanh truongPhong, List<NhanVienHanhChanh> nhanVien) {
         this.maPhongBan = maPhongBan;
         this.tenPhongBan = tenPhongBan;
         this.truongPhong = truongPhong;
         this.nhanVien = nhanVien;
     }
+
+    
 
     public PhongBan() {
     }
@@ -36,10 +35,11 @@ public class PhongBan {
         return truongPhong;
     }
 
-    public NhanVienHanhChanh getNhanVien() {
-        return nhanVien;
+    public void setNhanVien(List<NhanVienHanhChanh> nhanVien) {
+        this.nhanVien = nhanVien;
     }
 
+    
     public void setMaPhongBan(String maPhongBan) {
         this.maPhongBan = maPhongBan;
     }
@@ -52,10 +52,11 @@ public class PhongBan {
         this.truongPhong = truongPhong;
     }
 
-    public void setNhanVien(NhanVienHanhChanh nhanVien) {
-        this.nhanVien = nhanVien;
+    public List<NhanVienHanhChanh> getNhanVien() {
+        return nhanVien;
     }
 
+   
     @Override
     public String toString() {
         return "PhongBan{" + "maPhongBan=" + maPhongBan + ", tenPhongBan=" + tenPhongBan + ", truongPhong=" + truongPhong + ", nhanVien=" + nhanVien + '}';

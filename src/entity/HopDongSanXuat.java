@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
-import java.util.Date;
+import java.util.*;
+
 /**
  *
  * @author ACER
@@ -13,10 +11,10 @@ public class HopDongSanXuat {
     private String tenHopDong;
     private Date ngayBatDau;
     private Date ngayKetThuc;
-    private SanPham sanPham;
+    private List<SanPham> sanPham;
     private float giaTien;
 
-    public HopDongSanXuat(String maHopDong, String tenHopDong, Date ngayBatDau, Date ngayKetThuc, SanPham sanPham, float giaTien) {
+    public HopDongSanXuat(String maHopDong, String tenHopDong, Date ngayBatDau, Date ngayKetThuc, List<SanPham> sanPham, float giaTien) {
         this.maHopDong = maHopDong;
         this.tenHopDong = tenHopDong;
         this.ngayBatDau = ngayBatDau;
@@ -24,6 +22,8 @@ public class HopDongSanXuat {
         this.sanPham = sanPham;
         this.giaTien = giaTien;
     }
+
+    
 
     public HopDongSanXuat() {
     }
@@ -44,9 +44,7 @@ public class HopDongSanXuat {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public void setSanPham(SanPham sanPham) {
-        this.sanPham = sanPham;
-    }
+    
 
     public void setGiaTien(float giaTien) {
         this.giaTien = giaTien;
@@ -68,9 +66,15 @@ public class HopDongSanXuat {
         return ngayKetThuc;
     }
 
-    public SanPham getSanPham() {
+    public List<SanPham> getSanPham() {
         return sanPham;
     }
+
+    public void setSanPham(List<SanPham> sanPham) {
+        this.sanPham = sanPham;
+    }
+
+    
 
     public float getGiaTien() {
         return giaTien;

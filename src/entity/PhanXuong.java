@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package entity;
 
+package entity;
+import java.util.*;
 /**
  *
  * @author ACER
@@ -12,17 +9,19 @@ public class PhanXuong {
     private String maPhanXuong;
     private String tenPhanXuong;
     private NhanVienSanXuat toTruong;
-    private NhanVienSanXuat nhanVien;
+    private List<NhanVienSanXuat> nhanVien;
 
     public PhanXuong() {
     }
 
-    public PhanXuong(String maPhanXuong, String tenPhanXuong, NhanVienSanXuat toTruong, NhanVienSanXuat nhanVien) {
+    public PhanXuong(String maPhanXuong, String tenPhanXuong, NhanVienSanXuat toTruong, List<NhanVienSanXuat> nhanVien) {
         this.maPhanXuong = maPhanXuong;
         this.tenPhanXuong = tenPhanXuong;
         this.toTruong = toTruong;
         this.nhanVien = nhanVien;
     }
+
+    
 
     public void setMaPhanXuong(String maPhanXuong) {
         this.maPhanXuong = maPhanXuong;
@@ -36,9 +35,11 @@ public class PhanXuong {
         this.toTruong = toTruong;
     }
 
-    public void setNhanVien(NhanVienSanXuat nhanVien) {
+    public void setNhanVien(List<NhanVienSanXuat> nhanVien) {
         this.nhanVien = nhanVien;
     }
+
+    
 
     public String getMaPhanXuong() {
         return maPhanXuong;
@@ -52,9 +53,11 @@ public class PhanXuong {
         return toTruong;
     }
 
-    public NhanVienSanXuat getNhanVien() {
+    public List<NhanVienSanXuat> getNhanVien() {
         return nhanVien;
     }
+
+    
 
     @Override
     public String toString() {

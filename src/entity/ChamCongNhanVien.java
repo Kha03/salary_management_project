@@ -1,36 +1,42 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 import java.util.Date;
+import java.util.List;
 /**
  *
  * @author ACER
  */
 public class ChamCongNhanVien {
     private String maNgayCong;
-    private NhanVienHanhChanh nhanVienHanhChanh;
+    private List<NhanVienHanhChanh> nhanVienHanhChanh;
     private Date ngayLamViec;
     private boolean trangThai;
     private int gioTangCa;
 
-    public ChamCongNhanVien(String maNgayCong, NhanVienHanhChanh nhanVienHanhChanh, Date ngayLamViec, boolean trangThai, int gioTangCa) {
+    public ChamCongNhanVien(String maNgayCong, List<NhanVienHanhChanh> nhanVienHanhChanh, Date ngayLamViec, boolean trangThai, int gioTangCa) {
         this.maNgayCong = maNgayCong;
         this.nhanVienHanhChanh = nhanVienHanhChanh;
         this.ngayLamViec = ngayLamViec;
         this.trangThai = trangThai;
         this.gioTangCa = gioTangCa;
     }
-
+    
     public ChamCongNhanVien() {
+    }
+    
+    public List<NhanVienHanhChanh> getNhanVienHanhChanh() {
+        return nhanVienHanhChanh;
+    }
+
+    public boolean isTrangThai() {
+        return trangThai;
     }
 
     public void setMaNgayCong(String maNgayCong) {
         this.maNgayCong = maNgayCong;
     }
 
-    public void setNhanVienHanhChanh(NhanVienHanhChanh nhanVienHanhChanh) {
+    public void setNhanVienHanhChanh(List<NhanVienHanhChanh> nhanVienHanhChanh) {
         this.nhanVienHanhChanh = nhanVienHanhChanh;
     }
 
@@ -50,9 +56,7 @@ public class ChamCongNhanVien {
         return maNgayCong;
     }
 
-    public NhanVienHanhChanh getNhanVienHanhChanh() {
-        return nhanVienHanhChanh;
-    }
+    
 
     public Date getNgayLamViec() {
         return ngayLamViec;
@@ -70,5 +74,7 @@ public class ChamCongNhanVien {
     public String toString() {
         return "ChamCongNhanVien{" + "maNgayCong=" + maNgayCong + ", nhanVienHanhChanh=" + nhanVienHanhChanh + ", ngayLamViec=" + ngayLamViec + ", trangThai=" + trangThai + ", gioTangCa=" + gioTangCa + '}';
     }
+
+    
     
 }

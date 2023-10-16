@@ -1,22 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
-import java.util.Date;
+import java.util.*;
 /**
  *
  * @author ACER
  */
 public class PhanCongSanXuat {
     private String maPhanCong;
-    private NhanVienSanXuat nhanVienSanXuat;
+    private List<NhanVienSanXuat> nhanVienSanXuat;
     private SanPham sanPham;
     private Date ngayPhanCong;
     private CongDoan congDoan;
     private PhanXuong phanXuong;
 
-    public PhanCongSanXuat(String maPhanCong, NhanVienSanXuat nhanVienSanXuat, SanPham sanPham, Date ngayPhanCong, CongDoan congDoan, PhanXuong phanXuong) {
+
+    public PhanCongSanXuat(String maPhanCong, List<NhanVienSanXuat> nhanVienSanXuat, SanPham sanPham, Date ngayPhanCong, CongDoan congDoan, PhanXuong phanXuong) {
         this.maPhanCong = maPhanCong;
         this.nhanVienSanXuat = nhanVienSanXuat;
         this.sanPham = sanPham;
@@ -32,9 +30,11 @@ public class PhanCongSanXuat {
         this.maPhanCong = maPhanCong;
     }
 
-    public void setNhanVienSanXuat(NhanVienSanXuat nhanVienSanXuat) {
+    public void setNhanVienSanXuat(List<NhanVienSanXuat> nhanVienSanXuat) {
         this.nhanVienSanXuat = nhanVienSanXuat;
     }
+
+    
 
     public void setSanPham(SanPham sanPham) {
         this.sanPham = sanPham;
@@ -56,7 +56,7 @@ public class PhanCongSanXuat {
         return maPhanCong;
     }
 
-    public NhanVienSanXuat getNhanVienSanXuat() {
+    public List<NhanVienSanXuat> getNhanVienSanXuat() {
         return nhanVienSanXuat;
     }
 

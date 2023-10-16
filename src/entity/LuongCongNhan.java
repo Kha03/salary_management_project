@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
-import java.util.Date;
+import java.util.*;
 /**
  *
  * @author ACER
@@ -12,11 +9,11 @@ public class LuongCongNhan {
     private String maLuong;
     private NhanVienSanXuat nhanVienSanXuat;
     private Date thangLap;
-    private ChamCongSanPham chamCongSanPham;
+    private List<ChamCongSanPham> chamCongSanPham;
     private float tongLuongSanPham;
     private float tienPhuCap;
 
-    public LuongCongNhan(String maLuong, NhanVienSanXuat nhanVienSanXuat, Date thangLap, ChamCongSanPham chamCongSanPham, float tongLuongSanPham, float tienPhuCap) {
+    public LuongCongNhan(String maLuong, NhanVienSanXuat nhanVienSanXuat, Date thangLap, List<ChamCongSanPham> chamCongSanPham, float tongLuongSanPham, float tienPhuCap) {
         this.maLuong = maLuong;
         this.nhanVienSanXuat = nhanVienSanXuat;
         this.thangLap = thangLap;
@@ -24,6 +21,8 @@ public class LuongCongNhan {
         this.tongLuongSanPham = tongLuongSanPham;
         this.tienPhuCap = tienPhuCap;
     }
+
+    
 
     public LuongCongNhan() {
     }
@@ -40,9 +39,11 @@ public class LuongCongNhan {
         this.thangLap = thangLap;
     }
 
-    public void setChamCongSanPham(ChamCongSanPham chamCongSanPham) {
+    public void setChamCongSanPham(List<ChamCongSanPham> chamCongSanPham) {
         this.chamCongSanPham = chamCongSanPham;
     }
+
+   
 
     public void setTongLuongSanPham(float tongLuongSanPham) {
         this.tongLuongSanPham = tongLuongSanPham;
@@ -64,9 +65,11 @@ public class LuongCongNhan {
         return thangLap;
     }
 
-    public ChamCongSanPham getChamCongSanPham() {
+    public List<ChamCongSanPham> getChamCongSanPham() {
         return chamCongSanPham;
     }
+
+    
 
     public float getTongLuongSanPham() {
         return tongLuongSanPham;
@@ -80,5 +83,7 @@ public class LuongCongNhan {
     public String toString() {
         return "LuongCongNhan{" + "maLuong=" + maLuong + ", nhanVienSanXuat=" + nhanVienSanXuat + ", thangLap=" + thangLap + ", chamCongSanPham=" + chamCongSanPham + ", tongLuongSanPham=" + tongLuongSanPham + ", tienPhuCap=" + tienPhuCap + '}';
     }
+
+    
     
 }

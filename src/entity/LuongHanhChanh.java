@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 import java.util.Date;
+import java.util.List;
 /**
  *
  * @author ACER
@@ -11,7 +9,7 @@ import java.util.Date;
 public class LuongHanhChanh {
     private String maLuong;
     private NhanVienHanhChanh nhanVienHanhChanh;
-    private ChamCongNhanVien ngayCongNhanVien;
+    private List<ChamCongNhanVien> ngayCongNhanVien;
     private Date thanhLap;
     private String chucVu;
     private float heSoLuong;
@@ -21,7 +19,7 @@ public class LuongHanhChanh {
     private float tienPhuCap;
     private float tienTangCa;
 
-    public LuongHanhChanh(String maLuong, NhanVienHanhChanh nhanVienHanhChanh, ChamCongNhanVien ngayCongNhanVien, Date thanhLap, String chucVu, float heSoLuong, float luongCoBan, int soNgayCongChuan, int ngayCongThucTe, float tienPhuCap, float tienTangCa) {
+    public LuongHanhChanh(String maLuong, NhanVienHanhChanh nhanVienHanhChanh, List<ChamCongNhanVien> ngayCongNhanVien, Date thanhLap, String chucVu, float heSoLuong, float luongCoBan, int soNgayCongChuan, int ngayCongThucTe, float tienPhuCap, float tienTangCa) {
         this.maLuong = maLuong;
         this.nhanVienHanhChanh = nhanVienHanhChanh;
         this.ngayCongNhanVien = ngayCongNhanVien;
@@ -35,6 +33,8 @@ public class LuongHanhChanh {
         this.tienTangCa = tienTangCa;
     }
 
+    
+
     public LuongHanhChanh() {
     }
 
@@ -46,9 +46,11 @@ public class LuongHanhChanh {
         this.nhanVienHanhChanh = nhanVienHanhChanh;
     }
 
-    public void setNgayCongNhanVien(ChamCongNhanVien ngayCongNhanVien) {
+    public void setNgayCongNhanVien(List<ChamCongNhanVien> ngayCongNhanVien) {
         this.ngayCongNhanVien = ngayCongNhanVien;
     }
+
+    
 
     public void setThanhLap(Date thanhLap) {
         this.thanhLap = thanhLap;
@@ -90,9 +92,11 @@ public class LuongHanhChanh {
         return nhanVienHanhChanh;
     }
 
-    public ChamCongNhanVien getNgayCongNhanVien() {
+    public List<ChamCongNhanVien> getNgayCongNhanVien() {
         return ngayCongNhanVien;
     }
+
+    
 
     public Date getThanhLap() {
         return thanhLap;
