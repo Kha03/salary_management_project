@@ -4,19 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/SanPham.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/BacLuong.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/CongDoan.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/ChamCongSanPham.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/LuongHanhChanh.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/TrinhDo.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhuCap.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/NhanVien.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhanXuong.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/CapBac.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/NhanVienSanXuat.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/LuongCongNhan.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/NhanVienHanhChanh.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/ChamCongNhanVien.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhongBan.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/HopDongSanXuat.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/PhanCongSanXuat.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/entity/TaiKhoan.java</file>
         </group>
     </open-files>
 </project-private>
