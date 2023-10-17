@@ -86,7 +86,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane3.setViewportView(jTable3);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 472, 200, 270));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 472, 200, 265));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,7 +193,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 1170, 460));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 1165, 460));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -85,7 +85,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1365, 460));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1365, 465));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,7 +182,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jPanel1.add(txtKinhNghiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 190, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Chức Vụ:");
+        jLabel11.setText("Cấp Bậc:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 100, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -276,7 +276,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
                     {null, null, null, null, null, null, null, null, null, null, null}
                 },
                 new String[]{
-                    "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Phân Xưởng", "Chức Vụ", "Trình Độ", "Kinh Nghiệm"
+                    "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Phân Xưởng", "Cấp Bậc", "Trình Độ", "Kinh Nghiệm"
                 }
         ) {
             Class[] types = new Class[]{

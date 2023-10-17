@@ -196,7 +196,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 130, 30));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 410, 340));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 340));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(58, 94, 58)), "Phân Xưởng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(58, 94, 58))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,7 +249,6 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setText("Xuất Báo Cáo");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton15.setDisabledIcon(null);
         jPanel2.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 130, 30));
 
         jButton17.setBackground(new java.awt.Color(152, 249, 152));
@@ -258,7 +257,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 170, 30));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 410, 300));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 420, 300));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
