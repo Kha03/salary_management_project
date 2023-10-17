@@ -11,10 +11,10 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public class NhanVienSanXuat_Dao {
+public class PhongBan_Dao {
 
     //lấy ra danh sách nhân viên hành chính
-    public List<NhanVienSanXuat> getDanhSachNhanVienHanhChanh() {
+    public List<PhongBan> getDanhSachNhanVienHanhChanh() {
         List<NhanVienSanXuat> dsNhanVien = new ArrayList<>();
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();

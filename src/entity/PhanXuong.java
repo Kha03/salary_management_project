@@ -1,11 +1,13 @@
-
 package entity;
+
 import java.util.*;
+
 /**
  *
  * @author ACER
  */
 public class PhanXuong {
+
     private String maPhanXuong;
     private String tenPhanXuong;
     private NhanVienSanXuat toTruong;
@@ -21,7 +23,9 @@ public class PhanXuong {
         this.nhanVien = nhanVien;
     }
 
-    
+    public PhanXuong(String tenPhanXuong) {
+        this.tenPhanXuong = tenPhanXuong;
+    }
 
     public void setMaPhanXuong(String maPhanXuong) {
         this.maPhanXuong = maPhanXuong;
@@ -39,8 +43,6 @@ public class PhanXuong {
         this.nhanVien = nhanVien;
     }
 
-    
-
     public String getMaPhanXuong() {
         return maPhanXuong;
     }
@@ -57,11 +59,9 @@ public class PhanXuong {
         return nhanVien;
     }
 
-    
-
     @Override
     public String toString() {
         return "PhanXuong{" + "maPhanXuong=" + maPhanXuong + ", tenPhanXuong=" + tenPhanXuong + ", toTruong=" + toTruong + ", nhanVien=" + nhanVien + '}';
     }
-    
+
 }

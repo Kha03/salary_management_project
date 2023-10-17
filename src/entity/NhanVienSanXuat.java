@@ -10,15 +10,15 @@ import java.util.Date;
 public class NhanVienSanXuat extends NhanVien{
     private String maNhanVienSanXuat;
     private String trinhDo;
-    private String chucVu;
+    private String capBac;
     private String kinhNghiem;
     private PhanXuong phanXuong;
 
-    public NhanVienSanXuat(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam,String maNhanVienSanXuat, String trinhDo, String chucVu, String kinhNghiem, PhanXuong phanXuong) {
+    public NhanVienSanXuat(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam,String maNhanVienSanXuat, String trinhDo, String capBac, String kinhNghiem, PhanXuong phanXuong) {
         super(maSo, ho, ten, ngaySinh, gioiTinh, diaChi, dienThoai, email, ngayVaoLam);
         this.maNhanVienSanXuat = maNhanVienSanXuat;
         this.trinhDo = trinhDo;
-        this.chucVu = chucVu;
+        this.capBac = capBac;
         this.kinhNghiem = kinhNghiem;
         this.phanXuong = phanXuong;
     }
@@ -35,8 +35,8 @@ public class NhanVienSanXuat extends NhanVien{
         this.trinhDo = trinhDo;
     }
 
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
+    public void setcapBac(String capBac) {
+        this.capBac = capBac;
     }
 
     public void setKinhNghiem(String kinhNghiem) {
@@ -55,8 +55,8 @@ public class NhanVienSanXuat extends NhanVien{
         return trinhDo;
     }
 
-    public String getChucVu() {
-        return chucVu;
+    public String getcapBac() {
+        return capBac;
     }
 
     public String getKinhNghiem() {
@@ -69,6 +69,6 @@ public class NhanVienSanXuat extends NhanVien{
     
     @Override
     public String toString() {
-        return "NhanVienSanXuat{" + "maNhanVienSanXuat=" + maNhanVienSanXuat + ", trinhDo=" + trinhDo + ", chucVu=" + chucVu + ", kinhNghiem=" + kinhNghiem + ", phanXuong=" + phanXuong + '}';
+        return "NhanVienSanXuat{" + "maNhanVienSanXuat=" + maNhanVienSanXuat + ", trinhDo=" + trinhDo + ", capBac=" + capBac + ", kinhNghiem=" + kinhNghiem + ", phanXuong=" + phanXuong + '}';
     }
 }
