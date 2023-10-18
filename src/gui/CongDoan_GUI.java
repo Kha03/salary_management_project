@@ -7,12 +7,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ADMIN
  */
-public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
+public class CongDoan_GUI extends javax.swing.JPanel {
 
     /**
      * Creates new form ChamCongHanhChinh
      */
-    public CapNhatCongDoan_GUI() {
+    public CongDoan_GUI() {
         initComponents();
         setTable();
     }
@@ -87,7 +87,7 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 1155, 470));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 1090, 470));
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
@@ -117,28 +117,28 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
         jButton14.setText("Thêm");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 120, 30));
+        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, 120, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         jButton15.setText("Cập Nhật");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, 130, 30));
+        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 230, 130, 30));
 
         jButton8.setBackground(new java.awt.Color(152, 249, 152));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton8.setText("Làm Mới");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 220, 120, 30));
+        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 230, 120, 30));
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         jButton11.setText("Xóa");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 220, 90, 30));
+        add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 230, 90, 30));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Sản Phẩm:");
@@ -151,8 +151,8 @@ public class CapNhatCongDoan_GUI extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Cập Nhật Công Đoạn Sản Phẩm");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1160, 40));
+        jLabel5.setText("Công Đoạn Sản Phẩm");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 40));
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));

@@ -1,5 +1,6 @@
 package gui;
 
+import handle.borderselected.Border_Selected;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -69,7 +70,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1365, 465));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1300, 465));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -241,12 +242,12 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         cbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
         jPanel1.add(cbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 190, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1360, 230));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Tìm Kiếm Chấm Công");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 50));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1294, 50));
     }// </editor-fold>//GEN-END:initComponents
     private void setTable() {
         //setTable ở đây

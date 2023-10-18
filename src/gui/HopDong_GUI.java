@@ -73,7 +73,7 @@ public class HopDong_GUI extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1365, 465));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1300, 465));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -83,28 +83,28 @@ public class HopDong_GUI extends javax.swing.JPanel {
         jButton14.setText("Thêm");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 120, 30));
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 120, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         jButton15.setText("Cập Nhật");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 180, 130, 30));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 130, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton10.setText("Làm Mới");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 180, 120, 30));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 190, 120, 30));
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         jButton11.setText("Xóa");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 180, 90, 30));
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 190, 90, 30));
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 96, 0));
@@ -161,12 +161,12 @@ public class HopDong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 190, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1180, 220));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1114, 230));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Thông Tin Hợp Đồng Sản Xuất");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 1180, 50));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1290, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 99, 0));

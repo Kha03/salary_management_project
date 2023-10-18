@@ -36,7 +36,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        panelRound1 = new gui.PanelRound();
+        panelRound1 = new handle.panelround.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         txtDangNhap = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -267,7 +267,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField3;
-    private gui.PanelRound panelRound1;
+    private handle.panelround.PanelRound panelRound1;
     private javax.swing.JTextField txtDangNhap;
     private javax.swing.JTextField txtMatKhau;
     // End of variables declaration//GEN-END:variables

@@ -77,7 +77,7 @@ public class PhanXuong_GUI extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1365, 465));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1300, 465));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -144,7 +144,7 @@ public class PhanXuong_GUI extends javax.swing.JPanel {
         jLabel12.setText("Số Nhân Viên:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 120, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1180, 220));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1114, 220));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 99, 0));
@@ -155,7 +155,7 @@ public class PhanXuong_GUI extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Thông Tin Phân Xưởng");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 1180, 50));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 1300, 50));
     }// </editor-fold>//GEN-END:initComponents
    private void setTable() {
         //setTable ở đây

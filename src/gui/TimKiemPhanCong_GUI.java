@@ -71,7 +71,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jButton7);
-        jButton7.setBounds(1240, 240, 120, 30);
+        jButton7.setBounds(1170, 220, 120, 30);
 
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
@@ -95,7 +95,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Tìm Kiếm Phân Công Sản Xuất");
         jDesktopPane1.add(jLabel5);
-        jLabel5.setBounds(0, 0, 1370, 50);
+        jLabel5.setBounds(0, 0, 1304, 50);
 
         jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
@@ -110,7 +110,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jButton8.setText("Làm Mới");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDesktopPane1.add(jButton8);
-        jButton8.setBounds(1110, 240, 120, 30);
+        jButton8.setBounds(1040, 220, 120, 30);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Mã Sản Phẩm:");
@@ -146,7 +146,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jButton6);
-        jButton6.setBounds(970, 240, 130, 31);
+        jButton6.setBounds(900, 220, 130, 31);
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("Sản Phẩm:");
@@ -205,7 +205,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jScrollPane4.setViewportView(jTable4);
 
         jDesktopPane1.add(jScrollPane4);
-        jScrollPane4.setBounds(0, 270, 1365, 470);
+        jScrollPane4.setBounds(0, 270, 1300, 470);
 
         jButton9.setBackground(new java.awt.Color(152, 249, 152));
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -217,9 +217,9 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jButton9);
-        jButton9.setBounds(1180, 200, 180, 30);
+        jButton9.setBounds(1110, 180, 180, 30);
 
-        add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 741));
+        add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 741));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

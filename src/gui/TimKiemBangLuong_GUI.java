@@ -1,5 +1,6 @@
 package gui;
 
+import handle.borderselected.Border_Selected;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -70,6 +71,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         LblLuongThucLanhSxV = new javax.swing.JLabel();
         txtTienPhuCapHc = new javax.swing.JTextField();
 
+        setMinimumSize(new java.awt.Dimension(1300, 741));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -79,7 +81,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Tìm Kiếm Bảng Lương");
         jDesktopPane1.add(jLabel5);
-        jLabel5.setBounds(0, 0, 1370, 50);
+        jLabel5.setBounds(0, 0, 1304, 50);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
 
@@ -89,7 +91,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable1);
 
         jDesktopPane1.add(jScrollPane2);
-        jScrollPane2.setBounds(0, 280, 1365, 460);
+        jScrollPane2.setBounds(0, 280, 1300, 460);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,14 +104,14 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 jButton15ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 190, 130, 30));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 130, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton10.setText("Làm Mới");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 190, 120, 30));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 190, 120, 30));
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 96, 0));
@@ -268,7 +270,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
         jButton16.setText("Tìm Kiếm");
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 190, 130, 30));
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 190, 130, 30));
 
         txtTienPhuCapSx.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTienPhuCapSx.setForeground(new java.awt.Color(0, 96, 0));
@@ -285,9 +287,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jPanel1.add(txtTienPhuCapHc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1045, 60, 190, -1));
 
         jDesktopPane1.add(jPanel1);
-        jPanel1.setBounds(0, 50, 1370, 230);
+        jPanel1.setBounds(0, 50, 1304, 230);
 
-        add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 741));
+        add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 741));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained

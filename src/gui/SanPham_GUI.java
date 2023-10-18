@@ -51,11 +51,11 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jTable4 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(1366, 741));
+        setMinimumSize(new java.awt.Dimension(1300, 741));
         setPreferredSize(new java.awt.Dimension(1366, 741));
 
         jDesktopPane1.setBackground(new java.awt.Color(242, 242, 242));
-        jDesktopPane1.setMinimumSize(new java.awt.Dimension(1366, 741));
+        jDesktopPane1.setMinimumSize(new java.awt.Dimension(1300, 741));
         jDesktopPane1.setOpaque(false);
 
         jScrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
@@ -84,28 +84,28 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jButton14.setText("Thêm");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 120, 30));
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 120, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         jButton15.setText("Cập Nhật");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 180, 130, 30));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, 130, 30));
 
         jButton8.setBackground(new java.awt.Color(152, 249, 152));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton8.setText("Làm Mới");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 180, 120, 30));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 120, 30));
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         jButton11.setText("Xóa");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 180, 90, 30));
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 180, 90, 30));
 
         jButton12.setBackground(new java.awt.Color(152, 249, 152));
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -116,7 +116,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 140, 180, 30));
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 140, 180, 30));
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
@@ -179,7 +179,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jPanel1.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 160, 30));
 
         jDesktopPane1.add(jPanel1);
-        jPanel1.setBounds(180, 52, 1180, 220);
+        jPanel1.setBounds(180, 52, 1114, 220);
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
@@ -198,19 +198,21 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jScrollPane4.setViewportView(jTable4);
 
         jDesktopPane1.add(jScrollPane4);
-        jScrollPane4.setBounds(0, 278, 1365, 463);
+        jScrollPane4.setBounds(0, 278, 1300, 463);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Thông Tin Sản Phẩm");
         jDesktopPane1.add(jLabel5);
-        jLabel5.setBounds(180, 0, 1180, 50);
+        jLabel5.setBounds(4, 0, 1290, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

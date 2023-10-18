@@ -132,7 +132,7 @@
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Nh&#x1ead;p"/>
           </Properties>
         </Component>
-        <Container class="gui.PanelRound" name="panelRound1">
+        <Container class="handle.panelround.PanelRound" name="panelRound1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -120,7 +120,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jScrollPane4.setViewportView(jTable4);
 
         jDesktopPane1.add(jScrollPane4);
-        jScrollPane4.setBounds(190, 270, 990, 470);
+        jScrollPane4.setBounds(190, 270, 924, 470);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Số Nhân Viên:");
@@ -205,7 +205,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jCheckBox3);
-        jCheckBox3.setBounds(520, 230, 220, 30);
+        jCheckBox3.setBounds(460, 220, 220, 30);
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -214,7 +214,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
         jDesktopPane1.add(jButton14);
-        jButton14.setBounds(680, 230, 120, 30);
+        jButton14.setBounds(620, 220, 120, 30);
 
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
@@ -238,7 +238,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Phân Công Sản Xuất");
         jDesktopPane1.add(jLabel5);
-        jLabel5.setBounds(190, 0, 1180, 50);
+        jLabel5.setBounds(0, 0, 1300, 50);
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -256,7 +256,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jScrollPane5.setViewportView(jTable5);
 
         jDesktopPane1.add(jScrollPane5);
-        jScrollPane5.setBounds(1180, 5, 185, 390);
+        jScrollPane5.setBounds(1114, 0, 185, 400);
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -264,7 +264,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton15.setText("Cập Nhật");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDesktopPane1.add(jButton15);
-        jButton15.setBounds(810, 230, 130, 30);
+        jButton15.setBounds(750, 220, 130, 30);
 
         jButton8.setBackground(new java.awt.Color(152, 249, 152));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -272,7 +272,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton8.setText("Làm Mới");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDesktopPane1.add(jButton8);
-        jButton8.setBounds(950, 230, 120, 30);
+        jButton8.setBounds(890, 220, 120, 30);
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -280,7 +280,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jButton11.setText("Xóa");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDesktopPane1.add(jButton11);
-        jButton11.setBounds(1080, 230, 90, 30);
+        jButton11.setBounds(1020, 220, 90, 30);
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -292,7 +292,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jButton6);
-        jButton6.setBounds(1050, 190, 120, 30);
+        jButton6.setBounds(990, 180, 120, 30);
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -304,7 +304,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(jButton7);
-        jButton7.setBounds(990, 80, 180, 30);
+        jButton7.setBounds(930, 80, 180, 30);
 
         jScrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -322,7 +322,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         jScrollPane7.setViewportView(jTable7);
 
         jDesktopPane1.add(jScrollPane7);
-        jScrollPane7.setBounds(1180, 400, 185, 340);
+        jScrollPane7.setBounds(1114, 400, 185, 340);
 
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(0, 99, 0));

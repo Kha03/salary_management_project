@@ -69,6 +69,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1366, 741));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
@@ -83,7 +84,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jList1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(jList1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 180, 230));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 150, 250));
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
 
@@ -92,7 +93,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1365, 465));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 292, 1300, 450));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -117,28 +118,28 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jButton14.setText("Thêm");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 120, 30));
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 205, 120, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         jButton15.setText("Cập Nhật");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 130, 30));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 205, 130, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton10.setText("Làm Mới");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 190, 120, 30));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 205, 120, 30));
 
         jButton11.setBackground(new java.awt.Color(152, 249, 152));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         jButton11.setText("Xóa");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 90, 30));
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 205, 90, 30));
 
         jTextField1.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 530, -1));
@@ -257,12 +258,12 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1180, 230));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 50, 1150, 250));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Thông Tin Nhân Viên");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 1180, 50));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 99, 0));

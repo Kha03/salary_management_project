@@ -82,12 +82,12 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 390, 940, 350));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 390, 874, 350));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Báo Cáo Khoản Chi LươngTheo Đơn Vị");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 40));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1304, 40));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Tháng:");
@@ -119,7 +119,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane5.setViewportView(jTable5);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 40, 940, 350));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 40, 874, 350));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(58, 94, 58)), "Phòng Ban", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(58, 94, 58))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

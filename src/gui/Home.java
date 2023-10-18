@@ -1,11 +1,7 @@
 package gui;
 
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
-
-import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Toolkit;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -19,17 +15,20 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
         initComponents();
-        initLayouts();
-
+        taoMenu();
+        jPanel1.add(new Home_GUI());
+        menu1.setEvent((int index, int subIndex) -> {
+        //    System.out.println(index + "  " + subIndex);
+            kiemTraNhanMenu(index, subIndex);
+        });
     }
 
-    public Home(String pass) {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
-        initComponents();
-        initLayouts();
-        checkPermiss(pass);
-    }
-
+//    public Home(String pass) {
+//        setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
+//        initComponents();
+//        initLayouts();
+//        checkPermiss(pass);
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,506 +38,148 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenu11 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
-        jMenuItem21 = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        jPanel2 = new javax.swing.JPanel();
+        scrollPaneWin111 = new handle.scrollwin11.ScrollPaneWin11();
+        menu1 = new handle.menu.Menu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Phần mềm tính lương");
-        setLocation(new java.awt.Point(70, 25));
+        setLocation(new java.awt.Point(-5, 25));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
+        jPanel3.setBackground(new java.awt.Color(62, 83, 99));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(1315, 741));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 0, 1315, 780));
+
+        jPanel2.setBackground(new java.awt.Color(62, 83, 99));
+        jPanel2.setPreferredSize(new java.awt.Dimension(230, 780));
+
+        scrollPaneWin111.setViewportView(menu1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 741, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenuBar1.setBorder(null);
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 235, -1));
 
-        jMenu3.setText("Trang Chủ");
-        jMenu3.setToolTipText("");
-        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu3MenuSelected(evt);
-            }
-        });
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Danh Mục");
-        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/man.png"))); // NOI18N
-        jMenuItem4.setText("Nhân Viên Hành Chính");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem4);
-
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/congNhan.png"))); // NOI18N
-        jMenuItem5.setText("Nhân Viên Hành Sản Xuất");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem5);
-
-        jMenuItem1.setText("Phòng Ban");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem1);
-
-        jMenuItem2.setText("Phân Xưởng");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem2);
-
-        jMenuItem10.setText("Phụ Cấp Nhân Viên");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem10);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu7.setText("Xử Lý");
-        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem3.setText("Phân Công Nhân Viên");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem3);
-
-        jMenuItem7.setText("Chấm Công Sản Phẩm");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem7);
-
-        jMenuItem6.setText("Chấm Công Hành Chính");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem6);
-
-        jMenuItem8.setText("Tính Lương Hành Chính");
-        jMenu7.add(jMenuItem8);
-
-        jMenuItem9.setText("Tính Lương Sản Xuất");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu7);
-
-        jMenu8.setText("Tìm Kiếm");
-        jMenu8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/congNhan.png"))); // NOI18N
-        jMenuItem15.setText("Tìm Kiếm Nhân Viên");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem15);
-
-        jMenuItem16.setText("Tìm Kiếm Phân Công");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem16);
-
-        jMenuItem17.setText("Tìm Kiếm Chấm Công");
-        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem17ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem17);
-
-        jMenuItem18.setText("Tìm Kiếm Bảng Lương");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem18);
-
-        jMenuBar1.add(jMenu8);
-
-        jMenu11.setText("Danh Mục");
-        jMenu11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem12.setText("Sản Phẩm");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
-            }
-        });
-        jMenu11.add(jMenuItem12);
-
-        jMenuItem11.setText("Hợp Đồng");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
-            }
-        });
-        jMenu11.add(jMenuItem11);
-
-        jMenuItem13.setText("Công Đoạn");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
-            }
-        });
-        jMenu11.add(jMenuItem13);
-
-        jMenuBar1.add(jMenu11);
-
-        jMenu9.setText("Tìm Kiếm");
-        jMenu9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/congNhan.png"))); // NOI18N
-        jMenuItem19.setText("Tìm Kiếm Hợp Đồng");
-        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem19ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem19);
-
-        jMenuItem20.setText("Tìm Kiếm Sản Phẩm");
-        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem20ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem20);
-
-        jMenuItem21.setText("Tìm Kiếm Công Đoạn");
-        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem21ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem21);
-
-        jMenuBar1.add(jMenu9);
-
-        jMenu10.setText("Báo Cáo Và Thống Kê");
-        jMenu10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jMenuItem14.setText("Báo Cáo Khoản Chi Lương");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
-            }
-        });
-        jMenu10.add(jMenuItem14);
-
-        jMenuBar1.add(jMenu10);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1550, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        cardLayout.show(jPanel1, "PX");
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        cardLayout.show(jPanel1, "PB");
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        cardLayout.show(jPanel1, "NVSX");        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        cardLayout.show(jPanel1, "NVHC");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        cardLayout.show(jPanel1, "CCHC");        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "PCSX");
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "CCSP");
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "LCB");
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        cardLayout.show(jPanel1, "TLSX");        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        cardLayout.show(jPanel1, "HDSX");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
-
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        cardLayout.show(jPanel1, "SPSX");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
-
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        cardLayout.show(jPanel1, "CNCD");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
-
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "BCL");
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
-
-    private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "TC");
-    }//GEN-LAST:event_jMenu3MenuSelected
-
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "TKPC");
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
-
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "TKCC");
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
-
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(jPanel1, "TKBL");
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
-
-    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem20ActionPerformed
-
-    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem21ActionPerformed
-
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        cardLayout.show(jPanel1, "TKNV");
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
-
-    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem19ActionPerformed
-
-    private void initLayouts() {
-        cardLayout = new CardLayout();
-        jPanel1.setLayout(cardLayout);
-        //nhanVienHanhChinh_GUI = new NhanVienHanhChinh_GUI_fix();
-        nhanVienSanXuat_GUI = new NhanVienSanXuat_GUI();
-        nhanVienHanhChinh_GUI = new NhanVienHanhChinh_GUI();
-        chamCongHanhChinh_GUI = new ChamCongHanhChinh_GUI();
-        chamCongSanPham_GUI = new ChamCongSanPham_GUI();
-        phanCongSanXuat_GUI = new PhanCongSanXuat_GUI();
-        luongCoBan_GUI = new PhuCap_GUI();
-        phongBan_GUI = new PhongBan_GUI();
-        phanXuong_GUI = new PhanXuong_GUI();
-        tinhLuongSanXuat_GUI = new TinhLuongSanXuat_GUI();
-        tinhLuongHanhChinh_GUI = new TinhLuongHanhChinh_GUI();
-        hopDong_GUI = new HopDong_GUI();
-        sanPham_GUI = new SanPham_GUI();
-        capNhatCongDoan_GUI = new CapNhatCongDoan_GUI();
-        baoCaoLuong_GUI = new BaoCaoLuong_GUI();
-        home_GUI = new Home_GUI();
-        timKiemNhanVien_GUI = new TimKiemNhanVien_GUI();
-        timKiemChamCong_GUI = new TimKiemChamCong_GUI();
-        timKiemBangLuong_GUI = new TimKiemBangLuong_GUI();
-        timKiemPhanCong_GUI = new TimKiemPhanCong_GUI();
-
-        jPanel1.add(home_GUI, "TC");
-        jPanel1.add(timKiemPhanCong_GUI, "TKPC");
-        jPanel1.add(timKiemBangLuong_GUI, "TKBL");
-        jPanel1.add(timKiemChamCong_GUI, "TKCC");
-        jPanel1.add(timKiemNhanVien_GUI, "TKNV");
-        jPanel1.add(baoCaoLuong_GUI, "BCL");
-        jPanel1.add(hopDong_GUI, "HDSX");
-        jPanel1.add(sanPham_GUI, "SPSX");
-        jPanel1.add(capNhatCongDoan_GUI, "CNCD");
-        jPanel1.add(tinhLuongSanXuat_GUI, "TLSX");
-        jPanel1.add(tinhLuongHanhChinh_GUI, "TLHC");
-        jPanel1.add(luongCoBan_GUI, "LCB");
-        jPanel1.add(chamCongSanPham_GUI, "CCSP");
-        jPanel1.add(phanCongSanXuat_GUI, "PCSX");
-        jPanel1.add(chamCongHanhChinh_GUI, "CCHC");
-        jPanel1.add(nhanVienSanXuat_GUI, "NVSX");
-        jPanel1.add(nhanVienHanhChinh_GUI, "NVHC");
-        jPanel1.add(phongBan_GUI, "PB");
-        jPanel1.add(phanXuong_GUI, "PX");
-    }
-
-    private void checkPermiss(String pass) {
-        if (pass.equalsIgnoreCase("123")) {
-            jMenuBar1.remove(jMenu10);
-            jMenuBar1.remove(jMenu4);
-//            jMenuBar1.remove(jMenu5);
-            jMenuBar1.remove(jMenu8);
-//            jMenuBar1.remove(jMenu9);
+    private void kiemTraNhanMenu(int index, int subIndex) {
+        switch (index) {
+            case 0 -> hienThiTrang(new Home_GUI());
+            case 1 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new NhanVienHanhChinh_GUI());
+                    case 2 ->
+                        hienThiTrang(new NhanVienSanXuat_GUI());
+                    case 3 ->
+                        hienThiTrang(new PhongBan_GUI());
+                    case 4 ->
+                        hienThiTrang(new PhanXuong_GUI());
+                    default ->
+                        hienThiTrang(new PhuCap_GUI());
+                }
+            }
+            case 2 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new HopDong_GUI());
+                    case 2 ->
+                        hienThiTrang(new SanPham_GUI());
+                    default ->
+                        hienThiTrang(new CongDoan_GUI());
+                }
+            }
+            case 3 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new CapNhatPhuCap_GUI());
+                }
+            }
+            case 4 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new PhanCongSanXuat_GUI());
+                    case 2 ->
+                        hienThiTrang(new ChamCongHanhChinh_GUI());
+                    case 3 ->
+                        hienThiTrang(new ChamCongSanPham_GUI());
+                    case 4 ->
+                        hienThiTrang(new TinhLuongHanhChinh_GUI());
+                    default ->
+                        hienThiTrang(new TinhLuongSanXuat_GUI());
+                }
+            }
+            case 5 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new TimKiemNhanVien_GUI());
+                    case 2 ->
+                        hienThiTrang(new TimKiemPhanCong_GUI());
+                    case 3 ->
+                        hienThiTrang(new TimKiemChamCong_GUI());
+                    default ->
+                        hienThiTrang(new TimKiemBangLuong_GUI());
+                }
+            }
+            case 6 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new BaoCaoLuong_GUI());
+                }
+            }
+            default -> {
+            }
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-////        try {
-////            UIManager.setLookAndFeel(new FlatMacLightLaf());
-////        } catch (UnsupportedLookAndFeelException ex) {
-////            System.err.println("Failed to initialize LaF");
-////        }
-//
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(() -> {
-//            new Home("23").setVisible(true);
-//        });
-//    }
-    private TimKiemBangLuong_GUI timKiemBangLuong_GUI;
-    private TimKiemChamCong_GUI timKiemChamCong_GUI;
-    private TimKiemNhanVien_GUI timKiemNhanVien_GUI;
-    private TimKiemPhanCong_GUI timKiemPhanCong_GUI;
-    private Home_GUI home_GUI;
-    private HopDong_GUI hopDong_GUI;
-    private SanPham_GUI sanPham_GUI;
-    private CapNhatCongDoan_GUI capNhatCongDoan_GUI;
-    private NhanVienSanXuat_GUI nhanVienSanXuat_GUI;
-    private NhanVienHanhChinh_GUI nhanVienHanhChinh_GUI;
-    private PhongBan_GUI phongBan_GUI;
-    private PhanXuong_GUI phanXuong_GUI;
-    private ChamCongHanhChinh_GUI chamCongHanhChinh_GUI;
-    private PhanCongSanXuat_GUI phanCongSanXuat_GUI;
-    private ChamCongSanPham_GUI chamCongSanPham_GUI;
-    private PhuCap_GUI luongCoBan_GUI;
-    private TinhLuongHanhChinh_GUI tinhLuongHanhChinh_GUI;
-    private TinhLuongSanXuat_GUI tinhLuongSanXuat_GUI;
-    private BaoCaoLuong_GUI baoCaoLuong_GUI;
-    private CardLayout cardLayout;
+    private void hienThiTrang(Component com) {
+        jPanel1.removeAll();
+        jPanel1.add(com);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }
+
+    private void taoMenu() {
+        String[][] menuItems = new String[][]{
+            {"Trang Chủ"},
+            {"Danh Mục", "Nhân Viên Hành Chính", "Nhân Viên Sản Xuất", "Phòng Ban", "Phân Xưởng", "Phụ Cấp Nhân Viên"},
+            {"Danh Mục", "Hợp Đồng", "Sản Phẩm", "Công Đoạn"},
+            {"Cập Nhật", "Cập Nhật Phụ Cấp Nhân Viên"},
+            {"Xử Lý", "Phân Công Nhân Viên", "Chấm Công Hành Chính", "Chấm Công Sản Phẩm", "Tính Lương Hành Chính", "Tính Lương Sản Xuất"},
+            {"Tìm Kiếm", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương"},
+            {"Báo Cáo Thống Kê", "Báo Cáo Khoản Chi Lương"}, // {"Tìm Kiếm", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm","Tìm Kiếm Công Đoạn"},
+        };
+        menu1.setMenu(menuItems);
+    }
+
+    private void kiemTraMatKhau(String pass) {
+        if (pass.equalsIgnoreCase("123")) {
+
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private handle.menu.Menu menu1;
+    private handle.scrollwin11.ScrollPaneWin11 scrollPaneWin111;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,4 @@
-package gui;
+package handle.borderselected;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
