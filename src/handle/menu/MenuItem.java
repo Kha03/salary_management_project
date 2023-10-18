@@ -57,7 +57,8 @@ public class MenuItem extends JButton {
 
     private RippleEffect rippleEffect;
     private BufferedImage shadow;
-    private final int shadowSize = 10;
+    private int shadowWidth;
+    private int shadowSize = 10;
     private int index;
     private boolean subMenuAble;
     private float animate;
@@ -93,25 +94,24 @@ public class MenuItem extends JButton {
         this.subMenuIndex = subMenuIndex;
         this.length = length;
         setBorder(new EmptyBorder(9, 33, 9, 10));
-        setBackground(new Color(48, 66, 81));
+        setBackground(new Color(18, 99, 63));
         setOpaque(true);
     }
 
     @Override
-    //vẽ đường cho menu con
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
         Graphics2D g2 = (Graphics2D) grphcs.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (length != 0) {
-            g2.setColor(new Color(184, 206, 224));
+            g2.setColor(new Color(43, 141, 98));
             if (subMenuIndex == 1) {
-                // vị trí đầu tiên
+                //  First Index
                 g2.drawImage(shadow, -shadowSize, -20, null);
                 g2.drawLine(18, 0, 18, getHeight());
                 g2.drawLine(18, getHeight() / 2, 26, getHeight() / 2);
             } else if (subMenuIndex == length - 1) {
-                //  vị trí cuối cùng
+                //  Last Index
                 g2.drawImage(shadow, -shadowSize, getHeight() - 6, null);
                 g2.drawLine(18, 0, 18, getHeight() / 2);
                 g2.drawLine(18, getHeight() / 2, 26, getHeight() / 2);
@@ -119,8 +119,7 @@ public class MenuItem extends JButton {
                 g2.drawLine(18, 0, 18, getHeight());
                 g2.drawLine(18, getHeight() / 2, 26, getHeight() / 2);
             }
-        } //vẽ mũi tên hướng xuống bên phải menu 
-        else if (subMenuAble) {
+        } else if (subMenuAble) {
             g2.setColor(getForeground());
             int arrowWidth = 8;
             int arrowHeight = 4;

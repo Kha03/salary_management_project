@@ -49,15 +49,16 @@ public class Home extends javax.swing.JFrame {
         setLocation(new java.awt.Point(-5, 25));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(62, 83, 99));
+        jPanel3.setBackground(new java.awt.Color(0, 99, 0));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1550, 741));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1315, 741));
         jPanel1.setLayout(new java.awt.BorderLayout());
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 0, 1315, 780));
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 0, 1315, 741));
 
-        jPanel2.setBackground(new java.awt.Color(62, 83, 99));
-        jPanel2.setPreferredSize(new java.awt.Dimension(230, 780));
+        jPanel2.setBackground(new java.awt.Color(0, 99, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(230, 741));
 
         scrollPaneWin111.setViewportView(menu1);
 
@@ -74,7 +75,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 235, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1550, 780));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1550, 741));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,7 +161,7 @@ public class Home extends javax.swing.JFrame {
         String[][] menuItems = new String[][]{
             {"Trang Chủ"},
             {"Danh Mục", "Nhân Viên Hành Chính", "Nhân Viên Sản Xuất", "Phòng Ban", "Phân Xưởng", "Phụ Cấp Nhân Viên"},
-            {"Danh Mục", "Hợp Đồng", "Sản Phẩm", "Công Đoạn"},
+          //  {"Danh Mục", "Hợp Đồng", "Sản Phẩm", "Công Đoạn"},
             {"Cập Nhật", "Cập Nhật Phụ Cấp Nhân Viên"},
             {"Xử Lý", "Phân Công Nhân Viên", "Chấm Công Hành Chính", "Chấm Công Sản Phẩm", "Tính Lương Hành Chính", "Tính Lương Sản Xuất"},
             {"Tìm Kiếm", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương"},
