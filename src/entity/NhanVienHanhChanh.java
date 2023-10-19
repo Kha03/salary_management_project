@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.util.Date;
@@ -7,7 +6,8 @@ import java.util.Date;
  *
  * @author ACER
  */
-public class NhanVienHanhChanh extends NhanVien{
+public class NhanVienHanhChanh extends NhanVien {
+
     private String maNhanVienHanhChanh;
     private String chucVu;
     private String ngoaiNgu;
@@ -16,7 +16,7 @@ public class NhanVienHanhChanh extends NhanVien{
     private float luongCoBan;
     private float heSoLuong;
 
-    public NhanVienHanhChanh(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam,String maNhanVienHanhChanh, String chucVu, String ngoaiNgu, String capBac, PhongBan phongBan, float luongCoBan, float heSoLuong) {
+    public NhanVienHanhChanh(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam, String maNhanVienHanhChanh, String chucVu, String ngoaiNgu, String capBac, PhongBan phongBan, float luongCoBan, float heSoLuong) {
         super(maSo, ho, ten, ngaySinh, gioiTinh, diaChi, dienThoai, email, ngayVaoLam);
         this.maNhanVienHanhChanh = maNhanVienHanhChanh;
         this.chucVu = chucVu;
@@ -26,10 +26,6 @@ public class NhanVienHanhChanh extends NhanVien{
         this.luongCoBan = luongCoBan;
         this.heSoLuong = heSoLuong;
     }
-
-    
-
-    
 
     public NhanVienHanhChanh() {
     }
@@ -89,6 +85,7 @@ public class NhanVienHanhChanh extends NhanVien{
     public float getHeSoLuong() {
         return heSoLuong;
     }
+
     @Override
     public String toString() {
         return "NhanVienHanhChanh{" + "maNhanVienHanhChanh=" + maNhanVienHanhChanh + ", chucVu=" + chucVu + ", ngoaiNgu=" + ngoaiNgu + ", capBac=" + capBac + ", phongBan=" + phongBan + ", luongCoBan=" + luongCoBan + ", heSoLuong=" + heSoLuong + '}';

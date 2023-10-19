@@ -1,11 +1,13 @@
-
 package entity;
+
 import java.util.*;
+
 /**
  *
  * @author ACER
  */
 public class PhongBan {
+
     private String maPhongBan;
     private String tenPhongBan;
     private NhanVienHanhChanh truongPhong;
@@ -17,9 +19,17 @@ public class PhongBan {
         this.truongPhong = truongPhong;
         this.nhanVien = nhanVien;
     }
-    public PhongBan(String tenPhongBan){
+
+    public PhongBan(String maPhongBan, String tenPhongBan, NhanVienHanhChanh truongPhong) {
+        this.maPhongBan = maPhongBan;
+        this.tenPhongBan = tenPhongBan;
+        this.truongPhong = truongPhong;
+    }
+
+    public PhongBan(String tenPhongBan) {
         this.tenPhongBan = tenPhongBan;
     }
+
     public PhongBan() {
     }
 
@@ -39,7 +49,6 @@ public class PhongBan {
         this.nhanVien = nhanVien;
     }
 
-    
     public void setMaPhongBan(String maPhongBan) {
         this.maPhongBan = maPhongBan;
     }
@@ -56,10 +65,9 @@ public class PhongBan {
         return nhanVien;
     }
 
-   
     @Override
     public String toString() {
         return "PhongBan{" + "maPhongBan=" + maPhongBan + ", tenPhongBan=" + tenPhongBan + ", truongPhong=" + truongPhong + ", nhanVien=" + nhanVien + '}';
     }
-    
+
 }

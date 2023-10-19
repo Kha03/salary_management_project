@@ -75,6 +75,7 @@ public class MenuItem extends JButton {
         setHorizontalAlignment(SwingConstants.LEFT);
         setBorder(new EmptyBorder(9, 10, 9, 10));
         setIconTextGap(10);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rippleEffect = new RippleEffect(this);
         rippleEffect.setRippleColor(new Color(220, 220, 220));
     }
