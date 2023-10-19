@@ -80,9 +80,11 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
 
+        jTable1.setBackground(new java.awt.Color(184, 206, 224));
         jTable1.setToolTipText("");
         jTable1.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable1);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 292, 1300, 450));

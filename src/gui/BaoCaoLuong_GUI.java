@@ -69,6 +69,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Phân Xưởng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
+        jTable4.setBackground(new java.awt.Color(184, 206, 224));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -80,6 +81,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jTable4.setToolTipText("");
         jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable4);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 390, 874, 350));
@@ -106,6 +108,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jScrollPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Phòng Ban", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane5.setPreferredSize(new java.awt.Dimension(462, 430));
 
+        jTable5.setBackground(new java.awt.Color(184, 206, 224));
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -117,6 +120,7 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jTable5.setToolTipText("");
         jTable5.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable5.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(jTable5);
 
         add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 40, 874, 350));

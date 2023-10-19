@@ -52,7 +52,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1300, 741));
-        setPreferredSize(new java.awt.Dimension(1366, 741));
+        setPreferredSize(new java.awt.Dimension(1300, 741));
 
         jDesktopPane1.setBackground(new java.awt.Color(242, 242, 242));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(1300, 741));
@@ -71,6 +71,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jTable6.setToolTipText("");
         jTable6.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable6.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable6.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(jTable6);
 
         jDesktopPane1.add(jScrollPane6);
@@ -184,6 +185,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
+        jTable4.setBackground(new java.awt.Color(184, 206, 224));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -195,6 +197,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jTable4.setToolTipText("");
         jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable4);
 
         jDesktopPane1.add(jScrollPane4);

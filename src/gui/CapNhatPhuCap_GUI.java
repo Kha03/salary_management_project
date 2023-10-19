@@ -69,6 +69,7 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jTable3.setToolTipText("");
         jTable3.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable3);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 472, 200, 265));
@@ -170,6 +171,7 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Nhân Viên Được Hưởng Phụ Cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
+        jTable4.setBackground(new java.awt.Color(184, 206, 224));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -181,6 +183,7 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jTable4.setToolTipText("");
         jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable4);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, 550, 460));
@@ -209,6 +212,7 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jTable7.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable7.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jTable7.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable7.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(jTable7);
 
         add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 200, 433));
@@ -216,6 +220,7 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jScrollPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane5.setPreferredSize(new java.awt.Dimension(462, 430));
 
+        jTable5.setBackground(new java.awt.Color(184, 206, 224));
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -227,6 +232,7 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jTable5.setToolTipText("");
         jTable5.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable5.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(jTable5);
 
         add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 550, 460));
@@ -241,7 +247,71 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox4ActionPerformed
     private void setTable() {
         //khoi tạo phụ cấp compnent
+        modelNhanVien = new DefaultTableModel(
+                new Object[][]{
+                    {"1", "123", "Đạt", "Kết toán"},
+                    {"2", "123", "Đạt", "Kết toán"},
+                    {"3", "123", "Đạt", "Kết toán"},},
+                new String[]{
+                    "STT", "Mã nhân viên", "Họ và tên", "Đơn vị"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
 
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        };
+        jTable5.setModel(modelNhanVien);
+        jTable5.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTable5.getColumnModel().getColumn(1).setPreferredWidth(130);
+        jTable5.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTable5.getColumnModel().getColumn(3).setPreferredWidth(130);
+        jTable5.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        //set table don vi
+        modelNhanVienCoPhuCap = new DefaultTableModel(
+                new Object[][]{
+                    {"1", "123", "Đạt", "Kết toán"},
+                    {"2", "123", "Đạt", "Kết toán"},
+                    {"3", "123", "Đạt", "Kết toán"},},
+                new String[]{
+                    "STT", "Mã nhân viên", "Họ và tên", "Đơn vị"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        };
+        jTable4.setModel(modelNhanVienCoPhuCap);
+        jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
+        jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
+        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
@@ -278,24 +348,20 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
         jTable3.getColumnModel().getColumn(1).setPreferredWidth(174);
         jTable3.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         //table chấm công
-        modelChamCong = new DefaultTableModel(
+        modelPhuCap = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "123", "Xăng xe", "", true, " 10000"},
-                    {"1", "124", "Tiền điện thoại", "", true, " 10000"},
-                    {"1", "125", "Ăn uống", "1/2023", false, " 10000"}},
+                    {"1", "123", "Xăng xe",},
+                    {"1", "124", "Tiền điện thoại",},
+                    {"1", "125", "Ăn uống", "1/2023",}},
                 new String[]{
-                    "STT", "Mã phụ cấp", "Tên phụ cấp", "Tháng hưởng", "Cố định", "Số Tiền"}
+                    "STT", "Mã phụ cấp", "Tên phụ cấp"}
         ) {
             Class[] types = new Class[]{
                 java.lang.String.class,
                 java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.Boolean.class,
                 java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false
-            };
+                false, false, false,};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -307,17 +373,17 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelChamCong);
-        jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
-        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        jTable7.setModel(modelPhuCap);
+        jTable7.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTable7.getColumnModel().getColumn(1).setPreferredWidth(130);
+        jTable7.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTable7.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
 
     private DefaultTableModel modelDonVi;
+    private DefaultTableModel modelNhanVienCoPhuCap;
     private DefaultTableModel modelNhanVien;
-    private DefaultTableModel modelChamCong;
+    private DefaultTableModel modelPhuCap;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton14;

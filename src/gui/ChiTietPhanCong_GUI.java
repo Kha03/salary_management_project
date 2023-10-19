@@ -86,6 +86,7 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         jScrollPane4.setMinimumSize(new java.awt.Dimension(1200, 600));
         jScrollPane4.setPreferredSize(new java.awt.Dimension(1200, 600));
 
+        jTable4.setBackground(new java.awt.Color(184, 206, 224));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -97,6 +98,7 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         jTable4.setToolTipText("");
         jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
         jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable4);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1190, 490));

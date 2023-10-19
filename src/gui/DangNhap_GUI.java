@@ -50,7 +50,6 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         setTitle("Đăng Nhập Hệ Thống");
         setBackground(new java.awt.Color(0, 99, 0));
         setLocation(new java.awt.Point(250, 200));
-        setPreferredSize(new java.awt.Dimension(1000, 560));
 
         jPanel3.setBackground(new java.awt.Color(0, 99, 0));
         jPanel3.setPreferredSize(new java.awt.Dimension(470, 100));
