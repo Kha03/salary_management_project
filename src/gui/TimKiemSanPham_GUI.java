@@ -7,12 +7,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ADMIN
  */
-public class SanPham_GUI extends javax.swing.JPanel {
+public class TimKiemSanPham_GUI extends javax.swing.JPanel {
 
     /**
      * Creates new form ChamCongHanhChinh
      */
-    public SanPham_GUI() {
+    public TimKiemSanPham_GUI() {
         initComponents();
         setTable();
     }
@@ -30,10 +30,6 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -47,6 +43,8 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jTextField9 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
+        jButton15 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -78,35 +76,6 @@ public class SanPham_GUI extends javax.swing.JPanel {
         jScrollPane6.setBounds(0, 0, 180, 272);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Thêm");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 120, 30));
-
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
-        jButton15.setText("Cập Nhật");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, 130, 30));
-
-        jButton8.setBackground(new java.awt.Color(152, 249, 152));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton8.setText("Làm Mới");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 120, 30));
-
-        jButton11.setBackground(new java.awt.Color(152, 249, 152));
-        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        jButton11.setText("Xóa");
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 180, 90, 30));
 
         jButton12.setBackground(new java.awt.Color(152, 249, 152));
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -179,6 +148,20 @@ public class SanPham_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 160, 30));
 
+        jButton15.setBackground(new java.awt.Color(152, 249, 152));
+        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        jButton15.setText("Tìm Kiếm");
+        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 130, 30));
+
+        jButton10.setBackground(new java.awt.Color(152, 249, 152));
+        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        jButton10.setText("Làm Mới");
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 180, 120, 30));
+
         jDesktopPane1.add(jPanel1);
         jPanel1.setBounds(180, 52, 1114, 220);
 
@@ -205,7 +188,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Thông Tin Sản Phẩm");
+        jLabel5.setText("Tìm Kiếm Sản Phẩm");
         jDesktopPane1.add(jLabel5);
         jLabel5.setBounds(4, 0, 1290, 50);
 
@@ -315,11 +298,9 @@ public class SanPham_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelNhanVien;
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
