@@ -30,6 +30,12 @@ public class NhanVien {
         this.ngayVaoLam = ngayVaoLam;
     }
 
+    public NhanVien(String maSo, String ho, String ten) {
+        this.maSo = maSo;
+        this.ho = ho;
+        this.ten = ten;
+    }
+    
     public NhanVien() {
     }
 

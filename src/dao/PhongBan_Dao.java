@@ -3,7 +3,7 @@ package dao;
 import java.sql.*;
 import connect.ConnectDB;
 import entity.PhongBan;
-import entity.PhanXuong;
+import entity.NhanVienHanhChanh;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class PhongBan_Dao {
 
             while (resultSet.next()) {
                 //còn sai
-                dsPhongBan.add(new dsPhongBan(resultSet.getString(1), resultSet.getString(2))));
+                dsPhongBan.add(new PhongBan(resultSet.getString(1), resultSet.getString(2),new NhanVienHanhChanh("",resultSet.getString(3),resultSet.getString(4))));
             }
         } catch (SQLException e) {
             e.printStackTrace();

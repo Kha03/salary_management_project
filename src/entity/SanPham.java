@@ -1,11 +1,13 @@
-
 package entity;
+
 import java.util.*;
+
 /**
  *
  * @author ACER
  */
 public class SanPham {
+
     private String maSanPham;
     private String tenSanPham;
     private int soLuong;
@@ -13,7 +15,7 @@ public class SanPham {
     private float donGia;
     private String donViTinh;
 
-    public SanPham(String maSanPham, String tenSanPham, int soLuong, List<CongDoan> congDoanThucHien, float donGia, String donViTinh) {
+    public SanPham(String maSanPham, String tenSanPham, float donGia, List<CongDoan> congDoanThucHien, int soLuong, String donViTinh) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.soLuong = soLuong;
@@ -22,7 +24,13 @@ public class SanPham {
         this.donViTinh = donViTinh;
     }
 
-    
+    public SanPham(String maSanPham, String tenSanPham,float donGia, int soLuong, String donViTinh) {
+        this.maSanPham = maSanPham;
+        this.tenSanPham = tenSanPham;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.donViTinh = donViTinh;
+    }
 
     public SanPham() {
     }
@@ -42,8 +50,6 @@ public class SanPham {
     public void setCongDoanThucHien(List<CongDoan> congDoanThucHien) {
         this.congDoanThucHien = congDoanThucHien;
     }
-
-    
 
     public void setDonGia(float donGia) {
         this.donGia = donGia;
@@ -69,7 +75,6 @@ public class SanPham {
         return congDoanThucHien;
     }
 
-    
     public float getDonGia() {
         return donGia;
     }
@@ -82,5 +87,5 @@ public class SanPham {
     public String toString() {
         return "SanPham{" + "maSanPham=" + maSanPham + ", tenSanPham=" + tenSanPham + ", soLuong=" + soLuong + ", congDoanThucHien=" + congDoanThucHien + ", donGia=" + donGia + ", donViTinh=" + donViTinh + '}';
     }
-    
+
 }

@@ -23,6 +23,12 @@ public class PhanXuong {
         this.nhanVien = nhanVien;
     }
 
+    public PhanXuong(String maPhanXuong, String tenPhanXuong, NhanVienSanXuat toTruong) {
+        this.maPhanXuong = maPhanXuong;
+        this.tenPhanXuong = tenPhanXuong;
+        this.toTruong = toTruong;
+    }
+
     public PhanXuong(String tenPhanXuong) {
         this.tenPhanXuong = tenPhanXuong;
     }

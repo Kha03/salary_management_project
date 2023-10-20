@@ -23,6 +23,14 @@ public class HopDongSanXuat {
         this.giaTien = giaTien;
     }
 
+    public HopDongSanXuat(String maHopDong, String tenHopDong, Date ngayBatDau, Date ngayKetThuc, float giaTien) {
+        this.maHopDong = maHopDong;
+        this.tenHopDong = tenHopDong;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.giaTien = giaTien;
+    }
+    
     
 
     public HopDongSanXuat() {

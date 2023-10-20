@@ -38,8 +38,10 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jTextField5 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -116,14 +118,19 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jTextField8.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 150, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 150, -1));
-
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Tháng Hưởng:");
         jLabel15.setToolTipText("");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 110, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 50, 20));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel16.setText("Năm:");
+        jLabel16.setToolTipText("");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 60, -1));
+        jPanel1.add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 65, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
@@ -202,8 +209,10 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;
@@ -212,7 +221,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
+    private com.toedter.calendar.JYearChooser jYearChooser1;
     // End of variables declaration//GEN-END:variables
 }

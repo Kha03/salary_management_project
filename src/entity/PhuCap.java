@@ -11,7 +11,7 @@ public class PhuCap {
     private float soTien;
     private List<NhanVien> nhanVien;
     private boolean coDinh;
-    private Date thangHuong;
+    private String thangHuong;
 
     public boolean getCoDinh() {
         return coDinh;
@@ -21,11 +21,19 @@ public class PhuCap {
         this.coDinh = coDinh;
     }
 
-    public PhuCap(String maPhuCap, String tenPhuCap, float soTien, List<NhanVien> nhanVien, boolean coDinh, Date thangHuong) {
+    public PhuCap(String maPhuCap, String tenPhuCap, float soTien, List<NhanVien> nhanVien, boolean coDinh, String thangHuong) {
         this.maPhuCap = maPhuCap;
         this.tenPhuCap = tenPhuCap;
         this.soTien = soTien;
         this.nhanVien = nhanVien;
+        this.coDinh = coDinh;
+        this.thangHuong = thangHuong;
+    }
+
+    public PhuCap(String maPhuCap, String tenPhuCap, float soTien, boolean coDinh, String thangHuong) {
+        this.maPhuCap = maPhuCap;
+        this.tenPhuCap = tenPhuCap;
+        this.soTien = soTien;
         this.coDinh = coDinh;
         this.thangHuong = thangHuong;
     }
@@ -52,7 +60,7 @@ public class PhuCap {
     
 
 
-    public void setThangHuong(Date thangHuong) {
+    public void setThangHuong(String thangHuong) {
         this.thangHuong = thangHuong;
     }
 
@@ -78,7 +86,7 @@ public class PhuCap {
 
     
 
-    public Date getThangHuong() {
+    public String getThangHuong() {
         return thangHuong;
     }
 
