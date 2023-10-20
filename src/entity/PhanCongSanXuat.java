@@ -23,6 +23,14 @@ public class PhanCongSanXuat {
         this.phanXuong = phanXuong;
     }
 
+    public PhanCongSanXuat(String maPhanCong, SanPham sanPham, Date ngayPhanCong, CongDoan congDoan, PhanXuong phanXuong) {
+        this.maPhanCong = maPhanCong;
+        this.sanPham = sanPham;
+        this.ngayPhanCong = ngayPhanCong;
+        this.congDoan = congDoan;
+        this.phanXuong = phanXuong;
+    }
+
     public PhanCongSanXuat() {
     }
 

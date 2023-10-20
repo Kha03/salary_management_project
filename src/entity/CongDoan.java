@@ -1,4 +1,3 @@
-
 package entity;
 
 /**
@@ -6,6 +5,7 @@ package entity;
  * @author ACER
  */
 public class CongDoan {
+
     private String maCongDoan;
     private String tenCongDoan;
     private float giaTien;
@@ -18,8 +18,11 @@ public class CongDoan {
         this.tienDo = tienDo;
     }
 
-    
-    
+    public CongDoan(String maCongDoan, String tenCongDoan) {
+        this.maCongDoan = maCongDoan;
+        this.tenCongDoan = tenCongDoan;
+    }
+
     public void setTienDo(int tienDo) {
         this.tienDo = tienDo;
     }
@@ -60,5 +63,4 @@ public class CongDoan {
         return "CongDoan{" + "maCongDoan=" + maCongDoan + ", tenCongDoan=" + tenCongDoan + ", giaTien=" + giaTien + ", tienDo=" + tienDo + '}';
     }
 
-    
 }

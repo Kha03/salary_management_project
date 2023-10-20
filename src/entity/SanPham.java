@@ -32,6 +32,11 @@ public class SanPham {
         this.donViTinh = donViTinh;
     }
 
+    public SanPham(String maSanPham, String tenSanPham) {
+        this.maSanPham = maSanPham;
+        this.tenSanPham = tenSanPham;
+    }
+
     public SanPham() {
     }
 
