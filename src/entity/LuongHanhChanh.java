@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class LuongHanhChanh {
     private String maLuong;
     private NhanVienHanhChanh nhanVienHanhChanh;
     private List<ChamCongNhanVien> ngayCongNhanVien;
-    private Date thanhLap;
+    private String thangLap;
     private String chucVu;
     private float heSoLuong;
     private float luongCoBan;
@@ -22,11 +21,11 @@ public class LuongHanhChanh {
     private float tienTangCa;
     private float tongLuong;
 
-    public LuongHanhChanh(String maLuong, NhanVienHanhChanh nhanVienHanhChanh, List<ChamCongNhanVien> ngayCongNhanVien, Date thanhLap, String chucVu, float heSoLuong, float luongCoBan, int soNgayCongChuan, int ngayCongThucTe, float tienPhuCap, float tienTangCa,float tongLuong) {
+    public LuongHanhChanh(String maLuong, NhanVienHanhChanh nhanVienHanhChanh, List<ChamCongNhanVien> ngayCongNhanVien, String thangLap, String chucVu, float heSoLuong, float luongCoBan, int soNgayCongChuan, int ngayCongThucTe, float tienPhuCap, float tienTangCa, float tongLuong) {
         this.maLuong = maLuong;
         this.nhanVienHanhChanh = nhanVienHanhChanh;
         this.ngayCongNhanVien = ngayCongNhanVien;
-        this.thanhLap = thanhLap;
+        this.thangLap = thangLap;
         this.chucVu = chucVu;
         this.heSoLuong = heSoLuong;
         this.luongCoBan = luongCoBan;
@@ -60,8 +59,8 @@ public class LuongHanhChanh {
         this.ngayCongNhanVien = ngayCongNhanVien;
     }
 
-    public void setThanhLap(Date thanhLap) {
-        this.thanhLap = thanhLap;
+    public void setThangLap(String thangLap) {
+        this.thangLap = thangLap;
     }
 
     public void setChucVu(String chucVu) {
@@ -104,8 +103,8 @@ public class LuongHanhChanh {
         return ngayCongNhanVien;
     }
 
-    public Date getThanhLap() {
-        return thanhLap;
+    public String getThangLap() {
+        return thangLap;
     }
 
     public String getChucVu() {
@@ -138,7 +137,7 @@ public class LuongHanhChanh {
 
     @Override
     public String toString() {
-        return "LuongHanhChanh{" + "maLuong=" + maLuong + ", nhanVienHanhChanh=" + nhanVienHanhChanh + ", ngayCongNhanVien=" + ngayCongNhanVien + ", thanhLap=" + thanhLap + ", chucVu=" + chucVu + ", heSoLuong=" + heSoLuong + ", luongCoBan=" + luongCoBan + ", soNgayCongChuan=" + soNgayCongChuan + ", ngayCongThucTe=" + ngayCongThucTe + ", tienPhuCap=" + tienPhuCap + ", tienTangCa=" + tienTangCa + '}';
+        return "LuongHanhChanh{" + "maLuong=" + maLuong + ", nhanVienHanhChanh=" + nhanVienHanhChanh + ", ngayCongNhanVien=" + ngayCongNhanVien + ", thangLap=" + thangLap + ", chucVu=" + chucVu + ", heSoLuong=" + heSoLuong + ", luongCoBan=" + luongCoBan + ", soNgayCongChuan=" + soNgayCongChuan + ", ngayCongThucTe=" + ngayCongThucTe + ", tienPhuCap=" + tienPhuCap + ", tienTangCa=" + tienTangCa + '}';
     }
 
 }

@@ -27,6 +27,10 @@ public class NhanVienHanhChanh extends NhanVien {
         this.heSoLuong = heSoLuong;
     }
 
+    public NhanVienHanhChanh(String maNhanVienHanhChanh) {
+        this.maNhanVienHanhChanh = maNhanVienHanhChanh;
+    }
+
     public NhanVienHanhChanh(String maSo, String ho, String ten) {
         super(maSo, ho, ten);
     }

@@ -21,7 +21,7 @@ public class PhanCong_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT * FROM PhanCongSanXuat";
+            String sql = "SELECT PhanCongSanXuat.*, SanPham.tenSanPham, PhanXuong.tenPhanXuong, CongDoan.tenCongDoan FROM PhanCongSanXuat INNER JOIN SanPham ON PhanCongSanXuat.maSanPham = SanPham.maSanPham INNER JOIN PhanXuong ON PhanCongSanXuat.maPhanXuong = PhanXuong.maPhanXuong INNER JOIN CongDoan ON PhanCongSanXuat.maCongDoan = CongDoan.maCongDoan";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 

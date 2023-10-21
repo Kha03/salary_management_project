@@ -23,6 +23,10 @@ public class NhanVienSanXuat extends NhanVien{
         this.phanXuong = phanXuong;
     }
 
+    public NhanVienSanXuat(String maNhanVienSanXuat) {
+        this.maNhanVienSanXuat = maNhanVienSanXuat;
+    }
+
     public NhanVienSanXuat(String maSo, String ho, String ten) {
         super(maSo, ho, ten);
     }

@@ -1,19 +1,18 @@
 
 package entity;
 import java.util.Date;
-import java.util.List;
 /**
  *
  * @author ACER
  */
 public class ChamCongNhanVien {
     private String maNgayCong;
-    private List<NhanVienHanhChanh> nhanVienHanhChanh;
+    private NhanVienHanhChanh nhanVienHanhChanh;
     private Date ngayLamViec;
     private boolean trangThai;
     private int gioTangCa;
 
-    public ChamCongNhanVien(String maNgayCong, List<NhanVienHanhChanh> nhanVienHanhChanh, Date ngayLamViec, boolean trangThai, int gioTangCa) {
+    public ChamCongNhanVien(String maNgayCong, NhanVienHanhChanh nhanVienHanhChanh, Date ngayLamViec, boolean trangThai, int gioTangCa) {
         this.maNgayCong = maNgayCong;
         this.nhanVienHanhChanh = nhanVienHanhChanh;
         this.ngayLamViec = ngayLamViec;
@@ -24,7 +23,7 @@ public class ChamCongNhanVien {
     public ChamCongNhanVien() {
     }
     
-    public List<NhanVienHanhChanh> getNhanVienHanhChanh() {
+    public NhanVienHanhChanh getNhanVienHanhChanh() {
         return nhanVienHanhChanh;
     }
 
@@ -36,7 +35,7 @@ public class ChamCongNhanVien {
         this.maNgayCong = maNgayCong;
     }
 
-    public void setNhanVienHanhChanh(List<NhanVienHanhChanh> nhanVienHanhChanh) {
+    public void setNhanVienHanhChanh(NhanVienHanhChanh nhanVienHanhChanh) {
         this.nhanVienHanhChanh = nhanVienHanhChanh;
     }
 
