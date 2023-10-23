@@ -7,8 +7,7 @@ import java.util.Date;
  */
 public class NhanVien {
     private String maSo;
-    private String ho;
-    private String ten;
+    private String hoVaTen;
     private Date ngaySinh;
     private boolean gioiTinh;
     private String diaChi;
@@ -18,10 +17,9 @@ public class NhanVien {
 
     
 
-    public NhanVien(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam) {
+    public NhanVien(String maSo, String hoVaTen, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam) {
         this.maSo = maSo;
-        this.ho = ho;
-        this.ten = ten;
+        this.hoVaTen = hoVaTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
@@ -30,10 +28,9 @@ public class NhanVien {
         this.ngayVaoLam = ngayVaoLam;
     }
 
-    public NhanVien(String maSo, String ho, String ten) {
+    public NhanVien(String maSo, String hoVaTen) {
         this.maSo = maSo;
-        this.ho = ho;
-        this.ten = ten;
+        this.hoVaTen = hoVaTen;
     }
     
     public NhanVien() {
@@ -43,13 +40,10 @@ public class NhanVien {
         this.maSo = maSo;
     }
 
-    public void setHo(String ho) {
-        this.ho = ho;
+    public void setHo(String hoVaTen) {
+        this.hoVaTen = hoVaTen;
     }
 
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
 
     public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
@@ -79,13 +73,10 @@ public class NhanVien {
         return maSo;
     }
 
-    public String getHo() {
-        return ho;
+    public String getHoVaTen() {
+        return hoVaTen;
     }
 
-    public String getTen() {
-        return ten;
-    }
 
     public Date getNgaySinh() {
         return ngaySinh;
@@ -112,6 +103,6 @@ public class NhanVien {
     }
     @Override
     public String toString() {
-        return "NhanVien{" + "maSo=" + maSo + ", ho=" + ho + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", dienThoai=" + dienThoai + ", email=" + email + ", ngayVaoLam=" + ngayVaoLam + '}';
+        return "NhanVien{" + "maSo=" + maSo + ", hoVaTen=" + hoVaTen  + ", ngaySinh=" + ngaySinh + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", dienThoai=" + dienThoai + ", email=" + email + ", ngayVaoLam=" + ngayVaoLam + '}';
     }
 }
