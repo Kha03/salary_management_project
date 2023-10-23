@@ -14,7 +14,7 @@ import java.util.List;
 public class NhanVienSanXuat_Dao {
 
     //lấy ra danh sách nhân viên hành chính
-    public List<NhanVienSanXuat> getDanhSachNhanVienHanhChanh() {
+    public List<NhanVienSanXuat> getDanhSachNhanVienSanXuat() {
         List<NhanVienSanXuat> dsNhanVien = new ArrayList<>();
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
@@ -45,7 +45,7 @@ public class NhanVienSanXuat_Dao {
         return dsNhanVien;
     }
 
-    public Iterable<NhanVienSanXuat> getDanhSachNhanVienSanXuat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    //public Iterable<NhanVienSanXuat> getDanhSachNhanVienSanXuat() {
+    //    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    //}
 }

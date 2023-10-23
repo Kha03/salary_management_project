@@ -260,13 +260,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(12).setCellRenderer(center);
         //model sản xuất
         new DefaultTableModel(
-                new Object[][]{
-                    {"123", "Kha", "Nam", "12/20/2003", "123", "34", "43", "43", null, "43", "43"},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null}
-                },
+                new Object[][]{},
                 new String[]{
                     "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Phân Xưởng", "Chức Vụ", "Trình Độ", "Kinh Nghiệm"
                 }
@@ -393,3 +387,4 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
     
 }
+

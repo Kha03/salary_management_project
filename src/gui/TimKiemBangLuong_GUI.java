@@ -4,7 +4,10 @@ import handle.borderselected.Border_Selected;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import entity.LuongHanhChanh;
+import dao.TinhLuongHanhChanh_Dao;
+import java.sql.SQLException;
+import connect.ConnectDB;
 /**
  *
  * @author ADMIN
@@ -13,8 +16,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
     /**
      * Creates new form NhanVienHanhChinh
+     * @throws java.sql.SQLException
      */
-    public TimKiemBangLuong_GUI() {
+    public TimKiemBangLuong_GUI() throws SQLException {
         initComponents();
         setTable();
         initCommon();
@@ -374,8 +378,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         //setTable ở đây
         //table chấm công
         modelLuongHc = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "123", "Trịnh Minh Kha", "Nhân viên", "1.5", "10.000.000", "26", "123", "30", "5", "120000"},},
+                new Object[][]{},
                 new String[]{
                     "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Hệ số lương", "Lương cơ bản", "Số ngày công chuẩn", "Phụ cấp", "Ngày công thực tế", "Tiền tăng ca", "Lương thực lãnh"
                 }
@@ -399,10 +402,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         };
         //model san pham
        modelLuongSx = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "123", "Trịnh Minh Kha", "10000",
-                        "100",
-                        "10000",},},
+                new Object[][]{},
                 new String[]{
                     "STT", "Mã nhân viên", "Họ và tên", "Tổng lương theo sản phẩm",
                     "Phụ cấp",
@@ -442,18 +442,28 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
     }
 
-    private void initCommon() {
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
+        doDuLieu();
         border_Selected = new Border_Selected();
         cbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
         LblLuongThucLanhSxV.setVisible(false);
         txtTienPhuCapSx.setVisible(false);
+        
     }
-
+    public void doDuLieu() {
+    
+    }
+    
+    
     // private Border_Selected border;
     private DefaultTableModel modelLuongHc;
     private DefaultTableModel modelLuongSx;
     private Border_Selected border_Selected;
+    private TinhLuongHanhChanh_Dao tinhLuongHanhChanh_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLuongThucLanhSxV;
     private javax.swing.ButtonGroup btnThayDoiTim;
