@@ -19,13 +19,13 @@ public class PhongBan_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT PhongBan.maPhongBan, PhongBan.tenPhongBan, NhanVien.ho, NhanVien.ten FROM PhongBan LEFT JOIN NhanVienHanhChinh ON PhongBan.truongPhong = NhanVienHanhChinh.maNhanVienHanhChinh LEFT JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien";
+            String sql = "SELECT PhongBan.maPhongBan, PhongBan.tenPhongBan, NhanVienHanhChinh.maNhanVienHanhChinh ,NhanVien.hoVaTen FROM PhongBan LEFT JOIN NhanVienHanhChinh ON PhongBan.truongPhong = NhanVienHanhChinh.maNhanVienHanhChinh LEFT JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
                 //còn sai
-                dsPhongBan.add(new PhongBan(resultSet.getString(1), resultSet.getString(2),new NhanVienHanhChanh("",resultSet.getString(3),resultSet.getString(4))));
+                dsPhongBan.add(new PhongBan(resultSet.getString(1), resultSet.getString(2),new NhanVienHanhChanh(resultSet.getString(3),"",resultSet.getString(4))));
             }
         } catch (SQLException e) {
             e.printStackTrace();

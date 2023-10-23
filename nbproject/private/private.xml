@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/DangNhap_GUI.java</file>
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/NhanVienHanhChinh_GUI.java</file>
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/entity/CapBac.java</file>
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/dao/BacLuong_Dao.java</file>
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/dao/PhongBan_Dao.java</file>
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/entity/BacLuong.java</file>
         </group>
     </open-files>
 </project-private>
