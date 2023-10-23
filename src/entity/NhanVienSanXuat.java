@@ -83,4 +83,12 @@ public class NhanVienSanXuat extends NhanVien {
     public String toString() {
         return "NhanVienSanXuat{" + "maNhanVienSanXuat=" + maNhanVienSanXuat + ", trinhDo=" + trinhDo + ", capBac=" + capBac + ", kinhNghiem=" + kinhNghiem + ", phanXuong=" + phanXuong + '}';
     }
+
+    public Object getPhongSanXuat() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object getChucVu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

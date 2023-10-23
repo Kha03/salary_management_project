@@ -5,19 +5,19 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import connect.ConnectDB;
 import dao.NhanVienHanhChanh_Dao;
+import dao.NhanVienSanXuat_Dao;
 import java.sql.SQLException;
 import entity.NhanVienHanhChanh;
+import entity.NhanVienSanXuat;
 
 /**
  *
  * @author ADMIN
  */
 public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
-
-    private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
-
     /**
      * Creates new form NhanVienHanhChinh
+     * @throws java.sql.SQLException
      */
     public TimKiemNhanVien_GUI() throws SQLException {
         initComponents();
@@ -217,7 +217,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void setTable() {
         //setTable ở đây
-        modelHc = new DefaultTableModel(
+        model = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
                     "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Ngoại ngữ", "Phòng ban", "Cấp bậc", "Chức vụ", "Hệ số lương", "Lương cơ bản"
@@ -240,13 +240,26 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable1.setModel(modelHc);
+        jTable1.setModel(model);
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(6).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(7).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(11).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(12).setCellRenderer(center);
         //model sản xuất
-        modelSx = new DefaultTableModel(
+        new DefaultTableModel(
                 new Object[][]{
                     {"123", "Kha", "Nam", "12/20/2003", "123", "34", "43", "43", null, "43", "43"},
                     {null, null, null, null, null, null, null, null, null, null, null},
@@ -301,14 +314,52 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         ConnectDB.getInstance();
         ConnectDB.connect();
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
+        nhanVienSanXuat_Dao = new NhanVienSanXuat_Dao();
         doDuLieu();
+    }
+    private void doDuLieu() {
+        for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
+          Object[] objects = {
+              nVien.getMaNhanVienHanhChanh(),nVien.getHoVaTen(),
+              nVien.isGioiTinh()? "Nam": "Nữ",
+              nVien.getNgaySinh(),
+              nVien.getDienThoai(),
+              nVien.getDiaChi(),
+              nVien.getEmail(),
+              nVien.getNgoaiNgu(),
+              nVien.getPhongBan().getTenPhongBan(),
+              nVien.getCapBac(),
+              nVien.getChucVu(),
+              nVien.getHeSoLuong(),
+              nVien.getLuongCoBan()
+          };
+          model.addRow(objects);
+        }
+
+        // Lấy danh sách nhân viên sản xuất từ cơ sở dữ liệu
+        for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
+          Object[] objects = {
+                nVien.getMaNhanVienSanXuat(),
+                nVien.getHoVaTen(),
+                nVien.isGioiTinh() ? "Nam" : "Nữ",
+                nVien.getNgaySinh(),
+                nVien.getDienThoai(),
+                nVien.getDiaChi(),
+                nVien.getEmail(),
+                nVien.getPhanXuong().getTenPhanXuong(),
+                nVien.getChucVu(),
+                nVien.getTrinhDo(),
+                nVien.getKinhNghiem()
+            };
+            model.addRow(objects);
+        }
     }
     
     
-    
     // private Border_Selected border;
-    private DefaultTableModel modelHc;
-    private DefaultTableModel modelSx;
+    private DefaultTableModel model;
+    private NhanVienSanXuat_Dao nhanVienSanXuat_Dao;
+    private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbCapBac;
     private javax.swing.JComboBox<String> cbPhanXuong;
@@ -340,7 +391,5 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhongBan1;
     // End of variables declaration//GEN-END:variables
 
-    private void doDuLieu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }
