@@ -2,11 +2,14 @@ package gui;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import control.NhanVienHanhChinh_Control;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author ADMIN
  */
+
 public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
 
     /**
@@ -34,7 +37,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox6 = new javax.swing.JComboBox<>();
-        jButton14 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
@@ -114,13 +117,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Thêm");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 205, 120, 30));
+        btnThem.setBackground(new java.awt.Color(152, 249, 152));
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThem.setDisabledIcon(null);
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 205, 120, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -276,13 +279,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private void setTable() {
         //setTable ở đây
         model = new DefaultTableModel(
-                new Object[][]{
-                    {"123", "Kha", "Nam", "12/20/2003", "123", "Gò vấp", "kha@gmail.com", "Tiếng anh", "kĩ thuật", "Nhân viên kĩ thuật", "Nhân Viên", "1.5", "5.000.000"},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null}
-                },
+                new Object[][]{{"123","kha","nam","123","123","123","123","123","123","123"}},
                 new String[]{
                     "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Ngoại ngữ", "Phòng ban", "Cấp bậc", "Chức vụ", "Hệ số lương", "Lương cơ bản"
                 }
@@ -328,13 +325,15 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
     private void initCommon() {
+        ActionListener ac = new NhanVienHanhChinh_Control(this);
+        btnThem.addActionListener(ac);
     }
     // private Border_Selected border;
     private DefaultTableModel model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
