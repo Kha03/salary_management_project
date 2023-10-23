@@ -2,6 +2,9 @@ package gui;
 
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,8 +21,12 @@ public class Home extends javax.swing.JFrame {
         taoMenu();
         jPanel1.add(new Home_GUI());
         menu1.setEvent((int index, int subIndex) -> {
-            //    System.out.println(index + "  " + subIndex);
-            kiemTraNhanMenu(index, subIndex);
+            try {
+                //    System.out.println(index + "  " + subIndex);
+                kiemTraNhanMenu(index, subIndex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
@@ -65,7 +72,7 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kiemTraNhanMenu(int index, int subIndex) {
+    private void kiemTraNhanMenu(int index, int subIndex) throws SQLException {
         switch (index) {
             case 0 ->
                 hienThiTrang(new Home_GUI());

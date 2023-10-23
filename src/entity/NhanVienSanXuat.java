@@ -14,8 +14,8 @@ public class NhanVienSanXuat extends NhanVien {
     private String kinhNghiem;
     private PhanXuong phanXuong;
 
-    public NhanVienSanXuat(String maSo, String ho, String ten, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam, String maNhanVienSanXuat, String trinhDo, String capBac, String kinhNghiem, PhanXuong phanXuong) {
-        super(maSo, ho, ten, ngaySinh, gioiTinh, diaChi, dienThoai, email, ngayVaoLam);
+    public NhanVienSanXuat(String maSo, String hoVaTen, Date ngaySinh, boolean gioiTinh, String diaChi, String dienThoai, String email, Date ngayVaoLam, String maNhanVienSanXuat, String trinhDo, String capBac, String kinhNghiem, PhanXuong phanXuong) {
+        super(maSo, hoVaTen, ngaySinh, gioiTinh, diaChi, dienThoai, email, ngayVaoLam);
         this.maNhanVienSanXuat = maNhanVienSanXuat;
         this.trinhDo = trinhDo;
         this.capBac = capBac;
@@ -27,13 +27,13 @@ public class NhanVienSanXuat extends NhanVien {
         this.maNhanVienSanXuat = maNhanVienSanXuat;
     }
 
-    public NhanVienSanXuat(String maNhanVienSanXuat, String maSo, String ho, String ten) {
-        super(maSo, ho, ten);
+    public NhanVienSanXuat(String maNhanVienSanXuat, String maSo, String hoVaTen) {
+        super(maSo, hoVaTen);
         this.maNhanVienSanXuat = maNhanVienSanXuat;
     }
 
-    public NhanVienSanXuat(String maSo, String ho, String ten) {
-        super(maSo, ho, ten);
+    public NhanVienSanXuat(String maSo, String hoVaTen) {
+        super(maSo, hoVaTen);
     }
 
     public NhanVienSanXuat() {

@@ -42,7 +42,14 @@ public class PhuCap_Dao {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 //còn sai
-                dsNhanVien.add(new NhanVien(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getDate(4), resultSet.getBoolean(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getDate(9)));
+                dsNhanVien.add(new NhanVien(resultSet.getString(1), 
+                        resultSet.getString(2), 
+                        resultSet.getDate(3), 
+                        resultSet.getBoolean(4), 
+                        resultSet.getString(5), 
+                        resultSet.getString(6), 
+                        resultSet.getString(7), 
+                        resultSet.getDate(8)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
