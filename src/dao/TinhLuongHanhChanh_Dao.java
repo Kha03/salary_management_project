@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.*;
 import connect.ConnectDB;
-import entity.ChamCongNhanVien;
 import entity.LuongHanhChanh;
 import entity.NhanVienHanhChanh;
 import java.util.ArrayList;

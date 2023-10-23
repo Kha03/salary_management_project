@@ -8,13 +8,13 @@ import java.util.*;
 public class LuongCongNhan {
     private String maLuong;
     private NhanVienSanXuat nhanVienSanXuat;
-    private Date thangLap;
+    private String thangLap;
     private List<ChamCongSanPham> chamCongSanPham;
     private float tongLuongSanPham;
     private float tienPhuCap;
     private float tongLuong;
 
-    public LuongCongNhan(String maLuong, NhanVienSanXuat nhanVienSanXuat, Date thangLap, List<ChamCongSanPham> chamCongSanPham, float tongLuongSanPham, float tienPhuCap,float tongLuong) {
+    public LuongCongNhan(String maLuong, NhanVienSanXuat nhanVienSanXuat, String thangLap, List<ChamCongSanPham> chamCongSanPham, float tongLuongSanPham, float tienPhuCap,float tongLuong) {
         this.maLuong = maLuong;
         this.nhanVienSanXuat = nhanVienSanXuat;
         this.thangLap = thangLap;
@@ -45,7 +45,7 @@ public class LuongCongNhan {
         this.nhanVienSanXuat = nhanVienSanXuat;
     }
 
-    public void setThangLap(Date thangLap) {
+    public void setThangLap(String thangLap) {
         this.thangLap = thangLap;
     }
 
@@ -71,7 +71,7 @@ public class LuongCongNhan {
         return nhanVienSanXuat;
     }
 
-    public Date getThangLap() {
+    public String getThangLap() {
         return thangLap;
     }
 
