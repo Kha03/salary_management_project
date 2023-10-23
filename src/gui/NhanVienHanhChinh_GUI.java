@@ -2,20 +2,21 @@ package gui;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import control.NhanVienHanhChinh_Control;
-import java.awt.event.ActionListener;
+import dao.NhanVienHanhChanh_Dao;
+import entity.NhanVienHanhChanh;
+import connect.ConnectDB;
+import java.sql.SQLException;
 
 /**
  *
  * @author ADMIN
  */
-
 public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
 
     /**
      * Creates new form NhanVienHanhChinh
      */
-    public NhanVienHanhChinh_GUI() {
+    public NhanVienHanhChinh_GUI() throws SQLException {
         initComponents();
         setTable();
         initCommon();
@@ -33,7 +34,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblNhanVien = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox6 = new javax.swing.JComboBox<>();
@@ -91,12 +92,12 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Nhân Viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
 
-        jTable1.setBackground(new java.awt.Color(184, 206, 224));
-        jTable1.setToolTipText("");
-        jTable1.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTable1);
+        tblNhanVien.setBackground(new java.awt.Color(184, 206, 224));
+        tblNhanVien.setToolTipText("");
+        tblNhanVien.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblNhanVien.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblNhanVien.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblNhanVien);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 292, 1300, 450));
 
@@ -279,7 +280,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private void setTable() {
         //setTable ở đây
         model = new DefaultTableModel(
-                new Object[][]{{"123","kha","nam","123","123","123","123","123","123","123"}},
+                new Object[][]{},
                 new String[]{
                     "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Ngoại ngữ", "Phòng ban", "Cấp bậc", "Chức vụ", "Hệ số lương", "Lương cơ bản"
                 }
@@ -301,35 +302,56 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable1.setModel(model);
+        tblNhanVien.setModel(model);
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-        jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(6).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(7).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(11).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(12).setCellRenderer(center);
+        tblNhanVien.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblNhanVien.getColumnModel().getColumn(0).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(1).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(2).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(3).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(4).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(5).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(6).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(7).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(8).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(9).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(10).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(11).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(12).setCellRenderer(center);
 
     }
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
-    private void initCommon() {
-        ActionListener ac = new NhanVienHanhChinh_Control(this);
-        btnThem.addActionListener(ac);
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
+        doDuLieu();
+    }
+    public void doDuLieu(){
+        for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
+          Object[] objects = {nVien.getMaNhanVienHanhChanh(),nVien.getHo() +" "+nVien.getTen(),
+              nVien.isGioiTinh()? "Nam": "Nữ",
+              nVien.getNgaySinh(),
+              nVien.getDienThoai(),
+              nVien.getDiaChi(),
+              nVien.getEmail(),
+              nVien.getNgoaiNgu(),
+              nVien.getPhongBan().getTenPhongBan(),
+              nVien.getCapBac(),
+              nVien.getChucVu(),
+              nVien.getHeSoLuong(),
+              nVien.getLuongCoBan()
+          };
+          model.addRow(objects);
+        }
     }
     // private Border_Selected border;
     private DefaultTableModel model;
+    private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThem;
     private javax.swing.JButton jButton10;
@@ -363,7 +385,6 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
@@ -372,5 +393,6 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tblNhanVien;
     // End of variables declaration//GEN-END:variables
 }
