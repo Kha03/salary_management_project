@@ -10,14 +10,12 @@ public class BacLuong {
     private int soBac;
     private float heSoLuong;
     private float luongCoSo;
-    private CapBac maCapBac;
 
-    public BacLuong(String maBacLuong, int soBac, float heSoLuong, float luongCoSo, CapBac maCapBac) {
+    public BacLuong(String maBacLuong, int soBac, float heSoLuong, float luongCoSo) {
         this.maBacLuong = maBacLuong;
         this.soBac = soBac;
         this.heSoLuong = heSoLuong;
         this.luongCoSo = luongCoSo;
-        this.maCapBac = maCapBac;
     }
 
     public BacLuong() {
@@ -38,11 +36,7 @@ public class BacLuong {
     public void setLuongCoSo(float luongCoSo) {
         this.luongCoSo = luongCoSo;
     }
-
-    public void setMaCapBac(CapBac maCapBac) {
-        this.maCapBac = maCapBac;
-    }
-
+    
     public String getMaBacLuong() {
         return maBacLuong;
     }
@@ -59,13 +53,9 @@ public class BacLuong {
         return luongCoSo;
     }
 
-    public CapBac getMaCapBac() {
-        return maCapBac;
-    }
-
     @Override
     public String toString() {
-        return "BacLuong{" + "maBacLuong=" + maBacLuong + ", soBac=" + soBac + ", heSoLuong=" + heSoLuong + ", luongCoSo=" + luongCoSo + ", maCapBac=" + maCapBac + '}';
+        return "BacLuong{" + "maBacLuong=" + maBacLuong + ", soBac=" + soBac + ", heSoLuong=" + heSoLuong + ", luongCoSo=" + luongCoSo  + '}';
     }
 
     
