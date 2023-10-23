@@ -1,9 +1,12 @@
 package gui;
 
 import handle.borderselected.Border_Selected;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import connect.ConnectDB;
+import dao.NhanVienHanhChanh_Dao;
+import java.sql.SQLException;
+import entity.NhanVienHanhChanh;
 
 /**
  *
@@ -11,10 +14,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
+    private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
+
     /**
      * Creates new form NhanVienHanhChinh
      */
-    public TimKiemNhanVien_GUI() {
+    public TimKiemNhanVien_GUI() throws SQLException {
         initComponents();
         setTable();
         initCommon();
@@ -213,13 +218,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private void setTable() {
         //setTable ở đây
         modelHc = new DefaultTableModel(
-                new Object[][]{
-                    {"123", "Kha", "Nam", "12/20/2003", "123", "Gò vấp", "kha@gmail.com", "Tiếng anh", "kĩ thuật", "Nhân viên kĩ thuật", "Nhân Viên", "1.5", "5.000.000"},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null, null, null, null, null}
-                },
+                new Object[][]{},
                 new String[]{
                     "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Ngoại ngữ", "Phòng ban", "Cấp bậc", "Chức vụ", "Hệ số lương", "Lương cơ bản"
                 }
@@ -298,14 +297,18 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private void cbTrinhDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrinhDoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTrinhDoActionPerformed
-    private void initCommon() {
-        border_Selected = new Border_Selected();
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
+        doDuLieu();
     }
-
+    
+    
+    
     // private Border_Selected border;
     private DefaultTableModel modelHc;
     private DefaultTableModel modelSx;
-    private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbCapBac;
     private javax.swing.JComboBox<String> cbPhanXuong;
@@ -336,4 +339,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblPhongBan1;
     // End of variables declaration//GEN-END:variables
+
+    private void doDuLieu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
