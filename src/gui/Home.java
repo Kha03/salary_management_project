@@ -22,20 +22,12 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(new Home_GUI());
         menu1.setEvent((int index, int subIndex) -> {
             try {
-                //    System.out.println(index + "  " + subIndex);
                 kiemTraNhanMenu(index, subIndex);
             } catch (SQLException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
-
-//    public Home(String pass) {
-//        setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
-//        initComponents();
-//        initLayouts();
-//        checkPermiss(pass);
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

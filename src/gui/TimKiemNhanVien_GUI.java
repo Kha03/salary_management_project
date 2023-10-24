@@ -329,24 +329,24 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
           };
           model.addRow(objects);
         }
-
+        //do table đang lấy của nhân viên hành chính nên chỗ này bị lỗi
         // Lấy danh sách nhân viên sản xuất từ cơ sở dữ liệu
-        for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
-          Object[] objects = {
-                nVien.getMaNhanVienSanXuat(),
-                nVien.getHoVaTen(),
-                nVien.isGioiTinh() ? "Nam" : "Nữ",
-                nVien.getNgaySinh(),
-                nVien.getDienThoai(),
-                nVien.getDiaChi(),
-                nVien.getEmail(),
-                nVien.getPhanXuong().getTenPhanXuong(),
-                nVien.getChucVu(),
-                nVien.getTrinhDo(),
-                nVien.getKinhNghiem()
-            };
-            model.addRow(objects);
-        }
+//        for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
+//          Object[] objects = {
+//                nVien.getMaNhanVienSanXuat(),
+//                nVien.getHoVaTen(),
+//                nVien.isGioiTinh() ? "Nam" : "Nữ",
+//                nVien.getNgaySinh(),
+//                nVien.getDienThoai(),
+//                nVien.getDiaChi(),
+//                nVien.getEmail(),
+//                nVien.getPhanXuong().getTenPhanXuong(),
+//                nVien.getChucVu(),
+//                nVien.getTrinhDo(),
+//                nVien.getKinhNghiem()
+//            };
+//            model.addRow(objects);
+//        }
     }
     
     
