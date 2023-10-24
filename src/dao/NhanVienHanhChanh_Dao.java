@@ -4,8 +4,11 @@ import java.sql.*;
 import connect.ConnectDB;
 import entity.NhanVienHanhChanh;
 import entity.PhongBan;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -80,15 +83,34 @@ public class NhanVienHanhChanh_Dao {
         return dsNhanVien;
     }
 
-    public void getThemNhanVien(NhanVienHanhChanh nVien) {
-        ConnectDB.getInstance();
-        Connection connection = ConnectDB.getConnection();
-        PreparedStatement smt = null;
+    public void setThemNhanVien(NhanVienHanhChanh nVien) {
         try {
-           smt = connection.prepareStatement(string);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("INSERT INTO NhanVien VALUES (?,?,?,?,?,?,?,?) "
+                    + "INSERT INTO NhanVienHanhChinh VALUES (?,?,?,?,?,?,?,?)");
+            smt.setString(1, nVien.getMaSo());
+            smt.setString(2, nVien.getHoVaTen());
+            smt.setString(3, dinhDangNgay.format(nVien.getNgaySinh()));
+            smt.setInt(4, nVien.isGioiTinh()? 1:0);
+            smt.setString(5, nVien.getDiaChi());
+            smt.setString(6, nVien.getDienThoai());
+            smt.setString(7, nVien.getEmail());
+            smt.setString(8, dinhDangNgay.format(nVien.getNgayVaoLam()));
+            smt.setString(9, nVien.getMaNhanVienHanhChanh());
+            smt.setString(10, nVien.getNgoaiNgu());
+            smt.setString(11, nVien.getChucVu());
+            smt.setFloat(12, nVien.getLuongCoBan());
+            smt.setFloat(13, nVien.getHeSoLuong());
+            smt.setString(14, nVien.getCapBac());
+            smt.setString(15, nVien.getPhongBan().getMaPhongBan());
+            smt.setString(16, nVien.getMaSo());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-    
+    }
+
 }

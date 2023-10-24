@@ -554,7 +554,8 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             if (cmbCapBac.getSelectedIndex() != -1 && cmbHeSoLuong.getSelectedIndex() != -1) {
                 CapBac cBac = capBacs.get(cmbCapBac.getSelectedIndex());
                 BacLuong bLuong = cBac.getBacLuongs().get(cmbHeSoLuong.getSelectedIndex());
-                lblLuongCoBan.setText(df.format(bLuong.getLuongCoSo() * bLuong.getHeSoLuong()) + "VND");
+                luongCoBan = bLuong.getLuongCoSo() * bLuong.getHeSoLuong();
+                lblLuongCoBan.setText(df.format(luongCoBan) + "VND");
             } else {
                 lblLuongCoBan.setText("");
             }
@@ -564,6 +565,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private void themNhanVien() {
         if (btnThem.getText().equalsIgnoreCase("Thêm")) {
             btnThem.setText("Xác Nhận");
+            txtMa.setEditable(true);
             txtTen.setEditable(true);
             cmbGioiTinh.setEnabled(true);
             dchNgaySinh.setEnabled(true);
@@ -579,7 +581,21 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         }else{
             int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
             if(i == JOptionPane.YES_OPTION){
-             //   NhanVien nVien = new NhanVien
+                NhanVienHanhChanh nVien = new NhanVienHanhChanh("NV911", txtTen.getText(),
+                        dchNgaySinh.getDate(), 
+                        ((String) cmbGioiTinh.getSelectedItem()).equals("Nam"),
+                        txtDiaChi.getText(),
+                        txtDienThoai.getText(), 
+                        txtMail.getText(),
+                        dchNgayVaoLam.getDate(), txtMa.getText(), 
+                        txtChucVu.getText(), 
+                        txtNgoaiNgu.getText(), 
+                        capBacs.get(cmbCapBac.getSelectedIndex()).getMaCapBac(), 
+                        phongBans.get(cmbPhongBan.getSelectedIndex()),
+                        luongCoBan,
+                        Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
+                
+                nhanVienHanhChanh_Dao.setThemNhanVien(nVien);
             }
         }
     }
@@ -587,6 +603,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private DefaultListModel dlmPhongBan;
     SimpleDateFormat dinhDangNgay;
     DecimalFormat df;
+    private float luongCoBan;
     private List<CapBac> capBacs;
     private List<PhongBan> phongBans;
     private CapBac_Dao capBac_Dao;
