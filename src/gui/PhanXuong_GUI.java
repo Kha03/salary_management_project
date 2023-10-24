@@ -89,7 +89,7 @@ public class PhanXuong_GUI extends javax.swing.JPanel {
         jButton14.setText("Thêm");
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 120, 30));
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 130, 30));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

@@ -19,7 +19,7 @@ public class NhanVienHanhChanh_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong, CapBac.tenCapBac,PhongBan.tenPhongBan FROM NhanVienHanhChinh JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan;";
+            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong, CapBac.tenCapBac,PhongBan.maPhongBan,PhongBan.tenPhongBan FROM NhanVienHanhChinh JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan;";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -37,7 +37,7 @@ public class NhanVienHanhChanh_Dao {
                         resultSet.getString(11),
                         resultSet.getString(10),
                         resultSet.getString(14),
-                        new PhongBan(resultSet.getString(15)),
+                        new PhongBan(resultSet.getString(15), resultSet.getString(16)),
                         resultSet.getFloat(12),
                         resultSet.getFloat(13)));
             }
@@ -46,4 +46,49 @@ public class NhanVienHanhChanh_Dao {
         }
         return dsNhanVien;
     }
+
+    public List<NhanVienHanhChanh> getDanhSachNhanVienHanhChanhTheoPhongBan(String maPhongBan) {
+        List<NhanVienHanhChanh> dsNhanVien = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong, CapBac.tenCapBac, PhongBan.maPhongBan, PhongBan.tenPhongBan FROM NhanVienHanhChinh JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan WHERE PhongBan.maPhongBan = '" + maPhongBan + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                //còn sai
+                dsNhanVien.add(new NhanVienHanhChanh(resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getDate(3),
+                        resultSet.getBoolean(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getDate(8),
+                        resultSet.getString(9),
+                        resultSet.getString(11),
+                        resultSet.getString(10),
+                        resultSet.getString(14),
+                        new PhongBan(resultSet.getString(15), resultSet.getString(16)),
+                        resultSet.getFloat(12),
+                        resultSet.getFloat(13)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsNhanVien;
+    }
+
+    public void getThemNhanVien(NhanVienHanhChanh nVien) {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        PreparedStatement smt = null;
+        try {
+           smt = connection.prepareStatement(string);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
 }

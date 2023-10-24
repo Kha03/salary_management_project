@@ -29,7 +29,8 @@ public class PhanXuong {
         this.toTruong = toTruong;
     }
 
-    public PhanXuong(String tenPhanXuong) {
+    public PhanXuong(String maPhanXuong, String tenPhanXuong) {
+        this.maPhanXuong = maPhanXuong;
         this.tenPhanXuong = tenPhanXuong;
     }
 

@@ -13,8 +13,8 @@ public class MenuAnimation {
             @Override
             public void timingEvent(float fraction) {
                 float f = show ? fraction : 1f - fraction;
-                //layout.setComponentConstraints(component, "h " + height * f + "!");
-                layout.setComponentConstraints(component, String.format("h %.2f!", height * f));
+                layout.setComponentConstraints(component, "h " + height * f + "!");
+                //layout.setComponentConstraints(component, String.format("h %.2f!", height * f));
                 item.setAnimate(f);
                 component.revalidate();
                 item.repaint();

@@ -19,7 +19,7 @@ public class NhanVienSanXuat_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT NhanVien.*,NhanVienSanXuat.maNhanVienSanXuat,TrinhDo.tenTrinhDo,CapBac.tenCapBac,NhanVienSanXuat.kinhNghiem, PhanXuong.tenPhanXuong FROM NhanVienSanXuat JOIN NhanVien ON NhanVienSanXuat.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienSanXuat.maCapBac = CapBac.maCapBac JOIN PhanXuong ON NhanVienSanXuat.maPhanXuong = PhanXuong.maPhanXuong JOIN TrinhDo ON NhanVienSanXuat.maTrinhDo = TrinhDo.maTrinhDo;";
+            String sql = "SELECT NhanVien.*,NhanVienSanXuat.maNhanVienSanXuat,TrinhDo.tenTrinhDo,CapBac.tenCapBac,NhanVienSanXuat.kinhNghiem, PhanXuong.maPhanXuong, PhanXuong.tenPhanXuong FROM NhanVienSanXuat JOIN NhanVien ON NhanVienSanXuat.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienSanXuat.maCapBac = CapBac.maCapBac JOIN PhanXuong ON NhanVienSanXuat.maPhanXuong = PhanXuong.maPhanXuong JOIN TrinhDo ON NhanVienSanXuat.maTrinhDo = TrinhDo.maTrinhDo;";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -37,7 +37,7 @@ public class NhanVienSanXuat_Dao {
                         resultSet.getString(11), 
                         resultSet.getString(10), 
                         resultSet.getString(14), 
-                        new PhanXuong(resultSet.getString(15))));
+                        new PhanXuong(resultSet.getString(15), resultSet.getString(16))));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -56,6 +56,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lstPhongBanMouseClicked"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lstPhongBanKeyReleased"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -192,9 +196,12 @@
               <Image iconType="0" name="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="650" y="205" width="120" height="30"/>
+              <AbsoluteConstraints x="640" y="205" width="130" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -545,8 +552,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbHeSoLuongActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -662,7 +671,7 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="dchNgayVaoLam">
           <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy&#xa;"/>
+            <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Constraints>
