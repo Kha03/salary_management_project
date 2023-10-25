@@ -422,7 +422,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_lstPhongBanKeyReleased
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        themNhanVien();
+        xuLyThem();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void cmbHeSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHeSoLuongActionPerformed
@@ -562,42 +562,72 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         }
     }
 
-    private void themNhanVien() {
+    private void xuLyThem() {
         if (btnThem.getText().equalsIgnoreCase("Thêm")) {
-            btnThem.setText("Xác Nhận");
-            txtMa.setEditable(true);
-            txtTen.setEditable(true);
-            cmbGioiTinh.setEnabled(true);
-            dchNgaySinh.setEnabled(true);
-            dchNgayVaoLam.setEnabled(true);
-            txtDienThoai.setEditable(true);
-            txtDiaChi.setEditable(true);
-            txtMail.setEditable(true);
-            txtNgoaiNgu.setEditable(true);
-            cmbPhongBan.setEnabled(true);
-            cmbCapBac.setEnabled(true);
-            txtChucVu.setEditable(true);
-            cmbHeSoLuong.setEnabled(true);
-        }else{
-            int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
-            if(i == JOptionPane.YES_OPTION){
-                NhanVienHanhChanh nVien = new NhanVienHanhChanh("NV911", txtTen.getText(),
-                        dchNgaySinh.getDate(), 
-                        ((String) cmbGioiTinh.getSelectedItem()).equals("Nam"),
-                        txtDiaChi.getText(),
-                        txtDienThoai.getText(), 
-                        txtMail.getText(),
-                        dchNgayVaoLam.getDate(), txtMa.getText(), 
-                        txtChucVu.getText(), 
-                        txtNgoaiNgu.getText(), 
-                        capBacs.get(cmbCapBac.getSelectedIndex()).getMaCapBac(), 
-                        phongBans.get(cmbPhongBan.getSelectedIndex()),
-                        luongCoBan,
-                        Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
-                
-                nhanVienHanhChanh_Dao.setThemNhanVien(nVien);
+            moNhapDuLieu();
+        } else {
+            themNhanVien();
+            dongNhapDuLieu();
+        }
+    }
+
+    private void themNhanVien() {
+        int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
+            NhanVienHanhChanh nVien = new NhanVienHanhChanh("NV192", txtTen.getText(),
+                    dchNgaySinh.getDate(),
+                    ((String) cmbGioiTinh.getSelectedItem()).equals("Nam"),
+                    txtDiaChi.getText(),
+                    txtDienThoai.getText(),
+                    txtMail.getText(),
+                    dchNgayVaoLam.getDate(), txtMa.getText(),
+                    txtChucVu.getText(),
+                    txtNgoaiNgu.getText(),
+                    capBacs.get(cmbCapBac.getSelectedIndex()).getMaCapBac(),
+                    phongBans.get(cmbPhongBan.getSelectedIndex()),
+                    luongCoBan,
+                    Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
+
+            if (!nhanVienHanhChanh_Dao.setThemNhanVien(nVien)) {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thành công!");
             }
         }
+    }
+
+    private void moNhapDuLieu() {
+        btnThem.setText("Xác Nhận");
+        txtMa.setEditable(true);
+        txtTen.setEditable(true);
+        cmbGioiTinh.setEnabled(true);
+        dchNgaySinh.setEnabled(true);
+        dchNgayVaoLam.setEnabled(true);
+        txtDienThoai.setEditable(true);
+        txtDiaChi.setEditable(true);
+        txtMail.setEditable(true);
+        txtNgoaiNgu.setEditable(true);
+        cmbPhongBan.setEnabled(true);
+        cmbCapBac.setEnabled(true);
+        txtChucVu.setEditable(true);
+        cmbHeSoLuong.setEnabled(true);
+    }
+
+    private void dongNhapDuLieu() {
+        btnThem.setText("Thêm");
+        txtMa.setEditable(false);
+        txtTen.setEditable(false);
+        cmbGioiTinh.setEnabled(false);
+        dchNgaySinh.setEnabled(false);
+        dchNgayVaoLam.setEnabled(false);
+        txtDienThoai.setEditable(false);
+        txtDiaChi.setEditable(false);
+        txtMail.setEditable(false);
+        txtNgoaiNgu.setEditable(false);
+        cmbPhongBan.setEnabled(false);
+        cmbCapBac.setEnabled(false);
+        txtChucVu.setEditable(false);
+        cmbHeSoLuong.setEnabled(false);
     }
     private DefaultTableModel dtmNhanVien;
     private DefaultListModel dlmPhongBan;

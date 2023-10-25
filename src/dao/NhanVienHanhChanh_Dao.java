@@ -83,7 +83,7 @@ public class NhanVienHanhChanh_Dao {
         return dsNhanVien;
     }
 
-    public void setThemNhanVien(NhanVienHanhChanh nVien) {
+    public boolean setThemNhanVien(NhanVienHanhChanh nVien) {
         try {
             SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
             ConnectDB.getInstance();
@@ -109,8 +109,9 @@ public class NhanVienHanhChanh_Dao {
             smt.setString(16, nVien.getMaSo());
             smt.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            return false;
         }
+        return true;
     }
 
 }
