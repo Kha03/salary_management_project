@@ -10,7 +10,6 @@ import entity.BacLuong;
 import entity.CapBac;
 import entity.NhanVienHanhChanh;
 import connect.ConnectDB;
-import entity.NhanVien;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -276,6 +275,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
 
         cmbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbHeSoLuong.setEnabled(false);
         cmbHeSoLuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbHeSoLuongActionPerformed(evt);
@@ -384,13 +384,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         lstPhongBan.setModel(dlmPhongBan);
     }
     private void cmbCapBacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCapBacActionPerformed
-        cmbHeSoLuong.removeAllItems();
-        if (cmbCapBac.getSelectedIndex() != -1 && btnThem.getText().equalsIgnoreCase("Xác Nhận")) {
-            CapBac cBac = capBacs.get(cmbCapBac.getSelectedIndex());
-            for (BacLuong bLuong : cBac.getBacLuongs()) {
-                cmbHeSoLuong.addItem(String.valueOf(bLuong.getHeSoLuong()));
-            }
-        }
+        doDuLieuHeSoLuong();
     }//GEN-LAST:event_cmbCapBacActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -411,13 +405,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
 
     private void lstPhongBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstPhongBanMouseClicked
         int hang = lstPhongBan.getSelectedIndex();
-        layDuLieuNhanVienTheoMaPhong(phongBans.get(hang).getMaPhongBan());
+        doDuLieuNhanVienTheoMaPhong(phongBans.get(hang).getMaPhongBan());
     }//GEN-LAST:event_lstPhongBanMouseClicked
 
     private void lstPhongBanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lstPhongBanKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
             int hang = lstPhongBan.getSelectedIndex();
-            layDuLieuNhanVienTheoMaPhong(phongBans.get(hang).getMaPhongBan());
+            doDuLieuNhanVienTheoMaPhong(phongBans.get(hang).getMaPhongBan());
         }
     }//GEN-LAST:event_lstPhongBanKeyReleased
 
@@ -442,7 +436,49 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         doDuLieu();
     }
 
-    public void layDuLieuNhanVienTheoMaPhong(String maPhongBan) {
+    public void lamMoiDong() {
+        txtMa.setText("");
+        txtTen.setText("");
+        dchNgaySinh.setDate(null);
+        dchNgayVaoLam.setDate(null);
+        txtChucVu.setText("");
+        txtDiaChi.setText("");
+        txtDienThoai.setText("");
+        txtMail.setText("");
+        txtNgoaiNgu.setText("");
+    }
+
+    public void lamMoiBang() {
+        dtmNhanVien.setRowCount(0);
+        dlmPhongBan.clear();
+        cmbPhongBan.removeAllItems();
+        cmbCapBac.removeAllItems();
+    }
+    
+    public void layDuLieuLenText() {
+        try {
+            // Lấy vị trí hàng được chọn trong bảng và cho dữ liệu lên textfield
+            int hang = tblNhanVien.getSelectedRow();
+            txtMa.setText((String) tblNhanVien.getValueAt(hang, 0));
+            txtTen.setText((String) tblNhanVien.getValueAt(hang, 1));
+            cmbGioiTinh.setSelectedItem((String) tblNhanVien.getValueAt(hang, 2));
+            dchNgaySinh.setDate(dinhDangNgay.parse((String) tblNhanVien.getValueAt(hang, 3)));
+            dchNgayVaoLam.setDate(dinhDangNgay.parse((String) tblNhanVien.getValueAt(hang, 4)));
+            txtDienThoai.setText((String) tblNhanVien.getValueAt(hang, 5));
+            txtDiaChi.setText((String) tblNhanVien.getValueAt(hang, 6));
+            txtMail.setText((String) tblNhanVien.getValueAt(hang, 7));
+            txtNgoaiNgu.setText((String) tblNhanVien.getValueAt(hang, 8));
+            cmbPhongBan.setSelectedItem((String) tblNhanVien.getValueAt(hang, 9));
+            cmbCapBac.setSelectedItem((String) tblNhanVien.getValueAt(hang, 10));
+            txtChucVu.setText((String) tblNhanVien.getValueAt(hang, 11));
+            cmbHeSoLuong.addItem((String.valueOf(tblNhanVien.getValueAt(hang, 12))));
+            lblLuongCoBan.setText(String.valueOf(tblNhanVien.getValueAt(hang, 13)));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+     public void doDuLieuNhanVienTheoMaPhong(String maPhongBan) {
         dtmNhanVien.setRowCount(0);
         for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(maPhongBan)) {
             Object[] objects = {nVien.getMaNhanVienHanhChanh(), nVien.getHoVaTen(),
@@ -463,8 +499,8 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             dtmNhanVien.addRow(objects);
         }
     }
-
-    public void doDuLieuNhanVien() {
+    
+     public void doDuLieuNhanVien() {
         for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
             Object[] objects = {nVien.getMaNhanVienHanhChanh(), nVien.getHoVaTen(),
                 nVien.isGioiTinh() ? "Nam" : "Nữ",
@@ -492,26 +528,17 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         }
         cmbPhongBan.setSelectedIndex(-1);
     }
-
-    public void lamMoiDong() {
-        txtMa.setText("");
-        txtTen.setText("");
-        dchNgaySinh.setDate(null);
-        dchNgayVaoLam.setDate(null);
-        txtChucVu.setText("");
-        txtDiaChi.setText("");
-        txtDienThoai.setText("");
-        txtMail.setText("");
-        txtNgoaiNgu.setText("");
+    
+    public void doDuLieuHeSoLuong(){
+        cmbHeSoLuong.removeAllItems();
+        if (cmbCapBac.getSelectedIndex() != -1 && btnThem.getText().equalsIgnoreCase("Xác Nhận")) {
+            CapBac cBac = capBacs.get(cmbCapBac.getSelectedIndex());
+            for (BacLuong bLuong : cBac.getBacLuongs()) {
+                cmbHeSoLuong.addItem(String.valueOf(bLuong.getHeSoLuong()));
+            }
+        }
     }
-
-    public void lamMoiBang() {
-        dtmNhanVien.setRowCount(0);
-        dlmPhongBan.clear();
-        cmbPhongBan.removeAllItems();
-        cmbCapBac.removeAllItems();
-    }
-
+    
     public void doDuLieuCapBac() {
         for (CapBac cBac : capBacs) {
             String tenCapBac = cBac.getTenCapBac();
@@ -519,30 +546,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         }
         cmbCapBac.setSelectedIndex(-1);
     }
-
-    public void layDuLieuLenText() {
-        try {
-            // Lấy vị trí hàng được chọn trong bảng và cho dữ liệu lên textfield
-            int hang = tblNhanVien.getSelectedRow();
-            txtMa.setText((String) tblNhanVien.getValueAt(hang, 0));
-            txtTen.setText((String) tblNhanVien.getValueAt(hang, 1));
-            cmbGioiTinh.setSelectedItem((String) tblNhanVien.getValueAt(hang, 2));
-            dchNgaySinh.setDate(dinhDangNgay.parse((String) tblNhanVien.getValueAt(hang, 3)));
-            dchNgayVaoLam.setDate(dinhDangNgay.parse((String) tblNhanVien.getValueAt(hang, 4)));
-            txtDienThoai.setText((String) tblNhanVien.getValueAt(hang, 5));
-            txtDiaChi.setText((String) tblNhanVien.getValueAt(hang, 6));
-            txtMail.setText((String) tblNhanVien.getValueAt(hang, 7));
-            txtNgoaiNgu.setText((String) tblNhanVien.getValueAt(hang, 8));
-            cmbPhongBan.setSelectedItem((String) tblNhanVien.getValueAt(hang, 9));
-            cmbCapBac.setSelectedItem((String) tblNhanVien.getValueAt(hang, 10));
-            txtChucVu.setText((String) tblNhanVien.getValueAt(hang, 11));
-            cmbHeSoLuong.addItem((String.valueOf(tblNhanVien.getValueAt(hang, 12))));
-            lblLuongCoBan.setText(String.valueOf(tblNhanVien.getValueAt(hang, 13)));
-        } catch (ParseException ex) {
-            Logger.getLogger(NhanVienHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    
     public void doDuLieu() {
         doDuLieuNhanVien();
         doDuLieuPhongBan();
@@ -562,25 +566,35 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         }
     }
 
+    private void chonDuLieuRongCmb() {
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbCapBac.setSelectedIndex(-1);
+    }
+
     private void xuLyThem() {
         if (btnThem.getText().equalsIgnoreCase("Thêm")) {
+            btnThem.setText("Xác Nhận");
+            lamMoiDong();
+            chonDuLieuRongCmb();
             moNhapDuLieu();
         } else {
             themNhanVien();
             dongNhapDuLieu();
+            btnThem.setText("Thêm");
         }
     }
 
     private void themNhanVien() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
-            NhanVienHanhChanh nVien = new NhanVienHanhChanh("NV192", txtTen.getText(),
+            NhanVienHanhChanh nVien = new NhanVienHanhChanh("", txtTen.getText(),
                     dchNgaySinh.getDate(),
                     ((String) cmbGioiTinh.getSelectedItem()).equals("Nam"),
                     txtDiaChi.getText(),
                     txtDienThoai.getText(),
                     txtMail.getText(),
-                    dchNgayVaoLam.getDate(), txtMa.getText(),
+                    dchNgayVaoLam.getDate(),
+                    "",
                     txtChucVu.getText(),
                     txtNgoaiNgu.getText(),
                     capBacs.get(cmbCapBac.getSelectedIndex()).getMaCapBac(),
@@ -593,12 +607,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm thành công!");
             }
+        } else {
+            lamMoiDong();
+            chonDuLieuRongCmb();
         }
     }
 
     private void moNhapDuLieu() {
-        btnThem.setText("Xác Nhận");
-        txtMa.setEditable(true);
         txtTen.setEditable(true);
         cmbGioiTinh.setEnabled(true);
         dchNgaySinh.setEnabled(true);
@@ -614,8 +629,6 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void dongNhapDuLieu() {
-        btnThem.setText("Thêm");
-        txtMa.setEditable(false);
         txtTen.setEditable(false);
         cmbGioiTinh.setEnabled(false);
         dchNgaySinh.setEnabled(false);
