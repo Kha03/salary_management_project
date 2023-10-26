@@ -89,12 +89,28 @@ public class NhanVienHanhChanh_Dao {
             ConnectDB.getInstance();
             Connection connection = ConnectDB.getConnection();
             PreparedStatement smt = null;
-            smt = connection.prepareStatement("DECLARE @NewIDNV VARCHAR(6)"
-                    + "SET @NewIDNV = dbo.IDNV()"
-                    + "DECLARE @NewIDNVHC VARCHAR(7)"
-                    + "SET @NewIDNVHC = dbo.IDNVHC()"
-                    + "INSERT INTO NhanVien VALUES (@NewIDNV,?,?,?,?,?,?,?) "
-                    + "INSERT INTO NhanVienHanhChinh VALUES (@NewIDNVHC,?,?,?,?,?,?,@NewIDNV)");
+            smt = connection.prepareStatement("UPDATE NhanVien"
+                    + " SET"
+                    + "    hoVaTen = ?,"
+                    + "    ngaySinh = ?,"
+                    + "    gioiTinh = ?,"
+                    + "    diaChi = ?,"
+                    + "    dienThoai = ?,"
+                    + "    mail = ?,"
+                    + "    ngayVaoLam = ?"
+                    + " WHERE maNhanVien IN ("
+                    + "    SELECT maNhanVien"
+                    + "    FROM NhanVienHanhChinh"
+                    + "    WHERE maNhanVienHanhChinh = ?);"
+                    + " UPDATE NhanVienHanhChinh"
+                    + " SET"
+                    + "    NgoaiNgu = ?,"
+                    + "    ChucVu = ?,"
+                    + "    luongCoBan = ?,"
+                    + "    heSoLuong = ?,"
+                    + "    maCapBac = ?,"
+                    + "    maPhongBan = ?"
+                    + " WHERE maNhanVienHanhChinh = ?;");
             smt.setString(1, nVien.getHoVaTen());
             smt.setString(2, dinhDangNgay.format(nVien.getNgaySinh()));
             smt.setInt(3, nVien.isGioiTinh() ? 1 : 0);
@@ -102,12 +118,14 @@ public class NhanVienHanhChanh_Dao {
             smt.setString(5, nVien.getDienThoai());
             smt.setString(6, nVien.getEmail());
             smt.setString(7, dinhDangNgay.format(nVien.getNgayVaoLam()));
-            smt.setString(8, nVien.getNgoaiNgu());
-            smt.setString(9, nVien.getChucVu());
-            smt.setFloat(10, nVien.getLuongCoBan());
-            smt.setFloat(11, nVien.getHeSoLuong());
-            smt.setString(12, nVien.getCapBac());
-            smt.setString(13, nVien.getPhongBan().getMaPhongBan());
+            smt.setString(8, nVien.getMaNhanVienHanhChanh());
+            smt.setString(9, nVien.getNgoaiNgu());
+            smt.setString(10, nVien.getChucVu());
+            smt.setFloat(11, nVien.getLuongCoBan());
+            smt.setFloat(12, nVien.getHeSoLuong());
+            smt.setString(13, nVien.getCapBac());
+            smt.setString(14, nVien.getPhongBan().getMaPhongBan());
+            smt.setString(15, nVien.getMaNhanVienHanhChanh());
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;
