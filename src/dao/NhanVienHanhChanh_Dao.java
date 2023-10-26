@@ -83,7 +83,7 @@ public class NhanVienHanhChanh_Dao {
         return dsNhanVien;
     }
 
-    public boolean setThemNhanVien(NhanVienHanhChanh nVien) {
+    public boolean capNhatNhanVien(NhanVienHanhChanh nVien) {
         try {
             SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
             ConnectDB.getInstance();
@@ -115,4 +115,55 @@ public class NhanVienHanhChanh_Dao {
         return true;
     }
 
+    public boolean themNhanVien(NhanVienHanhChanh nVien) {
+        try {
+            SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DECLARE @NewIDNV VARCHAR(6)"
+                    + "SET @NewIDNV = dbo.IDNV()"
+                    + "DECLARE @NewIDNVHC VARCHAR(7)"
+                    + "SET @NewIDNVHC = dbo.IDNVHC()"
+                    + "INSERT INTO NhanVien VALUES (@NewIDNV,?,?,?,?,?,?,?) "
+                    + "INSERT INTO NhanVienHanhChinh VALUES (@NewIDNVHC,?,?,?,?,?,?,@NewIDNV)");
+            smt.setString(1, nVien.getHoVaTen());
+            smt.setString(2, dinhDangNgay.format(nVien.getNgaySinh()));
+            smt.setInt(3, nVien.isGioiTinh() ? 1 : 0);
+            smt.setString(4, nVien.getDiaChi());
+            smt.setString(5, nVien.getDienThoai());
+            smt.setString(6, nVien.getEmail());
+            smt.setString(7, dinhDangNgay.format(nVien.getNgayVaoLam()));
+            smt.setString(8, nVien.getNgoaiNgu());
+            smt.setString(9, nVien.getChucVu());
+            smt.setFloat(10, nVien.getLuongCoBan());
+            smt.setFloat(11, nVien.getHeSoLuong());
+            smt.setString(12, nVien.getCapBac());
+            smt.setString(13, nVien.getPhongBan().getMaPhongBan());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean xoaNhanVienHanhChanh(String maNhanVien) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DECLARE @maNhanVien VARCHAR(255)"
+                    + " SELECT @maNhanVien = maNhanVien"
+                    + " FROM NhanVienHanhChinh"
+                    + " WHERE maNhanVienHanhChinh = '" + maNhanVien + "'"
+                    + " DELETE FROM NhanVienHanhChinh"
+                    + " WHERE maNhanVienHanhChinh =  '" + maNhanVien + "'"
+                    + " DELETE FROM NhanVien"
+                    + " WHERE maNhanVien = @maNhanVien;");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
 }
