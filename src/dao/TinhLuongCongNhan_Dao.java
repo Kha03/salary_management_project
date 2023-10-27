@@ -27,12 +27,12 @@ public class TinhLuongCongNhan_Dao {
             while (resultSet.next()) {
                 //còn sai
                 dsLuong.add(new LuongCongNhan(resultSet.getString(1),
-                        new NhanVienSanXuat(resultSet.getString(2),resultSet.getString(7),resultSet.getString(8)),
-                        resultSet.getString(3),
-                        chamCongSanPham_Dao.getChamCongSanPhamTheoThang(resultSet.getString(3)),
-                        resultSet.getFloat(4),
+                        new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(3)),
+                        resultSet.getString(4),
+                        chamCongSanPham_Dao.getChamCongSanPhamTheoThang(resultSet.getString(4)),
                         resultSet.getFloat(5),
-                        resultSet.getFloat(6))
+                        resultSet.getFloat(6),
+                        resultSet.getFloat(7))
                 );
             }
         } catch (SQLException e) {

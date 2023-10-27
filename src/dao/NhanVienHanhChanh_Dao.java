@@ -7,8 +7,6 @@ import entity.PhongBan;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -133,6 +131,25 @@ public class NhanVienHanhChanh_Dao {
         return true;
     }
 
+    public String layMaTuDongNhanVien() {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String maNhanVien = null;
+        String sql = "DECLARE @NewIDNVHC VARCHAR(7)"
+                + " SET @NewIDNVHC = dbo.IDNVHC()"
+                + " SELECT @NewIDNVHC ";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                maNhanVien = resultSet.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return maNhanVien;
+    }
+
     public boolean themNhanVien(NhanVienHanhChanh nVien) {
         try {
             SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
@@ -141,10 +158,8 @@ public class NhanVienHanhChanh_Dao {
             PreparedStatement smt = null;
             smt = connection.prepareStatement("DECLARE @NewIDNV VARCHAR(6)"
                     + "SET @NewIDNV = dbo.IDNV()"
-                    + "DECLARE @NewIDNVHC VARCHAR(7)"
-                    + "SET @NewIDNVHC = dbo.IDNVHC()"
                     + "INSERT INTO NhanVien VALUES (@NewIDNV,?,?,?,?,?,?,?) "
-                    + "INSERT INTO NhanVienHanhChinh VALUES (@NewIDNVHC,?,?,?,?,?,?,@NewIDNV)");
+                    + "INSERT INTO NhanVienHanhChinh VALUES (?,?,?,?,?,?,?,@NewIDNV)");
             smt.setString(1, nVien.getHoVaTen());
             smt.setString(2, dinhDangNgay.format(nVien.getNgaySinh()));
             smt.setInt(3, nVien.isGioiTinh() ? 1 : 0);
@@ -152,12 +167,13 @@ public class NhanVienHanhChanh_Dao {
             smt.setString(5, nVien.getDienThoai());
             smt.setString(6, nVien.getEmail());
             smt.setString(7, dinhDangNgay.format(nVien.getNgayVaoLam()));
-            smt.setString(8, nVien.getNgoaiNgu());
-            smt.setString(9, nVien.getChucVu());
-            smt.setFloat(10, nVien.getLuongCoBan());
-            smt.setFloat(11, nVien.getHeSoLuong());
-            smt.setString(12, nVien.getCapBac());
-            smt.setString(13, nVien.getPhongBan().getMaPhongBan());
+            smt.setString(8, nVien.getMaNhanVienHanhChanh());
+            smt.setString(9, nVien.getNgoaiNgu());
+            smt.setString(10, nVien.getChucVu());
+            smt.setFloat(11, nVien.getLuongCoBan());
+            smt.setFloat(12, nVien.getHeSoLuong());
+            smt.setString(13, nVien.getCapBac());
+            smt.setString(14, nVien.getPhongBan().getMaPhongBan());
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;
@@ -174,10 +190,25 @@ public class NhanVienHanhChanh_Dao {
                     + " SELECT @maNhanVien = maNhanVien"
                     + " FROM NhanVienHanhChinh"
                     + " WHERE maNhanVienHanhChinh = '" + maNhanVien + "'"
+                    + " UPDATE ChamCongNhanVien"
+                    + " SET"
+                    + " maNhanVienHanhChinh = NULL"
+                    + " WHERE maNhanVienHanhChinh = '" + maNhanVien + "'"
+                    + " UPDATE LuongHanhChinh"
+                    + " SET"
+                    + " maNhanVienHanhChinh = NULL"
+                    + "  WHERE maNhanVienHanhChinh = '" + maNhanVien + "'"
+                    + " UPDATE PhongBan"
+                    + " SET"
+                    + " truongPhong = NULL"
+                    + " WHERE truongPhong = '" + maNhanVien + "'"
                     + " DELETE FROM NhanVienHanhChinh"
                     + " WHERE maNhanVienHanhChinh =  '" + maNhanVien + "'"
+                    + " DELETE FROM NhanVien_PhuCap"
+                    + " WHERE maNhanVien =  @maNhanVien"
                     + " DELETE FROM NhanVien"
-                    + " WHERE maNhanVien = @maNhanVien;");
+                    + " WHERE maNhanVien = @maNhanVien;"
+            );
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;

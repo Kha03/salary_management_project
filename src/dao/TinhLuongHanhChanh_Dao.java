@@ -27,17 +27,17 @@ public class TinhLuongHanhChanh_Dao {
             while (resultSet.next()) {
                 //còn sai
                 dsLuong.add(new LuongHanhChanh(resultSet.getString(1),
-                        new NhanVienHanhChanh(resultSet.getString(2)),
+                        new NhanVienHanhChanh(resultSet.getString(2), "", resultSet.getString(3)),
                         chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoThang(resultSet.getString(3)),
-                        resultSet.getString(3),
                         resultSet.getString(4),
-                        resultSet.getFloat(5),
+                        resultSet.getString(5),
                         resultSet.getFloat(6),
-                        resultSet.getInt(7),
+                        resultSet.getFloat(7),
                         resultSet.getInt(8),
-                        resultSet.getFloat(9),
+                        resultSet.getInt(9),
                         resultSet.getFloat(10),
-                        resultSet.getFloat(10) )
+                        resultSet.getFloat(11),
+                        resultSet.getFloat(12) )
                 );
             }
         } catch (SQLException e) {

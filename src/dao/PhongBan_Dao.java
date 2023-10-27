@@ -25,11 +25,47 @@ public class PhongBan_Dao {
 
             while (resultSet.next()) {
                 //còn sai
-                dsPhongBan.add(new PhongBan(resultSet.getString(1), resultSet.getString(2),new NhanVienHanhChanh(resultSet.getString(3),"",resultSet.getString(4))));
+                dsPhongBan.add(new PhongBan(resultSet.getString(1), resultSet.getString(2), new NhanVienHanhChanh(resultSet.getString(3), "", resultSet.getString(4))));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return dsPhongBan;
+    }
+
+    public String getMaTruongPhong(String maPhongBan) {
+        String maTruongPhong = null;
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            String sql = "SELECT truongPhong"
+                    + " FROM PhongBan"
+                    + " WHERE maPhongBan = '" + maPhongBan + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                maTruongPhong = resultSet.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return maTruongPhong;
+    }
+
+    public void capNhatTruongPhong(String maNhanVien, String maPhongBan) {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE PhongBan"
+                    + " SET"
+                    + " truongPhong = ?"
+                    + " WHERE maPhongBan= ?");
+            smt.setString(1, maNhanVien);
+            smt.setString(2, maPhongBan);
+            smt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -16,8 +16,6 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -318,6 +316,11 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
         cmbPhongBan.setEnabled(false);
+        cmbPhongBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPhongBanActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 190, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -400,6 +403,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         lstPhongBan.setModel(dlmPhongBan);
     }
     private void cmbCapBacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCapBacActionPerformed
+        kiemTraTruongPhong();
         doDuLieuHeSoLuong();
     }//GEN-LAST:event_cmbCapBacActionPerformed
 
@@ -448,6 +452,12 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         xuLyCapNhat();
     }//GEN-LAST:event_btnCapNhatActionPerformed
+
+    private void cmbPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhongBanActionPerformed
+        if (cmbCapBac.getSelectedIndex() != -1) {
+            kiemTraTruongPhong();
+        }
+    }//GEN-LAST:event_cmbPhongBanActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -623,6 +633,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             lamMoiDong();
             chonDuLieuRongCmb();
             moNhapDuLieu();
+            txtMa.setText(nhanVienHanhChanh_Dao.layMaTuDongNhanVien());
         } else {
             themNhanVien();
             dongNhapDuLieu();
@@ -638,7 +649,6 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Xóa Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
             if (i == JOptionPane.YES_OPTION) {
                 String maNhanVien = (String) tblNhanVien.getValueAt(hang, 0);
-                System.out.println(maNhanVien);
                 if (nhanVienHanhChanh_Dao.xoaNhanVienHanhChanh(maNhanVien)) {
                     JOptionPane.showMessageDialog(this, "Xóa nhân viên thành công");
 
@@ -690,10 +700,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     luongCoBan,
                     Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
 
-            if (!nhanVienHanhChanh_Dao.capNhatNhanVien(nVien)) {
-                JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
-            } else {
+            if (nhanVienHanhChanh_Dao.capNhatNhanVien(nVien)) {
+                if (cmbCapBac.getSelectedItem().equals("Trưởng Phòng")) {
+                    phongBan_Dao.capNhatTruongPhong(txtMa.getText(), phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan());
+                }
                 JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
             }
         } else {
             lamMoiDong();
@@ -711,7 +724,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     txtDienThoai.getText(),
                     txtMail.getText(),
                     dchNgayVaoLam.getDate(),
-                    "",
+                    txtMa.getText(),
                     txtChucVu.getText(),
                     txtNgoaiNgu.getText(),
                     capBacs.get(cmbCapBac.getSelectedIndex()).getMaCapBac(),
@@ -719,14 +732,26 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     luongCoBan,
                     Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
 
-            if (!nhanVienHanhChanh_Dao.themNhanVien(nVien)) {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại!");
-            } else {
+            if (nhanVienHanhChanh_Dao.themNhanVien(nVien)) {
+                if (cmbCapBac.getSelectedItem().equals("Trưởng Phòng")) {
+                    phongBan_Dao.capNhatTruongPhong(txtMa.getText(), phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan());
+                }
                 JOptionPane.showMessageDialog(this, "Thêm thành công!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!");
             }
         } else {
             lamMoiDong();
             chonDuLieuRongCmb();
+        }
+    }
+
+    public void kiemTraTruongPhong() {
+        if (cmbPhongBan.getSelectedIndex() != -1 && (btnThem.getText().equalsIgnoreCase("Xác Nhận") || btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) && cmbCapBac.getSelectedItem().equals("Trưởng Phòng")) {
+            if (phongBan_Dao.getMaTruongPhong(phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan()) != null) {
+                JOptionPane.showMessageDialog(this, "Phòng ban này đã có trưởng phòng!");
+                cmbCapBac.setSelectedItem("Nhân Viên Hành Chính");
+            }
         }
     }
 
