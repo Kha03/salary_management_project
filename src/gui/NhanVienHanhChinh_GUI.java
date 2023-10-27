@@ -701,6 +701,25 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
 
             if (nhanVienHanhChanh_Dao.capNhatNhanVien(nVien)) {
+                int hang = dtmNhanVien.getRowCount();
+                for (int j = 0; j < hang; j++) {
+                    if (((String) dtmNhanVien.getValueAt(j, 0)).equalsIgnoreCase(txtMa.getText())) {
+                        dtmNhanVien.setValueAt(txtMa.getText(), j, 0);
+                        dtmNhanVien.setValueAt(txtTen.getText(), j, 1);
+                        dtmNhanVien.setValueAt(cmbGioiTinh.getSelectedItem(), j, 2);
+                        dtmNhanVien.setValueAt(dinhDangNgay.format(dchNgaySinh.getDate()), j, 3);
+                        dtmNhanVien.setValueAt(dinhDangNgay.format(dchNgayVaoLam.getDate()), j, 4);
+                        dtmNhanVien.setValueAt(txtDienThoai.getText(), j, 5);
+                        dtmNhanVien.setValueAt(txtDiaChi.getText(), j, 6);
+                        dtmNhanVien.setValueAt(txtMail.getText(), j, 7);
+                        dtmNhanVien.setValueAt(txtNgoaiNgu.getText(), j, 8);
+                        dtmNhanVien.setValueAt(cmbPhongBan.getSelectedItem(), j, 9);
+                        dtmNhanVien.setValueAt(cmbCapBac.getSelectedItem(), j, 10);
+                        dtmNhanVien.setValueAt(txtChucVu.getText(), j, 11);
+                        dtmNhanVien.setValueAt(cmbHeSoLuong.getSelectedItem(), j, 12);
+                        dtmNhanVien.setValueAt(lblLuongCoBan.getText(), j, 13);
+                    }
+                }
                 if (cmbCapBac.getSelectedItem().equals("Trưởng Phòng")) {
                     phongBan_Dao.capNhatTruongPhong(txtMa.getText(), phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan());
                 }
@@ -733,6 +752,21 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     Float.parseFloat((String) cmbHeSoLuong.getSelectedItem()));
 
             if (nhanVienHanhChanh_Dao.themNhanVien(nVien)) {
+                Object[] objects = {nVien.getMaNhanVienHanhChanh(), nVien.getHoVaTen(),
+                    nVien.isGioiTinh() ? "Nam" : "Nữ",
+                    dinhDangNgay.format(nVien.getNgaySinh()),
+                    dinhDangNgay.format(nVien.getNgayVaoLam()),
+                    nVien.getDienThoai(),
+                    nVien.getDiaChi(),
+                    nVien.getEmail(),
+                    nVien.getNgoaiNgu(),
+                    nVien.getPhongBan().getTenPhongBan(),
+                    nVien.getCapBac(),
+                    nVien.getChucVu(),
+                    nVien.getHeSoLuong(),
+                    df.format(nVien.getLuongCoBan()) + "VND"
+                };
+                dtmNhanVien.addRow(objects);
                 if (cmbCapBac.getSelectedItem().equals("Trưởng Phòng")) {
                     phongBan_Dao.capNhatTruongPhong(txtMa.getText(), phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan());
                 }
