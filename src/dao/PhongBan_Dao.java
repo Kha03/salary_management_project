@@ -19,7 +19,12 @@ public class PhongBan_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT PhongBan.maPhongBan, PhongBan.tenPhongBan, NhanVienHanhChinh.maNhanVienHanhChinh ,NhanVien.hoVaTen FROM PhongBan LEFT JOIN NhanVienHanhChinh ON PhongBan.truongPhong = NhanVienHanhChinh.maNhanVienHanhChinh LEFT JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien";
+            String sql = "SELECT PhongBan.maPhongBan,"
+                    + " PhongBan.tenPhongBan,"
+                    + " NhanVienHanhChinh.maNhanVienHanhChinh,"
+                    + " NhanVien.hoVaTen FROM PhongBan LEFT JOIN NhanVienHanhChinh"
+                    + " ON PhongBan.truongPhong = NhanVienHanhChinh.maNhanVienHanhChinh"
+                    + " LEFT JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -63,6 +68,22 @@ public class PhongBan_Dao {
                     + " WHERE maPhongBan= ?");
             smt.setString(1, maNhanVien);
             smt.setString(2, maPhongBan);
+            smt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void capNhatTruongPhong(String maPhongBan) {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE PhongBan"
+                    + " SET"
+                    + " truongPhong = NULL"
+                    + " WHERE maPhongBan= ?");
+            smt.setString(1, maPhongBan);
             smt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

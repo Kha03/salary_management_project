@@ -20,7 +20,13 @@ public class NhanVienHanhChanh_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong, CapBac.tenCapBac,PhongBan.maPhongBan,PhongBan.tenPhongBan FROM NhanVienHanhChinh JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan;";
+            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,"
+                    + " NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,"
+                    + " NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong,"
+                    + " CapBac.tenCapBac,PhongBan.maPhongBan,PhongBan.tenPhongBan"
+                    + " FROM NhanVienHanhChinh JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien"
+                    + " JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac JOIN PhongBan"
+                    + " ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan;";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -53,7 +59,15 @@ public class NhanVienHanhChanh_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong, CapBac.tenCapBac, PhongBan.maPhongBan, PhongBan.tenPhongBan FROM NhanVienHanhChinh JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan WHERE PhongBan.maPhongBan = '" + maPhongBan + "'";
+            String sql = "SELECT NhanVien.*,NhanVienHanhChinh.maNhanVienHanhChinh,"
+                    + " NhanVienHanhChinh.NgoaiNgu,NhanVienHanhChinh.ChucVu,"
+                    + " NhanVienHanhChinh.luongCoBan,NhanVienHanhChinh.heSoLuong,"
+                    + " CapBac.tenCapBac, PhongBan.maPhongBan,"
+                    + " PhongBan.tenPhongBan FROM NhanVienHanhChinh"
+                    + " JOIN NhanVien ON NhanVienHanhChinh.maNhanVien = NhanVien.maNhanVien"
+                    + " JOIN CapBac ON NhanVienHanhChinh.maCapBac = CapBac.maCapBac"
+                    + " JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan"
+                    + " WHERE PhongBan.maPhongBan = '" + maPhongBan + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
