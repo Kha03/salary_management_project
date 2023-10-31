@@ -95,7 +95,7 @@ public class ChamCongHanhChanh_Dao {
             Connection connection = ConnectDB.getConnection();
             PreparedStatement smt = null;
             smt = connection.prepareStatement("INSERT INTO ChamCongNhanVien VALUES (?,?,?,?,?,NULL)");
-            smt.setString(1, layMaTuDongChamCong());
+            smt.setString(1, chamCong.getMaNgayCong());
             smt.setString(2, dinhDangNgay.format(chamCong.getNgayLamViec()));
             smt.setBoolean(3, chamCong.getTrangThai());
             smt.setInt(4, chamCong.getGioTangCa());
@@ -107,4 +107,17 @@ public class ChamCongHanhChanh_Dao {
         return true;
     }
 
+    public boolean xoaChamCong(String maChamCong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DELETE FROM ChamCongNhanVien"
+                    + " WHERE maChamCong =  '" + maChamCong + "'");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
 }

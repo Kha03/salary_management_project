@@ -12,7 +12,9 @@ import entity.NhanVienHanhChanh;
 import entity.ChamCongNhanVien;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -117,6 +119,16 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         tblChamCong.setSelectionBackground(new java.awt.Color(144, 237, 144));
         tblChamCong.setSelectionForeground(new java.awt.Color(51, 51, 51));
         tblChamCong.getTableHeader().setReorderingAllowed(false);
+        tblChamCong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblChamCongMouseClicked(evt);
+            }
+        });
+        tblChamCong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblChamCongKeyReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblChamCong);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 1090, 520));
@@ -153,14 +165,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         chkLamViec.setForeground(new java.awt.Color(0, 96, 0));
         chkLamViec.setAlignmentX(CENTER_ALIGNMENT);
         chkLamViec.setText("Làm việc");
-        chkLamViec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkLamViecActionPerformed(evt);
-            }
-        });
+        chkLamViec.setEnabled(false);
         add(chkLamViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 90, 20));
 
         spnGioTangCa.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
+        spnGioTangCa.setEnabled(false);
         ((DefaultEditor) spnGioTangCa.getEditor()).getTextField().setEditable(false);
         add(spnGioTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, -1));
 
@@ -178,6 +187,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         chkToanBo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         chkToanBo.setForeground(new java.awt.Color(0, 96, 0));
         chkToanBo.setText("Toàn bộ nhân viên");
+        chkToanBo.setEnabled(false);
         chkToanBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkToanBoActionPerformed(evt);
@@ -215,6 +225,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnLamMoi.setText("Làm Mới");
         btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
         add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, 120, 30));
 
         btnXoa.setBackground(new java.awt.Color(152, 249, 152));
@@ -222,6 +237,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 180, 90, 30));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -237,12 +257,14 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         dchNgayChamCong.setBackground(new java.awt.Color(255, 255, 255));
         dchNgayChamCong.setForeground(new java.awt.Color(0, 96, 0));
         dchNgayChamCong.setDateFormatString("dd/MM/yyyy");
+        dchNgayChamCong.setEnabled(false);
         dchNgayChamCong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(dchNgayChamCong, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 170, -1));
 
         chkTu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         chkTu.setForeground(new java.awt.Color(0, 96, 0));
         chkTu.setText("Từ");
+        chkTu.setEnabled(false);
         chkTu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkTuActionPerformed(evt);
@@ -304,10 +326,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLamViecActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkLamViecActionPerformed
-
     private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXuatActionPerformed
@@ -347,6 +365,28 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void btnTaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoActionPerformed
         xuLyTao();
     }//GEN-LAST:event_btnTaoActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        if (lamMoiBtn()) {
+            lamMoiDong();
+            lamMoiBang();
+            doDuLieu();
+        }
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void tblChamCongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChamCongMouseClicked
+        layDuLieuLenText();
+    }//GEN-LAST:event_tblChamCongMouseClicked
+
+    private void tblChamCongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblChamCongKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            layDuLieuLenText();
+        }
+    }//GEN-LAST:event_tblChamCongKeyReleased
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        xuLyXoa();
+    }//GEN-LAST:event_btnXoaActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -354,9 +394,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         phongBan_Dao = new PhongBan_Dao();
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
         chamCongHanhChanh_Dao = new ChamCongHanhChanh_Dao();
-        phongBans = phongBan_Dao.getDanhSachPhongBan();
-        nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh();
-        layNgayHienTai();
         doDuLieu();
     }
 
@@ -367,11 +404,13 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
 
     private void doDuLieuPhongBan(List<PhongBan> phongBans) {
         int i = 2;
+        dtmPhongBan.addRow(new Object[]{"1", "Toàn công ty"});
         for (PhongBan phongBan : phongBans) {
             Object[] object = {i, phongBan.getTenPhongBan()};
             i++;
             dtmPhongBan.addRow(object);
         }
+        this.phongBans = phongBans;
         tblPhongBan.setRowSelectionInterval(0, 0);
     }
 
@@ -382,6 +421,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             i++;
             dtmNhanVien.addRow(object);
         }
+        this.nhanVienHanhChanhs = nhanVienHanhChanhs;
     }
 
     private void doDuLieuChamCong(List<ChamCongNhanVien> chamCongNhanViens) {
@@ -396,11 +436,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             i++;
             dtmChamCong.addRow(object);
         }
+        this.chamCongNhanViens = chamCongNhanViens;
     }
 
     private void doDuLieu() {
-        doDuLieuPhongBan(phongBans);
-        doDuLieuNhanVien(nhanVienHanhChanhs);
+        doDuLieuPhongBan(phongBan_Dao.getDanhSachPhongBan());
+        doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh());
         doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVien());
     }
 
@@ -437,8 +478,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         tblNhanVien.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         //set table don vi
         dtmPhongBan = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Toàn công ty"},},
+                new Object[][]{},
                 new String[]{
                     "STT", "Phòng ban"
                 }
@@ -495,22 +535,103 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         tblChamCong.getColumnModel().getColumn(6).setCellRenderer(center);
     }
 
-    private void taoChamCong() {
+    public void layDuLieuLenText() {
+        try {
+            // Lấy vị trí hàng được chọn trong bảng và cho dữ liệu lên textfield
+            int hang = tblChamCong.getSelectedRow();
+            if (hang != -1 && btnTao.getText().equalsIgnoreCase("Tạo") && btnCapNhat.getText().equalsIgnoreCase("Cập Nhật")) {
+                lblMa.setText((String) tblChamCong.getValueAt(hang, 3));
+                lblTen.setText((String) tblChamCong.getValueAt(hang, 2));
+                lblPhongBan.setText((String) tblChamCong.getValueAt(hang, 1));
+                chkLamViec.setSelected((boolean) tblChamCong.getValueAt(hang, 5));
+                spnGioTangCa.setValue(tblChamCong.getValueAt(hang, 6));
+                dchNgayChamCong.setDate(dinhDangNgay.parse((String) tblChamCong.getValueAt(hang, 4)));
+            }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private boolean taoChamCong() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Chấm Công", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
-            ChamCongNhanVien chamCongNhanVien = new ChamCongNhanVien("",
-                    new NhanVienHanhChanh(lblMa.getText()), dchNgayChamCong.getDate(),
-                    chkLamViec.isSelected(), (int) spnGioTangCa.getValue());
+            int[] soNhanVienChams = tblNhanVien.getSelectedRows();
+            int soNhanVien = soNhanVienChams.length;
+            int soLuongDuocCham = soNhanVienChams.length;
+            int soThuTu = dtmChamCong.getRowCount() + 1;
+            for (int j = 0; j < soNhanVien; j++) {
+                ChamCongNhanVien chamCongNhanVien = new ChamCongNhanVien(chamCongHanhChanh_Dao.layMaTuDongChamCong(),
+                        nhanVienHanhChanhs.get(soNhanVienChams[j]), dchNgayChamCong.getDate(),
+                        chkLamViec.isSelected(), (int) spnGioTangCa.getValue());
+                if (!chamCongHanhChanh_Dao.themChamCong(chamCongNhanVien)) {
+                    JOptionPane.showMessageDialog(this, "Lỗi chấm công nhân viên có mã "
+                            + nhanVienHanhChanhs.get(soNhanVienChams[j]).getMaNhanVienHanhChanh());
+                    soLuongDuocCham--;
+                    continue;
+                }
+                Object[] object = {soThuTu, chamCongNhanVien.getNhanVienHanhChanh().getPhongBan().getTenPhongBan(),
+                    chamCongNhanVien.getNhanVienHanhChanh().getHoVaTen(),
+                    chamCongNhanVien.getNhanVienHanhChanh().getMaNhanVienHanhChanh(),
+                    dinhDangNgay.format(dchNgayChamCong.getDate()),
+                    chkLamViec.isSelected(),
+                    spnGioTangCa.getValue()};
+                soThuTu++;
+                chamCongNhanViens.add(chamCongNhanVien);
+                dtmChamCong.addRow(object);
+
+            }
+            JOptionPane.showMessageDialog(this, "Có " + soLuongDuocCham + " nhân viên được chấm");
+            return true;
         }
+        return false;
+    }
+
+    private boolean xoaChamCong(int[] hang) {
+        int soNhanVien = hang.length;
+        for (int i = 0; i < soNhanVien; i++) {
+            String maChamCong = chamCongNhanViens.get(hang[i]).getMaNgayCong();
+            if (!chamCongHanhChanh_Dao.xoaChamCong(maChamCong)) {
+                JOptionPane.showConfirmDialog(this, "Xóa chấm công thất bại số " + hang[i]);
+                return false;
+            }
+        }
+        return true;
     }
 
     private void xuLyTao() {
         if (btnTao.getText().equalsIgnoreCase("Tạo")) {
             btnTao.setText("Xác Nhận");
+            btnCapNhat.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnXuat.setEnabled(false);
+            lamMoiDong();
+            layNgayHienTai();
+            moNhapDuLieu();
 
         } else {
-            taoChamCong();
-            btnTao.setText("Tạo");
+            if (taoChamCong()) {
+                dongNhapDuLieu();
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnXuat.setEnabled(true);
+                btnTao.setText("Tạo");
+            }
+        }
+    }
+
+    private void xuLyXoa() {
+        int[] hang = tblChamCong.getSelectedRows();
+        if (hang.length != 0) {
+            int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Xóa Chấm Công", "Xác nhận", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                if (xoaChamCong(hang)) {
+                    JOptionPane.showMessageDialog(this, "Xóa thành công");
+                }
+                dtmChamCong.setRowCount(0);
+                doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVien());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng cần xóa!");
         }
     }
 
@@ -547,15 +668,66 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             lblMa.setText("");
             chkToanBo.setSelected(false);
             if (hang == 0) {
-                nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh();
-                doDuLieuNhanVien(nhanVienHanhChanhs);
+                doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh());
                 lblPhongBan.setText("");
             } else {
-                nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(phongBans.get(hang - 1).getMaPhongBan());
-                doDuLieuNhanVien(nhanVienHanhChanhs);
+                doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(phongBans.get(hang - 1).getMaPhongBan()));
                 lblPhongBan.setText((String) tblPhongBan.getValueAt(hang, 1));
             }
         }
+    }
+
+    public boolean lamMoiBtn() {
+        if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận") || btnTao.getText().equalsIgnoreCase("Xác Nhận")) {
+            int i = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát khỏi chỉnh sửa không", "Xác nhận", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                btnTao.setEnabled(true);
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnXuat.setEnabled(true);
+                btnTao.setText("Tạo");
+                btnCapNhat.setText("Cập Nhật");
+                dongNhapDuLieu();
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private void lamMoiDong() {
+        dchNgayChamCong.setDate(null);
+        dchDenNgay.setDate(null);
+        chkLamViec.setSelected(false);
+        chkToanBo.setSelected(false);
+        chkTu.setSelected(false);
+        lblPhongBan.setText("");
+        lblMa.setText("");
+        lblTen.setText("");
+        spnGioTangCa.setValue(0);
+    }
+
+    private void lamMoiBang() {
+        dtmChamCong.setRowCount(0);
+        dtmNhanVien.setRowCount(0);
+        dtmPhongBan.setRowCount(0);
+    }
+
+    private void moNhapDuLieu() {
+        dchNgayChamCong.setEnabled(true);
+        chkLamViec.setEnabled(true);
+        chkToanBo.setEnabled(true);
+        chkTu.setEnabled(true);
+        spnGioTangCa.setEnabled(true);
+    }
+
+    private void dongNhapDuLieu() {
+        dchNgayChamCong.setEnabled(false);
+        dchDenNgay.setEnabled(false);
+        chkLamViec.setEnabled(false);
+        chkToanBo.setEnabled(false);
+        chkTu.setEnabled(false);
+        spnGioTangCa.setEnabled(false);
     }
     private DefaultTableModel dtmPhongBan;
     private DefaultTableModel dtmNhanVien;
@@ -563,6 +735,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private SimpleDateFormat dinhDangNgay;
     private List<PhongBan> phongBans;
     private List<NhanVienHanhChanh> nhanVienHanhChanhs;
+    private List<ChamCongNhanVien> chamCongNhanViens;
     private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     private PhongBan_Dao phongBan_Dao;
     private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
