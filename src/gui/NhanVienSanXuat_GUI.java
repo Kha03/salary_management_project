@@ -104,6 +104,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
 
         tblNhanVien.setBackground(new java.awt.Color(184, 206, 224));
         tblNhanVien.setToolTipText("");
+        tblNhanVien.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblNhanVien.setSelectionBackground(new java.awt.Color(144, 237, 144));
         tblNhanVien.setSelectionForeground(new java.awt.Color(51, 51, 51));
         tblNhanVien.getTableHeader().setReorderingAllowed(false);
@@ -406,7 +407,23 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         tblNhanVien.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblNhanVien.getColumnModel().getColumn(0).setPreferredWidth(90);
+        tblNhanVien.getColumnModel().getColumn(1).setPreferredWidth(128);
+        tblNhanVien.getColumnModel().getColumn(2).setPreferredWidth(70);
+        tblNhanVien.getColumnModel().getColumn(3).setPreferredWidth(95);
+        tblNhanVien.getColumnModel().getColumn(4).setPreferredWidth(95);
+        tblNhanVien.getColumnModel().getColumn(5).setPreferredWidth(95);
+        tblNhanVien.getColumnModel().getColumn(6).setPreferredWidth(280);
+        tblNhanVien.getColumnModel().getColumn(7).setPreferredWidth(210);
+        tblNhanVien.getColumnModel().getColumn(8).setPreferredWidth(135);
+        tblNhanVien.getColumnModel().getColumn(9).setPreferredWidth(128);
+        tblNhanVien.getColumnModel().getColumn(10).setPreferredWidth(128);
+        tblNhanVien.getColumnModel().getColumn(11).setPreferredWidth(115);
         tblNhanVien.getColumnModel().getColumn(0).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(2).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(3).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(4).setCellRenderer(center);
+        tblNhanVien.getColumnModel().getColumn(5).setCellRenderer(center);
         //set Jlist
         dlmPhanXuong = new DefaultListModel();
         lstPhanXuong.setModel(dlmPhanXuong);
@@ -487,11 +504,12 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
             moNhapDuLieu();
             txtMa.setText(nhanVienSanXuat_Dao.layMaTuDongNhanVien());
         } else {
-            themNhanVien();
-            dongNhapDuLieu();
-            btnCapNhat.setEnabled(true);
-            btnXoa.setEnabled(true);
-            btnThem.setText("Thêm");
+            if (themNhanVien()) {
+                dongNhapDuLieu();
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setText("Thêm");
+            }
         }
     }
 
@@ -526,11 +544,11 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
             } else {
                 if (capNhatNhanVien()) {
                     kiemTraCapBac(maPhanXuong, capBac);
+                    dongNhapDuLieu();
+                    btnCapNhat.setText("Cập Nhật");
+                    btnThem.setEnabled(true);
+                    btnXoa.setEnabled(true);
                 }
-                dongNhapDuLieu();
-                btnCapNhat.setText("Cập Nhật");
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
@@ -578,15 +596,13 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
                 return true;
             } else {
                 JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
+                return false;
             }
-        } else {
-            lamMoiDong();
-            chonDuLieuRongCmb();
         }
         return false;
     }
 
-    private void themNhanVien() {
+    private boolean themNhanVien() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
             NhanVienSanXuat nVien = new NhanVienSanXuat("", txtTen.getText(),
@@ -619,13 +635,13 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
                     phanXuong_Dao.capNhatToTruong(txtMa.getText(), phanXuongs.get(cmbPhanXuong.getSelectedIndex()).getMaPhanXuong());
                 }
                 JOptionPane.showMessageDialog(this, "Thêm thành công!");
+                return true;
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại!");
+                return false;
             }
-        } else {
-            lamMoiDong();
-            chonDuLieuRongCmb();
         }
+        return false;
     }
 
     public void kiemTraCapBac(String maPhanXuong, String capBac) {

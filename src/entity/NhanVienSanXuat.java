@@ -32,10 +32,6 @@ public class NhanVienSanXuat extends NhanVien {
         this.maNhanVienSanXuat = maNhanVienSanXuat;
     }
 
-    public NhanVienSanXuat(String maSo, String hoVaTen) {
-        super(maSo, hoVaTen);
-    }
-
     public NhanVienSanXuat() {
     }
 

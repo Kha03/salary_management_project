@@ -376,7 +376,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         int hang = lstPhongBan.getSelectedIndex();
         if (hang != -1) {
             dtmNhanVien.setRowCount(0);
-            doDuLieuNhanVienTheoMaPhong(phongBans.get(hang).getMaPhongBan());
+            doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(phongBans.get(hang).getMaPhongBan()));
         }
     }//GEN-LAST:event_lstPhongBanMouseClicked
 
@@ -385,7 +385,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             int hang = lstPhongBan.getSelectedIndex();
             if (hang != -1) {
                 dtmNhanVien.setRowCount(0);
-                doDuLieuNhanVienTheoMaPhong(phongBans.get(hang).getMaPhongBan());
+                doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(phongBans.get(hang).getMaPhongBan()));
             }
         }
     }//GEN-LAST:event_lstPhongBanKeyReleased
@@ -541,30 +541,8 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         }
     }
 
-    public void doDuLieuNhanVienTheoMaPhong(String maPhongBan) {
-        dtmNhanVien.setRowCount(0);
-        for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(maPhongBan)) {
-            Object[] objects = {nVien.getMaNhanVienHanhChanh(), nVien.getHoVaTen(),
-                nVien.isGioiTinh() ? "Nam" : "Nữ",
-                dinhDangNgay.format(nVien.getNgaySinh()),
-                dinhDangNgay.format(nVien.getNgayVaoLam()),
-                nVien.getDienThoai(),
-                nVien.getDiaChi(),
-                nVien.getEmail(),
-                nVien.getNgoaiNgu(),
-                nVien.getPhongBan().getTenPhongBan(),
-                nVien.getCapBac(),
-                nVien.getChucVu(),
-                nVien.getHeSoLuong(),
-                df.format(nVien.getLuongCoBan()) + "VND"
-
-            };
-            dtmNhanVien.addRow(objects);
-        }
-    }
-
-    public void doDuLieuNhanVien() {
-        for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
+    public void doDuLieuNhanVien(List<NhanVienHanhChanh> nhanVienHanhChanhs) {
+        for (NhanVienHanhChanh nVien : nhanVienHanhChanhs) {
             Object[] objects = {nVien.getMaNhanVienHanhChanh(), nVien.getHoVaTen(),
                 nVien.isGioiTinh() ? "Nam" : "Nữ",
                 dinhDangNgay.format(nVien.getNgaySinh()),
@@ -611,7 +589,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     public void doDuLieu() {
-        doDuLieuNhanVien();
+        doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh());
         doDuLieuPhongBan();
         doDuLieuCapBac();
     }
@@ -644,11 +622,12 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             moNhapDuLieu();
             txtMa.setText(nhanVienHanhChanh_Dao.layMaTuDongNhanVien());
         } else {
-            themNhanVien();
-            dongNhapDuLieu();
-            btnCapNhat.setEnabled(true);
-            btnXoa.setEnabled(true);
-            btnThem.setText("Thêm");
+            if (themNhanVien()) {
+                dongNhapDuLieu();
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setText("Thêm");
+            }
         }
     }
 
@@ -684,11 +663,11 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             } else {
                 if (capNhatNhanVien()) {
                     kiemTraCapBac(maPhongBan, capBac);
+                    dongNhapDuLieu();
+                    btnCapNhat.setText("Cập Nhật");
+                    btnThem.setEnabled(true);
+                    btnXoa.setEnabled(true);
                 }
-                dongNhapDuLieu();
-                btnCapNhat.setText("Cập Nhật");
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
@@ -740,15 +719,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                 return true;
             } else {
                 JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
+                return false;
             }
-        } else {
-            lamMoiDong();
-            chonDuLieuRongCmb();
         }
         return false;
     }
 
-    private void themNhanVien() {
+    private boolean themNhanVien() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhân Viên", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
             NhanVienHanhChanh nVien = new NhanVienHanhChanh("", txtTen.getText(),
@@ -786,13 +763,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     phongBan_Dao.capNhatTruongPhong(txtMa.getText(), phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan());
                 }
                 JOptionPane.showMessageDialog(this, "Thêm thành công!");
+                return true;
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại!");
+                return false;
             }
-        } else {
-            lamMoiDong();
-            chonDuLieuRongCmb();
         }
+        return false;
     }
 
     public void kiemTraCapBac(String maPhongBan, String capBac) {

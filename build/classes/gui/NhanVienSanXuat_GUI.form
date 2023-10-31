@@ -93,6 +93,7 @@
               <Color blue="e0" green="ce" red="b8" type="rgb"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="autoResizeMode" type="int" value="0"/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0"/>
             </Property>

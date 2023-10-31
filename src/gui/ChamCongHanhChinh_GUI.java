@@ -1,7 +1,21 @@
 package gui;
 
+import connect.ConnectDB;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import dao.ChamCongHanhChanh_Dao;
+import dao.NhanVienHanhChanh_Dao;
+import dao.PhongBan_Dao;
+import entity.PhongBan;
+import entity.NhanVienHanhChanh;
+import entity.ChamCongNhanVien;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,9 +26,10 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     /**
      * Creates new form ChamCongHanhChinh
      */
-    public ChamCongHanhChinh_GUI() {
+    public ChamCongHanhChinh_GUI() throws SQLException {
         initComponents();
         setTable();
+        initCommon();
     }
 
     /**
@@ -27,33 +42,33 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblPhongBan = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblChamCong = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton6 = new javax.swing.JButton();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        tblNhanVien = new javax.swing.JTable();
+        chkLamViec = new javax.swing.JCheckBox();
+        spnGioTangCa = new javax.swing.JSpinner();
+        btnXuat = new javax.swing.JButton();
+        chkToanBo = new javax.swing.JCheckBox();
+        btnTao = new javax.swing.JButton();
+        btnCapNhat = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jButton17 = new javax.swing.JButton();
+        dchNgayChamCong = new com.toedter.calendar.JDateChooser();
+        chkTu = new javax.swing.JCheckBox();
+        dchDenNgay = new com.toedter.calendar.JDateChooser();
+        btnLoc = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        lblPhongBan = new javax.swing.JLabel();
+        lblMa = new javax.swing.JLabel();
+        lblTen = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
@@ -61,7 +76,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhongBan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -69,18 +84,28 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable3.setToolTipText("");
-        jTable3.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(jTable3);
+        tblPhongBan.setToolTipText("");
+        tblPhongBan.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblPhongBan.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblPhongBan.getTableHeader().setReorderingAllowed(false);
+        tblPhongBan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPhongBanMouseClicked(evt);
+            }
+        });
+        tblPhongBan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblPhongBanKeyReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblPhongBan);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 210, 340));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Chấm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblChamCong.setBackground(new java.awt.Color(184, 206, 224));
+        tblChamCong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -88,17 +113,17 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        tblChamCong.setToolTipText("");
+        tblChamCong.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblChamCong.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblChamCong.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tblChamCong);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 1090, 520));
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -106,142 +131,137 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable5.setToolTipText("");
-        jTable5.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable5.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(jTable5);
+        tblNhanVien.setToolTipText("");
+        tblNhanVien.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblNhanVien.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblNhanVien.getTableHeader().setReorderingAllowed(false);
+        tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNhanVienMouseClicked(evt);
+            }
+        });
+        tblNhanVien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblNhanVienKeyReleased(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tblNhanVien);
 
         add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 397));
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "hành chính", " " }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 170, -1));
-
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox1.setAlignmentX(CENTER_ALIGNMENT);
-        jCheckBox1.setText("Làm việc");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        chkLamViec.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chkLamViec.setForeground(new java.awt.Color(0, 96, 0));
+        chkLamViec.setAlignmentX(CENTER_ALIGNMENT);
+        chkLamViec.setText("Làm việc");
+        chkLamViec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                chkLamViecActionPerformed(evt);
             }
         });
-        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 90, 20));
+        add(chkLamViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 90, 20));
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        spnGioTangCa.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
+        ((DefaultEditor) spnGioTangCa.getEditor()).getTextField().setEditable(false);
+        add(spnGioTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, -1));
+
+        btnXuat.setBackground(new java.awt.Color(152, 249, 152));
+        btnXuat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXuat.setText("Xuất Bảng Chấm Công");
+        btnXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                btnXuatActionPerformed(evt);
             }
         });
-        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 170, -1));
-        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, -1));
+        add(btnXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 140, 180, 30));
 
-        jButton6.setBackground(new java.awt.Color(152, 249, 152));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton6.setText("Xuất Bảng Chấm Công");
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        chkToanBo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chkToanBo.setForeground(new java.awt.Color(0, 96, 0));
+        chkToanBo.setText("Toàn bộ nhân viên");
+        chkToanBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                chkToanBoActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 140, 180, 30));
+        add(chkToanBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 180, 20));
 
-        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox3.setText("Toàn bộ nhân viên");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        btnTao.setBackground(new java.awt.Color(152, 249, 152));
+        btnTao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
+        btnTao.setText("Tạo");
+        btnTao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTao.setDisabledIcon(null);
+        btnTao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                btnTaoActionPerformed(evt);
             }
         });
-        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 180, 20));
+        add(btnTao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 180, 130, 30));
 
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Tạo");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 180, 120, 30));
-
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
-        jButton15.setText("Cập Nhật");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        btnCapNhat.setBackground(new java.awt.Color(152, 249, 152));
+        btnCapNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
+        btnCapNhat.setText("Cập Nhật");
+        btnCapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                btnCapNhatActionPerformed(evt);
             }
         });
-        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 180, 130, 30));
+        add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 180, 130, 30));
 
-        jButton13.setBackground(new java.awt.Color(152, 249, 152));
-        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton13.setText("Làm Mới");
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 140, 120, 30));
+        btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnLamMoi.setText("Làm Mới");
+        btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, 120, 30));
 
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        jButton16.setText("Xóa");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 180, 90, 30));
+        btnXoa.setBackground(new java.awt.Color(152, 249, 152));
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 180, 90, 30));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Trạng Thái:");
         jLabel14.setToolTipText("");
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 100, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 170, -1));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Chấm Công Hành Chính");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 40));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser2.setDateFormatString("dd/mm/yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 170, -1));
+        dchNgayChamCong.setBackground(new java.awt.Color(255, 255, 255));
+        dchNgayChamCong.setForeground(new java.awt.Color(0, 96, 0));
+        dchNgayChamCong.setDateFormatString("dd/MM/yyyy");
+        dchNgayChamCong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(dchNgayChamCong, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 170, -1));
 
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox2.setText("Từ");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        chkTu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chkTu.setForeground(new java.awt.Color(0, 96, 0));
+        chkTu.setText("Từ");
+        chkTu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                chkTuActionPerformed(evt);
             }
         });
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 50, 20));
+        add(chkTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 50, 20));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser1.setDateFormatString("dd/mm/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 170, -1));
+        dchDenNgay.setBackground(new java.awt.Color(255, 255, 255));
+        dchDenNgay.setForeground(new java.awt.Color(0, 96, 0));
+        dchDenNgay.setDateFormatString("dd/MM/yyyy");
+        dchDenNgay.setEnabled(false);
+        dchDenNgay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(dchDenNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 170, -1));
 
-        jButton17.setBackground(new java.awt.Color(152, 249, 152));
-        jButton17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton17.setText("Lọc");
-        jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 60, -1));
+        btnLoc.setBackground(new java.awt.Color(152, 249, 152));
+        btnLoc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLoc.setText("Lọc");
+        btnLoc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnLoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 60, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Ngày Chấm Công:");
@@ -267,45 +287,129 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         jLabel19.setText("Giờ Tăng Ca:");
         jLabel19.setToolTipText("");
         add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 100, -1));
+
+        lblPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhongBan.setForeground(new java.awt.Color(0, 99, 0));
+        lblPhongBan.setToolTipText("");
+        add(lblPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 170, -1));
+
+        lblMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblMa.setForeground(new java.awt.Color(0, 99, 0));
+        lblMa.setToolTipText("");
+        add(lblMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 170, -1));
+
+        lblTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTen.setForeground(new java.awt.Color(0, 99, 0));
+        lblTen.setToolTipText("");
+        add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void chkLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLamViecActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_chkLamViecActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_btnXuatActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void chkToanBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkToanBoActionPerformed
+        xuLyChkToanBo();
+    }//GEN-LAST:event_chkToanBoActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_btnCapNhatActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void chkTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTuActionPerformed
+        xuLyChkTu();
+    }//GEN-LAST:event_chkTuActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    private void tblPhongBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongBanMouseClicked
+        xuLyThayDoiTblPhongBan();
+    }//GEN-LAST:event_tblPhongBanMouseClicked
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-     private void setTable() {
+    private void tblPhongBanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPhongBanKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            xuLyThayDoiTblPhongBan();
+        }
+    }//GEN-LAST:event_tblPhongBanKeyReleased
+
+    private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
+        xuLyThayDoiTblNhanVien();
+    }//GEN-LAST:event_tblNhanVienMouseClicked
+
+    private void tblNhanVienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblNhanVienKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            xuLyThayDoiTblNhanVien();
+        }
+    }//GEN-LAST:event_tblNhanVienKeyReleased
+
+    private void btnTaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoActionPerformed
+        xuLyTao();
+    }//GEN-LAST:event_btnTaoActionPerformed
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
+        phongBan_Dao = new PhongBan_Dao();
+        nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
+        chamCongHanhChanh_Dao = new ChamCongHanhChanh_Dao();
+        phongBans = phongBan_Dao.getDanhSachPhongBan();
+        nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh();
+        layNgayHienTai();
+        doDuLieu();
+    }
+
+    private void layNgayHienTai() {
+        Calendar calendar = Calendar.getInstance();
+        dchNgayChamCong.setDate(calendar.getTime());
+    }
+
+    private void doDuLieuPhongBan(List<PhongBan> phongBans) {
+        int i = 2;
+        for (PhongBan phongBan : phongBans) {
+            Object[] object = {i, phongBan.getTenPhongBan()};
+            i++;
+            dtmPhongBan.addRow(object);
+        }
+        tblPhongBan.setRowSelectionInterval(0, 0);
+    }
+
+    private void doDuLieuNhanVien(List<NhanVienHanhChanh> nhanVienHanhChanhs) {
+        int i = 1;
+        for (NhanVienHanhChanh nVien : nhanVienHanhChanhs) {
+            Object[] object = {i, nVien.getHoVaTen()};
+            i++;
+            dtmNhanVien.addRow(object);
+        }
+    }
+
+    private void doDuLieuChamCong(List<ChamCongNhanVien> chamCongNhanViens) {
+        int i = 1;
+        for (ChamCongNhanVien chamCong : chamCongNhanViens) {
+            Object[] object = {i, chamCong.getNhanVienHanhChanh().getPhongBan().getTenPhongBan(),
+                chamCong.getNhanVienHanhChanh().getHoVaTen(),
+                chamCong.getNhanVienHanhChanh().getMaNhanVienHanhChanh(),
+                dinhDangNgay.format(chamCong.getNgayLamViec()),
+                chamCong.getTrangThai(),
+                chamCong.getGioTangCa()};
+            i++;
+            dtmChamCong.addRow(object);
+        }
+    }
+
+    private void doDuLieu() {
+        doDuLieuPhongBan(phongBans);
+        doDuLieuNhanVien(nhanVienHanhChanhs);
+        doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVien());
+    }
+
+    private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-        modelNhanVien = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Kha"},
-                    {"2", "Thành"},
-                    {"3", "Vân"},
-                    {"4", "Dha"},},
+        dtmNhanVien = new DefaultTableModel(
+                new Object[][]{},
                 new String[]{
                     "STT", "Họ và tên"
                 }
@@ -327,17 +431,14 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable5.setModel(modelNhanVien);
-        jTable5.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTable5.getColumnModel().getColumn(1).setPreferredWidth(174);
-        jTable5.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblNhanVien.setModel(dtmNhanVien);
+        tblNhanVien.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblNhanVien.getColumnModel().getColumn(1).setPreferredWidth(174);
+        tblNhanVien.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         //set table don vi
-        modelDonVi = new DefaultTableModel(
+        dtmPhongBan = new DefaultTableModel(
                 new Object[][]{
-                    {"1", "Kế Toán"},
-                    {"2", "Cả công ty"},
-                    {"3", "Nhân sự"},
-                    {"4", "Bán hàng"},},
+                    {"1", "Toàn công ty"},},
                 new String[]{
                     "STT", "Phòng ban"
                 }
@@ -359,16 +460,13 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable3.setModel(modelDonVi);
-        jTable3.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTable3.getColumnModel().getColumn(1).setPreferredWidth(174);
-        jTable3.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblPhongBan.setModel(dtmPhongBan);
+        tblPhongBan.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblPhongBan.getColumnModel().getColumn(1).setPreferredWidth(174);
+        tblPhongBan.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         //table chấm công
-        modelChamCong = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", true, "5"},
-                    {"2", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", false, "0"},
-                    {"3", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", true, "2"},},
+        dtmChamCong = new DefaultTableModel(
+                new Object[][]{},
                 new String[]{
                     "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày chấm", "Trạng thái", "Tăng ca"
                 }
@@ -390,35 +488,96 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelChamCong);
-        jTable4.getColumnModel().getColumn(0).setPreferredWidth(30);
-        jTable4.getColumnModel().getColumn(1).setPreferredWidth(110);
-        jTable4.getColumnModel().getColumn(2).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(3).setPreferredWidth(100);
-        jTable4.getColumnModel().getColumn(4).setPreferredWidth(100);
-        jTable4.getColumnModel().getColumn(5).setPreferredWidth(50);
-        jTable4.getColumnModel().getColumn(6).setPreferredWidth(50);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-
+        tblChamCong.setModel(dtmChamCong);
+        tblChamCong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblChamCong.getColumnModel().getColumn(3).setCellRenderer(center);
+        tblChamCong.getColumnModel().getColumn(4).setCellRenderer(center);
+        tblChamCong.getColumnModel().getColumn(6).setCellRenderer(center);
     }
 
-    private DefaultTableModel modelDonVi;
-    private DefaultTableModel modelNhanVien;
-    private DefaultTableModel modelChamCong;
+    private void taoChamCong() {
+        int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Chấm Công", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
+            ChamCongNhanVien chamCongNhanVien = new ChamCongNhanVien("",
+                    new NhanVienHanhChanh(lblMa.getText()), dchNgayChamCong.getDate(),
+                    chkLamViec.isSelected(), (int) spnGioTangCa.getValue());
+        }
+    }
+
+    private void xuLyTao() {
+        if (btnTao.getText().equalsIgnoreCase("Tạo")) {
+            btnTao.setText("Xác Nhận");
+
+        } else {
+            taoChamCong();
+            btnTao.setText("Tạo");
+        }
+    }
+
+    private void xuLyChkTu() {
+        if (chkTu.isSelected()) {
+            dchDenNgay.setEnabled(true);
+        } else {
+            dchDenNgay.setEnabled(false);
+        }
+    }
+
+    private void xuLyChkToanBo() {
+        if (chkToanBo.isSelected()) {
+            tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+        } else {
+            tblNhanVien.clearSelection();
+        }
+    }
+
+    private void xuLyThayDoiTblNhanVien() {
+        int hang = tblNhanVien.getSelectedRow();
+        if (hang != -1) {
+            NhanVienHanhChanh nVien = nhanVienHanhChanhs.get(hang);
+            lblTen.setText(nVien.getHoVaTen());
+            lblMa.setText(nVien.getMaNhanVienHanhChanh());
+        }
+    }
+
+    private void xuLyThayDoiTblPhongBan() {
+        int hang = tblPhongBan.getSelectedRow();
+        if (hang != -1) {
+            dtmNhanVien.setRowCount(0);
+            lblTen.setText("");
+            lblMa.setText("");
+            chkToanBo.setSelected(false);
+            if (hang == 0) {
+                nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh();
+                doDuLieuNhanVien(nhanVienHanhChanhs);
+                lblPhongBan.setText("");
+            } else {
+                nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(phongBans.get(hang - 1).getMaPhongBan());
+                doDuLieuNhanVien(nhanVienHanhChanhs);
+                lblPhongBan.setText((String) tblPhongBan.getValueAt(hang, 1));
+            }
+        }
+    }
+    private DefaultTableModel dtmPhongBan;
+    private DefaultTableModel dtmNhanVien;
+    private DefaultTableModel dtmChamCong;
+    private SimpleDateFormat dinhDangNgay;
+    private List<PhongBan> phongBans;
+    private List<NhanVienHanhChanh> nhanVienHanhChanhs;
+    private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
+    private PhongBan_Dao phongBan_Dao;
+    private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JButton btnCapNhat;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnLoc;
+    private javax.swing.JButton btnTao;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuat;
+    private javax.swing.JCheckBox chkLamViec;
+    private javax.swing.JCheckBox chkToanBo;
+    private javax.swing.JCheckBox chkTu;
+    private com.toedter.calendar.JDateChooser dchDenNgay;
+    private com.toedter.calendar.JDateChooser dchNgayChamCong;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -429,10 +588,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblPhongBan;
+    private javax.swing.JLabel lblTen;
+    private javax.swing.JSpinner spnGioTangCa;
+    private javax.swing.JTable tblChamCong;
+    private javax.swing.JTable tblNhanVien;
+    private javax.swing.JTable tblPhongBan;
     // End of variables declaration//GEN-END:variables
 }

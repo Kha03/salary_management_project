@@ -4,6 +4,8 @@ import java.sql.*;
 import connect.ConnectDB;
 import entity.ChamCongNhanVien;
 import entity.NhanVienHanhChanh;
+import entity.PhongBan;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +21,25 @@ public class ChamCongHanhChanh_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT * FROM ChamCongNhanVien";
+            String sql = " SELECT ChamCongNhanVien.*, NhanVien.hoVaTen,PhongBan.maPhongBan, PhongBan.tenPhongBan"
+                    + " FROM ChamCongNhanVien"
+                    + " JOIN NhanVienHanhChinh ON"
+                    + " NhanVienHanhChinh.maNhanVienHanhChinh = ChamCongNhanVien.maNhanVienHanhChinh"
+                    + " JOIN NhanVien ON"
+                    + " NhanVien.maNhanVien = NhanVienHanhChinh.maNhanVien"
+                    + " JOIN PhongBan ON"
+                    + " NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                //còn sai
+                NhanVienHanhChanh nVien = new NhanVienHanhChanh(resultSet.getString(5),
+                        "", resultSet.getString(7));
+                nVien.setPhongBan(new PhongBan(resultSet.getString(8), resultSet.getString(9)));
                 dsChamCong.add(new ChamCongNhanVien(resultSet.getString(1),
-                        new NhanVienHanhChanh(resultSet.getString(5)), resultSet.getDate(2),
+                        nVien, resultSet.getDate(2),
                         resultSet.getBoolean(3),
-                        resultSet.getInt(3)));
+                        resultSet.getInt(4)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,7 +52,7 @@ public class ChamCongHanhChanh_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT * FROM ChamCongNhanVien where ngayLamViec = '"+thang+"'";
+            String sql = "SELECT * FROM ChamCongNhanVien where ngayLamViec = '" + thang + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -57,4 +68,43 @@ public class ChamCongHanhChanh_Dao {
         }
         return dsChamCong;
     }
+
+    public String layMaTuDongChamCong() {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String maChamCong = null;
+        String sql = "DECLARE @NewIDCCHC VARCHAR(7)"
+                + " SET @NewIDCCHC = dbo.IDCCHC()"
+                + " SELECT @NewIDCCHC ";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                maChamCong = resultSet.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return maChamCong;
+    }
+
+    public boolean themChamCong(ChamCongNhanVien chamCong) {
+        try {
+            SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("INSERT INTO ChamCongNhanVien VALUES (?,?,?,?,?,NULL)");
+            smt.setString(1, layMaTuDongChamCong());
+            smt.setString(2, dinhDangNgay.format(chamCong.getNgayLamViec()));
+            smt.setBoolean(3, chamCong.getTrangThai());
+            smt.setInt(4, chamCong.getGioTangCa());
+            smt.setString(5, chamCong.getNhanVienHanhChanh().getMaNhanVienHanhChanh());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
 }
