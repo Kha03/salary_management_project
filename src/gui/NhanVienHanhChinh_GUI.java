@@ -82,6 +82,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         dchNgaySinh = new com.toedter.calendar.JDateChooser();
         dchNgayVaoLam = new com.toedter.calendar.JDateChooser();
+        lblThongBao = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -334,6 +335,11 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         dchNgayVaoLam.setDateFormatString("dd/MM/yyyy");
         dchNgayVaoLam.setEnabled(false);
         jPanel1.add(dchNgayVaoLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
+
+        lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        lblThongBao.setToolTipText("");
+        jPanel1.add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 160, 360, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 50, 1150, 250));
 
@@ -668,12 +674,12 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     btnCapNhat.setText("Cập Nhật");
                     btnThem.setEnabled(true);
                     btnXoa.setEnabled(true);
-                } else if (hang.length == 0) {
-                    JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "1 lần chỉ được cập nhật một nhân viên!");
                 }
             }
+        } else if (hang.length == 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
+        } else {
+            JOptionPane.showMessageDialog(this, "1 lần chỉ được cập nhật một nhân viên!");
         }
     }
 
@@ -871,6 +877,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblLuongCoBan;
     private javax.swing.JLabel lblLuongCoSo;
+    private javax.swing.JLabel lblThongBao;
     private javax.swing.JList<String> lstPhongBan;
     private javax.swing.JTable tblNhanVien;
     private javax.swing.JTextField txtChucVu;

@@ -67,6 +67,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         lblPhongBan = new javax.swing.JLabel();
         lblMa = new javax.swing.JLabel();
         lblTen = new javax.swing.JLabel();
+        lblThongBao = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
@@ -300,6 +301,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         lblTen.setForeground(new java.awt.Color(0, 99, 0));
         lblTen.setToolTipText("");
         add(lblTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 170, -1));
+
+        lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        lblThongBao.setToolTipText("");
+        add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 360, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
@@ -668,8 +674,13 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void xuLyThayDoiNgayCham() {
-        dtmChamCong.setRowCount(0);
-        doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
+        if (KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+            dtmChamCong.setRowCount(0);
+            doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
+            lblThongBao.setText("");
+        } else {
+            lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
+        }
     }
 
     private void xuLyThayDoiTblNhanVien() {
@@ -724,6 +735,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         lblPhongBan.setText("");
         lblMa.setText("");
         lblTen.setText("");
+        lblThongBao.setText("");
         spnGioTangCa.setValue(0);
     }
 
@@ -758,6 +770,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     private PhongBan_Dao phongBan_Dao;
     private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
+    private KiemTraChuoi kiemTraChuoi;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnLamMoi;
@@ -780,6 +793,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblMa;
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblTen;
+    private javax.swing.JLabel lblThongBao;
     private javax.swing.JSpinner spnGioTangCa;
     private javax.swing.JTable tblChamCong;
     private javax.swing.JTable tblNhanVien;

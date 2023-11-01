@@ -76,6 +76,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         dchNgaySinh = new com.toedter.calendar.JDateChooser();
         dchNgayVaoLam = new com.toedter.calendar.JDateChooser();
+        lblThongBao = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -291,6 +292,11 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         dchNgayVaoLam.setDateFormatString("dd/MM/yyyy");
         dchNgayVaoLam.setEnabled(false);
         jPanel1.add(dchNgayVaoLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
+
+        lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        lblThongBao.setToolTipText("");
+        jPanel1.add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 160, 360, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 50, 1150, 250));
 
@@ -784,6 +790,7 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblThongBao;
     private javax.swing.JList<String> lstPhanXuong;
     private javax.swing.JTable tblNhanVien;
     private javax.swing.JTextField txtDiaChi;
