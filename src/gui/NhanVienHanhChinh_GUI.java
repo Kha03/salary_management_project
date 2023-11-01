@@ -490,6 +490,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         txtDienThoai.setText("");
         txtMail.setText("");
         txtNgoaiNgu.setText("");
+        lblLuongCoBan.setText("");
     }
 
     public boolean lamMoiBtn() {
@@ -650,8 +651,8 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void xuLyCapNhat() {
-        int hang = tblNhanVien.getSelectedRow();
-        if (hang != -1) {
+        int[] hang = tblNhanVien.getSelectedRows();
+        if (hang.length == 1) {
             if (btnCapNhat.getText().equalsIgnoreCase("Cập Nhật")) {
                 maPhongBan = phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan();
                 capBac = (String) cmbCapBac.getSelectedItem();
@@ -667,10 +668,12 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                     btnCapNhat.setText("Cập Nhật");
                     btnThem.setEnabled(true);
                     btnXoa.setEnabled(true);
+                } else if (hang.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "1 lần chỉ được cập nhật một nhân viên!");
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
         }
     }
 
@@ -711,9 +714,6 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                         dtmNhanVien.setValueAt(cmbHeSoLuong.getSelectedItem(), j, 12);
                         dtmNhanVien.setValueAt(lblLuongCoBan.getText(), j, 13);
                     }
-                }
-                if (cmbCapBac.getSelectedItem().equals("Trưởng Phòng")) {
-                    phongBan_Dao.capNhatTruongPhong(txtMa.getText(), phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan());
                 }
                 JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
                 return true;
@@ -776,8 +776,14 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         String maPhongBanHt = phongBans.get(cmbPhongBan.getSelectedIndex()).getMaPhongBan();
         String capBacHt = (String) cmbCapBac.getSelectedItem();
         if (!capBac.equalsIgnoreCase(capBacHt) || !maPhongBan.equalsIgnoreCase(maPhongBanHt)) {
-            if (phongBan_Dao.getMaTruongPhong(maPhongBan).equalsIgnoreCase(txtMa.getText())) {
-                phongBan_Dao.capNhatTruongPhong(maPhongBan);
+            String maTruongPhong = phongBan_Dao.getMaTruongPhong(maPhongBan);
+            if (maTruongPhong != null) {
+                if (maTruongPhong.equalsIgnoreCase(txtMa.getText())) {
+                    phongBan_Dao.capNhatTruongPhong(maPhongBan);
+                }
+            }
+            if (capBacHt.equalsIgnoreCase("Trưởng Phòng")) {
+                phongBan_Dao.capNhatTruongPhong(txtMa.getText(), maPhongBanHt);
             }
         }
     }

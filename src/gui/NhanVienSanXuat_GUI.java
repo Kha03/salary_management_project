@@ -532,8 +532,8 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
     }
 
     private void xuLyCapNhat() {
-        int hang = tblNhanVien.getSelectedRow();
-        if (hang != -1) {
+        int[] hang = tblNhanVien.getSelectedRows();
+        if (hang.length == 1) {
             if (btnCapNhat.getText().equalsIgnoreCase("Cập Nhật")) {
                 maPhanXuong = phanXuongs.get(cmbPhanXuong.getSelectedIndex()).getMaPhanXuong();
                 capBac = (String) cmbCapBac.getSelectedItem();
@@ -550,8 +550,10 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
                     btnXoa.setEnabled(true);
                 }
             }
-        } else {
+        } else if (hang.length == 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần cập nhật!");
+        } else {
+            JOptionPane.showMessageDialog(this, "1 lần chỉ được cập nhật một nhân viên!");
         }
     }
 
@@ -588,9 +590,6 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
                         dtmNhanVien.setValueAt(cmbTrinhDo.getSelectedItem(), j, 10);
                         dtmNhanVien.setValueAt(txtKinhNghiem.getText(), j, 11);
                     }
-                }
-                if (cmbCapBac.getSelectedItem().equals("Tổ Trưởng")) {
-                    phanXuong_Dao.capNhatToTruong(txtMa.getText(), phanXuongs.get(cmbPhanXuong.getSelectedIndex()).getMaPhanXuong());
                 }
                 JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
                 return true;
@@ -648,8 +647,14 @@ public class NhanVienSanXuat_GUI extends javax.swing.JPanel {
         String maPhanXuongHt = phanXuongs.get(cmbPhanXuong.getSelectedIndex()).getMaPhanXuong();
         String capBacHt = (String) cmbCapBac.getSelectedItem();
         if (!capBac.equalsIgnoreCase(capBacHt) || !maPhanXuong.equalsIgnoreCase(maPhanXuongHt)) {
-            if (phanXuong_Dao.getMaToTruong(maPhanXuong).equalsIgnoreCase(txtMa.getText())) {
-                phanXuong_Dao.capNhatToTruong(maPhanXuong);
+            String maToTruong = phanXuong_Dao.getMaToTruong(maPhanXuong);
+            if (maToTruong != null) {
+                if (maToTruong.equalsIgnoreCase(txtMa.getText())) {
+                    phanXuong_Dao.capNhatToTruong(maPhanXuong);
+                }
+            }
+            if (capBacHt.equalsIgnoreCase("Tổ Trưởng")) {
+                phanXuong_Dao.capNhatToTruong(txtMa.getText(), maPhanXuongHt);
             }
         }
     }
