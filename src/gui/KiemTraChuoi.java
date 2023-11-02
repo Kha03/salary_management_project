@@ -33,6 +33,15 @@ public class KiemTraChuoi {
         return date.isBefore(LocalDate.now());
     }
 
+    public static boolean ktTruocHoacBangNgayHT(String str) {
+        String[] arr = str.split("/");
+        int ngay = Integer.parseInt(arr[0]);
+        int thang = Integer.parseInt(arr[1]);
+        int nam = Integer.parseInt(arr[2]);
+        LocalDate date = LocalDate.of(nam, thang, ngay);
+        return (date.isBefore(LocalDate.now()) || date.isEqual(LocalDate.now()));
+    }
+
     public static boolean ktSauNgayHT(String str) {
         String[] arr = str.split("/");
         int ngay = Integer.parseInt(arr[0]);

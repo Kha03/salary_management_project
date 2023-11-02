@@ -607,14 +607,18 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             lamMoiDong();
             moNhapDuLieu();
         } else {
-            if (taoChamCong()) {
-                dtmChamCong.setRowCount(0);
-                doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
-                dongNhapDuLieu();
-                btnCapNhat.setEnabled(true);
-                btnXoa.setEnabled(true);
-                btnXuat.setEnabled(true);
-                btnTao.setText("Tạo");
+            if (kiemTraNgay()) {
+                if (taoChamCong()) {
+                    dtmChamCong.setRowCount(0);
+                    doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
+                    dongNhapDuLieu();
+                    btnCapNhat.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    btnXuat.setEnabled(true);
+                    btnTao.setText("Tạo");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Sai định dạng");
             }
         }
     }
@@ -628,15 +632,19 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             dchNgayChamCong.setEnabled(false);
             moNhapDuLieu();
         } else {
-            if (capNhatChamCong()) {
-                dtmChamCong.setRowCount(0);
-                doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
-                dongNhapDuLieu();
-                btnTao.setEnabled(true);
-                btnXoa.setEnabled(true);
-                btnXuat.setEnabled(true);
-                dchNgayChamCong.setEnabled(true);
-                btnCapNhat.setText("Cập Nhật");
+            if (kiemTraNgay()) {
+                if (capNhatChamCong()) {
+                    dtmChamCong.setRowCount(0);
+                    doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
+                    dongNhapDuLieu();
+                    btnTao.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    btnXuat.setEnabled(true);
+                    dchNgayChamCong.setEnabled(true);
+                    btnCapNhat.setText("Cập Nhật");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Sai định dạng");
             }
         }
     }
@@ -674,13 +682,22 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void xuLyThayDoiNgayCham() {
-        if (KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+        if (kiemTraNgay()) {
             dtmChamCong.setRowCount(0);
             doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
-            lblThongBao.setText("");
-        } else {
-            lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
         }
+    }
+
+    private boolean kiemTraNgay() {
+        if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+            lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
+            return false;
+        } else if (!KiemTraChuoi.ktTruocHoacBangNgayHT(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+            lblThongBao.setText("* Ngày chấm không được sau ngày hiện tại");
+            return false;
+        }
+        lblThongBao.setText("");
+        return true;
     }
 
     private void xuLyThayDoiTblNhanVien() {
