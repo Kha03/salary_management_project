@@ -32,10 +32,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         jTable4 = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jCheckBox2 = new javax.swing.JCheckBox();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jButton15 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -121,33 +118,11 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
 
         add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 397));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser1.setDateFormatString("dd/mm/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 170, -1));
-
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox2.setText("Từ");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 50, 20));
-
         jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
         jDateChooser2.setDateFormatString("dd/mm/yyyy");
         jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 170, -1));
-
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton15.setText("Lọc");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -199,29 +174,29 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setText("Sản Phẩm:");
         jLabel21.setToolTipText("");
-        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 90, -1));
+        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 90, -1));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 99, 0));
         jLabel25.setText("Chổi nhựa");
         jLabel25.setToolTipText("");
-        add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 170, 20));
+        add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 170, 20));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel22.setText("Công Đoạn:");
         jLabel22.setToolTipText("");
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 90, -1));
+        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 90, -1));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 99, 0));
         jLabel26.setText("gia công");
         jLabel26.setToolTipText("");
-        add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 170, 20));
+        add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 170, 20));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel27.setText("Số Lượng:");
         jLabel27.setToolTipText("");
-        add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 90, -1));
+        add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 90, -1));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 99, 0));
@@ -233,7 +208,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         jLabel29.setForeground(new java.awt.Color(0, 99, 0));
         jLabel29.setText("11221");
         jLabel29.setToolTipText("");
-        add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 130, 20));
+        add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 130, 20));
 
         jButton16.setBackground(new java.awt.Color(152, 249, 152));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -283,7 +258,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel30.setText("Đơn Giá:");
         jLabel30.setToolTipText("");
-        add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 90, -1));
+        add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 90, -1));
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 96, 0));
@@ -292,23 +267,19 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 jTextField6ActionPerformed(evt);
             }
         });
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, 80, -1));
+        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 80, -1));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(0, 99, 0));
         jLabel31.setText("11221");
         jLabel31.setToolTipText("");
-        add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 140, 140, 20));
+        add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 140, 20));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tổng Lương Phân Xưởng:");
         jLabel16.setToolTipText("");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 140, 180, -1));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
@@ -444,13 +415,10 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

@@ -13,7 +13,7 @@ import java.util.List;
 public class HopDong_Dao {
 
     //lấy ra danh sách nhân viên hành chính
-    public List<HopDongSanXuat> getDanhSachPhongBan() {
+    public List<HopDongSanXuat> getDanhSachHopDong() {
         List<HopDongSanXuat> dsHopDong = new ArrayList<>();
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
@@ -24,11 +24,32 @@ public class HopDong_Dao {
 
             while (resultSet.next()) {
                 //còn sai
-                dsHopDong.add(new HopDongSanXuat(resultSet.getString(1),resultSet.getString(2),resultSet.getDate(3),resultSet.getDate(4),resultSet.getFloat(5)));
+                dsHopDong.add(new HopDongSanXuat(resultSet.getString(1), resultSet.getString(2), resultSet.getDate(3), resultSet.getDate(4), resultSet.getFloat(5)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return dsHopDong;
+    }
+
+    public String getTenHopDongTheoMaSanPham(String maSanPham) {
+        String tenHopDong = null;
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            String sql = "SELECT HopDongSanXuat.tenHopDong FROM SanPham"
+                    + " JOIN HopDongSanXuat"
+                    + " ON HopDongSanXuat.maHopDong = SanPham.maHopDong"
+                    + " WHERE SanPham.maSanPham ='" + maSanPham + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                tenHopDong = resultSet.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tenHopDong;
     }
 }

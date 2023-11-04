@@ -758,12 +758,8 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
 
     private void lamMoiBang() {
         dtmChamCong.setRowCount(0);
-        tblChamCong.clearSelection();
         dtmNhanVien.setRowCount(0);
-        tblNhanVien.clearSelection();
         dtmPhongBan.setRowCount(0);
-        tblPhongBan.clearSelection();
-
     }
 
     private void moNhapDuLieu() {
