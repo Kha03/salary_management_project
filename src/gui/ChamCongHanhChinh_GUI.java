@@ -668,9 +668,13 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void xuLyChkToanBo() {
         if (chkToanBo.isSelected()) {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
-                tblChamCong.setRowSelectionInterval(0, tblChamCong.getRowCount() - 1);
+                if (tblChamCong.getRowCount() > 0) {
+                    tblChamCong.setRowSelectionInterval(0, tblChamCong.getRowCount() - 1);
+                }
             } else {
-                tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+                if (tblNhanVien.getRowCount() > 0) {
+                    tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+                }
             }
         } else {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
@@ -783,7 +787,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     private PhongBan_Dao phongBan_Dao;
     private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
-    private KiemTraChuoi kiemTraChuoi;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnLamMoi;
