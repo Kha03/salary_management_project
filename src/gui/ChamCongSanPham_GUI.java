@@ -2,6 +2,7 @@ package gui;
 
 import connect.ConnectDB;
 import dao.ChamCongSanPham_Dao;
+import dao.CongDoan_Dao;
 import dao.PhanXuong_Dao;
 import dao.SanPham_Dao;
 import entity.ChamCongSanPham;
@@ -388,7 +389,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtSoLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoLuongKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnCham.doClick();
         }
     }//GEN-LAST:event_txtSoLuongKeyPressed
@@ -587,11 +588,27 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                         soLuong, tinhLuong)) {
                     soLuongDuocCham--;
                 }
+                capNhatTienDo(soNhanVienChams[j], soLuong);
             }
             JOptionPane.showMessageDialog(this, soLuongDuocCham + " Nhân viên được chấm công");
             return true;
         }
         return false;
+    }
+
+    private void capNhatTienDo(int viTri, int soLuong) {
+        CongDoan_Dao congDoan_Dao = new CongDoan_Dao();
+        String maCongDoan = chamCongSanPhams.get(viTri).getCongDoan().getMaCongDoan();
+        int tienDoHienTai = congDoan_Dao.layTienDo(maCongDoan);
+        int tienDoCham = soLuong;
+        int tienDoNhanVien = chamCongSanPhams.get(viTri).getSoLuong();
+        if (tienDoCham <= tienDoNhanVien) {
+            int tienDoMoi = tienDoNhanVien - tienDoCham;
+            congDoan_Dao.capNhatTienDo(maCongDoan, tienDoHienTai - tienDoMoi);
+        } else {
+            int tienDoMoi = tienDoCham - tienDoNhanVien;
+            congDoan_Dao.capNhatTienDo(maCongDoan, tienDoHienTai + tienDoMoi);
+        }
     }
 
     private boolean xoaChamCong(int[] hang) {

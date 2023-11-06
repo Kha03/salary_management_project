@@ -243,7 +243,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
         cmbCongDoan.setEnabled(false);
         jDesktopPane1.add(cmbCongDoan);
-        cmbCongDoan.setBounds(670, 180, 170, 26);
+        cmbCongDoan.setBounds(670, 180, 210, 26);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
