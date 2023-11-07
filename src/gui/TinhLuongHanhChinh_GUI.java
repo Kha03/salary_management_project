@@ -413,9 +413,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExcellActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
-        ChiTietLuongHanhChinh_GUI chiTietLuongHanhChinh_GUI = new ChiTietLuongHanhChinh_GUI();
-        jDesktopPane1.add(chiTietLuongHanhChinh_GUI);
-        chiTietLuongHanhChinh_GUI.setVisible(true);// TODO add your handling code here:
+        xuLyXemChiTiet();
     }//GEN-LAST:event_btnChiTietActionPerformed
 
     private void tblPhongBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongBanMouseClicked
@@ -512,11 +510,11 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             lblTenNhanVien.setText((String) tblLuong.getValueAt(hang, 2));
             lblChucVu.setText((String) tblLuong.getValueAt(hang, 3));
             lblHeSoLuong.setText(String.valueOf(tblLuong.getValueAt(hang, 4)));
-            lblLuongCoBan.setText((String)tblLuong.getValueAt(hang, 5));
+            lblLuongCoBan.setText((String) tblLuong.getValueAt(hang, 5));
             lblNgayCongThucTe.setText(String.valueOf(tblLuong.getValueAt(hang, 6)));
             lblNgayCongChuan.setText(String.valueOf(tblLuong.getValueAt(hang, 7)));
-            lblTienPhuCap.setText((String)tblLuong.getValueAt(hang, 8));
-            lblTienTangCa.setText((String)tblLuong.getValueAt(hang, 9));
+            lblTienPhuCap.setText((String) tblLuong.getValueAt(hang, 8));
+            lblTienTangCa.setText((String) tblLuong.getValueAt(hang, 9));
             lblLuongThucLanh.setText((String) tblLuong.getValueAt(hang, 10));
         }
     }
@@ -626,6 +624,16 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             }
         } else {
             JOptionPane.showMessageDialog(this, "Bạn chưa lương dòng cần xóa!");
+        }
+    }
+
+    private void xuLyXemChiTiet() {
+        int hang = tblLuong.getSelectedRow();
+        if (hang != -1) {
+            ChiTietLuongHanhChinh_GUI chiTietLuongHanhChinh_GUI = new ChiTietLuongHanhChinh_GUI(luongHanhChanhs.get(hang));
+            jDesktopPane1.add(chiTietLuongHanhChinh_GUI).setVisible(true);// TODO add your handling code here:
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần xem!");
         }
     }
 

@@ -34,16 +34,6 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jButton15 = new javax.swing.JButton();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jButton16 = new javax.swing.JButton();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -130,79 +120,6 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
         jLabel17.setToolTipText("");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
 
-        jInternalFrame1.setClosable(true);
-        jInternalFrame1.setTitle("Chi Tiết Lương Sản Phẩm");
-        jInternalFrame1.setMinimumSize(new java.awt.Dimension(1200, 600));
-        jInternalFrame1.setPreferredSize(new java.awt.Dimension(1200, 600));
-        jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setText("Đóng");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-        jInternalFrame1.getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, 30));
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel26.setText("Phi Anh Đạt");
-        jLabel26.setToolTipText("");
-        jInternalFrame1.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 140, 20));
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel27.setText("123");
-        jLabel27.setToolTipText("");
-        jInternalFrame1.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 20));
-
-        jScrollPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
-
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTable5.setToolTipText("");
-        jTable5.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane5.setViewportView(jTable5);
-
-        jInternalFrame1.getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1200, 490));
-
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setText("Xuất Pdf");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
-            }
-        });
-        jInternalFrame1.getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, 30));
-
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel28.setText("123");
-        jLabel28.setToolTipText("");
-        jInternalFrame1.getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 140, 20));
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setText("Tên Nhân Viên:");
-        jLabel18.setToolTipText("");
-        jInternalFrame1.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 120, -1));
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel19.setText("Mã Nhân Viên:");
-        jLabel19.setToolTipText("");
-        jInternalFrame1.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, -1));
-
-        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Tên Sản Phẩm:");
         jLabel20.setToolTipText("");
@@ -262,14 +179,6 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
     private void setTable() {
         modelChiTietLuong = new DefaultTableModel(
                 new Object[][]{
@@ -317,22 +226,14 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -340,8 +241,6 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     // End of variables declaration//GEN-END:variables
 }
