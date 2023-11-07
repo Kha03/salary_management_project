@@ -459,9 +459,9 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
             lblMaNhanVien.setText((String) tblChamCong.getValueAt(hang, 3));
             lblSanPham.setText((String) tblChamCong.getValueAt(hang, 5));
             lblCongDoan.setText((String) tblChamCong.getValueAt(hang, 6));
-            lblDonGia.setText(String.valueOf(tblChamCong.getValueAt(hang, 7)));
+            lblDonGia.setText((String)tblChamCong.getValueAt(hang, 7));
             txtSoLuong.setText(String.valueOf(tblChamCong.getValueAt(hang, 8)));
-            lblTienLuong.setText(String.valueOf(tblChamCong.getValueAt(hang, 9)));
+            lblTienLuong.setText((String)tblChamCong.getValueAt(hang, 9));
         }
     }
 

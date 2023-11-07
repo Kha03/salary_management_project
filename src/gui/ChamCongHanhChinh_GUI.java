@@ -168,6 +168,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         spnGioTangCa.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
         spnGioTangCa.setEnabled(false);
         ((DefaultEditor) spnGioTangCa.getEditor()).getTextField().setEditable(false);
+        spnGioTangCa.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnGioTangCaStateChanged(evt);
+            }
+        });
         add(spnGioTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, -1));
 
         btnXuat.setBackground(new java.awt.Color(152, 249, 152));
@@ -316,7 +321,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_chkToanBoActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        // TODO add your handling code here:
         xuLyCapNhat();
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
@@ -369,6 +373,10 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void dchNgayChamCongPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dchNgayChamCongPropertyChange
         xuLyThayDoiNgayCham();
     }//GEN-LAST:event_dchNgayChamCongPropertyChange
+
+    private void spnGioTangCaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnGioTangCaStateChanged
+        xuLySpnTangCa();
+    }//GEN-LAST:event_spnGioTangCaStateChanged
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -580,7 +588,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Có " + soLuongDuocCapNhat + " nhân viên được cập nhật");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhân viên cập nhật!");
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cập nhật!");
             }
         }
         return false;
@@ -620,6 +628,15 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Sai định dạng");
             }
+        }
+    }
+
+    private void xuLySpnTangCa() {
+        if (!chkLamViec.isSelected()) {
+            lblThongBao.setText("* Nhân viên làm việc mới tăng ca!");
+            spnGioTangCa.setValue(0);
+        } else {
+            lblThongBao.setText("");
         }
     }
 

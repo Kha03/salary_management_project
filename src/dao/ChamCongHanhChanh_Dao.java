@@ -233,6 +233,22 @@ public class ChamCongHanhChanh_Dao {
         return true;
     }
 
+    public boolean capNhatChamCongXoaMaLuon(String maLuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE ChamCongNhanVien"
+                    + " SET"
+                    + " maLuongHanhChinh = NULL"
+                    + " WHERE maLuongHanhChinh = '" + maLuong + "'");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean xoaChamCong(String maChamCong) {
         try {
             ConnectDB.getInstance();
