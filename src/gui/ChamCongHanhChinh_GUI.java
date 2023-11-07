@@ -710,11 +710,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private boolean kiemTraNgay() {
+        if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+            lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
+            return false;
+        }
         if (!btnTao.getText().equalsIgnoreCase("Tạo")) {
-            if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
-                lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
-                return false;
-            } else if (!KiemTraChuoi.ktTruocHoacBangNgayHT(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+            if (!KiemTraChuoi.ktTruocHoacBangNgayHT(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
                 lblThongBao.setText("* Ngày chấm không được sau ngày hiện tại");
                 return false;
             }
