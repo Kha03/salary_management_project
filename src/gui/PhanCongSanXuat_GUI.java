@@ -417,6 +417,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         if (lamMoiBtn()) {
             lamMoiDong();
+            layNgayHienTai();
             lamMoiBang();
             doDuLieu();
         }
@@ -852,7 +853,6 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     }
 
     private void lamMoiDong() {
-        layNgayHienTai();
         lblMaSanPham.setText("");
         lblPhanXuong.setText("");
         lblSanPham.setText("");

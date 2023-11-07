@@ -123,7 +123,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel17);
         jLabel17.setBounds(220, 50, 60, 20);
 
-        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
+        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         cmbThang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbThangItemStateChanged(evt);
@@ -425,8 +425,8 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTaoActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        lamMoiDong();
         lamMoiBang();
+        lamMoiDong();
         doDuLieu();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
@@ -600,6 +600,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             int nam = ychNam.getValue();
             this.nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(maPhongBan);
             dtmLuong.setRowCount(0);
+            lamMoiDong();
             doDuLieuLuong(tinhLuongHanhChanh_Dao.getDanhSangLuongTheoPhongBanVaThang(maPhongBan, thang + "-" + nam));
         }
     }
@@ -642,7 +643,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         int soDaXoa = hang.length;
         for (int i = 0; i < soLuong; i++) {
             String maLuong = luongHanhChanhs.get(hang[i]).getMaLuong();
-            if (chamCongHanhChanh_Dao.capNhatChamCongXoaMaLuon(maLuong)) {
+            if (chamCongHanhChanh_Dao.capNhatChamCongXoaMaLuong(maLuong)) {
                 tinhLuongHanhChanh_Dao.xoaBangLuong(maLuong);
             } else {
                 JOptionPane.showMessageDialog(this, "Xóa lương mã " + maLuong + " thất bại!");
@@ -656,7 +657,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
 
     private void xoaLuong(int hang) {
         String maLuong = luongHanhChanhs.get(hang).getMaLuong();
-        if (chamCongHanhChanh_Dao.capNhatChamCongXoaMaLuon(maLuong)) {
+        if (chamCongHanhChanh_Dao.capNhatChamCongXoaMaLuong(maLuong)) {
             tinhLuongHanhChanh_Dao.xoaBangLuong(maLuong);
         }
     }
@@ -678,7 +679,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 chamCongNhanViens = chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoThang(thang + "-" + nam, nvhc.getMaNhanVienHanhChanh());
                 tienTangCa = tinhTienTangCa(nvhc);
                 ngayCongThucTe = tinhNgayCongThucTe();
-                tienPhuCap = phuCap_Dao.layTienPhuCap(nvhc.getMaNhanVienHanhChanh(), thang + "-" + nam);
+                tienPhuCap = phuCap_Dao.layTienPhuCapHc(nvhc.getMaNhanVienHanhChanh(), thang + "-" + nam);
                 ngayCongChuan = tinhSoNgayThucTeTrongThang(thang, nam);
                 luongCoBan = nvhc.getLuongCoBan();
                 tongLuong = tinhTongLuong(tienTangCa, luongCoBan, tienPhuCap, ngayCongChuan, ngayCongThucTe);
@@ -697,7 +698,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
 
     private boolean kiemTraLuongTonTai() {
         if (dtmLuong.getRowCount() > 0) {
-            if (JOptionPane.showConfirmDialog(this, "Đã có bảng lương cho phong ban này, bạn có muốn tạo lại bảng lương không?", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(this, "Đã có bảng lương cho phòng ban này, bạn có muốn tạo lại bảng lương không?", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 int soLuong = dtmLuong.getRowCount();
                 for (int i = 0; i < soLuong; i++) {
                     xoaLuong(i);
@@ -744,7 +745,9 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void lamMoiDong() {
-        lblPhongBan.setText("");
+        if (tblPhongBan.getSelectedRow() == -1) {
+            lblPhongBan.setText("");
+        }
         lblMaNhanVien.setText("");
         lblTenNhanVien.setText("");
         lblChucVu.setText("");

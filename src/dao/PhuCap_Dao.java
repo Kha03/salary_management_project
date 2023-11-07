@@ -77,7 +77,7 @@ public class PhuCap_Dao {
         return dsPhuCap;
     }
 
-    public float layTienPhuCap(String maNhanVienHC, String thang) {
+    public float layTienPhuCapHc(String maNhanVienHC, String thang) {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         float tienPhuCap = 0;
@@ -87,6 +87,27 @@ public class PhuCap_Dao {
                     + " INNER JOIN PhuCap ON NhanVien_PhuCap.maPhuCap = PhuCap.maPhuCap"
                     + " INNER JOIN NhanVienHanhChinh ON NhanVienHanhChinh.maNhanVien = NhanVien_PhuCap.maNhanVien"
                     + " WHERE NhanVienHanhChinh.maNhanVienHanhChinh = '" + maNhanVienHC + "' AND (PhuCap.coDinh = 'True' OR PhuCap.thangHuong = '" + thang + "')";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                tienPhuCap = resultSet.getFloat(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tienPhuCap;
+    }
+
+    public float layTienPhuCapSx(String maNhanVienSx, String thang) {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        float tienPhuCap = 0;
+        try {
+            String sql = "SELECT SUM(PhuCap.soTien) AS TongTienPhuCap"
+                    + " FROM NhanVien_PhuCap"
+                    + " INNER JOIN PhuCap ON NhanVien_PhuCap.maPhuCap = PhuCap.maPhuCap"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVien = NhanVien_PhuCap.maNhanVien"
+                    + " WHERE NhanVienSanXuat.maNhanVienSanXuat = '" + maNhanVienSx + "' AND (PhuCap.coDinh = 'True' OR PhuCap.thangHuong = '" + thang + "')";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {

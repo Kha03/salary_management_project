@@ -351,6 +351,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         if (lamMoiBtn()) {
             lamMoiDong();
+            layNgayHienTai();
             lamMoiBang();
             doDuLieu();
         }
@@ -769,7 +770,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void lamMoiDong() {
-        layNgayHienTai();
         dchNgayChamCong.setEnabled(true);
         chkLamViec.setSelected(false);
         chkToanBo.setSelected(false);
