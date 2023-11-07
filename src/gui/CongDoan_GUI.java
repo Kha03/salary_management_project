@@ -26,8 +26,6 @@ public class CongDoan_GUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jComboBox4 = new javax.swing.JComboBox<>();
@@ -54,24 +52,6 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1200, 674));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTable3.setToolTipText("");
-        jTable3.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable3.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(jTable3);
-
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 210, 340));
-
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Công Đoạn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
@@ -90,7 +70,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 1090, 470));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 1300, 470));
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
@@ -113,7 +93,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         jTable6.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(jTable6);
 
-        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 397));
+        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 270));
 
         jButton14.setBackground(new java.awt.Color(152, 249, 152));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -237,39 +217,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         jTable6.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTable6.getColumnModel().getColumn(1).setPreferredWidth(174);
         jTable6.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        //set table don vi
-        modelDonVi = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Gia công"},
-                    {"2", "Chế tạo"},
-                    {"3", "Thẩm mĩ"},
-                    {"4", "Điêu khắc"},},
-                new String[]{
-                    "STT", "Phân xưởng"
-                }
-        ) {
-            Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean[]{
-                false, false
-            };
 
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
-        };
-        jTable3.setModel(modelDonVi);
-        jTable3.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTable3.getColumnModel().getColumn(1).setPreferredWidth(174);
-        jTable3.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        //table chấm công
         modelChamCong = new DefaultTableModel(
                 new Object[][]{
                     {"1", "Điêu Khắc", "123", "Ghế", "hop dong 123", "1000", "5"},
@@ -304,7 +252,6 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
 
-    private DefaultTableModel modelDonVi;
     private DefaultTableModel modelNhanVien;
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -322,10 +269,8 @@ public class CongDoan_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField3;
