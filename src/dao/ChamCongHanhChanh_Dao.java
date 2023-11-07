@@ -95,7 +95,7 @@ public class ChamCongHanhChanh_Dao {
                 dsChamCong.add(new ChamCongNhanVien(resultSet.getString(1),
                         new NhanVienHanhChanh(resultSet.getString(5)), resultSet.getDate(2),
                         resultSet.getBoolean(3),
-                        resultSet.getInt(3)));
+                        resultSet.getInt(4)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

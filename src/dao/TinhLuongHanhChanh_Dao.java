@@ -14,7 +14,7 @@ import java.util.List;
 public class TinhLuongHanhChanh_Dao {
 
     //lấy ra danh sách nhân viên hành chính
-    public List<LuongHanhChanh> getDanhSachPhongBan() {
+    public List<LuongHanhChanh> getLuongHanhChanh() {
         List<LuongHanhChanh> dsLuong = new ArrayList<>();
         ChamCongHanhChanh_Dao chamCongHanhChanh_Dao = new ChamCongHanhChanh_Dao();
         ConnectDB.getInstance();
@@ -28,7 +28,7 @@ public class TinhLuongHanhChanh_Dao {
                 //còn sai
                 dsLuong.add(new LuongHanhChanh(resultSet.getString(1),
                         new NhanVienHanhChanh(resultSet.getString(2), "", resultSet.getString(3)),
-                        chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoThang(resultSet.getString(3)),
+                        chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoThang(resultSet.getString(13)),
                         resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getFloat(6),

@@ -1,20 +1,30 @@
 package gui;
 
+
 import handle.borderselected.Border_Selected;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import connect.ConnectDB;
 import dao.NhanVienHanhChanh_Dao;
 import dao.NhanVienSanXuat_Dao;
+import entity.CapBac;
 import java.sql.SQLException;
 import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
+import entity.PhanXuong;
+import entity.TrinhDo;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author ADMIN
  */
 public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
+
+    private SimpleDateFormat dinhDangNgay;
+
+
+    
     /**
      * Creates new form NhanVienHanhChinh
      * @throws java.sql.SQLException
@@ -37,14 +47,13 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        cbCapBac = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jButton15 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        cmbCapBac = new javax.swing.JComboBox<>();
+        cmbGioiTinh = new javax.swing.JComboBox<>();
+        btnTim = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
+        txtMa = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -53,14 +62,15 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         lblPhongBan = new javax.swing.JLabel();
         lblNgoaiNgu = new javax.swing.JLabel();
         lblCapBac = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        cbPhongBan = new javax.swing.JComboBox<>();
-        cbTrinhDo = new javax.swing.JComboBox<>();
-        cbPhanXuong = new javax.swing.JComboBox<>();
+        cmbPhongBan = new javax.swing.JComboBox<>();
+        cmbTrinhDo = new javax.swing.JComboBox<>();
+        cmbPhanXuong = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dchNgaySinh = new com.toedter.calendar.JDateChooser();
         lblPhongBan1 = new javax.swing.JLabel();
+        dchNgayVaoLam = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1300, 741));
@@ -76,67 +86,63 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 277, 1300, 465));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1300, 465));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cbCapBac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbCapBac.setForeground(new java.awt.Color(0, 99, 0));
-        cbCapBac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân Viên", "Trưởng Phòng", "Tổ Trưởng", "Quản Lí", " ", " " }));
-        jPanel1.add(cbCapBac, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 50, 190, -1));
+        cmbCapBac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbCapBac.setForeground(new java.awt.Color(0, 99, 0));
+        cmbCapBac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân Viên", "Trưởng Phòng", "Tổ Trưởng", "Quản Lí", " ", " " }));
+        jPanel1.add(cmbCapBac, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 50, 190, -1));
 
-        jComboBox6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox6.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+        cmbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbGioiTinh.setForeground(new java.awt.Color(0, 99, 0));
+        cmbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        cmbGioiTinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
+                cmbGioiTinhActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        jPanel1.add(cmbGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton15.setText("Tìm Kiếm");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 190, 130, 30));
+        btnTim.setBackground(new java.awt.Color(152, 249, 152));
+        btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btnTim.setText("Tìm Kiếm");
+        btnTim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 190, 130, 30));
 
-        jButton10.setBackground(new java.awt.Color(152, 249, 152));
-        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton10.setText("Làm Mới");
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 120, 30));
+        btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnLamMoi.setText("Làm Mới");
+        btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 120, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(0, 96, 0));
+        txtMa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
+                txtMaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
+                txtMaFocusLost(evt);
             }
         });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtMa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtMaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, -1));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, -1));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 190, -1));
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 190, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 190, -1));
-
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 190, -1));
+        txtTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTen.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 190, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Giới Tính:");
@@ -171,42 +177,47 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         lblCapBac.setText("Cấp Bậc:");
         jPanel1.add(lblCapBac, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 100, -1));
 
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 190, -1));
+        txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSDT.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 190, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Mã Nhân Viên:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 120, -1));
 
-        cbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
-        jPanel1.add(cbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 190, -1));
+        cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 190, -1));
 
-        cbTrinhDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbTrinhDo.setForeground(new java.awt.Color(0, 99, 0));
-        cbTrinhDo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trung học cơ sở", "Trung học phổ thông", "Cao Đẳng", "Đại Học" }));
-        cbTrinhDo.addActionListener(new java.awt.event.ActionListener() {
+        cmbTrinhDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbTrinhDo.setForeground(new java.awt.Color(0, 99, 0));
+        cmbTrinhDo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trung học cơ sở", "Trung học phổ thông", "Cao Đẳng", "Đại Học" }));
+        cmbTrinhDo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTrinhDoActionPerformed(evt);
+                cmbTrinhDoActionPerformed(evt);
             }
         });
-        jPanel1.add(cbTrinhDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 10, 190, -1));
+        jPanel1.add(cmbTrinhDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 10, 190, -1));
 
-        cbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
-        jPanel1.add(cbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
+        cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Ngày Vào Làm:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 120, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 90, 190, -1));
+
+        dchNgaySinh.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dchNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 190, -1));
 
         lblPhongBan1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhongBan1.setText("Phòng Ban:");
         jPanel1.add(lblPhongBan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 120, -1));
+
+        dchNgayVaoLam.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dchNgayVaoLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 90, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
@@ -215,54 +226,13 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         jLabel5.setText("Tìm Kiếm Nhân Viên");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1294, 50));
     }// </editor-fold>//GEN-END:initComponents
+// </editor-fold>                        
     private void setTable() {
         //setTable ở đây
-        model = new DefaultTableModel(
+        modelNhanvien = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Ngoại ngữ", "Phòng ban", "Cấp bậc", "Chức vụ", "Hệ số lương", "Lương cơ bản"
-                }
-        ) {
-            Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false, false, false, false, false, false, false
-            };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
-            }
-        };
-        jTable1.setModel(model);
-
-        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
-        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-        jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(6).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(7).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(11).setCellRenderer(center);
-        jTable1.getColumnModel().getColumn(12).setCellRenderer(center);
-        //model sản xuất
-        new DefaultTableModel(
-                new Object[][]{},
-                new String[]{
-                    "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Phân Xưởng", "Chức Vụ", "Trình Độ", "Kinh Nghiệm"
+                    "Mã nhân viên", "Họ và tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Mail", "Đơn vị", "Cấp bậc", "Ngày vào làm" ,"Trình độ"
                 }
         ) {
             Class[] types = new Class[]{
@@ -282,87 +252,156 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
+        jTable1.setModel(modelNhanvien);
+
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(6).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(7).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
+
+//        model sản xuất
+
     }
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+//    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {                                          
+//            lamMoiDong();
+//            lamMoiBang();
+//            doDuLieu();
+//
+//    }   
+    
+    
+    private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
         // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getFocuBofocusBorder());
-    }//GEN-LAST:event_jTextField2FocusGained
+        txtMa.setBorder(Border_Selected.getFocuBofocusBorder());
+    }//GEN-LAST:event_txtMaFocusGained
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+    private void txtMaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusLost
         // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getOriginalBorder());
-    }//GEN-LAST:event_jTextField2FocusLost
+        txtMa.setBorder(Border_Selected.getOriginalBorder());
+    }//GEN-LAST:event_txtMaFocusLost
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaActionPerformed
         // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtMaActionPerformed
 
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+    private void cmbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGioiTinhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox6ActionPerformed
+    }//GEN-LAST:event_cmbGioiTinhActionPerformed
 
-    private void cbTrinhDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrinhDoActionPerformed
+    private void cmbTrinhDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTrinhDoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbTrinhDoActionPerformed
+    }//GEN-LAST:event_cmbTrinhDoActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
+        dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
         nhanVienSanXuat_Dao = new NhanVienSanXuat_Dao();
         doDuLieu();
     }
+    
+    private void timKiem(){
+        modelNhanvien.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+        
+        String maNhanVien = txtMa.getText().trim();
+        String tenNhanVien = txtTen.getText().trim();
+        String gioiTinh = (String) cmbGioiTinh.getSelectedItem();
+        String ngaySinh = dinhDangNgay.format(dchNgaySinh.getDate());
+        String ngayVaoLam = dinhDangNgay.format(dchNgayVaoLam.getDate());
+        String dienThoai = txtSDT.getText().trim();
+        String mail = txtEmail.getText().trim();
+        String phanXuong = (String) cmbPhanXuong.getSelectedItem();
+        String phongBan = (String) cmbPhongBan.getSelectedItem();
+        String capBac = (String) cmbCapBac.getSelectedItem();
+        String trinhDo = (String) cmbTrinhDo.getSelectedItem();
+        
+        
+    }
+    
+    public void lamMoiDong() {
+        txtMa.setText("");
+        txtTen.setText("");
+        dchNgaySinh.setDate(null);
+        dchNgayVaoLam.setDate(null);
+        txtSDT.setText("");
+        txtEmail.setText("");
+        cmbPhongBan.removeAllItems();
+        cmbPhanXuong.removeAllItems();
+        cmbTrinhDo.removeAllItems();
+        cmbCapBac.removeAllItems();
+    }
+    
+    public void lamMoiBang() {
+        modelNhanvien.setRowCount(0);
+        cmbPhanXuong.removeAllItems();
+        cmbTrinhDo.removeAllItems();
+        cmbCapBac.removeAllItems();
+    }
+    
     private void doDuLieu() {
         for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
           Object[] objects = {
-              nVien.getMaNhanVienHanhChanh(),nVien.getHoVaTen(),
+              nVien.getMaNhanVienHanhChanh(),
+              nVien.getHoVaTen(),
               nVien.isGioiTinh()? "Nam": "Nữ",
-              nVien.getNgaySinh(),
+              dinhDangNgay.format(nVien.getNgaySinh()),
               nVien.getDienThoai(),
               nVien.getDiaChi(),
               nVien.getEmail(),
-              nVien.getNgoaiNgu(),
               nVien.getPhongBan().getTenPhongBan(),
               nVien.getCapBac(),
-              nVien.getChucVu(),
-              nVien.getHeSoLuong(),
-              nVien.getLuongCoBan()
+              dinhDangNgay.format(nVien.getNgayVaoLam()),
+              ""        
           };
-          model.addRow(objects);
+          modelNhanvien.addRow(objects);
         }
         //do table đang lấy của nhân viên hành chính nên chỗ này bị lỗi
         // Lấy danh sách nhân viên sản xuất từ cơ sở dữ liệu
-//        for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
-//          Object[] objects = {
-//                nVien.getMaNhanVienSanXuat(),
-//                nVien.getHoVaTen(),
-//                nVien.isGioiTinh() ? "Nam" : "Nữ",
-//                nVien.getNgaySinh(),
-//                nVien.getDienThoai(),
-//                nVien.getDiaChi(),
-//                nVien.getEmail(),
-//                nVien.getPhanXuong().getTenPhanXuong(),
-//                nVien.getChucVu(),
-//                nVien.getTrinhDo(),
-//                nVien.getKinhNghiem()
-//            };
-//            model.addRow(objects);
-//        }
+
+        for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
+          Object[] objects = {
+                nVien.getMaNhanVienSanXuat(),
+                nVien.getHoVaTen(),
+                nVien.isGioiTinh() ? "Nam" : "Nữ",
+                dinhDangNgay.format(nVien.getNgaySinh()),
+                nVien.getDienThoai(),
+                nVien.getDiaChi(),
+                nVien.getEmail(),
+                nVien.getPhanXuong().getTenPhanXuong(),
+                nVien.getcapBac(),
+                dinhDangNgay.format(nVien.getNgayVaoLam()),
+                nVien.getTrinhDo()
+            };
+            modelNhanvien.addRow(objects);
+        }
+
     }
     
     
     // private Border_Selected border;
-    private DefaultTableModel model;
+    private DefaultTableModel modelNhanvien;
     private NhanVienSanXuat_Dao nhanVienSanXuat_Dao;
     private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbCapBac;
-    private javax.swing.JComboBox<String> cbPhanXuong;
-    private javax.swing.JComboBox<String> cbPhongBan;
-    private javax.swing.JComboBox<String> cbTrinhDo;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnTim;
+    private javax.swing.JComboBox<String> cmbCapBac;
+    private javax.swing.JComboBox<String> cmbGioiTinh;
+    private javax.swing.JComboBox<String> cmbPhanXuong;
+    private javax.swing.JComboBox<String> cmbPhongBan;
+    private javax.swing.JComboBox<String> cmbTrinhDo;
+    private com.toedter.calendar.JDateChooser dchNgaySinh;
+    private com.toedter.calendar.JDateChooser dchNgayVaoLam;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -374,15 +413,14 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblCapBac;
     private javax.swing.JLabel lblNgoaiNgu;
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblPhongBan1;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtSDT;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 
     

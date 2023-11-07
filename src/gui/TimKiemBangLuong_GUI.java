@@ -8,6 +8,8 @@ import entity.LuongHanhChanh;
 import dao.TinhLuongHanhChanh_Dao;
 import java.sql.SQLException;
 import connect.ConnectDB;
+import entity.NhanVienHanhChanh;
+import dao.NhanVienHanhChanh_Dao;
 /**
  *
  * @author ADMIN
@@ -41,23 +43,23 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton15 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtMa = new javax.swing.JTextField();
+        txtChucVu = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         lblPhongBan = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        cbPhongBan = new javax.swing.JComboBox<>();
+        cmbPhongBan = new javax.swing.JComboBox<>();
         jRadioButton1 = new javax.swing.JRadioButton();
         cbPhanXuong = new javax.swing.JComboBox<>();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        cmbThang = new javax.swing.JComboBox<>();
+        ychNam = new com.toedter.calendar.JYearChooser();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
         lblHeSoLuong = new javax.swing.JLabel();
-        cbHeSoLuong = new javax.swing.JComboBox<>();
+        cmbHeSoLuong = new javax.swing.JComboBox<>();
         txtNgayCongThucTe = new javax.swing.JTextField();
         lblNgayCongThucTe = new javax.swing.JLabel();
         txtLuongCoBan = new javax.swing.JTextField();
@@ -119,26 +121,26 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 190, 120, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(0, 96, 0));
+        txtMa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
+                txtMaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
+                txtMaFocusLost(evt);
             }
         });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtMa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtMaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 190, -1));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 190, -1));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 190, -1));
+        txtChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtChucVu.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Chức Vụ:");
@@ -152,10 +154,15 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jLabel12.setText("Mã Nhân Viên:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 120, -1));
 
-        cbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
-        jPanel1.add(cbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
+        cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbPhongBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPhongBanActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
         btnThayDoiTim.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -185,9 +192,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, -1));
-        jPanel1.add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 65, 20));
+        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        jPanel1.add(cmbThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, -1));
+        jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 65, 20));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Năm:");
@@ -203,18 +210,23 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jLabel4.setText("Họ Và Tên:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 190, -1));
+        txtTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTen.setForeground(new java.awt.Color(0, 96, 0));
+        txtTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 190, -1));
 
         lblHeSoLuong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHeSoLuong.setText("Hệ Số Lương:");
         jPanel1.add(lblHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 120, -1));
 
-        cbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
-        cbHeSoLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.5", "1.6", "3.7", "4.8", "12.5", " " }));
-        jPanel1.add(cbHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 80, -1));
+        cmbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbHeSoLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.5", "1.6", "3.7", "4.8", "12.5", " " }));
+        jPanel1.add(cmbHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 80, -1));
 
         txtNgayCongThucTe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNgayCongThucTe.setForeground(new java.awt.Color(0, 96, 0));
@@ -298,19 +310,19 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 741));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+    private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
         // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getFocuBofocusBorder());
-    }//GEN-LAST:event_jTextField2FocusGained
+        txtMa.setBorder(Border_Selected.getFocuBofocusBorder());
+    }//GEN-LAST:event_txtMaFocusGained
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+    private void txtMaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusLost
         // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getOriginalBorder());
-    }//GEN-LAST:event_jTextField2FocusLost
+        txtMa.setBorder(Border_Selected.getOriginalBorder());
+    }//GEN-LAST:event_txtMaFocusLost
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaActionPerformed
         // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtMaActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         cbPhanXuong.setVisible(true);
@@ -320,8 +332,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         lblHeSoLuong.setText("Lương Sản Phẩm:");
         lblPhongBan.setText("Phân Xưởng:");
-        cbPhongBan.setVisible(false);
-        cbHeSoLuong.setVisible(false);
+        cmbPhongBan.setVisible(false);
+        cmbHeSoLuong.setVisible(false);
         lblLuongCoBan.setVisible(false);
         txtLuongCoBan.setVisible(false);
         lblNgayCongChuan.setText("Tiền Phụ Cấp:");
@@ -347,8 +359,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         lblHeSoLuong.setText("Hệ Số Lương:");
         lblPhongBan.setText("Phòng Ban:");
-        cbPhongBan.setVisible(true);
-        cbHeSoLuong.setVisible(true);
+        cmbPhongBan.setVisible(true);
+        cmbHeSoLuong.setVisible(true);
         lblLuongCoBan.setVisible(true);
         txtLuongCoBan.setVisible(true);
         lblNgayCongChuan.setText("Ngày Công Chuẩn:");
@@ -374,6 +386,14 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(chiTietLuongCongNhan_GUI);
         chiTietLuongCongNhan_GUI.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenActionPerformed
+
+    private void cmbPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhongBanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPhongBanActionPerformed
     private void setTable() {
         //setTable ở đây
         //table chấm công
@@ -436,10 +456,20 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         };
         jTable1.setModel(modelLuongHc);
 
-//        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
-//        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(6).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(7).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
     }
 
     private void initCommon() throws SQLException {
@@ -455,7 +485,24 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         
     }
     public void doDuLieu() {
-    
+        for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getLuongHanhChanh()) {
+            Object[] objects = {
+                "",
+                lg.getNhanVienHanhChanh().getMaSo(),
+                lg.getNhanVienHanhChanh().getHoVaTen(),
+                lg.getChucVu(),
+                lg.getHeSoLuong(),
+                lg.getLuongCoBan(),
+                lg.getSoNgayCongChuan(),
+                lg.getTienPhuCap(),
+                lg.getNgayCongThucTe(),
+                lg.getTienTangCa(),
+                lg.getTongLuong()
+            };
+            modelLuongHc.addRow(objects);
+        }
+        
+     
     }
     
     
@@ -467,13 +514,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLuongThucLanhSxV;
     private javax.swing.ButtonGroup btnThayDoiTim;
-    private javax.swing.JComboBox<String> cbHeSoLuong;
     private javax.swing.JComboBox<String> cbPhanXuong;
-    private javax.swing.JComboBox<String> cbPhongBan;
+    private javax.swing.JComboBox<String> cmbHeSoLuong;
+    private javax.swing.JComboBox<String> cmbPhongBan;
+    private javax.swing.JComboBox<String> cmbThang;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
@@ -486,10 +533,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
     private javax.swing.JLabel lblHeSoLuong;
     private javax.swing.JLabel lblLuongCoBan;
     private javax.swing.JLabel lblLuongThucLanhHc;
@@ -499,12 +542,16 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblTienPhuCap;
     private javax.swing.JLabel lblTienTangCa;
+    private javax.swing.JTextField txtChucVu;
     private javax.swing.JTextField txtLuongCoBan;
     private javax.swing.JTextField txtLuongSanPham;
+    private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtNgayCongChuan;
     private javax.swing.JTextField txtNgayCongThucTe;
+    private javax.swing.JTextField txtTen;
     private javax.swing.JTextField txtTienPhuCapHc;
     private javax.swing.JTextField txtTienPhuCapSx;
     private javax.swing.JTextField txtTienTangCa;
+    private com.toedter.calendar.JYearChooser ychNam;
     // End of variables declaration//GEN-END:variables
 }
