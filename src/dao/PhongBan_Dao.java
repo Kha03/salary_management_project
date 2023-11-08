@@ -30,7 +30,9 @@ public class PhongBan_Dao {
 
             while (resultSet.next()) {
                 //còn sai
-                dsPhongBan.add(new PhongBan(resultSet.getString(1), resultSet.getString(2), new NhanVienHanhChanh(resultSet.getString(3), "", resultSet.getString(4))));
+                dsPhongBan.add(new PhongBan(resultSet.getString(1), 
+                        resultSet.getString(2), new NhanVienHanhChanh(resultSet.getString(3),
+                                "", resultSet.getString(4))));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +95,7 @@ public class PhongBan_Dao {
     public String layMaTuDongPhongBan() {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
-        String maNhanVien = null;
+        String maPhongBan = null;
         String sql = "DECLARE @NewIDPB VARCHAR(7)"
                 + " SET @NewIDPB = dbo.IDPB()"
                 + " SELECT @NewIDPB ";
@@ -101,12 +103,12 @@ public class PhongBan_Dao {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                maNhanVien = resultSet.getString(1);
+                maPhongBan = resultSet.getString(1);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return maNhanVien;
+        return maPhongBan;
     }
 
     public boolean themPhongBan(String tenPhongBan) {
