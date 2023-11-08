@@ -383,9 +383,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
-        ChiTietLuongCongNhan_GUI chiTietLuongCongNhan_GUI = new ChiTietLuongCongNhan_GUI();
-        jDesktopPane1.add(chiTietLuongCongNhan_GUI);
-        chiTietLuongCongNhan_GUI.setVisible(true);// TODO add your handling code here:
+     //   ChiTietLuongCongNhan_GUI chiTietLuongCongNhan_GUI = new ChiTietLuongCongNhan_GUI();
+//        jDesktopPane1.add(chiTietLuongCongNhan_GUI);
+//        chiTietLuongCongNhan_GUI.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed

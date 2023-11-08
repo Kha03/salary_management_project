@@ -29,7 +29,7 @@ public class TinhLuongCongNhan_Dao {
                 dsLuong.add(new LuongCongNhan(resultSet.getString(1),
                         new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(3)),
                         resultSet.getString(4),
-                        chamCongSanPham_Dao.getChamCongSanPhamTheoThang(resultSet.getString(4)),
+                        chamCongSanPham_Dao.getChamCongSanPhamTheoLuong(resultSet.getString(1)),
                         resultSet.getFloat(5),
                         resultSet.getFloat(6),
                         resultSet.getFloat(7))
@@ -39,5 +39,70 @@ public class TinhLuongCongNhan_Dao {
             e.printStackTrace();
         }
         return dsLuong;
+    }
+
+    public List<LuongCongNhan> getDanhSachLuongTheoPhanXuongVaThang(String maPhanXuong, String thang) {
+        List<LuongCongNhan> dsLuong = new ArrayList<>();
+        ChamCongSanPham_Dao chamCongSanPham_Dao = new ChamCongSanPham_Dao();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            String sql = "SELECT LuongCongNhan.* FROM LuongCongNhan"
+                    + " INNER JOIN NhanVienSanXuat ON LuongCongNhan.maNhanVienSanXuat = NhanVienSanXuat.maNhanVienSanXuat"
+                    + " INNER JOIN PhanXuong ON NhanVienSanXuat.maPhanXuong = PhanXuong.maPhanXuong"
+                    + " WHERE PhanXuong.maPhanXuong = '" + maPhanXuong + "'"
+                    + " AND LuongCongNhan.thang = '" + thang + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                //còn sai
+                dsLuong.add(new LuongCongNhan(resultSet.getString(1),
+                        new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(3)),
+                        resultSet.getString(4),
+                        chamCongSanPham_Dao.getChamCongSanPhamTheoLuong(resultSet.getString(1)),
+                        resultSet.getFloat(5),
+                        resultSet.getFloat(6),
+                        resultSet.getFloat(7))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsLuong;
+    }
+
+    public boolean taoBangLuong(LuongCongNhan luongCongNhan) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("INSERT INTO LuongCongNhan VALUES (?,?,?,?,?,?,?)");
+            smt.setString(1, luongCongNhan.getMaLuong());
+            smt.setString(2, luongCongNhan.getNhanVienSanXuat().getMaNhanVienSanXuat());
+            smt.setString(3, luongCongNhan.getNhanVienSanXuat().getHoVaTen());
+            smt.setString(4, luongCongNhan.getThangLap());
+            smt.setFloat(5, luongCongNhan.getTongLuongSanPham());
+            smt.setFloat(6, luongCongNhan.getTienPhuCap());
+            smt.setFloat(7, luongCongNhan.getTongLuong());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean xoaBangLuong(String maLuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DELETE FROM LuongCongNhan"
+                    + " WHERE maLuongCongNhan = '" + maLuong + "'");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
     }
 }

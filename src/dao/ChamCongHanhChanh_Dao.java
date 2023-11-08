@@ -233,7 +233,7 @@ public class ChamCongHanhChanh_Dao {
         return true;
     }
 
-    public boolean capNhatChamCongXoaMaLuon(String maLuong) {
+    public boolean capNhatChamCongXoaMaLuong(String maLuong) {
         try {
             ConnectDB.getInstance();
             Connection connection = ConnectDB.getConnection();

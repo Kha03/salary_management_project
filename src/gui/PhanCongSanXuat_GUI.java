@@ -373,7 +373,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_chkToanBoActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
-        xuLyBtnChiTiet();
+        xuLyXemChiTiet();
     }//GEN-LAST:event_btnChiTietActionPerformed
 
     private void tblPhanXuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhanXuongMouseClicked
@@ -417,6 +417,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         if (lamMoiBtn()) {
             lamMoiDong();
+            layNgayHienTai();
             lamMoiBang();
             doDuLieu();
         }
@@ -756,7 +757,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         }
     }
 
-    private void xuLyBtnChiTiet() {
+    private void xuLyXemChiTiet() {
         int hang = tblPhanCong.getSelectedRow();
         if (hang != -1 && btnTao.getText().equalsIgnoreCase("Tạo")) {
             ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI(phanCongSanXuats.get(hang));
@@ -852,7 +853,6 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     }
 
     private void lamMoiDong() {
-        layNgayHienTai();
         lblMaSanPham.setText("");
         lblPhanXuong.setText("");
         lblSanPham.setText("");

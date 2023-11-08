@@ -217,23 +217,74 @@ public class ChamCongSanPham_Dao {
         return dsChamCong;
     }
 
-    public List<ChamCongSanPham> getChamCongSanPhamTheoThang(String thang) {
+    public List<ChamCongSanPham> getChamCongSanPhamTheoLuong(String maLuong) {
         List<ChamCongSanPham> dsChamCong = new ArrayList<>();
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
             String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
-                    + " CongDoan.tenCongDoan FROM ChamCongSanPham"
-                    + " INNER JOIN SanPham ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
                     + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
-                    + " where ngayLamViec = ''";
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong"
+                    + " WHERE maLuongCongNhan = '" + maLuong + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
+                dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
+                        nv,
+                        new SanPham(resultSet.getString(5), resultSet.getString(10)),
+                        resultSet.getDate(4),
+                        new CongDoan(resultSet.getString(6), resultSet.getString(11)),
+                        resultSet.getFloat(7),
+                        resultSet.getInt(8),
+                        resultSet.getFloat(9))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsChamCong;
+    }
+
+    public List<ChamCongSanPham> getChamCongSanPhamTheoThang(String thang, String maNhanVien) {
+        List<ChamCongSanPham> dsChamCong = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String[] parts = thang.split("-");
+        int month = Integer.parseInt(parts[0]);
+        int year = Integer.parseInt(parts[1]);
+        try {
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong"
+                    + " WHERE ChamCongSanPham.maNhanVienSanXuat = '" + maNhanVien + "'"
+                    + " AND DATEPART(YEAR, ngayLamViec) = '" + year + "'"
+                    + " AND DATEPART(MONTH, ngayLamViec) = '" + month + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
                 //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
                 dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
-                        new NhanVienSanXuat(resultSet.getString(2)),
+                        nv,
                         new SanPham(resultSet.getString(5), resultSet.getString(10)),
                         resultSet.getDate(4),
                         new CongDoan(resultSet.getString(6), resultSet.getString(11)),
@@ -301,6 +352,43 @@ public class ChamCongSanPham_Dao {
             smt.setInt(1, soLuong);
             smt.setFloat(2, luong);
             smt.setString(3, maChamCong);
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean capNhatChamCongMaLuong(String maLuong, String thang, String maNhanVien) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            String[] parts = thang.split("-");
+            int month = Integer.parseInt(parts[0]);
+            int year = Integer.parseInt(parts[1]);
+            smt = connection.prepareStatement("UPDATE ChamCongSanPham"
+                    + " SET maLuongCongNhan = ?"
+                    + " WHERE maNhanVienSanXuat = '" + maNhanVien + "'"
+                    + " AND DATEPART(YEAR, ngayLamViec) = '" + year + "'"
+                    + " AND DATEPART(MONTH, ngayLamViec) = '" + month + "'");
+            smt.setString(1, maLuong);
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean capNhatChamCongXoaMaLuong(String maLuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE ChamCongSanPham"
+                    + " SET"
+                    + " maLuongCongNhan = NULL"
+                    + " WHERE maLuongCongNhan = '" + maLuong + "'");
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;
