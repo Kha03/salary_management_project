@@ -89,4 +89,69 @@ public class PhongBan_Dao {
             e.printStackTrace();
         }
     }
+
+    public String layMaTuDongPhongBan() {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String maNhanVien = null;
+        String sql = "DECLARE @NewIDPB VARCHAR(7)"
+                + " SET @NewIDPB = dbo.IDPB()"
+                + " SELECT @NewIDPB ";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                maNhanVien = resultSet.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return maNhanVien;
+    }
+
+    public boolean themPhongBan(String tenPhongBan) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("INSERT INTO PhongBan VALUES (?,?,NULL)");
+            smt.setString(1, layMaTuDongPhongBan());
+            smt.setString(2, tenPhongBan);
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean capNhatPhongBan(PhongBan phongBan) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE PhongBan"
+                    + " SET tenPhongBan = ?"
+                    + " WHERE maPhongBan = ?");
+            smt.setString(1, phongBan.getTenPhongBan());
+            smt.setString(2, phongBan.getMaPhongBan());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean xoaPhongBan(String maPhongBan) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DELETE FROM PhongBan"
+                    + " WHERE maPhongBan = '" + maPhongBan + "'");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
 }
