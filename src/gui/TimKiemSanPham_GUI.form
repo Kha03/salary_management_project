@@ -293,10 +293,9 @@
                   <Color blue="0" green="63" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Nam"/>
-                    <StringItem index="1" value="N&#x1eef;"/>
-                    <StringItem index="2" value="Kinh Nghi&#x1ec7;m"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Mua b&#xe1;n h&#xe0;ng h&#xf3;a nh&#x1ead;p kh&#x1ea9;u"/>
+                    <StringItem index="1" value="Mua b&#xe1;n h&#xe0;ng h&#xf3;a nh&#x1ef1;a"/>
                   </StringArray>
                 </Property>
               </Properties>

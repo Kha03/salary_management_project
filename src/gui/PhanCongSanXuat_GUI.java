@@ -223,7 +223,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
             }
         });
         jDesktopPane1.add(chkToanBo);
-        chkToanBo.setBounds(560, 220, 220, 30);
+        chkToanBo.setBounds(560, 220, 170, 30);
 
         btnTao.setBackground(new java.awt.Color(152, 249, 152));
         btnTao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -243,7 +243,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
         cmbCongDoan.setEnabled(false);
         jDesktopPane1.add(cmbCongDoan);
-        cmbCongDoan.setBounds(670, 180, 170, 26);
+        cmbCongDoan.setBounds(670, 180, 210, 26);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -363,7 +363,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
         lblThongBao.setToolTipText("");
         jDesktopPane1.add(lblThongBao);
-        lblThongBao.setBounds(890, 120, 220, 50);
+        lblThongBao.setBounds(560, 250, 450, 30);
 
         add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 741));
     }// </editor-fold>//GEN-END:initComponents
@@ -666,9 +666,9 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
     private boolean themPhanCong() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Phân Công", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
-            int[] soNhanVienChams = tblNhanVien.getSelectedRows();
-            int soNhanVien = soNhanVienChams.length;
-            int soLuongDuocCham = soNhanVienChams.length;
+            int[] soNhanVienPcs = tblNhanVien.getSelectedRows();
+            int soNhanVien = soNhanVienPcs.length;
+            int soLuongDuocCham = soNhanVienPcs.length;
             int viTriPhanXuong = tblPhanXuong.getSelectedRow();
             int viTriSanPham = tblSanPham.getSelectedRow();
             if (kiemTraViTri(viTriPhanXuong, viTriSanPham, soNhanVien)) {
@@ -682,7 +682,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                     ChamCongSanPham_Dao chamCongSanPham_Dao = new ChamCongSanPham_Dao();
                     String maNhanVien;
                     for (int j = 0; j < soNhanVien; j++) {
-                        maNhanVien = nhanVienSanXuats.get(soNhanVienChams[j]).getMaNhanVienSanXuat();
+                        maNhanVien = nhanVienSanXuats.get(soNhanVienPcs[j]).getMaNhanVienSanXuat();
                         if (phanCong_Dao.themNhanVienVaoPhanCong(maNhanVien,
                                 maPhanCong)) {
                             chamCongSanPham_Dao.themChamCong(pcsx, maNhanVien);
@@ -690,14 +690,13 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
                         }
                         soLuongDuocCham--;
                     }
-                    JOptionPane.showMessageDialog(this, soLuongDuocCham + " Đã được phân công");
+                    JOptionPane.showMessageDialog(this, soLuongDuocCham + " Nhân viên đã được phân công");
                     return true;
                 }
             }
             return false;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private boolean kiemTraViTri(int viTriPhanXuong, int viTriSanPham, int soNhanVien) {
@@ -801,7 +800,9 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
 
     private void xuLyChkToanBo() {
         if (chkToanBo.isSelected()) {
-            tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+            if (tblNhanVien.getRowCount() > 0) {
+                tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+            }
         } else {
             tblNhanVien.clearSelection();
         }
@@ -823,9 +824,12 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
         if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayPhanCong.getDate()))) {
             lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
             return false;
-        } else if (!KiemTraChuoi.ktTruocHoacBangNgayHT(dinhDangNgay.format(dchNgayPhanCong.getDate()))) {
-            lblThongBao.setText("* Ngày chấm không được sau ngày hiện tại");
-            return false;
+        }
+        if (!btnTao.getText().equalsIgnoreCase("Tạo")) {
+            if (KiemTraChuoi.ktTruocNgayHT(dinhDangNgay.format(dchNgayPhanCong.getDate()))) {
+                lblThongBao.setText("* Ngày Phân Công không được trước ngày hiện tại");
+                return false;
+            }
         }
         lblThongBao.setText("");
         return true;

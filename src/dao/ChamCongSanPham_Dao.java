@@ -2,15 +2,16 @@ package dao;
 
 import java.sql.*;
 import connect.ConnectDB;
-import entity.ChamCongNhanVien;
 import entity.ChamCongSanPham;
 import entity.NhanVienSanXuat;
 import entity.SanPham;
 import entity.CongDoan;
 import entity.PhanCongSanXuat;
+import entity.PhanXuong;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -24,14 +25,184 @@ public class ChamCongSanPham_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham, CongDoan.tenCongDoan FROM ChamCongSanPham INNER JOIN SanPham ON ChamCongSanPham.maSanPham = SanPham.maSanPham INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan;";
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-
             while (resultSet.next()) {
                 //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
                 dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
-                        new NhanVienSanXuat(resultSet.getString(2)),
+                        nv,
+                        new SanPham(resultSet.getString(5), resultSet.getString(10)),
+                        resultSet.getDate(4),
+                        new CongDoan(resultSet.getString(6), resultSet.getString(11)),
+                        resultSet.getFloat(7),
+                        resultSet.getInt(8),
+                        resultSet.getFloat(9))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsChamCong;
+    }
+
+    public List<ChamCongSanPham> getChamCongSanPhamTheoPhanXuong(String maPhanXuong, Date ngayCham) {
+        List<ChamCongSanPham> dsChamCong = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong"
+                    + " WHERE ngayLamViec = '" + dinhDangNgay.format(ngayCham) + "' AND"
+                    + " PhanXuong.maPhanXuong = '" + maPhanXuong + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
+                dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
+                        nv,
+                        new SanPham(resultSet.getString(5), resultSet.getString(10)),
+                        resultSet.getDate(4),
+                        new CongDoan(resultSet.getString(6), resultSet.getString(11)),
+                        resultSet.getFloat(7),
+                        resultSet.getInt(8),
+                        resultSet.getFloat(9))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsChamCong;
+    }
+
+    public List<ChamCongSanPham> getChamCongSanPhamTheoSanPham(String maSanPham, Date ngayCham) {
+        List<ChamCongSanPham> dsChamCong = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong"
+                    + " WHERE ngayLamViec = '" + dinhDangNgay.format(ngayCham) + "' AND"
+                    + " ChamCongSanPham.maSanPham = '" + maSanPham + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
+                dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
+                        nv,
+                        new SanPham(resultSet.getString(5), resultSet.getString(10)),
+                        resultSet.getDate(4),
+                        new CongDoan(resultSet.getString(6), resultSet.getString(11)),
+                        resultSet.getFloat(7),
+                        resultSet.getInt(8),
+                        resultSet.getFloat(9))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsChamCong;
+    }
+
+    public List<ChamCongSanPham> getChamCongSanPhamTheoPxSp(String maSanPham, String maPhanXuong, Date ngayCham) {
+        List<ChamCongSanPham> dsChamCong = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong"
+                    + " WHERE ngayLamViec = '" + dinhDangNgay.format(ngayCham) + "' AND"
+                    + " PhanXuong.maPhanXuong = '" + maPhanXuong + "' AND"
+                    + " ChamCongSanPham.maSanPham = '" + maSanPham + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
+                dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
+                        nv,
+                        new SanPham(resultSet.getString(5), resultSet.getString(10)),
+                        resultSet.getDate(4),
+                        new CongDoan(resultSet.getString(6), resultSet.getString(11)),
+                        resultSet.getFloat(7),
+                        resultSet.getInt(8),
+                        resultSet.getFloat(9))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsChamCong;
+    }
+
+    public List<ChamCongSanPham> getChamCongSanPhamTheoNgay(Date ngayCham) {
+        List<ChamCongSanPham> dsChamCong = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        SimpleDateFormat dinhDangNgay = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan,"
+                    + " PhanXuong.tenPhanXuong,"
+                    + " NhanVien.hoVaTen"
+                    + " FROM ChamCongSanPham INNER JOIN SanPham"
+                    + " ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " INNER JOIN NhanVienSanXuat ON NhanVienSanXuat.maNhanVienSanXuat = ChamCongSanPham.maNhanVienSanXuat"
+                    + " INNER JOIN NhanVien ON NhanVien.maNhanVien = NhanVienSanXuat.maNhanVien"
+                    + " INNER JOIN PhanXuong ON PhanXuong.maPhanXuong = NhanVienSanXuat.maPhanXuong"
+                    + " WHERE ngayLamViec = '" + dinhDangNgay.format(ngayCham) + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                //còn sai
+                NhanVienSanXuat nv = new NhanVienSanXuat(resultSet.getString(2), "", resultSet.getString(13));
+                nv.setPhanXuong(new PhanXuong("", resultSet.getString(12)));
+                dsChamCong.add(new ChamCongSanPham(resultSet.getString(1),
+                        nv,
                         new SanPham(resultSet.getString(5), resultSet.getString(10)),
                         resultSet.getDate(4),
                         new CongDoan(resultSet.getString(6), resultSet.getString(11)),
@@ -51,7 +222,11 @@ public class ChamCongSanPham_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham, CongDoan.tenCongDoan FROM ChamCongSanPham INNER JOIN SanPham ON ChamCongSanPham.maSanPham = SanPham.maSanPham INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan where ngayLamViec = '';";
+            String sql = "SELECT ChamCongSanPham.*, SanPham.tenSanPham,"
+                    + " CongDoan.tenCongDoan FROM ChamCongSanPham"
+                    + " INNER JOIN SanPham ON ChamCongSanPham.maSanPham = SanPham.maSanPham"
+                    + " INNER JOIN CongDoan ON ChamCongSanPham.maCongDoan = CongDoan.maCongDoan"
+                    + " where ngayLamViec = ''";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -114,13 +289,32 @@ public class ChamCongSanPham_Dao {
         return true;
     }
 
+    public boolean chamCongSanPham(String maChamCong, int soLuong, float luong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE ChamCongSanPham"
+                    + " SET soLuong = ?,"
+                    + " tongLuongNgay = ?"
+                    + " WHERE maChamCong = ?");
+            smt.setInt(1, soLuong);
+            smt.setFloat(2, luong);
+            smt.setString(3, maChamCong);
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean xoaChamCong(String maChamCong) {
         try {
             ConnectDB.getInstance();
             Connection connection = ConnectDB.getConnection();
             PreparedStatement smt = null;
             smt = connection.prepareStatement("DELETE FROM ChamCongSanPham"
-                    + " WHERE maNhanVien = '" + maChamCong + "'");
+                    + " WHERE maChamCong = '" + maChamCong + "'");
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;

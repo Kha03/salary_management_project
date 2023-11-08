@@ -81,12 +81,41 @@ public class ChamCongHanhChanh_Dao {
         return dsChamCong;
     }
 
-    public List<ChamCongNhanVien> getDanhSachChamCongNhanVienTheoThang(String thang) {
+    public List<ChamCongNhanVien> getDanhSachChamCongNhanVienTheoThang(String thang, String maNhanVien) {
+        List<ChamCongNhanVien> dsChamCong = new ArrayList<>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String[] parts = thang.split("-");
+        int month = Integer.parseInt(parts[0]);
+        int year = Integer.parseInt(parts[1]);
+        try {
+            String sql = "SELECT * FROM ChamCongNhanVien WHERE"
+                    + " maNhanVienHanhChinh = '" + maNhanVien + "'"
+                    + " AND DATEPART(YEAR, ngayLamViec) = '" + year + "'"
+                    + " AND DATEPART(MONTH, ngayLamViec) = '" + month + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                //còn sai
+                dsChamCong.add(new ChamCongNhanVien(resultSet.getString(1),
+                        new NhanVienHanhChanh(resultSet.getString(5)), resultSet.getDate(2),
+                        resultSet.getBoolean(3),
+                        resultSet.getInt(4)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dsChamCong;
+    }
+
+    public List<ChamCongNhanVien> getDanhSachChamCongNhanVienTheoLuong(String maLuong) {
         List<ChamCongNhanVien> dsChamCong = new ArrayList<>();
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT * FROM ChamCongNhanVien where ngayLamViec = '" + thang + "'";
+            String sql = "SELECT * FROM ChamCongNhanVien where"
+                    + " maLuongHanhChinh = '" + maLuong + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
@@ -175,6 +204,44 @@ public class ChamCongHanhChanh_Dao {
             smt.setBoolean(1, chamCong.getTrangThai());
             smt.setInt(2, chamCong.getGioTangCa());
             smt.setString(3, chamCong.getMaNgayCong());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean capNhatChamCongMaLuong(String maLuong, String thang, String maNhanVien) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            String[] parts = thang.split("-");
+            int month = Integer.parseInt(parts[0]);
+            int year = Integer.parseInt(parts[1]);
+            smt = connection.prepareStatement("UPDATE ChamCongNhanVien"
+                    + " SET"
+                    + " maLuongHanhChinh = ?"
+                    + " WHERE maNhanVienHanhChinh = '" + maNhanVien + "'"
+                    + " AND DATEPART(YEAR, ngayLamViec) = '" + year + "'"
+                    + " AND DATEPART(MONTH, ngayLamViec) = '" + month + "'");
+            smt.setString(1, maLuong);
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean capNhatChamCongXoaMaLuon(String maLuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE ChamCongNhanVien"
+                    + " SET"
+                    + " maLuongHanhChinh = NULL"
+                    + " WHERE maLuongHanhChinh = '" + maLuong + "'");
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;

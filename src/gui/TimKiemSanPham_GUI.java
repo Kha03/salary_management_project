@@ -1,16 +1,22 @@
 package gui;
 
 import connect.ConnectDB;
+import dao.HopDong_Dao;
 import dao.SanPham_Dao;
+import entity.SanPham;
+import entity.HopDongSanXuat;
+import handle.borderselected.Border_Selected;
 import java.sql.SQLException;
+
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author ADMIN
  */
 public class TimKiemSanPham_GUI extends javax.swing.JPanel {
+
+    
 
     /**
      * Creates new form ChamCongHanhChinh
@@ -145,7 +151,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
 
         cmbHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbHopDong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbHopDong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
+        cmbHopDong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mua bán hàng hóa nhập khẩu", "Mua bán hàng hóa nhựa" }));
         cmbHopDong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbHopDongActionPerformed(evt);
@@ -256,9 +262,8 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         tblHopDong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         
         
-        
-        //table chấm công
-        modelChamCong = new DefaultTableModel(
+        //table Sản Phầm
+        modelSanPham = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
                     "STT", "Tên sản phẩm", "Mã sản phẩm", "Tên hợp đồng", "Số lượng", "Đơn giá", "Đơn vị tính"}
@@ -285,7 +290,8 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelChamCong);
+        jTable4.setModel(modelSanPham);
+        
         jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
         jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
         jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
@@ -300,15 +306,48 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         ConnectDB.getInstance();
         ConnectDB.connect();
         doDuLieu();
-        
+        sanPham_Dao = new SanPham_Dao();
+        hopDong_Dao = new HopDong_Dao();
     }
-    
     private void doDuLieu() {
-        
+//        doDuLieuSanPham();
+//        doDuLieuHopDong();
+
+    }
+    private void doDuLieuSanPham() {
+        for(SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
+            int i = 1;
+            Object[] objects = {
+                i,
+                sp.getTenSanPham(),
+                sp.getMaSanPham(),
+                "",
+                sp.getSoLuong(),
+                sp.getDonGia(),
+                sp.getDonViTinh(),
+            };
+            modelSanPham.addRow(objects);
+        }
+    }
+    private void doDuLieuHopDong() {
+        for(HopDongSanXuat hd : hopDong_Dao.getDanhSachHopDong()) {
+            int i = 1;
+            Object[] objects = {
+                i,
+                hd.getMaHopDong(),
+                hd.getTenHopDong(), 
+            };
+            modelHopDong.addRow(objects);
+        }
     }
     
+    
+    // private Border_Selected border;
+    private SanPham_Dao sanPham_Dao;
+    private HopDong_Dao hopDong_Dao;
     private DefaultTableModel modelHopDong;
-    private DefaultTableModel modelChamCong;
+    private DefaultTableModel modelSanPham;
+    private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbHopDong;
     private javax.swing.JButton jButton10;

@@ -32,23 +32,24 @@ public class PhuCap_Dao {
         }
         return dsPhuCap;
     }
+
     public List<NhanVien> getDanhSachNhanVienPhuCap(String maPhuCap) {
         List<NhanVien> dsNhanVien = new ArrayList<>();
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         try {
-            String sql = "SELECT NhanVien.* FROM NhanVien INNER JOIN NhanVien_PhuCap ON NhanVien.maNhanVien = NhanVien_PhuCap.maNhanVien WHERE NhanVien_PhuCap.maPhuCap = '"+maPhuCap+"'";
+            String sql = "SELECT NhanVien.* FROM NhanVien INNER JOIN NhanVien_PhuCap ON NhanVien.maNhanVien = NhanVien_PhuCap.maNhanVien WHERE NhanVien_PhuCap.maPhuCap = '" + maPhuCap + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 //còn sai
-                dsNhanVien.add(new NhanVien(resultSet.getString(1), 
-                        resultSet.getString(2), 
-                        resultSet.getDate(3), 
-                        resultSet.getBoolean(4), 
-                        resultSet.getString(5), 
-                        resultSet.getString(6), 
-                        resultSet.getString(7), 
+                dsNhanVien.add(new NhanVien(resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getDate(3),
+                        resultSet.getBoolean(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
                         resultSet.getDate(8)));
             }
         } catch (SQLException e) {
@@ -56,6 +57,7 @@ public class PhuCap_Dao {
         }
         return dsNhanVien;
     }
+
     public List<PhuCap> getDanhSachPhuCapCoNhanVien() {
         List<PhuCap> dsPhuCap = new ArrayList<>();
         ConnectDB.getInstance();
@@ -67,11 +69,32 @@ public class PhuCap_Dao {
 
             while (resultSet.next()) {
                 //còn sai
-                dsPhuCap.add(new PhuCap(resultSet.getString(1), resultSet.getString(2), resultSet.getFloat(3), getDanhSachNhanVienPhuCap(resultSet.getString(1)),resultSet.getBoolean(4), resultSet.getString(5)));
+                dsPhuCap.add(new PhuCap(resultSet.getString(1), resultSet.getString(2), resultSet.getFloat(3), getDanhSachNhanVienPhuCap(resultSet.getString(1)), resultSet.getBoolean(4), resultSet.getString(5)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return dsPhuCap;
+    }
+
+    public float layTienPhuCap(String maNhanVienHC, String thang) {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        float tienPhuCap = 0;
+        try {
+            String sql = "SELECT SUM(PhuCap.soTien) AS TongTienPhuCap"
+                    + " FROM NhanVien_PhuCap"
+                    + " INNER JOIN PhuCap ON NhanVien_PhuCap.maPhuCap = PhuCap.maPhuCap"
+                    + " INNER JOIN NhanVienHanhChinh ON NhanVienHanhChinh.maNhanVien = NhanVien_PhuCap.maNhanVien"
+                    + " WHERE NhanVienHanhChinh.maNhanVienHanhChinh = '" + maNhanVienHC + "' AND (PhuCap.coDinh = 'True' OR PhuCap.thangHuong = '" + thang + "')";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                tienPhuCap = resultSet.getFloat(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tienPhuCap;
     }
 }

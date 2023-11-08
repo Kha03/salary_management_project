@@ -9,11 +9,16 @@ import dao.NhanVienHanhChanh_Dao;
 import dao.NhanVienSanXuat_Dao;
 import entity.CapBac;
 import java.sql.SQLException;
+import entity.NhanVien;
 import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
 import entity.PhanXuong;
 import entity.TrinhDo;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 
 /**
  *
@@ -22,7 +27,7 @@ import java.text.SimpleDateFormat;
 public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
     private SimpleDateFormat dinhDangNgay;
-
+    private ArrayList<NhanVien> ds;
 
     
     /**
@@ -88,11 +93,16 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1300, 465));
 
+        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel1FocusGained(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbCapBac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbCapBac.setForeground(new java.awt.Color(0, 99, 0));
-        cmbCapBac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân Viên", "Trưởng Phòng", "Tổ Trưởng", "Quản Lí", " ", " " }));
+        cmbCapBac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên Hành Chính", "Quản Lý", "Trưởng Phòng", "Nhân Viên Phân Xưởng", "Tổ trưởng" }));
         jPanel1.add(cmbCapBac, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 50, 190, -1));
 
         cmbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -110,6 +120,11 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
         btnTim.setText("Tìm Kiếm");
         btnTim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 190, 130, 30));
 
         btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
@@ -134,7 +149,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
                 txtMaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, -1));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 6, 190, 30));
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 96, 0));
@@ -187,7 +202,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Tài Chính Kế Toán", "Phòng Nhân Sự" }));
+        cmbPhongBan.setToolTipText("");
         jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 190, -1));
 
         cmbTrinhDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -202,7 +218,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -270,15 +286,12 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
 
 //        model sản xuất
-
+        cmbGioiTinh.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbCapBac.setSelectedIndex(-1);
+        cmbTrinhDo.setSelectedIndex(-1);      
     }
-//    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {                                          
-//            lamMoiDong();
-//            lamMoiBang();
-//            doDuLieu();
-//
-//    }   
-    
     
     private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
         // TODO add your handling code here:
@@ -301,6 +314,15 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private void cmbTrinhDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTrinhDoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTrinhDoActionPerformed
+
+    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1FocusGained
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        timKiem();
+    }//GEN-LAST:event_btnTimActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -308,6 +330,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
         nhanVienSanXuat_Dao = new NhanVienSanXuat_Dao();
         doDuLieu();
+        
     }
     
     private void timKiem(){
@@ -315,7 +338,7 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         
         String maNhanVien = txtMa.getText().trim();
         String tenNhanVien = txtTen.getText().trim();
-        String gioiTinh = (String) cmbGioiTinh.getSelectedItem();
+        String gioiTinh =  (String) cmbGioiTinh.getSelectedItem();
         String ngaySinh = dinhDangNgay.format(dchNgaySinh.getDate());
         String ngayVaoLam = dinhDangNgay.format(dchNgayVaoLam.getDate());
         String dienThoai = txtSDT.getText().trim();
@@ -325,7 +348,108 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         String capBac = (String) cmbCapBac.getSelectedItem();
         String trinhDo = (String) cmbTrinhDo.getSelectedItem();
         
+        for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
+              boolean thoaMan = true; 
         
+            if (!maNhanVien.isEmpty() && !nVien.getMaNhanVienHanhChanh().equalsIgnoreCase(maNhanVien)) {
+                thoaMan = false;
+            }
+            if (!tenNhanVien.isEmpty() && !nVien.getHoVaTen().toLowerCase().equalsIgnoreCase(tenNhanVien.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!gioiTinh.isEmpty() && !(nVien.isGioiTinh()? "Nam": "Nữ").equalsIgnoreCase(gioiTinh)) {
+                thoaMan = false;
+            }
+            if (!ngaySinh.isEmpty() && !dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(ngaySinh)) {
+                thoaMan = false;
+            }
+            if (!ngayVaoLam.isEmpty() && !!dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(ngayVaoLam)) {
+                thoaMan = false;
+            }
+            if (!dienThoai.isEmpty() && !nVien.getDienThoai().toLowerCase().equalsIgnoreCase(dienThoai.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!mail.isEmpty() && !nVien.getEmail().toLowerCase().equalsIgnoreCase(mail.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!phongBan.isEmpty() && !nVien.getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(phongBan.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!capBac.isEmpty() && !nVien.getCapBac().toLowerCase().equalsIgnoreCase(capBac.toLowerCase())) {
+                thoaMan = false;
+            }
+        
+        // If the employee satisfies all criteria, add it to the table
+            if (thoaMan) {
+                Object[] rowData = {
+                    nVien.getMaNhanVienHanhChanh(),
+                    nVien.getHoVaTen(),
+                    nVien.isGioiTinh()? "Nam": "Nữ",
+                    dinhDangNgay.format(nVien.getNgaySinh()),
+                    nVien.getDienThoai(),
+                    nVien.getDiaChi(),
+                    nVien.getEmail(),
+                    nVien.getPhongBan().getTenPhongBan(),
+                    nVien.getCapBac(),
+                    dinhDangNgay.format(nVien.getNgayVaoLam()),
+                  ""  
+                };
+                modelNhanvien.addRow(rowData);
+            }
+        } 
+        
+        //NhanVienSanXuat
+        for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
+              boolean thoaMan = true; 
+        
+            if (!maNhanVien.isEmpty() && !nVien.getMaNhanVienSanXuat().equalsIgnoreCase(maNhanVien)) {
+                thoaMan = false;
+            }
+            if (!tenNhanVien.isEmpty() && !nVien.getHoVaTen().toLowerCase().equalsIgnoreCase(tenNhanVien.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!gioiTinh.isEmpty() && !(nVien.isGioiTinh()? "Nam": "Nữ").equalsIgnoreCase(gioiTinh)) {
+                thoaMan = false;
+            }
+            if (!ngaySinh.isEmpty() && !dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(ngaySinh)) {
+                thoaMan = false;
+            }
+            if (!ngayVaoLam.isEmpty() && !!dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(ngayVaoLam)) {
+                thoaMan = false;
+            }
+            if (!dienThoai.isEmpty() && !nVien.getDienThoai().toLowerCase().equalsIgnoreCase(dienThoai.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!mail.isEmpty() && !nVien.getEmail().toLowerCase().equalsIgnoreCase(mail.toLowerCase())) {
+                thoaMan = false;
+            }
+            if (!phanXuong.isEmpty() && !nVien.getPhanXuong().getTenPhanXuong().equalsIgnoreCase(phanXuong)) {
+                thoaMan = false;
+            }
+            if (!trinhDo.isEmpty() && !nVien.getTrinhDo().equalsIgnoreCase(trinhDo)) {
+                thoaMan = false;
+            }
+        
+        // If the employee satisfies all criteria, add it to the table
+            if (thoaMan) {
+                Object[] rowData = {
+                    nVien.getMaNhanVienSanXuat(),
+                    nVien.getHoVaTen(),
+                    nVien.isGioiTinh() ? "Nam" : "Nữ",
+                    dinhDangNgay.format(nVien.getNgaySinh()),
+                    nVien.getDienThoai(),
+                    nVien.getDiaChi(),
+                    nVien.getEmail(),
+                    nVien.getPhanXuong().getTenPhanXuong(),
+                    nVien.getcapBac(),
+                    dinhDangNgay.format(nVien.getNgayVaoLam()),
+                    nVien.getTrinhDo()
+                };
+                modelNhanvien.addRow(rowData);
+            }
+        } 
+          
+         
     }
     
     public void lamMoiDong() {
@@ -347,8 +471,10 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         cmbTrinhDo.removeAllItems();
         cmbCapBac.removeAllItems();
     }
-    
-    private void doDuLieu() {
+    private void doDuLieu(){
+        doDuLieuNhanVien();
+    }
+    private void doDuLieuNhanVien() {
         for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
           Object[] objects = {
               nVien.getMaNhanVienHanhChanh(),
@@ -422,6 +548,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
+
+    
 
     
 }

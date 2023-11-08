@@ -6,10 +6,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import entity.LuongHanhChanh;
 import dao.TinhLuongHanhChanh_Dao;
+import entity.LuongCongNhan;
 import java.sql.SQLException;
 import connect.ConnectDB;
-import entity.NhanVienHanhChanh;
-import dao.NhanVienHanhChanh_Dao;
+import dao.TinhLuongCongNhan_Dao;
+
 /**
  *
  * @author ADMIN
@@ -156,13 +157,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Tài Chính Kế Toán", "Phòng Nhân Sự" }));
         cmbPhongBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPhongBanActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
+        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 190, -1));
 
         btnThayDoiTim.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -177,7 +178,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chế Tạo", "Gia Công", "Sơn", " " }));
+        cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         jPanel1.add(cbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
         btnThayDoiTim.add(jRadioButton3);
@@ -470,12 +471,26 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(8).setCellRenderer(center);
         jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
         jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
+        
+        
+        jTable1.setModel(modelLuongSx);
+
+        
+        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
+        jTable1.getColumnModel().getColumn(5).setCellRenderer(center);
     }
 
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
         tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
+        tinhLuongCongNhan_Dao  = new TinhLuongCongNhan_Dao();
         doDuLieu();
         border_Selected = new Border_Selected();
         cbPhanXuong.setVisible(false);
@@ -485,10 +500,16 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         
     }
     public void doDuLieu() {
-        for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getLuongHanhChanh()) {
+        doDuLieuLuongHanhChanh();
+        doDuLieuLuongSanXuat();
+    }
+    
+    public void doDuLieuLuongHanhChanh() {
+        int i=1;
+        for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getDanhSachLuong()) {
             Object[] objects = {
-                "",
-                lg.getNhanVienHanhChanh().getMaSo(),
+                i++,
+                lg.getNhanVienHanhChanh().getMaNhanVienHanhChanh(),
                 lg.getNhanVienHanhChanh().getHoVaTen(),
                 lg.getChucVu(),
                 lg.getHeSoLuong(),
@@ -501,16 +522,28 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
             };
             modelLuongHc.addRow(objects);
         }
-        
-     
     }
-    
+    public void doDuLieuLuongSanXuat() {
+        int i = 1;
+        for(LuongCongNhan lg : tinhLuongCongNhan_Dao.getDanhSachLuong()) {
+            Object[] objects = {
+                i++,
+                lg.getNhanVienSanXuat().getMaNhanVienSanXuat(),
+                lg.getNhanVienSanXuat().getHoVaTen(),
+                lg.getTongLuongSanPham(),
+                lg.getTienPhuCap(),
+                lg.getTongLuong(),
+            };
+            modelLuongSx.addRow(objects);
+        }
+    }
     
     // private Border_Selected border;
     private DefaultTableModel modelLuongHc;
     private DefaultTableModel modelLuongSx;
     private Border_Selected border_Selected;
     private TinhLuongHanhChanh_Dao tinhLuongHanhChanh_Dao;
+    private TinhLuongCongNhan_Dao tinhLuongCongNhan_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLuongThucLanhSxV;
     private javax.swing.ButtonGroup btnThayDoiTim;

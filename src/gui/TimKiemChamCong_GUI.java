@@ -142,7 +142,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
         cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Tài Chính Kế Toán", "Phòng Nhân Sự" }));
         jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 190, -1));
 
         btnThayDoiTim.add(radNhanVienSanXuat);
@@ -169,7 +169,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chế Tạo", "Gia Công", "Sơn", " " }));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 190, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -241,12 +241,12 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
         cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trộn Nguyên Liệu", "Tạo Hình", "Lắp Ráp", "Làm Nguội", "Ép đùn" }));
         jPanel1.add(cmbCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 190, -1));
 
         cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
-        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
+        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
         jPanel1.add(cmbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));

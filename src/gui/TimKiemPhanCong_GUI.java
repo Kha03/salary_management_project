@@ -57,7 +57,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
-        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
+        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
         jDesktopPane1.add(cmbSanPham);
         cmbSanPham.setBounds(370, 180, 170, 26);
 
@@ -75,7 +75,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         cmbPhanXuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPhanXuongActionPerformed(evt);
@@ -161,7 +161,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
+        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trộn Nguyên Liệu", "Tạo Hình", "Lắp Ráp", "Làm Nguội", "Ép đùn" }));
         jDesktopPane1.add(cmbCongDoan);
         cmbCongDoan.setBounds(670, 180, 170, 26);
 
@@ -231,8 +231,8 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI();
-        jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);
+        //ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI();
+       // jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void cmbPhanXuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhanXuongActionPerformed

@@ -89,9 +89,10 @@
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="M&#xe3; Nh&#xe2;n Vi&#xea;n"/>
-            <StringItem index="1" value=" "/>
+          <StringArray count="3">
+            <StringItem index="0" value="&#x1ed0;ng nh&#x1ef1;a"/>
+            <StringItem index="1" value="Bao b&#xec; nh&#x1ef1;a"/>
+            <StringItem index="2" value="G&#x1ed7; nh&#x1ef1;a"/>
           </StringArray>
         </Property>
       </Properties>
@@ -229,8 +230,8 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="M&#xe3; Nh&#xe2;n Vi&#xea;n"/>
-            <StringItem index="1" value=" "/>
+            <StringItem index="0" value="Mua b&#xe1;n h&#xe0;ng h&#xf3;a nh&#x1ead;p kh&#x1ea9;u"/>
+            <StringItem index="1" value="Mua b&#xe1;n h&#xe0;ng h&#xf3;a nh&#x1ef1;a"/>
           </StringArray>
         </Property>
       </Properties>

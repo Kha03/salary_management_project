@@ -241,14 +241,9 @@
                   <Color blue="0" green="63" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="7">
-                    <StringItem index="0" value="K&#x1ebf; to&#xe1;n "/>
-                    <StringItem index="1" value="nh&#xe2;n s&#x1ef1;"/>
-                    <StringItem index="2" value="gi&#xe1;m &#x111;&#x1ed1;c"/>
-                    <StringItem index="3" value="k&#x129; thu&#x1ead;t"/>
-                    <StringItem index="4" value="ph&#xe1;t tri&#x1ec3;n"/>
-                    <StringItem index="5" value=" "/>
-                    <StringItem index="6" value=" "/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Ph&#xf2;ng T&#xe0;i Ch&#xed;nh K&#x1ebf; To&#xe1;n"/>
+                    <StringItem index="1" value="Ph&#xf2;ng Nh&#xe2;n S&#x1ef1;"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -260,7 +255,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="495" y="60" width="190" height="-1"/>
+                  <AbsoluteConstraints x="500" y="60" width="190" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -295,11 +290,9 @@
                   <Color blue="0" green="63" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Ch&#x1ebf; T&#x1ea1;o"/>
-                    <StringItem index="1" value="Gia C&#xf4;ng"/>
-                    <StringItem index="2" value="S&#x1a1;n"/>
-                    <StringItem index="3" value=" "/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="X&#x1b0;&#x1edf;ng L&#x1eaf;p R&#xe1;p"/>
+                    <StringItem index="1" value="X&#x1b0;&#x1edf;ng Ch&#x1ebf; T&#xe1;c"/>
                   </StringArray>
                 </Property>
               </Properties>

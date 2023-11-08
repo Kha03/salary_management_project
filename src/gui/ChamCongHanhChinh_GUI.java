@@ -168,6 +168,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         spnGioTangCa.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
         spnGioTangCa.setEnabled(false);
         ((DefaultEditor) spnGioTangCa.getEditor()).getTextField().setEditable(false);
+        spnGioTangCa.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnGioTangCaStateChanged(evt);
+            }
+        });
         add(spnGioTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 90, -1));
 
         btnXuat.setBackground(new java.awt.Color(152, 249, 152));
@@ -316,7 +321,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_chkToanBoActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        // TODO add your handling code here:
         xuLyCapNhat();
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
@@ -369,6 +373,10 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void dchNgayChamCongPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dchNgayChamCongPropertyChange
         xuLyThayDoiNgayCham();
     }//GEN-LAST:event_dchNgayChamCongPropertyChange
+
+    private void spnGioTangCaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnGioTangCaStateChanged
+        xuLySpnTangCa();
+    }//GEN-LAST:event_spnGioTangCaStateChanged
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -580,7 +588,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Có " + soLuongDuocCapNhat + " nhân viên được cập nhật");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhân viên cập nhật!");
+                JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cập nhật!");
             }
         }
         return false;
@@ -620,6 +628,15 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Sai định dạng");
             }
+        }
+    }
+
+    private void xuLySpnTangCa() {
+        if (!chkLamViec.isSelected()) {
+            lblThongBao.setText("* Nhân viên làm việc mới tăng ca!");
+            spnGioTangCa.setValue(0);
+        } else {
+            lblThongBao.setText("");
         }
     }
 
@@ -668,9 +685,13 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void xuLyChkToanBo() {
         if (chkToanBo.isSelected()) {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
-                tblChamCong.setRowSelectionInterval(0, tblChamCong.getRowCount() - 1);
+                if (tblChamCong.getRowCount() > 0) {
+                    tblChamCong.setRowSelectionInterval(0, tblChamCong.getRowCount() - 1);
+                }
             } else {
-                tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+                if (tblNhanVien.getRowCount() > 0) {
+                    tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
+                }
             }
         } else {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
@@ -689,12 +710,14 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private boolean kiemTraNgay() {
-        if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
-            lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
-            return false;
-        } else if (!KiemTraChuoi.ktTruocHoacBangNgayHT(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
-            lblThongBao.setText("* Ngày chấm không được sau ngày hiện tại");
-            return false;
+        if (!btnTao.getText().equalsIgnoreCase("Tạo")) {
+            if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+                lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
+                return false;
+            } else if (!KiemTraChuoi.ktTruocHoacBangNgayHT(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+                lblThongBao.setText("* Ngày chấm không được sau ngày hiện tại");
+                return false;
+            }
         }
         lblThongBao.setText("");
         return true;
@@ -783,7 +806,6 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     private PhongBan_Dao phongBan_Dao;
     private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
-    private KiemTraChuoi kiemTraChuoi;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnLamMoi;
