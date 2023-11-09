@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemSanPham_GUI.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemBangLuong_GUI.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/dao/TinhLuongHanhChanh_Dao.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemNhanVien_GUI.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/dao/TinhLuongCongNhan_Dao.java</file>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/dao/NhanVienSanXuat_Dao.java</file>
+=======
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/PhongBan_GUI.java</file>
+            <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/TinhLuongSanXuat_GUI.java</file>
+>>>>>>> f85c460187f1441b62626ebf42720109a3fbfbfa
         </group>
     </open-files>
 </project-private>

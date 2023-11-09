@@ -470,19 +470,9 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
                 }
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,};
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,};
+                false, false, false, false, false, false,};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -495,15 +485,15 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
             }
         };
         tblLuong.setModel(dtmLuong);
-//        jTable4.getColumnModel().getColumn(0).setPreferredWidth(30);
-//        jTable4.getColumnModel().getColumn(1).setPreferredWidth(110);
-//        jTable4.getColumnModel().getColumn(2).setPreferredWidth(130);
-//        jTable4.getColumnModel().getColumn(3).setPreferredWidth(100);
-//        jTable4.getColumnModel().getColumn(4).setPreferredWidth(100);
-//        jTable4.getColumnModel().getColumn(5).setPreferredWidth(100);
-//        jTable4.getColumnModel().getColumn(6).setPreferredWidth(100);
-//        jTable4.getColumnModel().getColumn(7).setPreferredWidth(80);
-//        jTable4.getColumnModel().getColumn(8).setPreferredWidth(80);
+        tblLuong.getColumnModel().getColumn(0).setPreferredWidth(5);
+        tblLuong.getColumnModel().getColumn(1).setPreferredWidth(40);
+        tblLuong.getColumnModel().getColumn(2).setPreferredWidth(130);
+        tblLuong.getColumnModel().getColumn(3).setPreferredWidth(130);
+        tblLuong.getColumnModel().getColumn(4).setPreferredWidth(130);
+        tblLuong.getColumnModel().getColumn(5).setPreferredWidth(130);
+
+        tblLuong.getColumnModel().getColumn(0).setCellRenderer(center);
+        tblLuong.getColumnModel().getColumn(1).setCellRenderer(center);
         tblLuong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
 
