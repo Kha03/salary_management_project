@@ -336,47 +336,61 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private void timKiem(){
         modelNhanvien.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
         
-        String maNhanVien = txtMa.getText().trim();
-        String tenNhanVien = txtTen.getText().trim();
-        String gioiTinh =  (String) cmbGioiTinh.getSelectedItem();
-        String ngaySinh = dinhDangNgay.format(dchNgaySinh.getDate());
-        String ngayVaoLam = dinhDangNgay.format(dchNgayVaoLam.getDate());
-        String dienThoai = txtSDT.getText().trim();
-        String mail = txtEmail.getText().trim();
-        String phanXuong = (String) cmbPhanXuong.getSelectedItem();
-        String phongBan = (String) cmbPhongBan.getSelectedItem();
-        String capBac = (String) cmbCapBac.getSelectedItem();
-        String trinhDo = (String) cmbTrinhDo.getSelectedItem();
+        
+//        do m để trông ô ngày vào làm nên nó không định dạng được null được chưa ?
+        
+    
         
         for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
-              boolean thoaMan = true; 
-        
-            if (!maNhanVien.isEmpty() && !nVien.getMaNhanVienHanhChanh().equalsIgnoreCase(maNhanVien)) {
-                thoaMan = false;
+              boolean thoaMan = false; 
+              
+              System.out.println("Ngày định: " );
+              System.out.println("Ngày định dạng: " + dinhDangNgay.format(nVien.getNgaySinh()) );
+            if (!txtMa.getText().isEmpty()) {
+                if (nVien.getMaNhanVienHanhChanh().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
             }
-            if (!tenNhanVien.isEmpty() && !nVien.getHoVaTen().toLowerCase().equalsIgnoreCase(tenNhanVien.toLowerCase())) {
-                thoaMan = false;
+            if (!txtTen.getText().isEmpty()) {
+                if (nVien.getHoVaTen().toLowerCase().contains(txtTen.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!gioiTinh.isEmpty() && !(nVien.isGioiTinh()? "Nam": "Nữ").equalsIgnoreCase(gioiTinh)) {
-                thoaMan = false;
+            if (cmbGioiTinh.getSelectedIndex() != -1) {
+                if ((nVien.isGioiTinh()? "Nam": "Nữ").toLowerCase().contains(cmbGioiTinh.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!ngaySinh.isEmpty() && !dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(ngaySinh)) {
-                thoaMan = false;
+            if (dchNgaySinh.getDate() != null) {
+                if(dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(dinhDangNgay.format(dchNgaySinh.getDate()))) {
+                    thoaMan = true;
+                }
             }
-            if (!ngayVaoLam.isEmpty() && !!dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(ngayVaoLam)) {
-                thoaMan = false;
+            if (dchNgayVaoLam.getDate() != null) {
+                if(dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(dinhDangNgay.format(dchNgayVaoLam.getDate()))) {
+                    thoaMan = true;
+                }
             }
-            if (!dienThoai.isEmpty() && !nVien.getDienThoai().toLowerCase().equalsIgnoreCase(dienThoai.toLowerCase())) {
-                thoaMan = false;
+
+            if (!txtSDT.getText().isEmpty()) {
+                if (nVien.getDienThoai().toLowerCase().contains(txtSDT.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!mail.isEmpty() && !nVien.getEmail().toLowerCase().equalsIgnoreCase(mail.toLowerCase())) {
-                thoaMan = false;
+            if (!txtEmail.getText().isEmpty()) {
+                if (nVien.getEmail().toLowerCase().contains(txtEmail.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!phongBan.isEmpty() && !nVien.getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(phongBan.toLowerCase())) {
-                thoaMan = false;
+            if (cmbPhongBan.getSelectedIndex() != -1) {
+                if (nVien.getPhongBan().getTenPhongBan().toLowerCase().contains(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!capBac.isEmpty() && !nVien.getCapBac().toLowerCase().equalsIgnoreCase(capBac.toLowerCase())) {
-                thoaMan = false;
+            if (cmbCapBac.getSelectedIndex() != -1) {
+                if (nVien.getCapBac().toLowerCase().contains(cmbCapBac.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
         
         // If the employee satisfies all criteria, add it to the table
@@ -400,34 +414,58 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         
         //NhanVienSanXuat
         for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
-              boolean thoaMan = true; 
+              boolean thoaMan = false; 
         
-            if (!maNhanVien.isEmpty() && !nVien.getMaNhanVienSanXuat().equalsIgnoreCase(maNhanVien)) {
-                thoaMan = false;
+            if (!txtMa.getText().isEmpty()) {
+                if (nVien.getMaNhanVienSanXuat().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
             }
-            if (!tenNhanVien.isEmpty() && !nVien.getHoVaTen().toLowerCase().equalsIgnoreCase(tenNhanVien.toLowerCase())) {
-                thoaMan = false;
+            if (!txtTen.getText().isEmpty()) {
+                if (nVien.getHoVaTen().toLowerCase().contains(txtTen.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!gioiTinh.isEmpty() && !(nVien.isGioiTinh()? "Nam": "Nữ").equalsIgnoreCase(gioiTinh)) {
-                thoaMan = false;
+            if (cmbGioiTinh.getSelectedIndex() != -1) {
+                if ((nVien.isGioiTinh()? "Nam": "Nữ").toLowerCase().contains(cmbGioiTinh.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!ngaySinh.isEmpty() && !dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(ngaySinh)) {
-                thoaMan = false;
+            if (dchNgaySinh.getDate() != null) {
+                if(dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(dinhDangNgay.format(dchNgaySinh.getDate()))) {
+                    thoaMan = true;
+                }
             }
-            if (!ngayVaoLam.isEmpty() && !!dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(ngayVaoLam)) {
-                thoaMan = false;
+            if (dchNgayVaoLam.getDate() != null) {
+                if(dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(dinhDangNgay.format(dchNgayVaoLam.getDate()))) {
+                    thoaMan = true;
+                }
             }
-            if (!dienThoai.isEmpty() && !nVien.getDienThoai().toLowerCase().equalsIgnoreCase(dienThoai.toLowerCase())) {
-                thoaMan = false;
+//            if (!ngaySinh.isEmpty() && !dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(ngaySinh)) {
+//                thoaMan = false;
+//            }
+//            if (!ngayVaoLam.isEmpty() && !!dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(ngayVaoLam)) {
+//                thoaMan = false;
+//            }
+            if (!txtSDT.getText().isEmpty()) {
+                if (nVien.getDienThoai().toLowerCase().contains(txtSDT.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!mail.isEmpty() && !nVien.getEmail().toLowerCase().equalsIgnoreCase(mail.toLowerCase())) {
-                thoaMan = false;
+            if (!txtEmail.getText().isEmpty()) {
+                if (nVien.getEmail().toLowerCase().contains(txtEmail.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!phanXuong.isEmpty() && !nVien.getPhanXuong().getTenPhanXuong().equalsIgnoreCase(phanXuong)) {
-                thoaMan = false;
+            if (cmbPhanXuong.getSelectedIndex() != -1) {
+                if (nVien.getPhanXuong().getTenPhanXuong().toLowerCase().contains(cmbPhanXuong.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
-            if (!trinhDo.isEmpty() && !nVien.getTrinhDo().equalsIgnoreCase(trinhDo)) {
-                thoaMan = false;
+            if (cmbTrinhDo.getSelectedIndex() != -1) {
+                if (nVien.getTrinhDo().toLowerCase().contains(cmbTrinhDo.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
             }
         
         // If the employee satisfies all criteria, add it to the table

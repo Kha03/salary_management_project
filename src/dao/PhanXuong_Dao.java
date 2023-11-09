@@ -30,7 +30,9 @@ public class PhanXuong_Dao {
 
             while (resultSet.next()) {
                 //còn sai
-                dsPhanXuong.add(new PhanXuong(resultSet.getString(1), resultSet.getString(2), new NhanVienSanXuat(resultSet.getString(3), "", resultSet.getString(4))));
+                dsPhanXuong.add(new PhanXuong(resultSet.getString(1),
+                        resultSet.getString(2), new NhanVienSanXuat(resultSet.getString(3),
+                        "", resultSet.getString(4))));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,5 +90,70 @@ public class PhanXuong_Dao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String layMaTuDongPhanXuong() {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String maPhanXuong = null;
+        String sql = "DECLARE @NewIDPX VARCHAR(7)"
+                + " SET @NewIDPX = dbo.IDPX()"
+                + " SELECT @NewIDPX ";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                maPhanXuong = resultSet.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return maPhanXuong;
+    }
+
+    public boolean themPhanXuong(String tenPhanXuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("INSERT INTO PhanXuong VALUES (?,?,NULL)");
+            smt.setString(1, layMaTuDongPhanXuong());
+            smt.setString(2, tenPhanXuong);
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean capNhatPhanXuong(PhanXuong phanXuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE PhanXuong"
+                    + " SET tenPhanXuong = ?"
+                    + " WHERE maPhanXuong = ?");
+            smt.setString(1, phanXuong.getTenPhanXuong());
+            smt.setString(2, phanXuong.getMaPhanXuong());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean xoaPhanXuong(String maPhanXuong) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DELETE FROM PhanXuong"
+                    + " WHERE maPhanXuong = '" + maPhanXuong + "'");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
     }
 }
