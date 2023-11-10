@@ -40,7 +40,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JComboBox" name="jComboBox4">
+        <Component class="javax.swing.JComboBox" name="cmbSanPham">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -49,12 +49,10 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Ph&#xe2;n X&#x1b0;&#x1edf;ng"/>
-                <StringItem index="1" value="Gia C&#xf4;ng"/>
-                <StringItem index="2" value="Ch&#x1ebf; T&#x1ea1;o"/>
-                <StringItem index="3" value="T&#x1ea1;o H&#xec;nh"/>
-                <StringItem index="4" value=" "/>
+              <StringArray count="3">
+                <StringItem index="0" value="&#x1ed0;ng nh&#x1ef1;a"/>
+                <StringItem index="1" value="Bao b&#xec; nh&#x1ef1;a"/>
+                <StringItem index="2" value="G&#x1ed7; nh&#x1ef1;a"/>
               </StringArray>
             </Property>
           </Properties>
@@ -89,7 +87,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="cmbPhanXuong">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -98,15 +96,14 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Nam"/>
-                <StringItem index="1" value="N&#x1eef;"/>
-                <StringItem index="2" value="Kinh Nghi&#x1ec7;m"/>
+              <StringArray count="2">
+                <StringItem index="0" value="X&#x1b0;&#x1edf;ng L&#x1eaf;p R&#xe1;p"/>
+                <StringItem index="1" value="X&#x1b0;&#x1edf;ng Ch&#x1ebf; T&#xe1;c"/>
               </StringArray>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbPhanXuongActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -117,7 +114,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="dchTu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -150,7 +147,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+        <Component class="com.toedter.calendar.JDateChooser" name="dchNgayPhanCong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -233,7 +230,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="txtMaSanPham">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -242,6 +239,9 @@
               <Color blue="0" green="60" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaSanPhamActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="670" y="130" width="170" height="-1"/>
@@ -287,7 +287,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="cmbCongDoan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -297,11 +297,11 @@
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
-                <StringItem index="0" value="Ph&#xe2;n X&#x1b0;&#x1edf;ng"/>
-                <StringItem index="1" value="Gia C&#xf4;ng"/>
-                <StringItem index="2" value="Ch&#x1ebf; T&#x1ea1;o"/>
-                <StringItem index="3" value="T&#x1ea1;o H&#xec;nh"/>
-                <StringItem index="4" value=" "/>
+                <StringItem index="0" value="Tr&#x1ed9;n Nguy&#xea;n Li&#x1ec7;u"/>
+                <StringItem index="1" value="T&#x1ea1;o H&#xec;nh"/>
+                <StringItem index="2" value="L&#x1eaf;p R&#xe1;p"/>
+                <StringItem index="3" value="L&#xe0;m Ngu&#x1ed9;i"/>
+                <StringItem index="4" value="&#xc9;p &#x111;&#xf9;n"/>
               </StringArray>
             </Property>
           </Properties>
@@ -328,7 +328,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="txtSoNhanVien">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -343,7 +343,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="chkTu">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -354,7 +354,7 @@
             <Property name="text" type="java.lang.String" value="T&#x1eeb;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkTuActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

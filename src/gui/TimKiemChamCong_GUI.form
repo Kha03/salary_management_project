@@ -127,7 +127,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtMa">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -137,9 +137,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtMaFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtMaFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -147,7 +147,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="txtTen">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -156,6 +156,9 @@
               <Color blue="0" green="60" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTenActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="140" y="90" width="190" height="-1"/>
@@ -242,7 +245,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbPhongBan">
+        <Component class="javax.swing.JComboBox" name="cmbPhongBan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -251,14 +254,9 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
-                <StringItem index="0" value="K&#x1ebf; to&#xe1;n "/>
-                <StringItem index="1" value="nh&#xe2;n s&#x1ef1;"/>
-                <StringItem index="2" value="gi&#xe1;m &#x111;&#x1ed1;c"/>
-                <StringItem index="3" value="k&#x129; thu&#x1ead;t"/>
-                <StringItem index="4" value="ph&#xe1;t tri&#x1ec3;n"/>
-                <StringItem index="5" value=" "/>
-                <StringItem index="6" value=" "/>
+              <StringArray count="2">
+                <StringItem index="0" value="Ph&#xf2;ng T&#xe0;i Ch&#xed;nh K&#x1ebf; To&#xe1;n"/>
+                <StringItem index="1" value="Ph&#xf2;ng Nh&#xe2;n S&#x1ef1;"/>
               </StringArray>
             </Property>
           </Properties>
@@ -271,7 +269,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="radNhanVienSanXuat">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnThayDoiTim"/>
@@ -285,7 +283,7 @@
             <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n S&#x1ea3;n Xu&#x1ea5;t"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radNhanVienSanXuatActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -293,7 +291,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+        <Component class="javax.swing.JRadioButton" name="radNghi">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnGroupTrangThai"/>
@@ -307,7 +305,7 @@
             <Property name="text" type="java.lang.String" value="Ngh&#x1ec9;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radNghiActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -315,7 +313,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbPhanXuong">
+        <Component class="javax.swing.JComboBox" name="cmbPhanXuong">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -324,11 +322,9 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Ch&#x1ebf; T&#x1ea1;o"/>
-                <StringItem index="1" value="Gia C&#xf4;ng"/>
-                <StringItem index="2" value="S&#x1a1;n"/>
-                <StringItem index="3" value=" "/>
+              <StringArray count="2">
+                <StringItem index="0" value="X&#x1b0;&#x1edf;ng L&#x1eaf;p R&#xe1;p"/>
+                <StringItem index="1" value="X&#x1b0;&#x1edf;ng Ch&#x1ebf; T&#xe1;c"/>
               </StringArray>
             </Property>
           </Properties>
@@ -355,7 +351,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+        <Component class="com.toedter.calendar.JDateChooser" name="dchNgayChamCong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -393,7 +389,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="dchTu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -419,7 +415,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+        <Component class="javax.swing.JRadioButton" name="radNhanVienHanhChinh">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnThayDoiTim"/>
@@ -434,7 +430,7 @@
             <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n H&#xe0;nh Ch&#xed;nh"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radNhanVienHanhChinhActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -442,7 +438,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton4">
+        <Component class="javax.swing.JRadioButton" name="radTatCa">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnGroupTrangThai"/>
@@ -457,7 +453,7 @@
             <Property name="text" type="java.lang.String" value="T&#x1ea5;t C&#x1ea3;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radTatCaActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -465,7 +461,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton5">
+        <Component class="javax.swing.JRadioButton" name="radDiLam">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnGroupTrangThai"/>
@@ -479,7 +475,7 @@
             <Property name="text" type="java.lang.String" value="&#x110;i L&#xe0;m"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radDiLamActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -500,7 +496,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbCongDoan">
+        <Component class="javax.swing.JComboBox" name="cmbCongDoan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -509,16 +505,12 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="9">
-                <StringItem index="0" value="Nam"/>
-                <StringItem index="1" value="N&#x1eef;"/>
-                <StringItem index="2" value="K&#x1ebf; to&#xe1;n "/>
-                <StringItem index="3" value="nh&#xe2;n s&#x1ef1;"/>
-                <StringItem index="4" value="gi&#xe1;m &#x111;&#x1ed1;c"/>
-                <StringItem index="5" value="k&#x129; thu&#x1ead;t"/>
-                <StringItem index="6" value="ph&#xe1;t tri&#x1ec3;n"/>
-                <StringItem index="7" value=" "/>
-                <StringItem index="8" value=" "/>
+              <StringArray count="5">
+                <StringItem index="0" value="Tr&#x1ed9;n Nguy&#xea;n Li&#x1ec7;u"/>
+                <StringItem index="1" value="T&#x1ea1;o H&#xec;nh"/>
+                <StringItem index="2" value="L&#x1eaf;p R&#xe1;p"/>
+                <StringItem index="3" value="L&#xe0;m Ngu&#x1ed9;i"/>
+                <StringItem index="4" value="&#xc9;p &#x111;&#xf9;n"/>
               </StringArray>
             </Property>
           </Properties>
@@ -531,7 +523,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbSanPham">
+        <Component class="javax.swing.JComboBox" name="cmbSanPham">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -540,16 +532,10 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="9">
-                <StringItem index="0" value="Nam"/>
-                <StringItem index="1" value="N&#x1eef;"/>
-                <StringItem index="2" value="K&#x1ebf; to&#xe1;n "/>
-                <StringItem index="3" value="nh&#xe2;n s&#x1ef1;"/>
-                <StringItem index="4" value="gi&#xe1;m &#x111;&#x1ed1;c"/>
-                <StringItem index="5" value="k&#x129; thu&#x1ead;t"/>
-                <StringItem index="6" value="ph&#xe1;t tri&#x1ec3;n"/>
-                <StringItem index="7" value=" "/>
-                <StringItem index="8" value=" "/>
+              <StringArray count="3">
+                <StringItem index="0" value="&#x1ed0;ng nh&#x1ef1;a"/>
+                <StringItem index="1" value="Bao b&#xec; nh&#x1ef1;a"/>
+                <StringItem index="2" value="G&#x1ed7; nh&#x1ef1;a"/>
               </StringArray>
             </Property>
           </Properties>

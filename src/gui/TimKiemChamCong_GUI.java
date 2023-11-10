@@ -36,29 +36,29 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton15 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtMa = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
         txtSoLuong = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         lblPhongBan = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         lblSoLuong = new javax.swing.JLabel();
         lblTangCa = new javax.swing.JLabel();
-        cbPhongBan = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        cbPhanXuong = new javax.swing.JComboBox<>();
+        cmbPhongBan = new javax.swing.JComboBox<>();
+        radNhanVienSanXuat = new javax.swing.JRadioButton();
+        radNghi = new javax.swing.JRadioButton();
+        cmbPhanXuong = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        dchNgayChamCong = new com.toedter.calendar.JDateChooser();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dchTu = new com.toedter.calendar.JDateChooser();
         spnTangCa = new javax.swing.JSpinner();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        radNhanVienHanhChinh = new javax.swing.JRadioButton();
+        radTatCa = new javax.swing.JRadioButton();
+        radDiLam = new javax.swing.JRadioButton();
         lblCongDoan = new javax.swing.JLabel();
-        cbCongDoan = new javax.swing.JComboBox<>();
-        cbSanPham = new javax.swing.JComboBox<>();
+        cmbCongDoan = new javax.swing.JComboBox<>();
+        cmbSanPham = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,26 +90,31 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 120, 30));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(0, 96, 0));
+        txtMa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
+                txtMaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
+                txtMaFocusLost(evt);
             }
         });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtMa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtMaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 190, -1));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 190, -1));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 190, -1));
+        txtTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTen.setForeground(new java.awt.Color(0, 96, 0));
+        txtTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 190, -1));
 
         txtSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtSoLuong.setForeground(new java.awt.Color(0, 96, 0));
@@ -135,48 +140,48 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         lblTangCa.setText("Giờ Tăng Ca:");
         jPanel1.add(lblTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 120, -1));
 
-        cbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
-        jPanel1.add(cbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 190, -1));
+        cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Tài Chính Kế Toán", "Phòng Nhân Sự" }));
+        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 190, -1));
 
-        btnThayDoiTim.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton1.setText("Nhân Viên Sản Xuất");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThayDoiTim.add(radNhanVienSanXuat);
+        radNhanVienSanXuat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radNhanVienSanXuat.setForeground(new java.awt.Color(0, 96, 0));
+        radNhanVienSanXuat.setText("Nhân Viên Sản Xuất");
+        radNhanVienSanXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radNhanVienSanXuatActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, -1));
+        jPanel1.add(radNhanVienSanXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, -1));
 
-        btnGroupTrangThai.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton2.setText("Nghỉ");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnGroupTrangThai.add(radNghi);
+        radNghi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radNghi.setForeground(new java.awt.Color(0, 96, 0));
+        radNghi.setText("Nghỉ");
+        radNghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radNghiActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 80, -1));
+        jPanel1.add(radNghi, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 80, -1));
 
-        cbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chế Tạo", "Gia Công", "Sơn", " " }));
-        jPanel1.add(cbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 190, -1));
+        cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
+        jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 190, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Ngày Chấm Công:");
         jLabel14.setToolTipText("");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 130, -1));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser2.setDateFormatString("dd/mm/yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 170, -1));
+        dchNgayChamCong.setBackground(new java.awt.Color(255, 255, 255));
+        dchNgayChamCong.setForeground(new java.awt.Color(0, 96, 0));
+        dchNgayChamCong.setDateFormatString("dd/mm/yyyy");
+        dchNgayChamCong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(dchNgayChamCong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 170, -1));
 
         jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
@@ -188,61 +193,61 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 50, 20));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser1.setDateFormatString("dd/mm/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 170, -1));
+        dchTu.setBackground(new java.awt.Color(255, 255, 255));
+        dchTu.setForeground(new java.awt.Color(0, 96, 0));
+        dchTu.setDateFormatString("dd/mm/yyyy");
+        dchTu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(dchTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 170, -1));
         jPanel1.add(spnTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 90, -1));
 
-        btnThayDoiTim.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton3.setSelected(true);
-        jRadioButton3.setText("Nhân Viên Hành Chính");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnThayDoiTim.add(radNhanVienHanhChinh);
+        radNhanVienHanhChinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radNhanVienHanhChinh.setForeground(new java.awt.Color(0, 96, 0));
+        radNhanVienHanhChinh.setSelected(true);
+        radNhanVienHanhChinh.setText("Nhân Viên Hành Chính");
+        radNhanVienHanhChinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                radNhanVienHanhChinhActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
+        jPanel1.add(radNhanVienHanhChinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
 
-        btnGroupTrangThai.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton4.setSelected(true);
-        jRadioButton4.setText("Tất Cả");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnGroupTrangThai.add(radTatCa);
+        radTatCa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radTatCa.setForeground(new java.awt.Color(0, 96, 0));
+        radTatCa.setSelected(true);
+        radTatCa.setText("Tất Cả");
+        radTatCa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                radTatCaActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 80, -1));
+        jPanel1.add(radTatCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 80, -1));
 
-        btnGroupTrangThai.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton5.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton5.setText("Đi Làm");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnGroupTrangThai.add(radDiLam);
+        radDiLam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radDiLam.setForeground(new java.awt.Color(0, 96, 0));
+        radDiLam.setText("Đi Làm");
+        radDiLam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
+                radDiLamActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 80, -1));
+        jPanel1.add(radDiLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 80, -1));
 
         lblCongDoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCongDoan.setText("Công Đoạn:");
         jPanel1.add(lblCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 120, -1));
 
-        cbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
-        cbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
-        jPanel1.add(cbCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 190, -1));
+        cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trộn Nguyên Liệu", "Tạo Hình", "Lắp Ráp", "Làm Nguội", "Ép đùn" }));
+        jPanel1.add(cmbCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 190, -1));
 
-        cbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbSanPham.setForeground(new java.awt.Color(0, 99, 0));
-        cbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kế toán ", "nhân sự", "giám đốc", "kĩ thuật", "phát triển", " ", " " }));
-        jPanel1.add(cbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 190, -1));
+        cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
+        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
+        jPanel1.add(cmbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
@@ -321,79 +326,83 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
 
     }
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+    private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
         // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getFocuBofocusBorder());
-    }//GEN-LAST:event_jTextField2FocusGained
+        txtMa.setBorder(Border_Selected.getFocuBofocusBorder());
+    }//GEN-LAST:event_txtMaFocusGained
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+    private void txtMaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusLost
         // TODO add your handling code here:
-        jTextField2.setBorder(Border_Selected.getOriginalBorder());
-    }//GEN-LAST:event_jTextField2FocusLost
+        txtMa.setBorder(Border_Selected.getOriginalBorder());
+    }//GEN-LAST:event_txtMaFocusLost
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaActionPerformed
         // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtMaActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void radNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNghiActionPerformed
 
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_radNghiActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        cbPhanXuong.setVisible(true);
-        cbSanPham.setVisible(true);
+    private void radNhanVienSanXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNhanVienSanXuatActionPerformed
+        cmbPhanXuong.setVisible(true);
+        cmbSanPham.setVisible(true);
         lblCongDoan.setVisible(true);
-        cbCongDoan.setVisible(true);
+        cmbCongDoan.setVisible(true);
         lblSoLuong.setVisible(true);
         txtSoLuong.setVisible(true);
 
         lblTangCa.setText("Sản Phẩm:");
         lblPhongBan.setText("Phân Xưởng:");
-        cbPhongBan.setVisible(false);
-        jRadioButton2.setVisible(false);
-        jRadioButton4.setVisible(false);
-        jRadioButton5.setVisible(false);
+        cmbPhongBan.setVisible(false);
+        radNghi.setVisible(false);
+        radTatCa.setVisible(false);
+        radDiLam.setVisible(false);
         spnTangCa.setVisible(false);
         jTable1.setModel(modelChamCongSanPham);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radNhanVienSanXuatActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void radNhanVienHanhChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNhanVienHanhChinhActionPerformed
         // TODO add your handling code here:
-        cbPhanXuong.setVisible(false);
-        cbSanPham.setVisible(false);
+        cmbPhanXuong.setVisible(false);
+        cmbSanPham.setVisible(false);
         lblCongDoan.setVisible(false);
-        cbCongDoan.setVisible(false);
+        cmbCongDoan.setVisible(false);
         lblSoLuong.setVisible(false);
         txtSoLuong.setVisible(false);
 
         lblTangCa.setText("Giờ Tăng Ca:");
         lblPhongBan.setText("Phòng Ban:");
-        cbPhongBan.setVisible(true);
-        jRadioButton2.setVisible(true);
-        jRadioButton4.setVisible(true);
-        jRadioButton5.setVisible(true);
+        cmbPhongBan.setVisible(true);
+        radNghi.setVisible(true);
+        radTatCa.setVisible(true);
+        radDiLam.setVisible(true);
         spnTangCa.setVisible(true);
         jTable1.setModel(modelChamCongHanhChinh);
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_radNhanVienHanhChinhActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void radTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radTatCaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_radTatCaActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+    private void radDiLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radDiLamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
+    }//GEN-LAST:event_radDiLamActionPerformed
+
+    private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenActionPerformed
     private void initCommon() {
         border_Selected = new Border_Selected();
-        cbPhanXuong.setVisible(false);
-        cbSanPham.setVisible(false);
+        cmbPhanXuong.setVisible(false);
+        cmbSanPham.setVisible(false);
         lblCongDoan.setVisible(false);
-        cbCongDoan.setVisible(false);
+        cmbCongDoan.setVisible(false);
         lblSoLuong.setVisible(false);
         txtSoLuong.setVisible(false);
     }
@@ -405,34 +414,34 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupTrangThai;
     private javax.swing.ButtonGroup btnThayDoiTim;
-    private javax.swing.JComboBox<String> cbCongDoan;
-    private javax.swing.JComboBox<String> cbPhanXuong;
-    private javax.swing.JComboBox<String> cbPhongBan;
-    private javax.swing.JComboBox<String> cbSanPham;
+    private javax.swing.JComboBox<String> cmbCongDoan;
+    private javax.swing.JComboBox<String> cmbPhanXuong;
+    private javax.swing.JComboBox<String> cmbPhongBan;
+    private javax.swing.JComboBox<String> cmbSanPham;
+    private com.toedter.calendar.JDateChooser dchNgayChamCong;
+    private com.toedter.calendar.JDateChooser dchTu;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
     private javax.swing.JCheckBox jCheckBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblCongDoan;
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblSoLuong;
     private javax.swing.JLabel lblTangCa;
+    private javax.swing.JRadioButton radDiLam;
+    private javax.swing.JRadioButton radNghi;
+    private javax.swing.JRadioButton radNhanVienHanhChinh;
+    private javax.swing.JRadioButton radNhanVienSanXuat;
+    private javax.swing.JRadioButton radTatCa;
     private javax.swing.JSpinner spnTangCa;
+    private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSoLuong;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

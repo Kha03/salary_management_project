@@ -29,20 +29,20 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstSanPham = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtMa = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        dchNgayKetThuc = new com.toedter.calendar.JDateChooser();
+        dchNgayBatDau = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtGiaTien = new javax.swing.JTextField();
         jButton15 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -52,15 +52,15 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
-        jList1.setForeground(new java.awt.Color(51, 51, 51));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        lstSanPham.setForeground(new java.awt.Color(51, 51, 51));
+        lstSanPham.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jList1.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setViewportView(jList1);
+        lstSanPham.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        lstSanPham.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setViewportView(lstSanPham);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, 180, 230));
 
@@ -77,18 +77,28 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 190, -1));
+=======
+        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 190, -1));
+>>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTen.setForeground(new java.awt.Color(0, 96, 0));
+        txtTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtTenActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 190, -1));
+=======
+        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 190, -1));
+>>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tên Hợp Đồng:");
@@ -107,6 +117,7 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jLabel12.setText("Mã Hợp Đồng:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, 20));
 
+<<<<<<< HEAD
         jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
         jDateChooser2.setDateFormatString("dd/mm/yyyy");
@@ -118,19 +129,36 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jDateChooser3.setDateFormatString("dd/mm/yyyy");
         jDateChooser3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 190, 25));
+=======
+        dchNgayKetThuc.setBackground(new java.awt.Color(255, 255, 255));
+        dchNgayKetThuc.setForeground(new java.awt.Color(0, 96, 0));
+        dchNgayKetThuc.setDateFormatString("dd/mm/yyyy");
+        dchNgayKetThuc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 190, 25));
+
+        dchNgayBatDau.setBackground(new java.awt.Color(255, 255, 255));
+        dchNgayBatDau.setForeground(new java.awt.Color(0, 96, 0));
+        dchNgayBatDau.setDateFormatString("dd/mm/yyyy");
+        dchNgayBatDau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 190, 25));
+>>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Giá Tiền:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 70, 20));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 96, 0));
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtGiaTien.setForeground(new java.awt.Color(0, 96, 0));
+        txtGiaTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtGiaTienActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 190, -1));
+=======
+        jPanel1.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 190, -1));
+>>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -196,23 +224,23 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(3).setCellRenderer(center);
         jTable1.getColumnModel().getColumn(4).setCellRenderer(center);
     }
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtTenActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtGiaTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaTienActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtGiaTienActionPerformed
     private void initCommon() {
         //  border_Selected = new Border_Selected();
     }
     // private Border_Selected border;
     private DefaultTableModel model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser dchNgayBatDau;
+    private com.toedter.calendar.JDateChooser dchNgayKetThuc;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
@@ -220,13 +248,13 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JList<String> lstSanPham;
+    private javax.swing.JTextField txtGiaTien;
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

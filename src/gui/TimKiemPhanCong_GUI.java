@@ -27,23 +27,23 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cmbSanPham = new javax.swing.JComboBox<>();
         jButton7 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        cmbPhanXuong = new javax.swing.JComboBox<>();
+        dchTu = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        dchNgayPhanCong = new com.toedter.calendar.JDateChooser();
         jButton8 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtMaSanPham = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbCongDoan = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        txtSoNhanVien = new javax.swing.JTextField();
+        chkTu = new javax.swing.JCheckBox();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -55,11 +55,11 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         jDesktopPane1.setOpaque(false);
 
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
-        jDesktopPane1.add(jComboBox4);
-        jComboBox4.setBounds(370, 180, 170, 26);
+        cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
+        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
+        jDesktopPane1.add(cmbSanPham);
+        cmbSanPham.setBounds(370, 180, 170, 26);
 
         jButton7.setBackground(new java.awt.Color(152, 249, 152));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -73,23 +73,23 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jButton7);
         jButton7.setBounds(1170, 220, 120, 30);
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Kinh Nghiệm" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
+        cmbPhanXuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                cmbPhanXuongActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(jComboBox3);
-        jComboBox3.setBounds(370, 130, 170, 26);
+        jDesktopPane1.add(cmbPhanXuong);
+        cmbPhanXuong.setBounds(370, 130, 170, 26);
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser1.setDateFormatString("dd/mm/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jDesktopPane1.add(jDateChooser1);
-        jDateChooser1.setBounds(560, 80, 130, 22);
+        dchTu.setBackground(new java.awt.Color(255, 255, 255));
+        dchTu.setForeground(new java.awt.Color(0, 96, 0));
+        dchTu.setDateFormatString("dd/mm/yyyy");
+        dchTu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jDesktopPane1.add(dchTu);
+        dchTu.setBounds(560, 80, 130, 22);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -97,12 +97,12 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel5);
         jLabel5.setBounds(0, 0, 1304, 50);
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
-        jDateChooser2.setDateFormatString("dd/mm/yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jDesktopPane1.add(jDateChooser2);
-        jDateChooser2.setBounds(370, 80, 130, 22);
+        dchNgayPhanCong.setBackground(new java.awt.Color(255, 255, 255));
+        dchNgayPhanCong.setForeground(new java.awt.Color(0, 96, 0));
+        dchNgayPhanCong.setDateFormatString("dd/mm/yyyy");
+        dchNgayPhanCong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jDesktopPane1.add(dchNgayPhanCong);
+        dchNgayPhanCong.setBounds(370, 80, 130, 22);
 
         jButton8.setBackground(new java.awt.Color(152, 249, 152));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -130,10 +130,15 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel14);
         jLabel14.setBounds(240, 230, 120, 20);
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        jDesktopPane1.add(jTextField5);
-        jTextField5.setBounds(670, 130, 170, 26);
+        txtMaSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMaSanPham.setForeground(new java.awt.Color(0, 96, 0));
+        txtMaSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaSanPhamActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(txtMaSanPham);
+        txtMaSanPham.setBounds(670, 130, 170, 26);
 
         jButton6.setBackground(new java.awt.Color(152, 249, 152));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -154,11 +159,11 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel19);
         jLabel19.setBounds(240, 180, 120, 20);
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 99, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phân Xưởng", "Gia Công", "Chế Tạo", "Tạo Hình", " " }));
-        jDesktopPane1.add(jComboBox2);
-        jComboBox2.setBounds(670, 180, 170, 26);
+        cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trộn Nguyên Liệu", "Tạo Hình", "Lắp Ráp", "Làm Nguội", "Ép đùn" }));
+        jDesktopPane1.add(cmbCongDoan);
+        cmbCongDoan.setBounds(670, 180, 170, 26);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Phân Xưởng:");
@@ -166,21 +171,21 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel16);
         jLabel16.setBounds(240, 130, 120, 20);
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 96, 0));
-        jDesktopPane1.add(jTextField4);
-        jTextField4.setBounds(370, 230, 70, 26);
+        txtSoNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSoNhanVien.setForeground(new java.awt.Color(0, 96, 0));
+        jDesktopPane1.add(txtSoNhanVien);
+        txtSoNhanVien.setBounds(370, 230, 70, 26);
 
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox2.setText("Từ");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        chkTu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chkTu.setForeground(new java.awt.Color(0, 96, 0));
+        chkTu.setText("Từ");
+        chkTu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                chkTuActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(jCheckBox2);
-        jCheckBox2.setBounds(510, 80, 50, 20);
+        jDesktopPane1.add(chkTu);
+        chkTu.setBounds(510, 80, 50, 20);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Công Đoạn:");
@@ -230,21 +235,25 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
        // jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void cmbPhanXuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhanXuongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_cmbPhanXuongActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void chkTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_chkTuActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void txtMaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSanPhamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaSanPhamActionPerformed
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
@@ -288,16 +297,16 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox chkTu;
+    private javax.swing.JComboBox<String> cmbCongDoan;
+    private javax.swing.JComboBox<String> cmbPhanXuong;
+    private javax.swing.JComboBox<String> cmbSanPham;
+    private com.toedter.calendar.JDateChooser dchNgayPhanCong;
+    private com.toedter.calendar.JDateChooser dchTu;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -308,7 +317,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtMaSanPham;
+    private javax.swing.JTextField txtSoNhanVien;
     // End of variables declaration//GEN-END:variables
 }
