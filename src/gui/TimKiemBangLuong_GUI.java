@@ -50,9 +50,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         lblPhongBan = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         cmbPhongBan = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        radNVSX = new javax.swing.JRadioButton();
         cbPhanXuong = new javax.swing.JComboBox<>();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        radNVHC = new javax.swing.JRadioButton();
         cmbThang = new javax.swing.JComboBox<>();
         ychNam = new com.toedter.calendar.JYearChooser();
         jLabel15 = new javax.swing.JLabel();
@@ -73,7 +73,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         lblLuongThucLanhHc = new javax.swing.JLabel();
         lblTienTangCa = new javax.swing.JLabel();
         lblLuongThucLanhHcV = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
+        btnTim = new javax.swing.JButton();
         txtTienPhuCapSx = new javax.swing.JTextField();
         LblLuongThucLanhSxV = new javax.swing.JLabel();
         txtTienPhuCapHc = new javax.swing.JTextField();
@@ -165,35 +165,35 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 190, -1));
 
-        btnThayDoiTim.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton1.setText("Nhân Viên Sản Xuất");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThayDoiTim.add(radNVSX);
+        radNVSX.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radNVSX.setForeground(new java.awt.Color(0, 96, 0));
+        radNVSX.setText("Nhân Viên Sản Xuất");
+        radNVSX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radNVSXActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, -1));
+        jPanel1.add(radNVSX, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, -1));
 
         cbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
         cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         jPanel1.add(cbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
-        btnThayDoiTim.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 96, 0));
-        jRadioButton3.setSelected(true);
-        jRadioButton3.setText("Nhân Viên Hành Chính");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnThayDoiTim.add(radNVHC);
+        radNVHC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radNVHC.setForeground(new java.awt.Color(0, 96, 0));
+        radNVHC.setSelected(true);
+        radNVHC.setText("Nhân Viên Hành Chính");
+        radNVHC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                radNVHCActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
+        jPanel1.add(radNVHC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
 
-        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         jPanel1.add(cmbThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, -1));
         jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 65, 20));
 
@@ -226,7 +226,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cmbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbHeSoLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.5", "1.6", "3.7", "4.8", "12.5", " " }));
+        cmbHeSoLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1.0", "2.23", "5.686" }));
         jPanel1.add(cmbHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 80, -1));
 
         txtNgayCongThucTe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -284,12 +284,17 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         lblLuongThucLanhHcV.setToolTipText("");
         jPanel1.add(lblLuongThucLanhHcV, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 140, 160, 20));
 
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton16.setText("Tìm Kiếm");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 190, 130, 30));
+        btnTim.setBackground(new java.awt.Color(152, 249, 152));
+        btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btnTim.setText("Tìm Kiếm");
+        btnTim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 190, 130, 30));
 
         txtTienPhuCapSx.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTienPhuCapSx.setForeground(new java.awt.Color(0, 96, 0));
@@ -325,7 +330,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
     }//GEN-LAST:event_txtMaActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radNVSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNVSXActionPerformed
         cbPhanXuong.setVisible(true);
         txtLuongSanPham.setVisible(true);
         LblLuongThucLanhSxV.setVisible(true);
@@ -349,9 +354,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         lblLuongThucLanhHcV.setVisible(false);
         jTable1.setModel(modelLuongSx);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radNVSXActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void radNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNVHCActionPerformed
         // TODO add your handling code here:
         cbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
@@ -375,7 +380,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         lblLuongThucLanhHc.setVisible(true);
         lblLuongThucLanhHcV.setVisible(true);
         jTable1.setModel(modelLuongHc);
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_radNVHCActionPerformed
 
     private void txtNgayCongThucTeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayCongThucTeActionPerformed
         // TODO add your handling code here:
@@ -395,6 +400,11 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private void cmbPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhongBanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPhongBanActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        timKiemHC();
+    }//GEN-LAST:event_btnTimActionPerformed
     private void setTable() {
         //setTable ở đây
         //table chấm công
@@ -472,6 +482,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
         jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
         
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbHeSoLuong.setSelectedIndex(-1);
+        cmbThang.setSelectedIndex(-1);
         
         jTable1.setModel(modelLuongSx);
 
@@ -499,6 +512,90 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtTienPhuCapSx.setVisible(false);
         
     }
+    
+    private void timKiemHC(){
+        modelLuongHc.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+        
+        int i=1;
+        for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getDanhSachLuong()) {
+            boolean thoaMan = false; 
+            if (!txtMa.getText().isEmpty()) {
+                if (lg.getNhanVienHanhChanh().getMaNhanVienHanhChanh().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTen.getText().isEmpty()) {
+                if (lg.getNhanVienHanhChanh().getHoVaTen().toLowerCase().contains(txtTen.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+//            if (cmbThang.getSelectedIndex() != -1 && ychNam != null) {
+//                if (lg.getThangLap().toLowerCase().contains(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
+//                    thoaMan = true;
+//                }
+//            }
+
+            if (!txtChucVu.getText().isEmpty()) {
+                if (lg.getChucVu().toLowerCase().contains(txtChucVu.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbPhongBan.getSelectedIndex() != -1) {
+                if (lg.getNhanVienHanhChanh().getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            
+            if (cmbHeSoLuong.getSelectedIndex() != -1) {
+                if(String.valueOf(lg.getHeSoLuong()).toLowerCase().equalsIgnoreCase(cmbHeSoLuong.getSelectedItem().toString())) {
+                    thoaMan = true;
+                }
+            }
+            
+            if (!txtLuongCoBan.getText().isEmpty()) {
+                if (String.valueOf(lg.getLuongCoBan()).toLowerCase().equalsIgnoreCase(txtLuongCoBan.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtNgayCongChuan.getText().isEmpty()) {
+                if (String.valueOf(lg.getSoNgayCongChuan()).toLowerCase().equalsIgnoreCase(txtNgayCongChuan.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTienPhuCapHc.getText().isEmpty()) {
+                if (String.valueOf(lg.getTienPhuCap()).toLowerCase().equalsIgnoreCase(txtTienPhuCapHc.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtNgayCongThucTe.getText().isEmpty()) {
+                if (String.valueOf(lg.getNgayCongThucTe()).toLowerCase().equalsIgnoreCase(txtNgayCongThucTe.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTienTangCa.getText().isEmpty()) {
+                if (String.valueOf(lg.getTienTangCa()).toLowerCase().equalsIgnoreCase(txtTienTangCa.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (thoaMan) {
+                Object[] rowData = {
+                    i++,
+                    lg.getNhanVienHanhChanh().getMaNhanVienHanhChanh(),
+                    lg.getNhanVienHanhChanh().getHoVaTen(),
+                    lg.getChucVu(),
+                    lg.getHeSoLuong(),
+                    lg.getLuongCoBan(),
+                    lg.getSoNgayCongChuan(),
+                    lg.getTienPhuCap(),
+                    lg.getNgayCongThucTe(),
+                    lg.getTienTangCa(),
+                    lg.getTongLuong()
+                };
+                modelLuongHc.addRow(rowData);
+            }
+        }
+    }
+    
     public void doDuLieu() {
         doDuLieuLuongHanhChanh();
         doDuLieuLuongSanXuat();
@@ -547,13 +644,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLuongThucLanhSxV;
     private javax.swing.ButtonGroup btnThayDoiTim;
+    private javax.swing.JButton btnTim;
     private javax.swing.JComboBox<String> cbPhanXuong;
     private javax.swing.JComboBox<String> cmbHeSoLuong;
     private javax.swing.JComboBox<String> cmbPhongBan;
     private javax.swing.JComboBox<String> cmbThang;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
@@ -562,8 +659,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblHeSoLuong;
@@ -575,6 +670,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblTienPhuCap;
     private javax.swing.JLabel lblTienTangCa;
+    private javax.swing.JRadioButton radNVHC;
+    private javax.swing.JRadioButton radNVSX;
     private javax.swing.JTextField txtChucVu;
     private javax.swing.JTextField txtLuongCoBan;
     private javax.swing.JTextField txtLuongSanPham;

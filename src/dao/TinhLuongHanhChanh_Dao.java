@@ -4,6 +4,7 @@ import java.sql.*;
 import connect.ConnectDB;
 import entity.LuongHanhChanh;
 import entity.NhanVienHanhChanh;
+import entity.PhongBan;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -336,16 +336,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     private void timKiem(){
         modelNhanvien.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
         
-        
-//        do m để trông ô ngày vào làm nên nó không định dạng được null được chưa ?
-        
-    
-        
         for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
               boolean thoaMan = false; 
-              
-              System.out.println("Ngày định: " );
-              System.out.println("Ngày định dạng: " + dinhDangNgay.format(nVien.getNgaySinh()) );
             if (!txtMa.getText().isEmpty()) {
                 if (nVien.getMaNhanVienHanhChanh().equalsIgnoreCase(txtMa.getText())) {
                     thoaMan = true;
