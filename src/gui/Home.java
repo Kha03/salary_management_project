@@ -28,6 +28,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,7 +128,7 @@ public class Home extends javax.swing.JFrame {
             case 6 -> {
                 switch (subIndex) {
                     case 1 ->
-                        hienThiTrang(new TimKiemHopDong_GUI());
+                         hienThiTrang(new TimKiemHopDong_GUI());
                     case 2 ->
                         hienThiTrang(new TimKiemSanPham_GUI());
                     default -> {
@@ -135,7 +136,8 @@ public class Home extends javax.swing.JFrame {
                     }
                 }
             }
-            case 7 -> {
+                    
+                case 7 -> {
                 switch (subIndex) {
                     case 1 ->
                         hienThiTrang(new BaoCaoLuong_GUI());
@@ -146,12 +148,14 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
-    private void hienThiTrang(Component com) {
+        private void hienThiTrang(Component com) {
         jPanel1.removeAll();
         jPanel1.add(com);
         jPanel1.repaint();
         jPanel1.revalidate();
     }
+
+    
 
     private void taoMenu() {
         String[][] menuItems = new String[][]{

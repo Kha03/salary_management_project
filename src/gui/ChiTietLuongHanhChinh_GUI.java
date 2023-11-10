@@ -38,7 +38,7 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
         lblTenNhanVien = new javax.swing.JLabel();
         lblMaNhanVien = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblNgayCong = new javax.swing.JTable();
         btnXuatPdf = new javax.swing.JButton();
         lblThang = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -89,8 +89,8 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
         jScrollPane4.setMinimumSize(new java.awt.Dimension(1200, 600));
         jScrollPane4.setPreferredSize(new java.awt.Dimension(1200, 600));
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblNgayCong.setBackground(new java.awt.Color(184, 206, 224));
+        tblNgayCong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -98,11 +98,11 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        tblNgayCong.setToolTipText("");
+        tblNgayCong.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblNgayCong.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblNgayCong.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tblNgayCong);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1190, 460));
 
@@ -270,8 +270,8 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(dtmChiTiet);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblNgayCong.setModel(dtmChiTiet);
+        tblNgayCong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
     private DefaultTableModel dtmChiTiet;
     private SimpleDateFormat dinhDangNgay;
@@ -290,7 +290,6 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblHeSoLuong;
     private javax.swing.JLabel lblLuongCoBan;
     private javax.swing.JLabel lblMaNhanVien;
@@ -301,5 +300,6 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTenNhanVien;
     private javax.swing.JLabel lblThang;
     private javax.swing.JLabel lblTongLuong;
+    private javax.swing.JTable tblNgayCong;
     // End of variables declaration//GEN-END:variables
 }

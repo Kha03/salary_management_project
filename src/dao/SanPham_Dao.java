@@ -76,7 +76,7 @@ public class SanPham_Dao {
             Connection connection = ConnectDB.getConnection();
             PreparedStatement smt = null;
             smt = connection.prepareStatement("INSERT INTO SanPham VALUES (?,?,?,?,?,?)");
-            smt.setString(1, layMaTuDongSanPham());
+            smt.setString(1, sanPham.getMaSanPham());
             smt.setString(2, sanPham.getTenSanPham());
             smt.setFloat(3, sanPham.getDonGia());
             smt.setInt(4, sanPham.getSoLuong());
@@ -118,7 +118,9 @@ public class SanPham_Dao {
             ConnectDB.getInstance();
             Connection connection = ConnectDB.getConnection();
             PreparedStatement smt = null;
-            smt = connection.prepareStatement("DELETE FROM SanPham"
+            smt = connection.prepareStatement("DELETE FROM CongDoan"
+                    + " WHERE maSanPham = '" + maSanPham + "'"
+                    + " DELETE FROM SanPham"
                     + " WHERE maSanPham = '" + maSanPham + "'");
             smt.executeUpdate();
         } catch (SQLException ex) {

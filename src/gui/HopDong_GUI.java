@@ -150,16 +150,16 @@ public class HopDong_GUI extends javax.swing.JPanel {
         txtMaHopDong.setEditable(false);
         txtMaHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaHopDong.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtMaHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 190, -1));
+        jPanel1.add(txtMaHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 210, -1));
 
         txtTenHopDong.setEditable(false);
         txtTenHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTenHopDong.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtTenHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 190, -1));
+        jPanel1.add(txtTenHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 210, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tên Hợp Đồng:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 120, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 120, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Ngày Bắt Đầu:");
@@ -168,7 +168,7 @@ public class HopDong_GUI extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Ngày Kết Thúc:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 120, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 120, 20));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Mã Hợp Đồng:");
@@ -179,23 +179,23 @@ public class HopDong_GUI extends javax.swing.JPanel {
         dchNgayKetThuc.setDateFormatString("dd/mm/yyyy");
         dchNgayKetThuc.setEnabled(false);
         dchNgayKetThuc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 190, 25));
+        jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 190, 25));
 
         dchNgayBatDau.setBackground(new java.awt.Color(255, 255, 255));
         dchNgayBatDau.setForeground(new java.awt.Color(0, 96, 0));
         dchNgayBatDau.setDateFormatString("dd/mm/yyyy");
         dchNgayBatDau.setEnabled(false);
         dchNgayBatDau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 190, 25));
+        jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 190, 25));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Giá Tiền:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 70, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 70, 20));
 
         txtGiaTien.setEditable(false);
         txtGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtGiaTien.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 190, -1));
+        jPanel1.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 210, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1114, 230));
 

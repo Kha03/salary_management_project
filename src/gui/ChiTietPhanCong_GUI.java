@@ -38,7 +38,7 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         lblPhanXuong = new javax.swing.JLabel();
         lblMaPhanCong = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblNhanVien = new javax.swing.JTable();
         jButton14 = new javax.swing.JButton();
         lblNgay = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -83,8 +83,8 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         jScrollPane4.setMinimumSize(new java.awt.Dimension(1200, 600));
         jScrollPane4.setPreferredSize(new java.awt.Dimension(1200, 600));
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblNhanVien.setBackground(new java.awt.Color(184, 206, 224));
+        tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -92,11 +92,11 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        tblNhanVien.setToolTipText("");
+        tblNhanVien.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblNhanVien.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblNhanVien.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tblNhanVien);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1190, 490));
 
@@ -216,8 +216,8 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(dtmNhanVien);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblNhanVien.setModel(dtmNhanVien);
+        tblNhanVien.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
     
     private void doDuLieuLbl(PhanCongSanXuat phanCongSanXuat) {
@@ -251,7 +251,6 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblCongDoan;
     private javax.swing.JLabel lblMaPhanCong;
     private javax.swing.JLabel lblMaSanPham;
@@ -259,5 +258,6 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPhanXuong;
     private javax.swing.JLabel lblSoNhanVien;
     private javax.swing.JLabel lblTenSanPham;
+    private javax.swing.JTable tblNhanVien;
     // End of variables declaration//GEN-END:variables
 }

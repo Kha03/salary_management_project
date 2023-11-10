@@ -759,7 +759,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
 
     private void xuLyXemChiTiet() {
         int hang = tblPhanCong.getSelectedRow();
-        if (hang != -1 && btnTao.getText().equalsIgnoreCase("Tạo")) {
+        if (hang != -1) {
             ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI(phanCongSanXuats.get(hang));
             jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);
         } else {

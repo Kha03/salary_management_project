@@ -222,9 +222,9 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbHopDongActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        ChiTietSanPham_GUI chiTietSanPham_GUI = new ChiTietSanPham_GUI();
-        jDesktopPane1.add(chiTietSanPham_GUI);
-        chiTietSanPham_GUI.setVisible(true);// TODO add your handling code here:
+//        ChiTietSanPham_GUI chiTietSanPham_GUI = new ChiTietSanPham_GUI();
+//        jDesktopPane1.add(chiTietSanPham_GUI);
+//        chiTietSanPham_GUI.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
     private void setTable() {
         //khoi tạo phụ cấp compnent
