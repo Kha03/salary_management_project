@@ -99,15 +99,9 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 140, 180, 30));
 
-<<<<<<< HEAD
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, -1));
-=======
-        txtSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtSoLuong.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Hợp Đồng:");
@@ -129,7 +123,6 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         jLabel20.setToolTipText("");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 110, -1));
 
-<<<<<<< HEAD
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 160, -1));
@@ -137,22 +130,12 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 160, -1));
-=======
-        txtDonViTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDonViTinh.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtDonViTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 160, -1));
-
-        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMa.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 160, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setText("Mã Sản Phẩm:");
         jLabel21.setToolTipText("");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, -1));
 
-<<<<<<< HEAD
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 160, -1));
@@ -160,15 +143,6 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 160, -1));
-=======
-        txtDonGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDonGia.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 160, -1));
-
-        txtTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtTen.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 160, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Số Lượng:");
@@ -183,11 +157,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
                 cmbHopDongActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
         jPanel1.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 160, 30));
-=======
-        jPanel1.add(cmbHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 160, 30));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

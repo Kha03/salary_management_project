@@ -77,15 +77,9 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-<<<<<<< HEAD
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 190, -1));
-=======
-        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMa.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 190, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         txtTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTen.setForeground(new java.awt.Color(0, 96, 0));
@@ -94,11 +88,7 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
                 txtTenActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 190, -1));
-=======
-        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 190, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tên Hợp Đồng:");
@@ -117,7 +107,6 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jLabel12.setText("Mã Hợp Đồng:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, 20));
 
-<<<<<<< HEAD
         jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooser2.setForeground(new java.awt.Color(0, 96, 0));
         jDateChooser2.setDateFormatString("dd/mm/yyyy");
@@ -129,19 +118,6 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jDateChooser3.setDateFormatString("dd/mm/yyyy");
         jDateChooser3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 190, 25));
-=======
-        dchNgayKetThuc.setBackground(new java.awt.Color(255, 255, 255));
-        dchNgayKetThuc.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayKetThuc.setDateFormatString("dd/mm/yyyy");
-        dchNgayKetThuc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 190, 25));
-
-        dchNgayBatDau.setBackground(new java.awt.Color(255, 255, 255));
-        dchNgayBatDau.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayBatDau.setDateFormatString("dd/mm/yyyy");
-        dchNgayBatDau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 190, 25));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Giá Tiền:");
@@ -154,11 +130,7 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
                 txtGiaTienActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 190, -1));
-=======
-        jPanel1.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 190, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

@@ -66,62 +66,37 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 1300, 470));
 
-<<<<<<< HEAD
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
         add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 170, -1));
-=======
-        cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
-        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
-        add(cmbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 170, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Sản Phẩm:");
         jLabel14.setToolTipText("");
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 120, -1));
 
-<<<<<<< HEAD
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 96, 0));
         add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 180, -1));
-=======
-        txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMa.setForeground(new java.awt.Color(0, 96, 0));
-        add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 180, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Tìm Kiếm Công Đoạn Sản Phẩm");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 50));
 
-<<<<<<< HEAD
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
         add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 180, -1));
-=======
-        txtCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCongDoan.setForeground(new java.awt.Color(0, 96, 0));
-        add(txtCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 180, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tên Công Đoạn:");
         jLabel16.setToolTipText("");
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 120, -1));
 
-<<<<<<< HEAD
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 96, 0));
         add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 180, -1));
-=======
-        txtGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtGiaTien.setForeground(new java.awt.Color(0, 96, 0));
-        add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 180, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Mã Công Đoạn:");
@@ -133,17 +108,10 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         jLabel19.setToolTipText("");
         add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 120, -1));
 
-<<<<<<< HEAD
         jComboBox6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
         add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 170, -1));
-=======
-        cmbHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmbHopDong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbHopDong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mua bán hàng hóa nhập khẩu", "Mua bán hàng hóa nhựa" }));
-        add(cmbHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 170, -1));
->>>>>>> 59803b7085918d2e2788f7671628199950f56733
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Giá Tiền:");
