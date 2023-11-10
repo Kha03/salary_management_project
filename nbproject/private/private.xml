@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/TimKiemCongDoan_GUI.java</file>
             <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/TimKiemSanPham_GUI.java</file>
             <file>file:/D:/Study/OOPJava/NetBeans/salary_management_project/src/gui/SanPham_GUI.java</file>
+=======
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemBangLuong_GUI.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/dao/TinhLuongHanhChanh_Dao.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemNhanVien_GUI.java</file>
+>>>>>>> b45bfeb5aa803969318e938be07b14ed8fe49baa
         </group>
     </open-files>
 </project-private>
