@@ -303,7 +303,7 @@ public class ChamCongSanPham_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         String maChamCong = null;
-        String sql = "DECLARE @NewIDCCSP VARCHAR(7)"
+        String sql = "DECLARE @NewIDCCSP VARCHAR(6)"
                 + " SET @NewIDCCSP = dbo.IDCCSP()"
                 + " SELECT @NewIDCCSP ";
         try {

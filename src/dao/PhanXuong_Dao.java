@@ -96,7 +96,7 @@ public class PhanXuong_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         String maPhanXuong = null;
-        String sql = "DECLARE @NewIDPX VARCHAR(7)"
+        String sql = "DECLARE @NewIDPX VARCHAR(4)"
                 + " SET @NewIDPX = dbo.IDPX()"
                 + " SELECT @NewIDPX ";
         try {

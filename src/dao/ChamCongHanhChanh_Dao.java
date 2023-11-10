@@ -157,7 +157,7 @@ public class ChamCongHanhChanh_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         String maChamCong = null;
-        String sql = "DECLARE @NewIDCCHC VARCHAR(7)"
+        String sql = "DECLARE @NewIDCCHC VARCHAR(6)"
                 + " SET @NewIDCCHC = dbo.IDCCHC()"
                 + " SELECT @NewIDCCHC ";
         try {

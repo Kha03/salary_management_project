@@ -69,54 +69,54 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
-        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 170, -1));
+        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Sản Phẩm:");
         jLabel14.setToolTipText("");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, 120, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 120, -1));
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 180, -1));
+        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Tìm Kiếm Công Đoạn Sản Phẩm");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 40));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 50));
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 180, -1));
+        add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tên Công Đoạn:");
         jLabel16.setToolTipText("");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 120, -1));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 120, -1));
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 180, -1));
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 180, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Mã Công Đoạn:");
         jLabel18.setToolTipText("");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 120, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 120, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("Hợp Đồng:");
         jLabel19.setToolTipText("");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 120, -1));
+        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 120, -1));
 
         jComboBox6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(0, 99, 0));
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã Nhân Viên", " " }));
-        add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 170, -1));
+        add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 170, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Giá Tiền:");
         jLabel20.setToolTipText("");
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 120, -1));
+        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 120, -1));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

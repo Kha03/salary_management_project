@@ -96,7 +96,7 @@ public class PhongBan_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         String maPhongBan = null;
-        String sql = "DECLARE @NewIDPB VARCHAR(7)"
+        String sql = "DECLARE @NewIDPB VARCHAR(4)"
                 + " SET @NewIDPB = dbo.IDPB()"
                 + " SELECT @NewIDPB ";
         try {

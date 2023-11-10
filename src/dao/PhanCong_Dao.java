@@ -100,7 +100,7 @@ public class PhanCong_Dao {
         ConnectDB.getInstance();
         Connection connection = ConnectDB.getConnection();
         String maPhanCong = null;
-        String sql = "DECLARE @NewIDPCSX VARCHAR(7)"
+        String sql = "DECLARE @NewIDPCSX VARCHAR(5)"
                 + " SET @NewIDPCSX = dbo.IDPCSX()"
                 + " SELECT @NewIDPCSX ";
         try {
