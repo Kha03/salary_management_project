@@ -90,6 +90,11 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         btnCapNhat.setText("Cập Nhật");
         btnCapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 130, 30));
 
         btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
@@ -109,6 +114,11 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 190, 90, 30));
 
         txtSoTien.setEditable(false);
@@ -222,6 +232,14 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         xuLyThem();
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        xuLyXoa();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+        xuLyCapNhat();
+    }//GEN-LAST:event_btnCapNhatActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -310,7 +328,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
             if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Phụ Cấp", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 PhuCap phuCap = new PhuCap("", txtTenPhuCap.getText(),
                         Float.parseFloat(txtSoTien.getText()), chkCoDinh.isSelected(),
-                        chkCoDinh.isSelected() ? layThang() : null);
+                        chkCoDinh.isSelected() ? null : layThang());
                 if (phuCap_Dao.themPhuCap(phuCap)) {
                     JOptionPane.showMessageDialog(this, "Thêm phụ cấp thành công!");
                     dtmPhuCap.setRowCount(0);
@@ -324,6 +342,61 @@ public class PhuCap_GUI extends javax.swing.JPanel {
                 btnXoa.setEnabled(true);
                 btnThem.setText("Thêm");
             }
+        }
+    }
+
+    private void xuLyCapNhat() {
+        if (btnCapNhat.getText().equalsIgnoreCase("Cập Nhật")) {
+            int[] hang = tblPhuCap.getSelectedRows();
+            if (hang.length == 1) {
+                moNhapDuLieu();
+                btnThem.setEnabled(false);
+                btnXoa.setEnabled(false);
+                btnCapNhat.setText("Xác Nhận");
+            } else {
+                JOptionPane.showMessageDialog(this, "Chọn 1 phụ cấp cần cập nhật!");
+            }
+        } else {
+            //chưa bắt lỗi rông txt tên pb
+            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Phụ Cấp", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                PhuCap phuCap = new PhuCap(txtMaPhuCap.getText(), txtTenPhuCap.getText(),
+                        Float.parseFloat(txtSoTien.getText()), chkCoDinh.isSelected(),
+                        chkCoDinh.isSelected() ? null : layThang());
+                if (phuCap_Dao.capNhatPhuCap(phuCap)) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật phụ cấp thành công!");
+                    dtmPhuCap.setRowCount(0);
+                    doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cập nhật phụ cấp thất bại!");
+
+                }
+                dongNhapDuLieu();
+                btnThem.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnCapNhat.setText("Cập Nhật");
+            }
+        }
+    }
+
+    private void xuLyXoa() {
+        int[] hang = tblPhuCap.getSelectedRows();
+        if (hang.length != 0) {
+            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Xóa Phụ Cấp", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                int soLuong = hang.length;
+                int soLuongXoa = 0;
+                for (int i = 0; i < soLuong; i++) {
+                    if (phuCap_Dao.xoaPhuCap(phuCaps.get(hang[i]).getMaPhuCap())) {
+                        soLuongXoa++;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Xóa phụ cấp" + phuCaps.get(hang[i]).getTenPhuCap() + "thất bại");
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Xóa " + soLuongXoa + " phụ cấp thành công!");
+                dtmPhuCap.setRowCount(0);
+                doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Chưa chọn phụ cấp cần xóa!");
         }
     }
 
@@ -344,12 +417,14 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     }
 
     private void xuLyThayDoiCoDinh() {
-        if (chkCoDinh.isSelected() && btnThem.getText().equalsIgnoreCase("Xác Nhận")) {
-            cmbThang.setEnabled(true);
-            ychNam.setEnabled(true);
-        } else {
-            cmbThang.setEnabled(false);
-            ychNam.setEnabled(false);
+        if (btnThem.getText().equalsIgnoreCase("Xác Nhận") || btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
+            if (!chkCoDinh.isSelected()) {
+                cmbThang.setEnabled(true);
+                ychNam.setEnabled(true);
+            } else {
+                cmbThang.setEnabled(false);
+                ychNam.setEnabled(false);
+            }
         }
     }
 
@@ -371,6 +446,8 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         txtTenPhuCap.setEditable(false);
         txtSoTien.setEditable(false);
         chkCoDinh.setEnabled(false);
+        cmbThang.setEnabled(false);
+        ychNam.setEnabled(false);
     }
     private DefaultTableModel dtmPhuCap;
     private DecimalFormat df;

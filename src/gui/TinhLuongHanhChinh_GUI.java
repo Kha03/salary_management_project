@@ -596,7 +596,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         if (hang != -1) {
             lblPhongBan.setText(phongBans.get(hang).getTenPhongBan());
             String maPhongBan = phongBans.get(hang).getMaPhongBan();
-            int thang = Integer.parseInt((String) cmbThang.getSelectedItem());
+            String thang = (String) cmbThang.getSelectedItem();
             int nam = ychNam.getValue();
             this.nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(maPhongBan);
             dtmLuong.setRowCount(0);

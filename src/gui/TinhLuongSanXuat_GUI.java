@@ -502,7 +502,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         if (hang != -1) {
             lblPhanXuong.setText(phanXuongs.get(hang).getTenPhanXuong());
             String maPhanXuong = phanXuongs.get(hang).getMaPhanXuong();
-            int thang = Integer.parseInt((String) cmbThang.getSelectedItem());
+            String thang = (String) cmbThang.getSelectedItem();
             int nam = ychNam.getValue();
             this.nhanVienSanXuats = nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuatTheoPhanXuong(maPhanXuong);
             dtmLuong.setRowCount(0);

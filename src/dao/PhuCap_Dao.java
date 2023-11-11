@@ -155,4 +155,44 @@ public class PhuCap_Dao {
         }
         return true;
     }
+
+    public boolean capNhatPhuCap(PhuCap phuCap) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("UPDATE PhuCap"
+                    + " SET"
+                    + " tenPhuCap = ?,"
+                    + " soTien = ?,"
+                    + " coDinh = ?,"
+                    + " thangHuong = ?"
+                    + " WHERE maPhuCap = ?");
+            smt.setString(1, phuCap.getTenPhuCap());
+            smt.setFloat(2, phuCap.getSoTien());
+            smt.setBoolean(3, phuCap.getCoDinh());
+            smt.setString(4, phuCap.getThangHuong());
+            smt.setString(5, phuCap.getMaPhuCap());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean xoaPhuCap(String maPhuCap) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("DELETE FROM NhanVien_PhuCap"
+                    + " WHERE maPhuCap = '" + maPhuCap + "'"
+                    + " DELETE FROM PhuCap"
+                    + " WHERE maPhuCap = '" + maPhuCap + "'");
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
 }
