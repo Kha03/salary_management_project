@@ -663,7 +663,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     }
 
     private void tinhLuongNhanVien() {
-        int thang = Integer.parseInt((String) cmbThang.getSelectedItem());
+        String thang = (String) cmbThang.getSelectedItem();
         int nam = ychNam.getValue();
         float tienTangCa = 0;
         int ngayCongThucTe = 0;
@@ -680,7 +680,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 tienTangCa = tinhTienTangCa(nvhc);
                 ngayCongThucTe = tinhNgayCongThucTe();
                 tienPhuCap = phuCap_Dao.layTienPhuCapHc(nvhc.getMaNhanVienHanhChanh(), thang + "-" + nam);
-                ngayCongChuan = tinhSoNgayThucTeTrongThang(thang, nam);
+                ngayCongChuan = tinhSoNgayThucTeTrongThang(Integer.parseInt(thang), nam);
                 luongCoBan = nvhc.getLuongCoBan();
                 tongLuong = tinhTongLuong(tienTangCa, luongCoBan, tienPhuCap, ngayCongChuan, ngayCongThucTe);
                 maLuong = taoMaLuong(nvhc.getMaNhanVienHanhChanh());

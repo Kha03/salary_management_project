@@ -569,7 +569,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
     }
 
     private void tinhLuongNhanVien() {
-        int thang = Integer.parseInt((String) cmbThang.getSelectedItem());
+        String thang = (String) cmbThang.getSelectedItem();
         int nam = ychNam.getValue();
         float tienLuongSanPham = 0;
         float tienPhuCap = 0;

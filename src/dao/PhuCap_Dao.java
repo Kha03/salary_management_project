@@ -118,4 +118,41 @@ public class PhuCap_Dao {
         }
         return tienPhuCap;
     }
+
+    public String layMaTuDongPhuCap() {
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        String maPhuCap = null;
+        String sql = "DECLARE @NewIDPC VARCHAR(4)"
+                + " SET @NewIDPC = dbo.IDPC()"
+                + " SELECT @NewIDPC ";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                maPhuCap = resultSet.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return maPhuCap;
+    }
+
+    public boolean themPhuCap(PhuCap phuCap) {
+        try {
+            ConnectDB.getInstance();
+            Connection connection = ConnectDB.getConnection();
+            PreparedStatement smt = null;
+            smt = connection.prepareStatement("INSERT INTO PhuCap VALUES (?,?,?,?,?)");
+            smt.setString(1, layMaTuDongPhuCap());
+            smt.setString(2, phuCap.getTenPhuCap());
+            smt.setFloat(3, phuCap.getSoTien());
+            smt.setBoolean(4, phuCap.getCoDinh());
+            smt.setString(5, phuCap.getThangHuong());
+            smt.executeUpdate();
+        } catch (SQLException ex) {
+            return false;
+        }
+        return true;
+    }
 }
