@@ -35,6 +35,7 @@ public class NhanVienHanhChanh extends NhanVien {
         super(maSo, hoVaTen);
         this.maNhanVienHanhChanh = maNhanVienHanhChanh;
     }
+
     public NhanVienHanhChanh() {
     }
 
@@ -97,13 +98,5 @@ public class NhanVienHanhChanh extends NhanVien {
     @Override
     public String toString() {
         return "NhanVienHanhChanh{" + "maNhanVienHanhChanh=" + maNhanVienHanhChanh + ", chucVu=" + chucVu + ", ngoaiNgu=" + ngoaiNgu + ", capBac=" + capBac + ", phongBan=" + phongBan + ", luongCoBan=" + luongCoBan + ", heSoLuong=" + heSoLuong + '}';
-    }
-
-    public Object getGioiTinh() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getMaNhanVien() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

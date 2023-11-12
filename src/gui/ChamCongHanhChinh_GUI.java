@@ -686,13 +686,9 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void xuLyChkToanBo() {
         if (chkToanBo.isSelected()) {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
-                if (tblChamCong.getRowCount() > 0) {
-                    tblChamCong.setRowSelectionInterval(0, tblChamCong.getRowCount() - 1);
-                }
+                tblChamCong.selectAll();
             } else {
-                if (tblNhanVien.getRowCount() > 0) {
-                    tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
-                }
+                tblNhanVien.selectAll();
             }
         } else {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {

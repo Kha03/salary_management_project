@@ -801,9 +801,7 @@ public class PhanCongSanXuat_GUI extends javax.swing.JPanel {
 
     private void xuLyChkToanBo() {
         if (chkToanBo.isSelected()) {
-            if (tblNhanVien.getRowCount() > 0) {
-                tblNhanVien.setRowSelectionInterval(0, tblNhanVien.getRowCount() - 1);
-            }
+            tblNhanVien.selectAll();
         } else {
             tblNhanVien.clearSelection();
         }
