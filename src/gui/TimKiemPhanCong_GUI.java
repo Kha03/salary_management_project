@@ -1,11 +1,17 @@
 package gui;
 
 import connect.ConnectDB;
+import dao.CongDoan_Dao;
 import entity.PhanCongSanXuat;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import dao.PhanCong_Dao;
+import dao.PhanXuong_Dao;
+import dao.SanPham_Dao;
+import entity.CongDoan;
+import entity.PhanXuong;
+import entity.SanPham;
 import java.text.SimpleDateFormat;
 
 
@@ -314,20 +320,38 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jTable4.getColumnModel().getColumn(6).setPreferredWidth(60);
         jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         
-        cmbCongDoan.setSelectedIndex(-1);
-        cmbPhanXuong.setSelectedIndex(-1);
-        cmbSanPham.setSelectedIndex(-1);
+        
         dchTu.setVisible(false);
     }
 
     private void initCommon()throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
+        phanXuong_Dao = new PhanXuong_Dao();
+        congDoan_Dao = new CongDoan_Dao();
+        sanPham_Dao = new SanPham_Dao();
+        
         dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         phanCong_Dao = new PhanCong_Dao();
         doDuLieu();
+        doDulieucmb();
+        cmbCongDoan.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbSanPham.setSelectedIndex(-1);
     } 
     
+    
+    private void doDulieucmb(){
+        for (PhanXuong px : phanXuong_Dao.getDanhSachPhanXuong()) {
+            cmbPhanXuong.addItem(px.getTenPhanXuong());
+        }
+        for (CongDoan cd : congDoan_Dao.getDanhSachCongDoan()) {
+            cmbPhanXuong.addItem(cd.getTenCongDoan());
+        }
+        for (SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
+            cmbPhanXuong.addItem(sp.getTenSanPham());
+        }
+    }
     private void timkiem() {
         modelChamCong.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
         
@@ -427,6 +451,11 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     
     
     
+    
+    
+    private SanPham_Dao sanPham_Dao;
+    private CongDoan_Dao congDoan_Dao;
+    private PhanXuong_Dao phanXuong_Dao;
     private SimpleDateFormat dinhDangNgay;
     private PhanCong_Dao phanCong_Dao;
     private DefaultTableModel modelChamCong;

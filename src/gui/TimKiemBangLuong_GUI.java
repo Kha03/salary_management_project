@@ -9,14 +9,21 @@ import dao.TinhLuongHanhChanh_Dao;
 import entity.LuongCongNhan;
 import java.sql.SQLException;
 import connect.ConnectDB;
+import dao.BacLuong_Dao;
+import dao.CapBac_Dao;
 import dao.NhanVienHanhChanh_Dao;
 import dao.NhanVienSanXuat_Dao;
+import dao.PhanXuong_Dao;
 import dao.PhongBan_Dao;
 import dao.TinhLuongCongNhan_Dao;
+import entity.BacLuong;
+import entity.CapBac;
 import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
+import entity.PhanXuong;
 import entity.PhongBan;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -236,7 +243,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         lblHeSoLuong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHeSoLuong.setText("Hệ Số Lương:");
-        jPanel1.add(lblHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 120, -1));
+        jPanel1.add(lblHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 120, -1));
 
         cmbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
@@ -496,11 +503,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(9).setCellRenderer(center);
         jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
         
-        cmbPhongBan.setSelectedIndex(-1);
-        cmbHeSoLuong.setSelectedIndex(-1);
-        cmbThang.setSelectedIndex(-1);
-//        ychNam.;
-        cmbPhanXuong.setSelectedIndex(-1);
+        
         
         jTable1.setModel(modelLuongSx);
 
@@ -521,15 +524,47 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
         tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
         tinhLuongCongNhan_Dao  = new TinhLuongCongNhan_Dao();
+        phongBan_Dao = new PhongBan_Dao();
         border_Selected = new Border_Selected();
         cmbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
 //        LblLuongThucLanhSxV.setVisible(false);
         txtTienPhuCapSx.setVisible(false);
         phongBan_Dao = new PhongBan_Dao();
+        phanXuong_Dao = new PhanXuong_Dao();
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
         nhanVienSanXuat_Dao = new NhanVienSanXuat_Dao();
+        List<String> heSoLuongList = new ArrayList<>();
         doDuLieu();
+        doDulieucmb();
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbHeSoLuong.setSelectedIndex(-1);
+        cmbThang.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+    }
+    
+    private void doDulieucmb(){
+        for (PhanXuong px : phanXuong_Dao.getDanhSachPhanXuong()) {
+            cmbPhanXuong.addItem(px.getTenPhanXuong());
+        }
+        for (PhongBan pb : phongBan_Dao.getDanhSachPhongBan()) {
+            cmbPhongBan.addItem(pb.getTenPhongBan());
+        }
+        for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getDanhSachLuong()) {
+            String heSoLuongString = String.valueOf(lg.getHeSoLuong());
+            // Kiểm tra xem giá trị đã tồn tại trong combobox chưa
+            boolean t = false;
+            for (int i = 0; i < cmbHeSoLuong.getItemCount(); i++) {
+                if (heSoLuongString.equals(cmbHeSoLuong.getItemAt(i))) {
+                    t = true;
+                    break;
+                }
+            }
+            // Nếu giá trị không tồn tại, thêm vào combobox
+            if (!t) {
+                cmbHeSoLuong.addItem(heSoLuongString);
+            }
+        }
     }
     
     private void timKiemHC(){
@@ -747,6 +782,10 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     }
     
     // private Border_Selected border;
+    private List<CapBac> capBacs;
+    private CapBac_Dao capBac_Dao;
+    private BacLuong_Dao bacLuong_Dao;
+    private PhanXuong_Dao phanXuong_Dao;
     private DecimalFormat df;
     private DefaultTableModel modelLuongHc;
     private DefaultTableModel modelLuongSx;

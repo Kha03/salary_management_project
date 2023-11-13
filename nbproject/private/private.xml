@@ -4,9 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemBangLuong_GUI.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemCongDoan_GUI.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemHopDong_GUI.java</file>
-            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemChamCong_GUI.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemPhanCong_GUI.java</file>
+            <file>file:/C:/Users/ACER/Desktop/tailieuhoctap/PTUD/codeJava/salary_management_project/src/gui/TimKiemNhanVien_GUI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -9,7 +9,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import dao.ChamCongHanhChanh_Dao;
 import dao.ChamCongSanPham_Dao;
+import dao.CongDoan_Dao;
+import dao.PhanXuong_Dao;
+import dao.PhongBan_Dao;
+import dao.SanPham_Dao;
 import entity.ChamCongSanPham;
+import entity.CongDoan;
+import entity.PhanXuong;
+import entity.PhongBan;
+import entity.SanPham;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 /**
@@ -304,12 +312,9 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 //        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
 //        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        cmbPhongBan.setSelectedIndex(-1);
+        
         dchTu.setVisible(false);
-        cmbTrangThai.setSelectedIndex(-1);
-        cmbCongDoan.setSelectedIndex(-1);
-        cmbSanPham.setSelectedIndex(-1);
-        cmbPhanXuong.setSelectedIndex(-1);
+        
         
     }
     private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
@@ -405,6 +410,10 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         chamCongHanhChanh_Dao = new ChamCongHanhChanh_Dao();
         chamCongSanPham_Dao = new ChamCongSanPham_Dao();
         border_Selected = new Border_Selected();
+        phanXuong_Dao = new PhanXuong_Dao();
+        congDoan_Dao = new CongDoan_Dao();
+        sanPham_Dao = new SanPham_Dao();
+        phongBan_Dao = new PhongBan_Dao();
         cmbPhanXuong.setVisible(false);
         cmbSanPham.setVisible(false);
         lblCongDoan.setVisible(false);
@@ -413,8 +422,28 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         txtSoLuong.setVisible(false);
         dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         doDuLieu();
+        doDulieucmb();
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbTrangThai.setSelectedIndex(-1);
+        cmbCongDoan.setSelectedIndex(-1);
+        cmbSanPham.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
     }
 
+    private void doDulieucmb(){
+        for (PhongBan pb : phongBan_Dao.getDanhSachPhongBan()) {
+            cmbPhongBan.addItem(pb.getTenPhongBan());
+        }
+        for (PhanXuong px : phanXuong_Dao.getDanhSachPhanXuong()) {
+            cmbPhanXuong.addItem(px.getTenPhanXuong());
+        }
+        for (CongDoan cd : congDoan_Dao.getDanhSachCongDoan()) {
+            cmbPhanXuong.addItem(cd.getTenCongDoan());
+        }
+        for (SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
+            cmbPhanXuong.addItem(sp.getTenSanPham());
+        }
+    }
     private void timkiemChamCongHC(){
         modelChamCongHanhChinh.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
         
@@ -613,6 +642,10 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
     }
     
     // private Border_Selected border;
+    private SanPham_Dao sanPham_Dao;
+    private CongDoan_Dao congDoan_Dao;
+    private PhanXuong_Dao phanXuong_Dao;
+    private PhongBan_Dao phongBan_Dao;
     private SimpleDateFormat dinhDangNgay;
     private DecimalFormat df;
     private ChamCongSanPham_Dao chamCongSanPham_Dao;

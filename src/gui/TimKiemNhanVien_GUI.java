@@ -5,14 +5,19 @@ import handle.borderselected.Border_Selected;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import connect.ConnectDB;
+import dao.CapBac_Dao;
 import dao.NhanVienHanhChanh_Dao;
 import dao.NhanVienSanXuat_Dao;
+import dao.PhanXuong_Dao;
+import dao.PhongBan_Dao;
+import dao.TrinhDo_Dao;
 import entity.CapBac;
 import java.sql.SQLException;
 import entity.NhanVien;
 import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
 import entity.PhanXuong;
+import entity.PhongBan;
 import entity.TrinhDo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,10 +31,9 @@ import java.util.List;
  */
 public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
-    private SimpleDateFormat dinhDangNgay;
-    private ArrayList<NhanVien> ds;
-
-    
+    private PhanXuong_Dao phanXuong_Dao;
+    private TrinhDo_Dao trinhDo_Dao;
+    private CapBac_Dao capBac_Dao;
     /**
      * Creates new form NhanVienHanhChinh
      * @throws java.sql.SQLException
@@ -207,8 +211,12 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Tài Chính Kế Toán", "Phòng Nhân Sự" }));
         cmbPhongBan.setToolTipText("");
+        cmbPhongBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPhongBanActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 190, -1));
 
         cmbTrinhDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -291,11 +299,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(10).setCellRenderer(center);
 
 //        model sản xuất
-        cmbGioiTinh.setSelectedIndex(-1);
-        cmbPhanXuong.setSelectedIndex(-1);
-        cmbPhongBan.setSelectedIndex(-1);
-        cmbCapBac.setSelectedIndex(-1);
-        cmbTrinhDo.setSelectedIndex(-1);      
+         
+        
     }
     
     private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
@@ -335,16 +340,46 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         lamMoiBang();
         doDuLieu();
     }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void cmbPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhongBanActionPerformed
+
+    }//GEN-LAST:event_cmbPhongBanActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
         dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
         nhanVienSanXuat_Dao = new NhanVienSanXuat_Dao();
+        phongBan_Dao = new PhongBan_Dao();
+        phanXuong_Dao = new PhanXuong_Dao();
+        trinhDo_Dao = new TrinhDo_Dao();
+        capBac_Dao = new CapBac_Dao();
         doDuLieu();
-        
+        doDulieucmb();
+        cmbGioiTinh.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbCapBac.setSelectedIndex(-1);
+        cmbTrinhDo.setSelectedIndex(-1); 
     }
     
+    private void doDulieucmb(){
+        for (PhongBan pb : phongBan_Dao.getDanhSachPhongBan()) {
+            cmbPhongBan.addItem(pb.getTenPhongBan());
+        }
+        for (PhanXuong px : phanXuong_Dao.getDanhSachPhanXuong()) {
+            cmbPhanXuong.addItem(px.getTenPhanXuong());
+        }
+        for (TrinhDo td : trinhDo_Dao.getDanhSachTrinhDo()) {
+            cmbPhanXuong.addItem(td.getTenTrinhDo());
+        }
+        for (CapBac cb : capBac_Dao.getDanhSachCapBacHanhChinh()) {
+            cmbPhanXuong.addItem(cb.getTenCapBac());
+        }
+        for (CapBac cb : capBac_Dao.getDanhSachCapBacPhanXuong()) {
+            cmbPhanXuong.addItem(cb.getTenCapBac());
+        }
+    }
     private void timKiem(){
         modelNhanvien.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
         
@@ -548,6 +583,8 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
     
     
     // private Border_Selected border;
+    private SimpleDateFormat dinhDangNgay;
+    private PhongBan_Dao phongBan_Dao;
     private DefaultTableModel modelNhanvien;
     private NhanVienSanXuat_Dao nhanVienSanXuat_Dao;
     private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
