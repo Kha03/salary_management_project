@@ -41,7 +41,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         cmbPhanXuong = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -100,13 +100,18 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(jLabel5);
         jLabel5.setBounds(0, 0, 1304, 50);
 
-        jButton8.setBackground(new java.awt.Color(152, 249, 152));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton8.setText("Làm Mới");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jDesktopPane1.add(jButton8);
-        jButton8.setBounds(1040, 220, 120, 30);
+        btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnLamMoi.setText("Làm Mới");
+        btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(btnLamMoi);
+        btnLamMoi.setBounds(1040, 220, 120, 30);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Mã Sản Phẩm:");
@@ -265,6 +270,13 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     private void txtMaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSanPhamActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaSanPhamActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoiDong();
+        lamMoiBang();
+        doDuLieu();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
@@ -378,8 +390,20 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
             }
         }
     }
-    
-    
+    public void lamMoiBang() {
+        modelChamCong.setRowCount(0);
+    }
+    public void lamMoiDong() {
+        txtMaSanPham.setText("");
+        txtSoNhanVien.setText("");
+        dchNgayPhanCong.setDate(null);
+        dchTu.setDate(null);
+        chkTu.setSelected(false);
+        cmbCongDoan.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbSanPham.setSelectedIndex(-1);
+        dchTu.setVisible(false);
+    }
     
     private void doDuLieu() {
         doDuLieuPhanCongSanXuat();
@@ -407,6 +431,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     private PhanCong_Dao phanCong_Dao;
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnTim;
     private javax.swing.JCheckBox chkTu;
     private javax.swing.JComboBox<String> cmbCongDoan;
@@ -415,7 +440,6 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dchNgayPhanCong;
     private com.toedter.calendar.JDateChooser dchTu;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;

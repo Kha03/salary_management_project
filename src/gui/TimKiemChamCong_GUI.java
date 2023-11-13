@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import dao.ChamCongHanhChanh_Dao;
 import dao.ChamCongSanPham_Dao;
 import entity.ChamCongSanPham;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 /**
  *
@@ -17,7 +18,7 @@ import java.text.SimpleDateFormat;
  */
 public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
-    private SimpleDateFormat dinhDangNgay;
+    
 
     /**
      * Creates new form NhanVienHanhChinh
@@ -101,6 +102,11 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         jButton10.setText("Làm Mới");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 120, 30));
 
         txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -385,9 +391,17 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
             timkiemCCSP();
         }
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        lamMoiDong();
+        lamMoiBang();
+        doDuLieu();
+    }//GEN-LAST:event_jButton10ActionPerformed
     private void initCommon()throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
+        df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
         chamCongHanhChanh_Dao = new ChamCongHanhChanh_Dao();
         chamCongSanPham_Dao = new ChamCongSanPham_Dao();
         border_Selected = new Border_Selected();
@@ -527,14 +541,34 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                     dinhDangNgay.format(ccsx.getNgayLamViec()),
                     ccsx.getSanPham().getTenSanPham(),
                     ccsx.getCongDoan().getTenCongDoan(),
-                    ccsx.getDonGia(),
+                    df.format(ccsx.getDonGia())+ "VND",
                     ccsx.getSoLuong(),
-                    ccsx.getTongTien()
+                    df.format(ccsx.getTongTien())+ "VND"
                 };
                 modelChamCongSanPham.addRow(rowData);
             }
             
         }
+    }
+    
+    public void lamMoiDong() {
+        txtMa.setText("");
+        txtTen.setText("");
+        dchNgayChamCong.setDate(null);
+        dchTu.setDate(null);
+        chkTu.setSelected(false);
+        cmbCongDoan.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbSanPham.setSelectedIndex(-1);
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbTrangThai.setSelectedIndex(-1);
+        spnTangCa.setValue(0);
+        txtSoLuong.setText("");
+        dchTu.setVisible(false);
+    }
+    public void lamMoiBang() {
+        modelChamCongHanhChinh.setRowCount(0);
+        modelChamCongSanPham.setRowCount(0);
     }
     
     private void doDuLieu() {
@@ -569,9 +603,9 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 dinhDangNgay.format(ccsx.getNgayLamViec()),
                 ccsx.getSanPham().getTenSanPham(),
                 ccsx.getCongDoan().getTenCongDoan(),
-                ccsx.getDonGia(),
+                df.format(ccsx.getDonGia())+ "VND",
                 ccsx.getSoLuong(),
-                ccsx.getTongTien()
+                df.format(ccsx.getTongTien())+ "VND"
             };
             modelChamCongSanPham.addRow(objects);
             
@@ -579,6 +613,8 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
     }
     
     // private Border_Selected border;
+    private SimpleDateFormat dinhDangNgay;
+    private DecimalFormat df;
     private ChamCongSanPham_Dao chamCongSanPham_Dao;
     private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
     private DefaultTableModel modelChamCongHanhChinh;

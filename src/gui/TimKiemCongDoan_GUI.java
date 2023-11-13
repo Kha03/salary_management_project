@@ -48,7 +48,7 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         btnTim = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtTienDo = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -128,12 +128,17 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         });
         add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 130, 30));
 
-        jButton10.setBackground(new java.awt.Color(152, 249, 152));
-        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton10.setText("Làm Mới");
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 230, 120, 30));
+        btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnLamMoi.setText("Làm Mới");
+        btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 230, 120, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Tiến Độ");
@@ -188,6 +193,14 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         // TODO add your handling code here:
         xuLyThayDoiTblSanPham(); 
     }//GEN-LAST:event_tblSanPhamMouseClicked
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoiBang();
+        lamMoiDong();
+        doDuLieuSanPham(sanPhams);
+        doDuLieuCCSP();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
     private void setTable() {
         //setTable ở đây
         modelSanPham = new DefaultTableModel(
@@ -264,8 +277,30 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         doDuLieuSanPham(sanPham_Dao.getDanhSachSanPham());
         doDuLieuCongDoan(congDoan_Dao.getDanhSachCongDoan());
     }
-    
-    
+    public void lamMoiBang() {
+        modelChamCong.setRowCount(0);
+        modelSanPham.setRowCount(0);
+    }
+    public void lamMoiDong() {
+        txtMa.setText("");
+        txtTenCongDoan.setText("");
+        txtTienDo.setText("");
+        txtGiaTien.setText("");
+    }
+    private void doDuLieuCCSP(){
+        int i =1;
+        for(CongDoan ccsp: congDoan_Dao.getDanhSachCongDoan()){
+            Object[] objects = {
+                i++,
+                ccsp.getTenCongDoan(),
+                ccsp.getMaCongDoan(),
+                df.format(ccsp.getGiaTien())+ "VND",
+                ccsp.getTienDo()
+            };    
+            modelChamCong.addRow(objects);
+                
+        }
+    }
     private void timkiemCongDoanSanPham(){
         modelChamCong.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
         int i = 1;
@@ -296,9 +331,7 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
                     i++,
                     cd.getTenCongDoan(),
                     cd.getMaCongDoan(),
-                    "",
-                    "",
-                    cd.getGiaTien(),
+                    df.format(cd.getGiaTien())+ "VND",
                     cd.getTienDo(),
                 };
                 modelChamCong.addRow(rowData);
@@ -345,8 +378,8 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelSanPham;
     private DefaultTableModel modelChamCong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnTim;
-    private javax.swing.JButton jButton10;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;

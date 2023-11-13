@@ -132,6 +132,11 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnLamMoi.setText("Làm Mới");
         btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 120, 30));
 
         txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -323,6 +328,13 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         // TODO add your handling code here:
         timKiem();
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoiDong();
+        lamMoiBang();
+        doDuLieu();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -483,17 +495,14 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         dchNgayVaoLam.setDate(null);
         txtSDT.setText("");
         txtEmail.setText("");
-        cmbPhongBan.removeAllItems();
-        cmbPhanXuong.removeAllItems();
-        cmbTrinhDo.removeAllItems();
-        cmbCapBac.removeAllItems();
+        cmbPhongBan.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbTrinhDo.setSelectedIndex(-1);
+        cmbCapBac.setSelectedIndex(-1);
     }
     
     public void lamMoiBang() {
         modelNhanvien.setRowCount(0);
-        cmbPhanXuong.removeAllItems();
-        cmbTrinhDo.removeAllItems();
-        cmbCapBac.removeAllItems();
     }
     private void doDuLieu(){
         doDuLieuNhanVien();

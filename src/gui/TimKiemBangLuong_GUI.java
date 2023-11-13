@@ -16,6 +16,7 @@ import dao.TinhLuongCongNhan_Dao;
 import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
 import entity.PhongBan;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -23,6 +24,8 @@ import java.util.List;
  * @author ADMIN
  */
 public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
+
+    
 
     /**
      * Creates new form NhanVienHanhChinh
@@ -50,7 +53,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButton15 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         txtMa = new javax.swing.JTextField();
         txtChucVu = new javax.swing.JTextField();
         lblChucVu = new javax.swing.JLabel();
@@ -77,12 +80,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         lblTienPhuCap = new javax.swing.JLabel();
         txtLuongSanPham = new javax.swing.JTextField();
         txtTienTangCa = new javax.swing.JTextField();
-        lblLuongThucLanhHc = new javax.swing.JLabel();
         lblTienTangCa = new javax.swing.JLabel();
-        lblLuongThucLanhHcV = new javax.swing.JLabel();
         btnTim = new javax.swing.JButton();
         txtTienPhuCapSx = new javax.swing.JTextField();
-        LblLuongThucLanhSxV = new javax.swing.JLabel();
         txtTienPhuCapHc = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(1300, 741));
@@ -122,12 +122,17 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 190, 130, 30));
 
-        jButton10.setBackground(new java.awt.Color(152, 249, 152));
-        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton10.setText("Làm Mới");
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 190, 120, 30));
+        btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnLamMoi.setText("Làm Mới");
+        btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 190, 120, 30));
 
         txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMa.setForeground(new java.awt.Color(0, 96, 0));
@@ -231,12 +236,12 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         lblHeSoLuong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHeSoLuong.setText("Hệ Số Lương:");
-        jPanel1.add(lblHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 120, -1));
+        jPanel1.add(lblHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 120, -1));
 
         cmbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
         cmbHeSoLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1.0", "2.23", "5.686" }));
-        jPanel1.add(cmbHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 80, -1));
+        jPanel1.add(cmbHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 80, -1));
 
         txtNgayCongThucTe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNgayCongThucTe.setForeground(new java.awt.Color(0, 96, 0));
@@ -245,11 +250,11 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 txtNgayCongThucTeActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNgayCongThucTe, new org.netbeans.lib.awtextra.AbsoluteConstraints(855, 100, 50, -1));
+        jPanel1.add(txtNgayCongThucTe, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, 50, -1));
 
         lblNgayCongThucTe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNgayCongThucTe.setText("Ngày Công Thực Tế:");
-        jPanel1.add(lblNgayCongThucTe, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 100, 150, -1));
+        jPanel1.add(lblNgayCongThucTe, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 150, -1));
 
         txtLuongCoBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtLuongCoBan.setForeground(new java.awt.Color(0, 96, 0));
@@ -261,7 +266,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         lblNgayCongChuan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNgayCongChuan.setText("Ngày Công Chuẩn:");
-        jPanel1.add(lblNgayCongChuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 60, 150, -1));
+        jPanel1.add(lblNgayCongChuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 150, -1));
 
         txtNgayCongChuan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNgayCongChuan.setForeground(new java.awt.Color(0, 96, 0));
@@ -269,7 +274,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         lblTienPhuCap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTienPhuCap.setText("Tiền Phụ Cấp:");
-        jPanel1.add(lblTienPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 60, 120, -1));
+        jPanel1.add(lblTienPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 60, 120, -1));
 
         txtLuongSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtLuongSanPham.setForeground(new java.awt.Color(0, 96, 0));
@@ -277,21 +282,11 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         txtTienTangCa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTienTangCa.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtTienTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1045, 100, 190, -1));
-
-        lblLuongThucLanhHc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblLuongThucLanhHc.setText("Lương Thực Lãnh:");
-        jPanel1.add(lblLuongThucLanhHc, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 140, 130, -1));
+        jPanel1.add(txtTienTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 190, -1));
 
         lblTienTangCa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTienTangCa.setText("Tiền Tăng Ca:");
-        jPanel1.add(lblTienTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(935, 100, 120, -1));
-
-        lblLuongThucLanhHcV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblLuongThucLanhHcV.setForeground(new java.awt.Color(0, 99, 0));
-        lblLuongThucLanhHcV.setText("1200000");
-        lblLuongThucLanhHcV.setToolTipText("");
-        jPanel1.add(lblLuongThucLanhHcV, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 140, 160, 20));
+        jPanel1.add(lblTienTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 100, 120, -1));
 
         btnTim.setBackground(new java.awt.Color(152, 249, 152));
         btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -309,18 +304,12 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtTienPhuCapSx.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(txtTienPhuCapSx, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 190, -1));
 
-        LblLuongThucLanhSxV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LblLuongThucLanhSxV.setForeground(new java.awt.Color(0, 99, 0));
-        LblLuongThucLanhSxV.setText("1200000");
-        LblLuongThucLanhSxV.setToolTipText("");
-        jPanel1.add(LblLuongThucLanhSxV, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, 160, 20));
-
         txtTienPhuCapHc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTienPhuCapHc.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtTienPhuCapHc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1045, 60, 190, -1));
+        jPanel1.add(txtTienPhuCapHc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 60, 190, -1));
 
         jDesktopPane1.add(jPanel1);
-        jPanel1.setBounds(0, 50, 1304, 230);
+        jPanel1.setBounds(0, 60, 1304, 230);
 
         add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 741));
     }// </editor-fold>//GEN-END:initComponents
@@ -342,7 +331,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private void radNVSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNVSXActionPerformed
         cmbPhanXuong.setVisible(true);
         txtLuongSanPham.setVisible(true);
-        LblLuongThucLanhSxV.setVisible(true);
+//        LblLuongThucLanhSxV.setVisible(true);
         txtTienPhuCapSx.setVisible(true);
         
         lblChucVu.setVisible(false);
@@ -361,8 +350,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtTienPhuCapHc.setVisible(false);
         lblTienTangCa.setVisible(false);
         txtTienTangCa.setVisible(false);
-        lblLuongThucLanhHc.setVisible(false);
-        lblLuongThucLanhHcV.setVisible(false);
+//        lblLuongThucLanhHc.setVisible(false);
+//        lblLuongThucLanhHcV.setVisible(false);
         jTable1.setModel(modelLuongSx);
         // TODO add your handling code here:
     }//GEN-LAST:event_radNVSXActionPerformed
@@ -371,7 +360,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         // TODO add your handling code here:
         cmbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
-        LblLuongThucLanhSxV.setVisible(false);
+//        LblLuongThucLanhSxV.setVisible(false);
         txtTienPhuCapSx.setVisible(false);
 
         lblHeSoLuong.setText("Hệ Số Lương:");
@@ -388,8 +377,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtTienPhuCapHc.setVisible(true);
         lblTienTangCa.setVisible(true);
         txtTienTangCa.setVisible(true);
-        lblLuongThucLanhHc.setVisible(true);
-        lblLuongThucLanhHcV.setVisible(true);
+//        lblLuongThucLanhHc.setVisible(true);
+//        lblLuongThucLanhHcV.setVisible(true);
         jTable1.setModel(modelLuongHc);
     }//GEN-LAST:event_radNVHCActionPerformed
 
@@ -423,6 +412,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoiDong();
+        lamMoiBang();
+        doDuLieu();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
     private void setTable() {
         //setTable ở đây
         //table chấm công
@@ -522,12 +518,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
+        df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
         tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
         tinhLuongCongNhan_Dao  = new TinhLuongCongNhan_Dao();
         border_Selected = new Border_Selected();
         cmbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
-        LblLuongThucLanhSxV.setVisible(false);
+//        LblLuongThucLanhSxV.setVisible(false);
         txtTienPhuCapSx.setVisible(false);
         phongBan_Dao = new PhongBan_Dao();
         nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
@@ -618,10 +615,10 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                     lg.getHeSoLuong(),
                     lg.getLuongCoBan(),
                     lg.getSoNgayCongChuan(),
-                    lg.getTienPhuCap(),
+                    df.format(lg.getTienPhuCap())+"VND",
                     lg.getNgayCongThucTe(),
-                    lg.getTienTangCa(),
-                    lg.getTongLuong()
+                    df.format(lg.getTienTangCa())+"VND",
+                    df.format(lg.getTongLuong())+"VND"
                 };
                 modelLuongHc.addRow(rowData);
             }
@@ -682,9 +679,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                     i++,
                     lg.getNhanVienSanXuat().getMaNhanVienSanXuat(),
                     lg.getNhanVienSanXuat().getHoVaTen(),
-                    lg.getTongLuongSanPham(),
-                    lg.getTienPhuCap(),
-                    lg.getTongLuong(),
+                    df.format(lg.getTongLuongSanPham())+ "VND",
+                    df.format(lg.getTienPhuCap())+ "VND",
+                    df.format(lg.getTongLuong())+ "VND",
                 };
                 modelLuongSx.addRow(rowData);
             }
@@ -694,7 +691,26 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         doDuLieuLuongHanhChanh();
         doDuLieuLuongSanXuat();
     }
-    
+    public void lamMoiBang() {
+        modelLuongHc.setRowCount(0);
+        modelLuongSx.setRowCount(0);
+    }
+    public void lamMoiDong() {
+        txtMa.setText("");
+        txtTen.setText("");
+        cmbThang.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        cmbPhongBan.setSelectedIndex(-1);
+        ychNam.setValue(2023);
+        txtLuongSanPham.setText("");
+        txtTienPhuCapHc.setText("");
+        txtTienPhuCapSx.setText("");
+        cmbHeSoLuong.setSelectedIndex(-1);
+        txtLuongCoBan.setText("");
+        txtNgayCongChuan.setText("");
+        txtNgayCongThucTe.setText("");
+        txtTienTangCa.setText("");
+    }
     public void doDuLieuLuongHanhChanh() {
         int i=1;
         for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getDanhSachLuong()) {
@@ -706,10 +722,10 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 lg.getHeSoLuong(),
                 lg.getLuongCoBan(),
                 lg.getSoNgayCongChuan(),
-                lg.getTienPhuCap(),
+                df.format(lg.getTienPhuCap())+"VND",
                 lg.getNgayCongThucTe(),
-                lg.getTienTangCa(),
-                lg.getTongLuong()
+                df.format(lg.getTienTangCa())+"VND",
+                df.format(lg.getTongLuong())+"VND"
                 
             };
             modelLuongHc.addRow(objects);
@@ -722,15 +738,16 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 i++,
                 lg.getNhanVienSanXuat().getMaNhanVienSanXuat(),
                 lg.getNhanVienSanXuat().getHoVaTen(),
-                lg.getTongLuongSanPham(),
-                lg.getTienPhuCap(),
-                lg.getTongLuong(),
+                df.format(lg.getTongLuongSanPham())+ "VND",
+                df.format(lg.getTienPhuCap())+ "VND",
+                df.format(lg.getTongLuong())+ "VND",
             };
             modelLuongSx.addRow(objects);
         }
     }
     
     // private Border_Selected border;
+    private DecimalFormat df;
     private DefaultTableModel modelLuongHc;
     private DefaultTableModel modelLuongSx;
     private Border_Selected border_Selected;
@@ -740,14 +757,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private TinhLuongHanhChanh_Dao tinhLuongHanhChanh_Dao;
     private TinhLuongCongNhan_Dao tinhLuongCongNhan_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LblLuongThucLanhSxV;
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.ButtonGroup btnThayDoiTim;
     private javax.swing.JButton btnTim;
     private javax.swing.JComboBox<String> cmbHeSoLuong;
     private javax.swing.JComboBox<String> cmbPhanXuong;
     private javax.swing.JComboBox<String> cmbPhongBan;
     private javax.swing.JComboBox<String> cmbThang;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel12;
@@ -761,8 +777,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblChucVu;
     private javax.swing.JLabel lblHeSoLuong;
     private javax.swing.JLabel lblLuongCoBan;
-    private javax.swing.JLabel lblLuongThucLanhHc;
-    private javax.swing.JLabel lblLuongThucLanhHcV;
     private javax.swing.JLabel lblNgayCongChuan;
     private javax.swing.JLabel lblNgayCongThucTe;
     private javax.swing.JLabel lblPhongBan;
