@@ -11,13 +11,25 @@ import entity.LuongHanhChanh;
 import entity.NhanVienHanhChanh;
 import entity.PhongBan;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.time.YearMonth;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 /**
  *
@@ -409,7 +421,11 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPdfActionPerformed
 
     private void btnExcellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcellActionPerformed
-        // TODO add your handling code here:
+        try {
+            xuLyXuatExcell();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnExcellActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
@@ -467,7 +483,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
         doDuLieu();
     }
-
+    
     private void doDuLieuLuong(List<LuongHanhChanh> luongHanhChanhs) {
         int i = 1;
         for (LuongHanhChanh lhc : luongHanhChanhs) {
@@ -486,7 +502,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         }
         this.luongHanhChanhs = luongHanhChanhs;
     }
-
+    
     private void doDuLieuPhongBan(List<PhongBan> phongBans) {
         int i = 1;
         for (PhongBan phongBan : phongBans) {
@@ -496,12 +512,12 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         }
         this.phongBans = phongBans;
     }
-
+    
     private void doDuLieu() {
         doDuLieuPhongBan(phongBan_Dao.getDanhSachPhongBan());
         doDuLieuLuong(tinhLuongHanhChanh_Dao.getDanhSachLuong());
     }
-
+    
     public void layDuLieuLenText() {
         // Lấy vị trí hàng được chọn trong bảng và cho dữ liệu lên textfield
         int hang = tblLuong.getSelectedRow();
@@ -518,7 +534,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             lblLuongThucLanh.setText((String) tblLuong.getValueAt(hang, 10));
         }
     }
-
+    
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
@@ -536,12 +552,12 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             boolean[] canEdit = new boolean[]{
                 false, false
             };
-
+            
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
@@ -564,12 +580,12 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false, false, false, false, false, false
             };
-
+            
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
@@ -588,15 +604,15 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         tblLuong.getColumnModel().getColumn(9).setPreferredWidth(80);
         tblLuong.getColumnModel().getColumn(10).setPreferredWidth(100);
         tblLuong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-
+        
     }
-
+    
     private void xuLyThayDoiTblPhongBanVaNgay() {
         int hang = tblPhongBan.getSelectedRow();
         if (hang != -1) {
             lblPhongBan.setText(phongBans.get(hang).getTenPhongBan());
             String maPhongBan = phongBans.get(hang).getMaPhongBan();
-            int thang = Integer.parseInt((String) cmbThang.getSelectedItem());
+            String thang = (String) cmbThang.getSelectedItem();
             int nam = ychNam.getValue();
             this.nhanVienHanhChanhs = nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanhTheoPhongBan(maPhongBan);
             dtmLuong.setRowCount(0);
@@ -604,7 +620,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             doDuLieuLuong(tinhLuongHanhChanh_Dao.getDanhSangLuongTheoPhongBanVaThang(maPhongBan, thang + "-" + nam));
         }
     }
-
+    
     private void xuLyTao() {
         int hang = tblPhongBan.getSelectedRow();
         if (hang != -1) {
@@ -616,7 +632,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn phòng ban cần lập bảng lương!");
         }
     }
-
+    
     private void xuLyXoa() {
         int[] chon = tblLuong.getSelectedRows();
         if (chon.length != 0) {
@@ -627,7 +643,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa lương dòng cần xóa!");
         }
     }
-
+    
     private void xuLyXemChiTiet() {
         int hang = tblLuong.getSelectedRow();
         if (hang != -1) {
@@ -637,7 +653,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần xem!");
         }
     }
-
+    
     private void xoaLuong(int[] hang) {
         int soLuong = hang.length;
         int soDaXoa = hang.length;
@@ -654,16 +670,16 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         xuLyThayDoiTblPhongBanVaNgay();
         JOptionPane.showMessageDialog(this, "Xóa " + soDaXoa + " lương nhân viên thành công!");
     }
-
+    
     private void xoaLuong(int hang) {
         String maLuong = luongHanhChanhs.get(hang).getMaLuong();
         if (chamCongHanhChanh_Dao.capNhatChamCongXoaMaLuong(maLuong)) {
             tinhLuongHanhChanh_Dao.xoaBangLuong(maLuong);
         }
     }
-
+    
     private void tinhLuongNhanVien() {
-        int thang = Integer.parseInt((String) cmbThang.getSelectedItem());
+        String thang = (String) cmbThang.getSelectedItem();
         int nam = ychNam.getValue();
         float tienTangCa = 0;
         int ngayCongThucTe = 0;
@@ -680,7 +696,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
                 tienTangCa = tinhTienTangCa(nvhc);
                 ngayCongThucTe = tinhNgayCongThucTe();
                 tienPhuCap = phuCap_Dao.layTienPhuCapHc(nvhc.getMaNhanVienHanhChanh(), thang + "-" + nam);
-                ngayCongChuan = tinhSoNgayThucTeTrongThang(thang, nam);
+                ngayCongChuan = tinhSoNgayThucTeTrongThang(Integer.parseInt(thang), nam);
                 luongCoBan = nvhc.getLuongCoBan();
                 tongLuong = tinhTongLuong(tienTangCa, luongCoBan, tienPhuCap, ngayCongChuan, ngayCongThucTe);
                 maLuong = taoMaLuong(nvhc.getMaNhanVienHanhChanh());
@@ -695,7 +711,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, soNhanVien + " Nhân viên được lập bảng lương!");
         }
     }
-
+    
     private boolean kiemTraLuongTonTai() {
         if (dtmLuong.getRowCount() > 0) {
             if (JOptionPane.showConfirmDialog(this, "Đã có bảng lương cho phòng ban này, bạn có muốn tạo lại bảng lương không?", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -709,17 +725,17 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         }
         return true;
     }
-
+    
     private String taoMaLuong(String maNhanVien) {
         String maTam = maNhanVien.substring(maNhanVien.length() - 3);
         return maTam + (String) cmbThang.getSelectedItem() + ychNam.getValue();
     }
-
+    
     int tinhSoNgayThucTeTrongThang(int thang, int nam) {
         YearMonth yearMonth = YearMonth.of(nam, thang);
         return yearMonth.lengthOfMonth();
     }
-
+    
     private float tinhTienTangCa(NhanVienHanhChanh nvhc) {
         float tienLuongMotGio = nvhc.getLuongCoBan() / 24 / 8;
         float tienTangCa = 0;
@@ -728,7 +744,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         }
         return tienTangCa;
     }
-
+    
     private int tinhNgayCongThucTe() {
         int ngayCong = 0;
         for (ChamCongNhanVien ccnv : chamCongNhanViens) {
@@ -743,7 +759,71 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
     private float tinhTongLuong(float tienTangCa, float luongCoBan, float tienPhuCap, int ngayCongChuan, int ngayCongThucTe) {
         return (luongCoBan + tienPhuCap) / ngayCongChuan * ngayCongThucTe + tienTangCa;
     }
-
+    private void xuLyXuatExcell() throws FileNotFoundException, IOException {
+        String thang = (String) cmbThang.getSelectedItem();
+        int nam = ychNam.getValue();
+        int hangPhongBan = tblPhongBan.getSelectedRow();
+        String tenFile;
+        if (hangPhongBan != -1) {
+            tenFile = "Lương " + phongBans.get(hangPhongBan).getTenPhongBan() + " " + thang + "-" + nam + ".xlsx";
+        } else {
+            tenFile = "Lương công ty.xlsx";
+        }
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .xlsx
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Files (*.xlsx)", "xlsx");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".xlsx")) {
+                filePath += ".xlsx";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFile(filePath);
+        }
+    }
+    
+    private void xuatFile(String duongDan) throws FileNotFoundException, IOException {
+        XSSFWorkbook xSSFWorkbook = new XSSFWorkbook();
+        XSSFSheet xSSFSheet = xSSFWorkbook.createSheet("Bảng Lương");
+        
+        int cots = tblLuong.getColumnCount();
+        int hangs = tblLuong.getRowCount();
+        XSSFRow hang = xSSFSheet.createRow(3);
+        XSSFCell cot = null;
+        for (int cotTieuDe = 0; cotTieuDe < cots; cotTieuDe++) {
+            cot = hang.createCell(cotTieuDe);
+            cot.setCellValue(String.valueOf(tblLuong.getColumnName(cotTieuDe)));
+        }
+        for (int h = 0; h < hangs; h++) {
+            hang = xSSFSheet.createRow(4 + h);
+            for (int c = 0; c < cots; c++) {
+                cot = hang.createCell(c);
+                String giaTri = String.valueOf(tblLuong.getValueAt(h, c));
+                cot.setCellValue(giaTri);
+            }
+        }
+        //thiet lap do rong cot bang gia trị lớn nhất trong cột
+        for (int i = 0; i < cots; i++) {
+            xSSFSheet.autoSizeColumn(i);
+        }
+        String filePath = duongDan;
+        FileOutputStream outputStream = new FileOutputStream(filePath);
+        xSSFWorkbook.write(outputStream);
+        outputStream.close();
+        JOptionPane.showMessageDialog(this, "Xuất thành công");
+    }
+    
     private void lamMoiDong() {
         if (tblPhongBan.getSelectedRow() == -1) {
             lblPhongBan.setText("");
@@ -759,7 +839,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         lblLuongCoBan.setText("");
         lblLuongThucLanh.setText("");
     }
-
+    
     private void lamMoiBang() {
         dtmPhongBan.setRowCount(0);
         dtmLuong.setRowCount(0);

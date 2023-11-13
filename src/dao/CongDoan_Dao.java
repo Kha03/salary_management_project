@@ -3,7 +3,6 @@ package dao;
 import java.sql.*;
 import connect.ConnectDB;
 import entity.CongDoan;
-import entity.SanPham;
 import java.util.ArrayList;
 import java.util.List;
 

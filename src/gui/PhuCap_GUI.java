@@ -1,5 +1,13 @@
 package gui;
 
+import connect.ConnectDB;
+import dao.PhuCap_Dao;
+import entity.PhuCap;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,9 +20,10 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     /**
      * Creates new form ChamCongHanhChinh
      */
-    public PhuCap_GUI() {
+    public PhuCap_GUI() throws SQLException {
         initComponents();
         setTable();
+        initCommon();
     }
 
     /**
@@ -27,23 +36,23 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        chkCoDinh = new javax.swing.JCheckBox();
+        btnThem = new javax.swing.JButton();
+        btnCapNhat = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        txtSoTien = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtMaPhuCap = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtTenPhuCap = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbThang = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        ychNam = new com.toedter.calendar.JYearChooser();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblPhuCap = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1366, 741));
@@ -52,48 +61,70 @@ public class PhuCap_GUI extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox3.setText("Cố Định");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+        chkCoDinh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chkCoDinh.setForeground(new java.awt.Color(0, 96, 0));
+        chkCoDinh.setText("Cố Định");
+        chkCoDinh.setEnabled(false);
+        chkCoDinh.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                chkCoDinhStateChanged(evt);
             }
         });
-        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 170, 20));
+        jPanel1.add(chkCoDinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 170, 20));
 
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Thêm");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 120, 30));
+        btnThem.setBackground(new java.awt.Color(152, 249, 152));
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThem.setDisabledIcon(null);
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 130, 30));
 
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
-        jButton15.setText("Cập Nhật");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 130, 30));
+        btnCapNhat.setBackground(new java.awt.Color(152, 249, 152));
+        btnCapNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
+        btnCapNhat.setText("Cập Nhật");
+        btnCapNhat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 130, 30));
 
-        jButton8.setBackground(new java.awt.Color(152, 249, 152));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
-        jButton8.setText("Làm Mới");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 190, 120, 30));
+        btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnLamMoi.setText("Làm Mới");
+        btnLamMoi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 190, 120, 30));
 
-        jButton11.setBackground(new java.awt.Color(152, 249, 152));
-        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        jButton11.setText("Xóa");
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 190, 90, 30));
+        btnXoa.setBackground(new java.awt.Color(152, 249, 152));
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 190, 90, 30));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 150, -1));
+        txtSoTien.setEditable(false);
+        txtSoTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSoTien.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtSoTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 150, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Số Tiền:");
@@ -105,40 +136,45 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         jLabel17.setToolTipText("");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 110, -1));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, -1));
+        txtMaPhuCap.setEditable(false);
+        txtMaPhuCap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMaPhuCap.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtMaPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setText("Mã Phụ Cấp:");
         jLabel21.setToolTipText("");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 120, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 150, -1));
+        txtTenPhuCap.setEditable(false);
+        txtTenPhuCap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTenPhuCap.setForeground(new java.awt.Color(0, 96, 0));
+        jPanel1.add(txtTenPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 210, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Tháng Hưởng:");
         jLabel15.setToolTipText("");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 110, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 50, 20));
+        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        cmbThang.setEnabled(false);
+        jPanel1.add(cmbThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 50, 20));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Năm:");
         jLabel16.setToolTipText("");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 60, -1));
-        jPanel1.add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 65, 20));
+
+        ychNam.setEnabled(false);
+        jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 65, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Thông Tin Phụ Cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhuCap.setBackground(new java.awt.Color(184, 206, 224));
+        tblPhuCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -146,11 +182,21 @@ public class PhuCap_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        tblPhuCap.setToolTipText("");
+        tblPhuCap.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblPhuCap.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblPhuCap.getTableHeader().setReorderingAllowed(false);
+        tblPhuCap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPhuCapMouseClicked(evt);
+            }
+        });
+        tblPhuCap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblPhuCapKeyReleased(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblPhuCap);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1300, 460));
 
@@ -160,27 +206,90 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1294, 50));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    private void tblPhuCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhuCapMouseClicked
+        layDuLieuLenText();
+    }//GEN-LAST:event_tblPhuCapMouseClicked
+
+    private void tblPhuCapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPhuCapKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            layDuLieuLenText();
+        }
+    }//GEN-LAST:event_tblPhuCapKeyReleased
+
+    private void chkCoDinhStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkCoDinhStateChanged
+        xuLyThayDoiCoDinh();
+    }//GEN-LAST:event_chkCoDinhStateChanged
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        if (lamMoiBtn()) {
+            lamMoiDong();
+            dtmPhuCap.setRowCount(0);
+            doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+            dongNhapDuLieu();
+        }
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        xuLyThem();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        xuLyXoa();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+        xuLyCapNhat();
+    }//GEN-LAST:event_btnCapNhatActionPerformed
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
+        phuCap_Dao = new PhuCap_Dao();
+        doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+    }
+
+    private void doDuLieuPhuCap(List<PhuCap> phuCaps) {
+        int i = 1;
+        for (PhuCap phuCap : phuCaps) {
+            Object[] objects = {
+                i, phuCap.getMaPhuCap(), phuCap.getTenPhuCap(), phuCap.getThangHuong(), phuCap.getCoDinh(), df.format(phuCap.getSoTien()) + "VND"
+            };
+            dtmPhuCap.addRow(objects);
+        }
+        this.phuCaps = phuCaps;
+    }
+
+    private void layDuLieuLenText() {
+        int hang = tblPhuCap.getSelectedRow();
+        if (hang != -1) {
+            if (tblPhuCap.getValueAt(hang, 3) != null) {
+                String[] parts = ((String) tblPhuCap.getValueAt(hang, 3)).split("-");
+                String month = parts[0];
+                int year = Integer.parseInt(parts[1]);
+                cmbThang.setSelectedItem(month);
+                ychNam.setYear(year);
+            } else {
+                cmbThang.setSelectedIndex(-1);
+            }
+            txtMaPhuCap.setText((String) tblPhuCap.getValueAt(hang, 1));
+            txtTenPhuCap.setText((String) tblPhuCap.getValueAt(hang, 2));
+            chkCoDinh.setSelected((boolean) tblPhuCap.getValueAt(hang, 4));
+            txtSoTien.setText((String) tblPhuCap.getValueAt(hang, 5));
+        }
+    }
+
     private void setTable() {
         //khoi tạo phụ cấp compnent
         //table chấm công
-        modelChamCong = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "123", "Xăng xe", "", true, " 10000"},
-                    {"1", "124", "Tiền điện thoại", "", true, " 10000"},
-                    {"1", "125", "Ăn uống", "1/2023", false, " 10000"}},
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        dtmPhuCap = new DefaultTableModel(
+                new Object[][]{},
                 new String[]{
                     "STT", "Mã phụ cấp", "Tên phụ cấp", "Tháng hưởng", "Cố định", "Số Tiền"}
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.String.class,
-                java.lang.Boolean.class,
-                java.lang.String.class,};
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false
             };
@@ -195,21 +304,162 @@ public class PhuCap_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelChamCong);
-        jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
-        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblPhuCap.setModel(dtmPhuCap);
+        tblPhuCap.getColumnModel().getColumn(3).setCellRenderer(center);
+        tblPhuCap.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
-    private DefaultTableModel modelChamCong;
+
+    private String layThang() {
+        String thang = (String) cmbThang.getSelectedItem();
+        int nam = ychNam.getValue();
+        String thangHuong = thang + "-" + nam;
+        return thangHuong;
+    }
+
+    private void xuLyThem() {
+        if (btnThem.getText().equalsIgnoreCase("Thêm")) {
+            lamMoiDong();
+            moNhapDuLieu();
+            btnCapNhat.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnThem.setText("Xác Nhận");
+        } else {
+            //chưa bắt lỗi rông txt tên pb
+            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Phụ Cấp", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                PhuCap phuCap = new PhuCap("", txtTenPhuCap.getText(),
+                        Float.parseFloat(txtSoTien.getText()), chkCoDinh.isSelected(),
+                        chkCoDinh.isSelected() ? null : layThang());
+                if (phuCap_Dao.themPhuCap(phuCap)) {
+                    JOptionPane.showMessageDialog(this, "Thêm phụ cấp thành công!");
+                    dtmPhuCap.setRowCount(0);
+                    doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thêm phụ cấp thất bại!");
+
+                }
+                dongNhapDuLieu();
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setText("Thêm");
+            }
+        }
+    }
+
+    private void xuLyCapNhat() {
+        if (btnCapNhat.getText().equalsIgnoreCase("Cập Nhật")) {
+            int[] hang = tblPhuCap.getSelectedRows();
+            if (hang.length == 1) {
+                moNhapDuLieu();
+                btnThem.setEnabled(false);
+                btnXoa.setEnabled(false);
+                btnCapNhat.setText("Xác Nhận");
+            } else {
+                JOptionPane.showMessageDialog(this, "Chọn 1 phụ cấp cần cập nhật!");
+            }
+        } else {
+            //chưa bắt lỗi rông txt tên pb
+            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Phụ Cấp", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                PhuCap phuCap = new PhuCap(txtMaPhuCap.getText(), txtTenPhuCap.getText(),
+                        Float.parseFloat(txtSoTien.getText()), chkCoDinh.isSelected(),
+                        chkCoDinh.isSelected() ? null : layThang());
+                if (phuCap_Dao.capNhatPhuCap(phuCap)) {
+                    JOptionPane.showMessageDialog(this, "Cập nhật phụ cấp thành công!");
+                    dtmPhuCap.setRowCount(0);
+                    doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cập nhật phụ cấp thất bại!");
+
+                }
+                dongNhapDuLieu();
+                btnThem.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnCapNhat.setText("Cập Nhật");
+            }
+        }
+    }
+
+    private void xuLyXoa() {
+        int[] hang = tblPhuCap.getSelectedRows();
+        if (hang.length != 0) {
+            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Xóa Phụ Cấp", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                int soLuong = hang.length;
+                int soLuongXoa = 0;
+                for (int i = 0; i < soLuong; i++) {
+                    if (phuCap_Dao.xoaPhuCap(phuCaps.get(hang[i]).getMaPhuCap())) {
+                        soLuongXoa++;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Xóa phụ cấp" + phuCaps.get(hang[i]).getTenPhuCap() + "thất bại");
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Xóa " + soLuongXoa + " phụ cấp thành công!");
+                dtmPhuCap.setRowCount(0);
+                doDuLieuPhuCap(phuCap_Dao.getDanhSachPhuCap());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Chưa chọn phụ cấp cần xóa!");
+        }
+    }
+
+    public boolean lamMoiBtn() {
+        if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận") || btnThem.getText().equalsIgnoreCase("Xác Nhận")) {
+            int i = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát khỏi chỉnh sửa không", "Xác nhận", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_OPTION) {
+                btnThem.setEnabled(true);
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setText("Thêm");
+                btnCapNhat.setText("Cập Nhật");
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private void xuLyThayDoiCoDinh() {
+        if (btnThem.getText().equalsIgnoreCase("Xác Nhận") || btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
+            if (!chkCoDinh.isSelected()) {
+                cmbThang.setEnabled(true);
+                ychNam.setEnabled(true);
+            } else {
+                cmbThang.setEnabled(false);
+                ychNam.setEnabled(false);
+            }
+        }
+    }
+
+    private void lamMoiDong() {
+        txtMaPhuCap.setText("");
+        txtTenPhuCap.setText("");
+        txtSoTien.setText("");
+        chkCoDinh.setSelected(false);
+        cmbThang.setSelectedIndex(-1);
+    }
+
+    private void moNhapDuLieu() {
+        txtTenPhuCap.setEditable(true);
+        txtSoTien.setEditable(true);
+        chkCoDinh.setEnabled(true);
+    }
+
+    private void dongNhapDuLieu() {
+        txtTenPhuCap.setEditable(false);
+        txtSoTien.setEditable(false);
+        chkCoDinh.setEnabled(false);
+        cmbThang.setEnabled(false);
+        ychNam.setEnabled(false);
+    }
+    private DefaultTableModel dtmPhuCap;
+    private DecimalFormat df;
+    private List<PhuCap> phuCaps;
+    private PhuCap_Dao phuCap_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnCapNhat;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JCheckBox chkCoDinh;
+    private javax.swing.JComboBox<String> cmbThang;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -218,10 +468,10 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
+    private javax.swing.JTable tblPhuCap;
+    private javax.swing.JTextField txtMaPhuCap;
+    private javax.swing.JTextField txtSoTien;
+    private javax.swing.JTextField txtTenPhuCap;
+    private com.toedter.calendar.JYearChooser ychNam;
     // End of variables declaration//GEN-END:variables
 }

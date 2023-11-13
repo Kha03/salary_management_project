@@ -1,14 +1,10 @@
 package gui;
 
 import connect.ConnectDB;
-import dao.NhanVienHanhChanh_Dao;
 import dao.NhanVienSanXuat_Dao;
 import dao.PhanXuong_Dao;
-import dao.PhongBan_Dao;
-import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
 import entity.PhanXuong;
-import entity.PhongBan;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
