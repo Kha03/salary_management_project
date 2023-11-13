@@ -11,12 +11,24 @@ import entity.LuongCongNhan;
 import entity.NhanVienSanXuat;
 import entity.PhanXuong;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -328,7 +340,11 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXuatPdfActionPerformed
 
     private void btnXuatExcellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcellActionPerformed
-        // TODO add your handling code here:
+        try {
+            xuLyXuatExcell();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongSanXuat_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnXuatExcellActionPerformed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
@@ -625,6 +641,71 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
 
     private float tinhTongLuong(float tienPhuCap, float tienLuongSanPham) {
         return tienPhuCap + tienLuongSanPham;
+    }
+
+    private void xuLyXuatExcell() throws FileNotFoundException, IOException {
+        String thang = (String) cmbThang.getSelectedItem();
+        int nam = ychNam.getValue();
+        int hangPhanXuong = tblPhanXuong.getSelectedRow();
+        String tenFile;
+        if (hangPhanXuong != -1) {
+            tenFile = "Lương " + phanXuongs.get(hangPhanXuong).getTenPhanXuong() + " " + thang + "-" + nam + ".xlsx";
+        } else {
+            tenFile = "Lương công ty.xlsx";
+        }
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .xlsx
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Files (*.xlsx)", "xlsx");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".xlsx")) {
+                filePath += ".xlsx";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFile(filePath);
+        }
+    }
+
+    private void xuatFile(String duongDan) throws FileNotFoundException, IOException {
+        XSSFWorkbook xSSFWorkbook = new XSSFWorkbook();
+        XSSFSheet xSSFSheet = xSSFWorkbook.createSheet("Bảng Lương");
+
+        int cots = tblLuong.getColumnCount();
+        int hangs = tblLuong.getRowCount();
+        XSSFRow hang = xSSFSheet.createRow(3);
+        XSSFCell cot = null;
+        for (int cotTieuDe = 0; cotTieuDe < cots; cotTieuDe++) {
+            cot = hang.createCell(cotTieuDe);
+            cot.setCellValue(String.valueOf(tblLuong.getColumnName(cotTieuDe)));
+        }
+        for (int h = 0; h < hangs; h++) {
+            hang = xSSFSheet.createRow(4 + h);
+            for (int c = 0; c < cots; c++) {
+                cot = hang.createCell(c);
+                String giaTri = String.valueOf(tblLuong.getValueAt(h, c));
+                cot.setCellValue(giaTri);
+            }
+        }
+        //thiet lap do rong cot bang gia trị lớn nhất trong cột
+        for (int i = 0; i < cots; i++) {
+            xSSFSheet.autoSizeColumn(i);
+        }
+        String filePath = duongDan;
+        FileOutputStream outputStream = new FileOutputStream(filePath);
+        xSSFWorkbook.write(outputStream);
+        outputStream.close();
+        JOptionPane.showMessageDialog(this, "Xuất thành công");
     }
 
     private void lamMoiDong() {
