@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class CongDoan_Dao {
 
+    
+
     //lấy ra danh sách nhân viên hành chính
     public List<CongDoan> getDanhSachCongDoan() {
         List<CongDoan> dsCongDoan = new ArrayList<>();

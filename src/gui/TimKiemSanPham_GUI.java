@@ -10,19 +10,19 @@ import java.sql.SQLException;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ADMIN
  */
 public class TimKiemSanPham_GUI extends javax.swing.JPanel {
 
-    
-
     /**
-     * Creates new form ChamCongHanhChinh
+     * Creates new form SanPham
+     *
      * @throws java.sql.SQLException
      */
-    public TimKiemSanPham_GUI() throws SQLException{
+    public TimKiemSanPham_GUI() throws SQLException {
         initComponents();
         setTable();
         initCommon();
@@ -54,7 +54,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         txtTen = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         cmbHopDong = new javax.swing.JComboBox<>();
-        jButton15 = new javax.swing.JButton();
+        btnTim = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -159,12 +159,17 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(cmbHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 160, 30));
 
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton15.setText("Tìm Kiếm");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 130, 30));
+        btnTim.setBackground(new java.awt.Color(152, 249, 152));
+        btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btnTim.setText("Tìm Kiếm");
+        btnTim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 130, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -226,6 +231,11 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
 //        jDesktopPane1.add(chiTietSanPham_GUI);
 //        chiTietSanPham_GUI.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        timKiem();
+    }//GEN-LAST:event_btnTimActionPerformed
     private void setTable() {
         //khoi tạo phụ cấp compnent
 
@@ -260,13 +270,14 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         tblHopDong.getColumnModel().getColumn(1).setPreferredWidth(70);
         tblHopDong.getColumnModel().getColumn(2).setPreferredWidth(174);
         tblHopDong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-        
-        
+
         //table Sản Phầm
         modelSanPham = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "STT", "Tên sản phẩm", "Mã sản phẩm", "Tên hợp đồng", "Số lượng", "Đơn giá", "Đơn vị tính"}
+                    "STT", "Tên sản phẩm", "Mã sản phẩm",
+                    "Tên hợp đồng",
+                    "Số lượng", "Đơn giá", "Đơn vị tính"}
         ) {
             Class[] types = new Class[]{
                 java.lang.String.class,
@@ -277,7 +288,8 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
                 java.lang.String.class,
                 java.lang.String.class,};
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false,
+//                false
             };
 
             @Override
@@ -291,57 +303,118 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
             }
         };
         jTable4.setModel(modelSanPham);
-        
+
         jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
         jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
         jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
         jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(4).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(5).setPreferredWidth(60);
-        jTable4.getColumnModel().getColumn(6).setPreferredWidth(130);
+        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
+        jTable4.getColumnModel().getColumn(4).setPreferredWidth(60);
+        jTable4.getColumnModel().getColumn(5).setPreferredWidth(130);
         jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-
+        cmbHopDong.setSelectedIndex(-1);
     }
+
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
-        doDuLieu();
         sanPham_Dao = new SanPham_Dao();
         hopDong_Dao = new HopDong_Dao();
+        doDuLieu();
     }
-    private void doDuLieu() {
-//        doDuLieuSanPham();
-//        doDuLieuHopDong();
-
-    }
-    private void doDuLieuSanPham() {
-        for(SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
-            int i = 1;
-            Object[] objects = {
-                i,
-                sp.getTenSanPham(),
-                sp.getMaSanPham(),
-                "",
-                sp.getSoLuong(),
-                sp.getDonGia(),
-                sp.getDonViTinh(),
-            };
-            modelSanPham.addRow(objects);
+    
+    private  void timKiem(){
+        modelSanPham.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+    
+        int i = 1;
+        int t=0;
+        int l=0;
+        for (SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
+            boolean thoaMan = false; 
+            if (!txtMa.getText().isEmpty()) {
+                if (sp.getMaSanPham().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTen.getText().isEmpty()) {
+                if (sp.getTenSanPham().toLowerCase().equalsIgnoreCase(txtTen.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtSoLuong.getText().isEmpty()) {
+                if (String.valueOf(sp.getSoLuong()).toLowerCase().equalsIgnoreCase(txtSoLuong.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtDonGia.getText().isEmpty()) {
+                if (String.valueOf(sp.getDonGia()).toLowerCase().equalsIgnoreCase(txtDonGia.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtDonViTinh.getText().isEmpty()) {
+                if (sp.getDonViTinh().toLowerCase().equalsIgnoreCase(txtDonViTinh.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+//            if (cmbHopDong.getSelectedIndex() != -1) {
+//                for (HopDongSanXuat hp : hopDong_Dao.getDanhSachHopDong()) {
+//                    l++;
+//                    System.out.println(  "  l "+l);
+//                    System.out.println("  t "+ t);
+//                    if ({hp.getMaHopDong() }.toLowerCase().equalsIgnoreCase(cmbPhanXuong.getSelectedItem().toString().toLowerCase())) {
+//                        if(t == l){
+//                            thoaMan = true;
+//                        }       
+//                    }
+//                }  
+//            }
+            if (thoaMan) {
+                Object[] objects = {
+                    i++,
+                    sp.getTenSanPham(),
+                    sp.getMaSanPham(),           
+                    "",
+                    sp.getSoLuong(),
+                    sp.getDonGia(),
+                    sp.getDonViTinh()
+                    };
+                    modelSanPham.addRow(objects);
+            }
         }
     }
+    
+    private void doDuLieu() {
+        doDuLieuSanPham();
+        doDuLieuHopDong();
+    }
+
+    private void doDuLieuSanPham() {
+         int i = 1;
+        for (SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
+                    Object[] objects = {
+                    i++,
+                    sp.getTenSanPham(),
+                    sp.getMaSanPham(),           
+                    "",
+                    sp.getSoLuong(),
+                    sp.getDonGia(),
+                    sp.getDonViTinh()
+                    };
+                    modelSanPham.addRow(objects);
+        }
+    }
+
     private void doDuLieuHopDong() {
-        for(HopDongSanXuat hd : hopDong_Dao.getDanhSachHopDong()) {
-            int i = 1;
+        int i = 1;
+        for (HopDongSanXuat hd : hopDong_Dao.getDanhSachHopDong()) {
             Object[] objects = {
-                i,
+                i++,
                 hd.getMaHopDong(),
-                hd.getTenHopDong(), 
-            };
+                hd.getTenHopDong(),};
             modelHopDong.addRow(objects);
         }
     }
-    
-    
+
     // private Border_Selected border;
     private SanPham_Dao sanPham_Dao;
     private HopDong_Dao hopDong_Dao;
@@ -349,10 +422,10 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelSanPham;
     private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTim;
     private javax.swing.JComboBox<String> cmbHopDong;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton15;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
@@ -373,5 +446,4 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 
-    
 }

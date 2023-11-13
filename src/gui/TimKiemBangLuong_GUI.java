@@ -9,7 +9,14 @@ import dao.TinhLuongHanhChanh_Dao;
 import entity.LuongCongNhan;
 import java.sql.SQLException;
 import connect.ConnectDB;
+import dao.NhanVienHanhChanh_Dao;
+import dao.NhanVienSanXuat_Dao;
+import dao.PhongBan_Dao;
 import dao.TinhLuongCongNhan_Dao;
+import entity.NhanVienHanhChanh;
+import entity.NhanVienSanXuat;
+import entity.PhongBan;
+import java.util.List;
 
 /**
  *
@@ -46,12 +53,12 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         jButton10 = new javax.swing.JButton();
         txtMa = new javax.swing.JTextField();
         txtChucVu = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblChucVu = new javax.swing.JLabel();
         lblPhongBan = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         cmbPhongBan = new javax.swing.JComboBox<>();
         radNVSX = new javax.swing.JRadioButton();
-        cbPhanXuong = new javax.swing.JComboBox<>();
+        cmbPhanXuong = new javax.swing.JComboBox<>();
         radNVHC = new javax.swing.JRadioButton();
         cmbThang = new javax.swing.JComboBox<>();
         ychNam = new com.toedter.calendar.JYearChooser();
@@ -143,9 +150,9 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         txtChucVu.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(txtChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 190, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Chức Vụ:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 120, -1));
+        lblChucVu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblChucVu.setText("Chức Vụ:");
+        jPanel1.add(lblChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 120, -1));
 
         lblPhongBan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhongBan.setText("Phòng Ban:");
@@ -176,10 +183,10 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(radNVSX, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, -1));
 
-        cbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
-        jPanel1.add(cbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
+        cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
+        jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
         btnThayDoiTim.add(radNVHC);
         radNVHC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -195,6 +202,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         jPanel1.add(cmbThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 50, -1));
+
+        ychNam.setDayChooser(null);
         jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 65, 20));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -331,11 +340,13 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaActionPerformed
 
     private void radNVSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNVSXActionPerformed
-        cbPhanXuong.setVisible(true);
+        cmbPhanXuong.setVisible(true);
         txtLuongSanPham.setVisible(true);
         LblLuongThucLanhSxV.setVisible(true);
         txtTienPhuCapSx.setVisible(true);
-
+        
+        lblChucVu.setVisible(false);
+        txtChucVu.setVisible(false);
         lblHeSoLuong.setText("Lương Sản Phẩm:");
         lblPhongBan.setText("Phân Xưởng:");
         cmbPhongBan.setVisible(false);
@@ -358,7 +369,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
     private void radNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNVHCActionPerformed
         // TODO add your handling code here:
-        cbPhanXuong.setVisible(false);
+        cmbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
         LblLuongThucLanhSxV.setVisible(false);
         txtTienPhuCapSx.setVisible(false);
@@ -403,7 +414,14 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
-        timKiemHC();
+        
+        if(radNVHC.isSelected()){
+            timKiemHC();
+        }
+        else{
+            timKiemSX();
+        }
+        
     }//GEN-LAST:event_btnTimActionPerformed
     private void setTable() {
         //setTable ở đây
@@ -485,6 +503,8 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         cmbPhongBan.setSelectedIndex(-1);
         cmbHeSoLuong.setSelectedIndex(-1);
         cmbThang.setSelectedIndex(-1);
+//        ychNam.;
+        cmbPhanXuong.setSelectedIndex(-1);
         
         jTable1.setModel(modelLuongSx);
 
@@ -504,20 +524,25 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         ConnectDB.connect();
         tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
         tinhLuongCongNhan_Dao  = new TinhLuongCongNhan_Dao();
-        doDuLieu();
         border_Selected = new Border_Selected();
-        cbPhanXuong.setVisible(false);
+        cmbPhanXuong.setVisible(false);
         txtLuongSanPham.setVisible(false);
         LblLuongThucLanhSxV.setVisible(false);
         txtTienPhuCapSx.setVisible(false);
-        
+        phongBan_Dao = new PhongBan_Dao();
+        nhanVienHanhChanh_Dao = new NhanVienHanhChanh_Dao();
+        nhanVienSanXuat_Dao = new NhanVienSanXuat_Dao();
+        doDuLieu();
     }
     
     private void timKiemHC(){
         modelLuongHc.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
-        
+        int t=0;
         int i=1;
+        
         for(LuongHanhChanh lg : tinhLuongHanhChanh_Dao.getDanhSachLuong()) {
+            t++;
+            int l=0;
             boolean thoaMan = false; 
             if (!txtMa.getText().isEmpty()) {
                 if (lg.getNhanVienHanhChanh().getMaNhanVienHanhChanh().equalsIgnoreCase(txtMa.getText())) {
@@ -529,23 +554,30 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                     thoaMan = true;
                 }
             }
-//            if (cmbThang.getSelectedIndex() != -1 && ychNam != null) {
-//                if (lg.getThangLap().toLowerCase().contains(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
-//                    thoaMan = true;
-//                }
-//            }
+            if (cmbThang.getSelectedIndex() != -1 && ychNam != null) {
+                String formattedDate = String.format("%02d-%s", cmbThang.getSelectedIndex() + 1, ychNam.getYear());
+                System.out.println("thang:" +formattedDate);
+                if (lg.getThangLap().toLowerCase().equalsIgnoreCase(formattedDate.toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
 
             if (!txtChucVu.getText().isEmpty()) {
                 if (lg.getChucVu().toLowerCase().contains(txtChucVu.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
+//            fix
             if (cmbPhongBan.getSelectedIndex() != -1) {
-                if (lg.getNhanVienHanhChanh().getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
-                    thoaMan = true;
-                }
+                for (NhanVienHanhChanh nVien : nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh()) {
+                    l++;
+                    if (nVien.getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
+                        if(t == l){
+                            thoaMan = true;
+                        }       
+                    }
+                }  
             }
-            
             if (cmbHeSoLuong.getSelectedIndex() != -1) {
                 if(String.valueOf(lg.getHeSoLuong()).toLowerCase().equalsIgnoreCase(cmbHeSoLuong.getSelectedItem().toString())) {
                     thoaMan = true;
@@ -595,7 +627,69 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
             }
         }
     }
-    
+    private void timKiemSX(){
+        modelLuongSx.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+        int t=0;
+        int i=1;
+        
+        for(LuongCongNhan lg : tinhLuongCongNhan_Dao.getDanhSachLuong()) {
+            t++;
+            int l=0;
+            boolean thoaMan = false; 
+            if (!txtMa.getText().isEmpty()) {
+                if (lg.getNhanVienSanXuat().getMaNhanVienSanXuat().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTen.getText().isEmpty()) {
+                if (lg.getNhanVienSanXuat().getHoVaTen().toLowerCase().contains(txtTen.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbThang.getSelectedIndex() != -1 && ychNam != null) {
+                String formattedDate = String.format("%02d-%s", cmbThang.getSelectedIndex() + 1, ychNam.getYear());
+                System.out.println("thang:" +formattedDate);
+                if (lg.getThangLap().toLowerCase().equalsIgnoreCase(formattedDate.toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbPhanXuong.getSelectedIndex() != -1) {
+                for (NhanVienSanXuat nVien : nhanVienSanXuat_Dao.getDanhSachNhanVienSanXuat()) {
+                    l++;
+                    System.out.println(nVien.getPhanXuong().getTenPhanXuong()+  "  l "+l);
+                    System.out.println(cmbPhanXuong.getSelectedItem().toString()+"  t "+ t);
+                    if (nVien.getPhanXuong().getTenPhanXuong().toLowerCase().equalsIgnoreCase(cmbPhanXuong.getSelectedItem().toString().toLowerCase())) {
+                        if(t == l){
+                            thoaMan = true;
+                        }       
+                    }
+                }  
+            }
+                
+            if (!txtLuongSanPham.getText().isEmpty()) {
+                if (String.valueOf(lg.getTongLuongSanPham()).toLowerCase().equalsIgnoreCase(txtLuongSanPham.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTienPhuCapHc.getText().isEmpty()) {
+                if (String.valueOf(lg.getTienPhuCap()).toLowerCase().equalsIgnoreCase(txtTienPhuCapHc.getText().toLowerCase())) {
+                    thoaMan = true;
+                }
+            }
+            
+            if (thoaMan) {
+                Object[] rowData = {
+                    i++,
+                    lg.getNhanVienSanXuat().getMaNhanVienSanXuat(),
+                    lg.getNhanVienSanXuat().getHoVaTen(),
+                    lg.getTongLuongSanPham(),
+                    lg.getTienPhuCap(),
+                    lg.getTongLuong(),
+                };
+                modelLuongSx.addRow(rowData);
+            }
+        }
+    }
     public void doDuLieu() {
         doDuLieuLuongHanhChanh();
         doDuLieuLuongSanXuat();
@@ -616,6 +710,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 lg.getNgayCongThucTe(),
                 lg.getTienTangCa(),
                 lg.getTongLuong()
+                
             };
             modelLuongHc.addRow(objects);
         }
@@ -639,14 +734,17 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelLuongHc;
     private DefaultTableModel modelLuongSx;
     private Border_Selected border_Selected;
+    private PhongBan_Dao phongBan_Dao;
+    private NhanVienSanXuat_Dao nhanVienSanXuat_Dao;
+    private NhanVienHanhChanh_Dao nhanVienHanhChanh_Dao;
     private TinhLuongHanhChanh_Dao tinhLuongHanhChanh_Dao;
     private TinhLuongCongNhan_Dao tinhLuongCongNhan_Dao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLuongThucLanhSxV;
     private javax.swing.ButtonGroup btnThayDoiTim;
     private javax.swing.JButton btnTim;
-    private javax.swing.JComboBox<String> cbPhanXuong;
     private javax.swing.JComboBox<String> cmbHeSoLuong;
+    private javax.swing.JComboBox<String> cmbPhanXuong;
     private javax.swing.JComboBox<String> cmbPhongBan;
     private javax.swing.JComboBox<String> cmbThang;
     private javax.swing.JButton jButton10;
@@ -655,12 +753,12 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblChucVu;
     private javax.swing.JLabel lblHeSoLuong;
     private javax.swing.JLabel lblLuongCoBan;
     private javax.swing.JLabel lblLuongThucLanhHc;

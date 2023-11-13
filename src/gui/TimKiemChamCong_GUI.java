@@ -1,20 +1,29 @@
 package gui;
 
+import connect.ConnectDB;
+import entity.ChamCongNhanVien;
 import handle.borderselected.Border_Selected;
+import java.sql.SQLException;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import dao.ChamCongHanhChanh_Dao;
+import dao.ChamCongSanPham_Dao;
+import entity.ChamCongSanPham;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author ADMIN
  */
 public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
+    private SimpleDateFormat dinhDangNgay;
+
     /**
      * Creates new form NhanVienHanhChinh
+     * @throws java.sql.SQLException
      */
-    public TimKiemChamCong_GUI() {
+    public TimKiemChamCong_GUI()throws SQLException {
         initComponents();
         setTable();
         initCommon();
@@ -34,7 +43,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
+        btnTim = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         txtMa = new javax.swing.JTextField();
         txtTen = new javax.swing.JTextField();
@@ -46,19 +55,18 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         lblTangCa = new javax.swing.JLabel();
         cmbPhongBan = new javax.swing.JComboBox<>();
         radNhanVienSanXuat = new javax.swing.JRadioButton();
-        radNghi = new javax.swing.JRadioButton();
         cmbPhanXuong = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        dchNgayChamCong = new com.toedter.calendar.JDateChooser();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        dchTu = new com.toedter.calendar.JDateChooser();
+        chkTu = new javax.swing.JCheckBox();
         spnTangCa = new javax.swing.JSpinner();
         radNhanVienHanhChinh = new javax.swing.JRadioButton();
-        radTatCa = new javax.swing.JRadioButton();
-        radDiLam = new javax.swing.JRadioButton();
         lblCongDoan = new javax.swing.JLabel();
         cmbCongDoan = new javax.swing.JComboBox<>();
         cmbSanPham = new javax.swing.JComboBox<>();
+        dchNgayChamCong = new com.toedter.calendar.JDateChooser();
+        dchTu = new com.toedter.calendar.JDateChooser();
+        cmbTrangThai = new javax.swing.JComboBox<>();
+        lblTrangThai = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,12 +84,17 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton15.setText("Tìm Kiếm");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 190, 130, 30));
+        btnTim.setBackground(new java.awt.Color(152, 249, 152));
+        btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btnTim.setText("Tìm Kiếm");
+        btnTim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 190, 130, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -118,7 +131,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
         txtSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtSoLuong.setForeground(new java.awt.Color(0, 96, 0));
-        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, 70, -1));
+        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, 50, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Họ Và Tên:");
@@ -134,7 +147,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 
         lblSoLuong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSoLuong.setText("Số Lượng:");
-        jPanel1.add(lblSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 120, -1));
+        jPanel1.add(lblSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, 120, -1));
 
         lblTangCa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTangCa.setText("Giờ Tăng Ca:");
@@ -156,17 +169,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(radNhanVienSanXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, -1));
 
-        btnGroupTrangThai.add(radNghi);
-        radNghi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        radNghi.setForeground(new java.awt.Color(0, 96, 0));
-        radNghi.setText("Nghỉ");
-        radNghi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radNghiActionPerformed(evt);
-            }
-        });
-        jPanel1.add(radNghi, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 80, -1));
-
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
         cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
@@ -177,27 +179,15 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         jLabel14.setToolTipText("");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 130, -1));
 
-        dchNgayChamCong.setBackground(new java.awt.Color(255, 255, 255));
-        dchNgayChamCong.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayChamCong.setDateFormatString("dd/mm/yyyy");
-        dchNgayChamCong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayChamCong, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 170, -1));
-
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 96, 0));
-        jCheckBox2.setText("Từ");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        chkTu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        chkTu.setForeground(new java.awt.Color(0, 96, 0));
+        chkTu.setText("Từ");
+        chkTu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                chkTuActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 50, 20));
-
-        dchTu.setBackground(new java.awt.Color(255, 255, 255));
-        dchTu.setForeground(new java.awt.Color(0, 96, 0));
-        dchTu.setDateFormatString("dd/mm/yyyy");
-        dchTu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 170, -1));
+        jPanel1.add(chkTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 50, 20));
         jPanel1.add(spnTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 90, -1));
 
         btnThayDoiTim.add(radNhanVienHanhChinh);
@@ -211,29 +201,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
             }
         });
         jPanel1.add(radNhanVienHanhChinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, -1));
-
-        btnGroupTrangThai.add(radTatCa);
-        radTatCa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        radTatCa.setForeground(new java.awt.Color(0, 96, 0));
-        radTatCa.setSelected(true);
-        radTatCa.setText("Tất Cả");
-        radTatCa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radTatCaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(radTatCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 80, -1));
-
-        btnGroupTrangThai.add(radDiLam);
-        radDiLam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        radDiLam.setForeground(new java.awt.Color(0, 96, 0));
-        radDiLam.setText("Đi Làm");
-        radDiLam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radDiLamActionPerformed(evt);
-            }
-        });
-        jPanel1.add(radDiLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 80, -1));
 
         lblCongDoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCongDoan.setText("Công Đoạn:");
@@ -249,6 +216,19 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
         jPanel1.add(cmbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 190, -1));
 
+        dchNgayChamCong.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dchNgayChamCong, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 140, -1));
+
+        dchTu.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dchTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 130, -1));
+
+        cmbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đi Làm", "Nghỉ" }));
+        jPanel1.add(cmbTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, 120, -1));
+
+        lblTrangThai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTrangThai.setText("Trang Thai:");
+        jPanel1.add(lblTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, -1, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -259,10 +239,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
     private void setTable() {
         //setTable ở đây
         modelChamCongHanhChinh = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", true, "5"},
-                    {"2", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", false, "0"},
-                    {"3", "Kế toán", "Trịnh Minh Kha", "123", "12/2/2023", true, "2"},},
+                new Object[][]{},
                 new String[]{
                     "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày chấm", "Trạng thái", "Tăng ca"
                 }
@@ -286,12 +263,9 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         };
         //model san pham
         modelChamCongSanPham = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Cắt giấy", "1000", "2", "100.000"},
-                    {"2", "Gia công", "Trịnh Minh Kha", "123", "12/2/2023", "Điện thoại", "Luộc rau", "1000", "50", "100.000"},
-                    {"3", "Điêu khắc", "Trịnh Minh Kha", "123", "12/2/2023", "máy tính", "Cắt giấy", "1000", "21", "100.000"},},
+                new Object[][]{},
                 new String[]{
-                    "STT", "Phòng ban", "Họ và tên", "Mã nhân viên", "Ngày làm", "Sản phẩm", "Công đoạn", "Đơn giá", "Số lượng", "Tiền lương"
+                    "STT", "Phân Xưởng", "Họ và tên", "Mã nhân viên", "Ngày làm", "Sản phẩm", "Công đoạn", "Đơn giá", "Số lượng", "Tiền lương"
                 }
         ) {
             Class[] types = new Class[]{
@@ -324,7 +298,13 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
 //        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
 //        center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         jTable1.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
-
+        cmbPhongBan.setSelectedIndex(-1);
+        dchTu.setVisible(false);
+        cmbTrangThai.setSelectedIndex(-1);
+        cmbCongDoan.setSelectedIndex(-1);
+        cmbSanPham.setSelectedIndex(-1);
+        cmbPhanXuong.setSelectedIndex(-1);
+        
     }
     private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
         // TODO add your handling code here:
@@ -340,10 +320,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
     }//GEN-LAST:event_txtMaActionPerformed
 
-    private void radNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNghiActionPerformed
-
-    }//GEN-LAST:event_radNghiActionPerformed
-
     private void radNhanVienSanXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNhanVienSanXuatActionPerformed
         cmbPhanXuong.setVisible(true);
         cmbSanPham.setVisible(true);
@@ -355,17 +331,25 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         lblTangCa.setText("Sản Phẩm:");
         lblPhongBan.setText("Phân Xưởng:");
         cmbPhongBan.setVisible(false);
-        radNghi.setVisible(false);
-        radTatCa.setVisible(false);
-        radDiLam.setVisible(false);
+        cmbTrangThai.setVisible(false);
+        lblTrangThai.setVisible(false);
+//        radNghi.setVisible(false);
+//        radTatCa.setVisible(false);
+//        radDiLam.setVisible(false);
         spnTangCa.setVisible(false);
         jTable1.setModel(modelChamCongSanPham);
         // TODO add your handling code here:
     }//GEN-LAST:event_radNhanVienSanXuatActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void chkTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+       if (chkTu.isSelected()) {
+            dchTu.setVisible(true);
+        }
+        else{
+            dchTu.setVisible(false);
+        }
+    }//GEN-LAST:event_chkTuActionPerformed
 
     private void radNhanVienHanhChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNhanVienHanhChinhActionPerformed
         // TODO add your handling code here:
@@ -379,25 +363,33 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         lblTangCa.setText("Giờ Tăng Ca:");
         lblPhongBan.setText("Phòng Ban:");
         cmbPhongBan.setVisible(true);
-        radNghi.setVisible(true);
-        radTatCa.setVisible(true);
-        radDiLam.setVisible(true);
+        cmbTrangThai.setVisible(true);
+        lblTrangThai.setVisible(true);
+//        radNghi.setVisible(true);
+//        radTatCa.setVisible(true);
+//        radDiLam.setVisible(true);
         spnTangCa.setVisible(true);
         jTable1.setModel(modelChamCongHanhChinh);
     }//GEN-LAST:event_radNhanVienHanhChinhActionPerformed
 
-    private void radTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radTatCaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radTatCaActionPerformed
-
-    private void radDiLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radDiLamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radDiLamActionPerformed
-
     private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenActionPerformed
-    private void initCommon() {
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:\
+        if(radNhanVienHanhChinh.isSelected()){
+            timkiemChamCongHC();
+        }
+        else{
+            timkiemCCSP();
+        }
+    }//GEN-LAST:event_btnTimActionPerformed
+    private void initCommon()throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        chamCongHanhChanh_Dao = new ChamCongHanhChanh_Dao();
+        chamCongSanPham_Dao = new ChamCongSanPham_Dao();
         border_Selected = new Border_Selected();
         cmbPhanXuong.setVisible(false);
         cmbSanPham.setVisible(false);
@@ -405,24 +397,206 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         cmbCongDoan.setVisible(false);
         lblSoLuong.setVisible(false);
         txtSoLuong.setVisible(false);
+        dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
+        doDuLieu();
     }
 
+    private void timkiemChamCongHC(){
+        modelChamCongHanhChinh.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+        
+        int i=1;
+        for(ChamCongNhanVien cchc : chamCongHanhChanh_Dao.getDanhSachChamCongNhanVien()){
+            boolean thoaMan = false;
+            if (!txtMa.getText().isEmpty()) {
+                if (cchc.getNhanVienHanhChanh().getMaNhanVienHanhChanh().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTen.getText().isEmpty()) {
+                if (cchc.getNhanVienHanhChanh().getHoVaTen().equalsIgnoreCase(txtTen.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (chkTu.isSelected()) {
+                System.out.println(dinhDangNgay.format(dchNgayChamCong.getDate()));
+                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
+                System.out.println(dinhDangNgay.format(cchc.getNgayLamViec()));
+                if (dchTu.getDate() != null && dchNgayChamCong.getDate() != null) {
+                    if (!cchc.getNgayLamViec().before(dchTu.getDate()) &&
+                        cchc.getNgayLamViec().before(dchNgayChamCong.getDate())) {
+                        thoaMan = true;
+                    }
+                }
+            }   else{
+                if (dchNgayChamCong.getDate() != null) {
+                    if(dinhDangNgay.format(cchc.getNgayLamViec()).equalsIgnoreCase(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+                        thoaMan = true;
+                    }
+                }
+            }
+            if (spnTangCa != null) {
+                if (String.valueOf(cchc.getGioTangCa()).equalsIgnoreCase(spnTangCa.toString())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbPhongBan.getSelectedIndex() != -1) {
+                if(cchc.getNhanVienHanhChanh().getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(cmbPhongBan.getSelectedItem().toString())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbTrangThai.getSelectedIndex() != -1) {
+                if((cchc.getTrangThai()? "Đi làm":"Nghỉ").toLowerCase().equalsIgnoreCase(cmbTrangThai.getSelectedItem().toString())) {
+                    thoaMan = true;
+                }
+            }
+            
+            if (thoaMan) {
+                Object[] rowData = {
+                    i++,
+                    cchc.getNhanVienHanhChanh().getPhongBan().getTenPhongBan(),
+                    cchc.getNhanVienHanhChanh().getHoVaTen(),
+                    cchc.getNhanVienHanhChanh().getMaNhanVienHanhChanh(),
+                    dinhDangNgay.format(cchc.getNgayLamViec()),
+                    cchc.getTrangThai(),
+                    cchc.getGioTangCa()
+                };
+                modelChamCongHanhChinh.addRow(rowData);
+            }
+        }
+    }
+    private void timkiemCCSP(){
+         modelChamCongSanPham.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+         
+         int i=1;
+        for(ChamCongSanPham ccsx : chamCongSanPham_Dao.getChamCongSanPham()){
+            boolean thoaMan = false;
+            if (!txtMa.getText().isEmpty()) {
+                if (ccsx.getNhanVienSanXuat().getMaNhanVienSanXuat().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTen.getText().isEmpty()) {
+                if (ccsx.getNhanVienSanXuat().getHoVaTen().equalsIgnoreCase(txtTen.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (chkTu.isSelected()) {
+                System.out.println(dinhDangNgay.format(dchNgayChamCong.getDate()));
+                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
+                System.out.println(dinhDangNgay.format(ccsx.getNgayLamViec()));
+                if (dchTu.getDate() != null && dchNgayChamCong.getDate() != null) {
+                    if (!ccsx.getNgayLamViec().before(dchTu.getDate()) &&
+                        ccsx.getNgayLamViec().before(dchNgayChamCong.getDate())) {
+                        thoaMan = true;
+                    }
+                }
+            }   else{
+                if (dchNgayChamCong.getDate() != null) {
+                    if(dinhDangNgay.format(ccsx.getNgayLamViec()).equalsIgnoreCase(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
+                        thoaMan = true;
+                    }
+                }
+            }
+            if (cmbPhanXuong.getSelectedIndex() != -1) {
+                if(ccsx.getNhanVienSanXuat().getPhanXuong().getTenPhanXuong().toLowerCase().equalsIgnoreCase(cmbPhanXuong.getSelectedItem().toString())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbCongDoan.getSelectedIndex() != -1) {
+                if(ccsx.getCongDoan().getTenCongDoan().toLowerCase().equalsIgnoreCase(cmbCongDoan.getSelectedItem().toString())) {
+                    thoaMan = true;
+                }
+            }
+            if (cmbSanPham.getSelectedIndex() != -1) {
+                if(ccsx.getSanPham().getTenSanPham().toLowerCase().equalsIgnoreCase(cmbSanPham.getSelectedItem().toString())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtSoLuong.getText().isEmpty()) {
+                if (String.valueOf(ccsx.getSoLuong()).equalsIgnoreCase(txtSoLuong.getText())) {
+                    thoaMan = true;
+                }
+            }
+            
+            if (thoaMan) {
+                Object[] rowData = {
+                    i++,
+                    ccsx.getNhanVienSanXuat().getPhanXuong().getTenPhanXuong(),
+                    ccsx.getNhanVienSanXuat().getHoVaTen(),
+                    ccsx.getNhanVienSanXuat().getMaNhanVienSanXuat(),
+                    dinhDangNgay.format(ccsx.getNgayLamViec()),
+                    ccsx.getSanPham().getTenSanPham(),
+                    ccsx.getCongDoan().getTenCongDoan(),
+                    ccsx.getDonGia(),
+                    ccsx.getSoLuong(),
+                    ccsx.getTongTien()
+                };
+                modelChamCongSanPham.addRow(rowData);
+            }
+            
+        }
+    }
+    
+    private void doDuLieu() {
+        doDuLieuNVHC();
+        doDuLieuCCSP();
+    }
+    private void doDuLieuNVHC() {
+        int i=1;
+        for(ChamCongNhanVien cchc : chamCongHanhChanh_Dao.getDanhSachChamCongNhanVien()){
+            Object[] objects = {
+                i++,
+                cchc.getNhanVienHanhChanh().getPhongBan().getTenPhongBan(),
+                cchc.getNhanVienHanhChanh().getHoVaTen(),
+                cchc.getNhanVienHanhChanh().getMaNhanVienHanhChanh(),
+                dinhDangNgay.format(cchc.getNgayLamViec()),
+                cchc.getTrangThai(),
+                cchc.getGioTangCa()
+            };
+            modelChamCongHanhChinh.addRow(objects);
+            
+        }
+    }
+    
+    private void doDuLieuCCSP() {
+        int i=1;
+        for(ChamCongSanPham ccsx : chamCongSanPham_Dao.getChamCongSanPham()){
+            Object[] objects = {
+                i++,
+                ccsx.getNhanVienSanXuat().getPhanXuong().getTenPhanXuong(),
+                ccsx.getNhanVienSanXuat().getHoVaTen(),
+                ccsx.getNhanVienSanXuat().getMaNhanVienSanXuat(),
+                dinhDangNgay.format(ccsx.getNgayLamViec()),
+                ccsx.getSanPham().getTenSanPham(),
+                ccsx.getCongDoan().getTenCongDoan(),
+                ccsx.getDonGia(),
+                ccsx.getSoLuong(),
+                ccsx.getTongTien()
+            };
+            modelChamCongSanPham.addRow(objects);
+            
+        }
+    }
+    
     // private Border_Selected border;
+    private ChamCongSanPham_Dao chamCongSanPham_Dao;
+    private ChamCongHanhChanh_Dao chamCongHanhChanh_Dao;
     private DefaultTableModel modelChamCongHanhChinh;
     private DefaultTableModel modelChamCongSanPham;
     private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupTrangThai;
     private javax.swing.ButtonGroup btnThayDoiTim;
+    private javax.swing.JButton btnTim;
+    private javax.swing.JCheckBox chkTu;
     private javax.swing.JComboBox<String> cmbCongDoan;
     private javax.swing.JComboBox<String> cmbPhanXuong;
     private javax.swing.JComboBox<String> cmbPhongBan;
     private javax.swing.JComboBox<String> cmbSanPham;
+    private javax.swing.JComboBox<String> cmbTrangThai;
     private com.toedter.calendar.JDateChooser dchNgayChamCong;
     private com.toedter.calendar.JDateChooser dchTu;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
@@ -434,11 +608,9 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhongBan;
     private javax.swing.JLabel lblSoLuong;
     private javax.swing.JLabel lblTangCa;
-    private javax.swing.JRadioButton radDiLam;
-    private javax.swing.JRadioButton radNghi;
+    private javax.swing.JLabel lblTrangThai;
     private javax.swing.JRadioButton radNhanVienHanhChinh;
     private javax.swing.JRadioButton radNhanVienSanXuat;
-    private javax.swing.JRadioButton radTatCa;
     private javax.swing.JSpinner spnTangCa;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSoLuong;

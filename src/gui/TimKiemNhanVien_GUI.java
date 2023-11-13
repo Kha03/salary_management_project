@@ -433,12 +433,6 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
                     thoaMan = true;
                 }
             }
-//            if (!ngaySinh.isEmpty() && !dinhDangNgay.format(nVien.getNgaySinh()).equalsIgnoreCase(ngaySinh)) {
-//                thoaMan = false;
-//            }
-//            if (!ngayVaoLam.isEmpty() && !!dinhDangNgay.format(nVien.getNgayVaoLam()).equalsIgnoreCase(ngayVaoLam)) {
-//                thoaMan = false;
-//            }
             if (!txtSDT.getText().isEmpty()) {
                 if (nVien.getDienThoai().toLowerCase().contains(txtSDT.getText().toLowerCase())) {
                     thoaMan = true;

@@ -1,5 +1,10 @@
 package gui;
 
+import connect.ConnectDB;
+import dao.CongDoan_Dao;
+import entity.CongDoan;
+import handle.borderselected.Border_Selected;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -9,12 +14,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
 
+    
+
+    
+
     /**
      * Creates new form ChamCongHanhChinh
+     * @throws java.sql.SQLException
      */
-    public TimKiemCongDoan_GUI() {
+    public TimKiemCongDoan_GUI() throws SQLException {
         initComponents();
         setTable();
+        initCommon();
     }
 
     /**
@@ -138,9 +149,7 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         //table chấm công
         modelChamCong = new DefaultTableModel(
-                new Object[][]{
-                    {"1", "Điêu Khắc", "123", "Ghế", "hop dong 123", "1000", "5"},
-                    {"2", "Điêu Khắc", "123", "Ghế", "hop dong 123", "1000", "5"},},
+                new Object[][]{},
                 new String[]{
                     "STT", "Tên Công đoạn", "Mã công đoạn", "Sản phẩm", "Hợp đồng", "Đơn giá", "Tiến độ"}
         ) {
@@ -170,7 +179,37 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
         jTable4.getColumnModel().getColumn(6).setPreferredWidth(60);
         jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
-
+    
+    
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        congDoan_Dao = new CongDoan_Dao();
+        border_Selected = new Border_Selected();
+        doDuLieu();
+    }
+    
+    private void doDuLieu() {
+        doDuLieuCongDoanSanPham();
+    }
+    
+    private void doDuLieuCongDoanSanPham() {
+        int i = 1;
+        for(CongDoan cd : congDoan_Dao.getDanhSachCongDoan()){
+            Object[] objects = {
+                i++,
+                cd.getTenCongDoan(),
+                cd.getMaCongDoan(),
+                "",
+                "",
+                cd.getGiaTien(),
+                cd.getTienDo(),
+            };
+            modelChamCong.addRow(objects);
+        }
+    }
+    private CongDoan_Dao congDoan_Dao;
+    private Border_Selected border_Selected;
     private DefaultTableModel modelDonVi;
     private DefaultTableModel modelNhanVien;
     private DefaultTableModel modelChamCong;
@@ -191,4 +230,6 @@ public class TimKiemCongDoan_GUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtGiaTien;
     private javax.swing.JTextField txtMa;
     // End of variables declaration//GEN-END:variables
+
+    
 }

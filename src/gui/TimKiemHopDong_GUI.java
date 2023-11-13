@@ -1,19 +1,25 @@
 package gui;
 
+import connect.ConnectDB;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import dao.HopDong_Dao;
+import entity.HopDongSanXuat;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author ADMIN
  */
 public class TimKiemHopDong_GUI extends javax.swing.JPanel {
 
+    private SimpleDateFormat dinhDangNgay;
+
     /**
      * Creates new form NhanVienHanhChinh
      */
-    public TimKiemHopDong_GUI() {
+    public TimKiemHopDong_GUI() throws SQLException{
         initComponents();
         setTable();
         initCommon();
@@ -39,12 +45,12 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        dchNgayKetThuc = new com.toedter.calendar.JDateChooser();
-        dchNgayBatDau = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         txtGiaTien = new javax.swing.JTextField();
-        jButton15 = new javax.swing.JButton();
+        btnTim = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        dchNgayBatDau = new com.toedter.calendar.JDateChooser();
+        dchNgayKetThuc = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -107,18 +113,6 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jLabel12.setText("Mã Hợp Đồng:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 20));
 
-        dchNgayKetThuc.setBackground(new java.awt.Color(255, 255, 255));
-        dchNgayKetThuc.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayKetThuc.setDateFormatString("dd/mm/yyyy");
-        dchNgayKetThuc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 190, 25));
-
-        dchNgayBatDau.setBackground(new java.awt.Color(255, 255, 255));
-        dchNgayBatDau.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayBatDau.setDateFormatString("dd/mm/yyyy");
-        dchNgayBatDau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 190, 25));
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Giá Tiền:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 70, 20));
@@ -132,12 +126,17 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         });
         jPanel1.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 190, -1));
 
-        jButton15.setBackground(new java.awt.Color(152, 249, 152));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
-        jButton15.setText("Tìm Kiếm");
-        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 130, 30));
+        btnTim.setBackground(new java.awt.Color(152, 249, 152));
+        btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search.png"))); // NOI18N
+        btnTim.setText("Tìm Kiếm");
+        btnTim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 130, 30));
 
         jButton10.setBackground(new java.awt.Color(152, 249, 152));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -145,6 +144,12 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
         jButton10.setText("Làm Mới");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 190, 120, 30));
+
+        dchNgayBatDau.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 190, -1));
+
+        dchNgayKetThuc.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 140, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1114, 230));
 
@@ -161,9 +166,8 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void setTable() {
         //setTable ở đây
-        model = new DefaultTableModel(
-                new Object[][]{
-                    {"123", "Kha", "12/20/2003", "14/20/2003", "123"},},
+        modelHopDong = new DefaultTableModel(
+                new Object[][]{},
                 new String[]{
                     "Mã hợp đồng", "Tên hợp đồng", "Ngày bắt đầu", "Ngày kết thúc", "Giá tiền"
                 }
@@ -185,7 +189,7 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable1.setModel(model);
+        jTable1.setModel(modelHopDong);
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
@@ -203,16 +207,93 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
     private void txtGiaTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaTienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiaTienActionPerformed
-    private void initCommon() {
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        timkiemHopDong();
+    }//GEN-LAST:event_btnTimActionPerformed
+    private void initCommon() throws SQLException{
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        hopDong_Dao = new HopDong_Dao();
+        dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         //  border_Selected = new Border_Selected();
+        doDuLieu();
     }
+    
+    private void timkiemHopDong(){
+        modelHopDong.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+        int i=1;
+        for(HopDongSanXuat hp : hopDong_Dao.getDanhSachHopDong()){
+            boolean thoaMan = false; 
+            if (!txtMa.getText().isEmpty()) {
+                if (hp.getMaHopDong().equalsIgnoreCase(txtMa.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtTen.getText().isEmpty()) {
+                if (hp.getTenHopDong().equalsIgnoreCase(txtTen.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (!txtGiaTien.getText().isEmpty()) {
+                if (String.valueOf(hp.getGiaTien()).equalsIgnoreCase(txtGiaTien.getText())) {
+                    thoaMan = true;
+                }
+            }
+            if (dchNgayBatDau.getDate() != null) {
+                if(dinhDangNgay.format(hp.getNgayBatDau()).equalsIgnoreCase(dinhDangNgay.format(dchNgayBatDau.getDate()))) {
+                    thoaMan = true;
+                }
+            }
+            if (dchNgayKetThuc.getDate() != null) {
+                if(dinhDangNgay.format(hp.getNgayKetThuc()).equalsIgnoreCase(dinhDangNgay.format(dchNgayKetThuc.getDate()))) {
+                    thoaMan = true;
+                }
+            }
+            
+            if (thoaMan) {
+                Object[] rowData = {
+                    hp.getMaHopDong(),
+                    hp.getTenHopDong(),
+                    dinhDangNgay.format(hp.getNgayBatDau()),
+                    dinhDangNgay.format(hp.getNgayKetThuc()),
+                    hp.getGiaTien()
+                };
+                modelHopDong.addRow(rowData);
+            }
+            
+        }
+    }
+    
+    
+    private void doDuLieu() {
+        doDuLieuHopDong();
+    }
+    
+    private void doDuLieuHopDong() {
+        for(HopDongSanXuat hp : hopDong_Dao.getDanhSachHopDong()){
+             Object[] objects = {
+                hp.getMaHopDong(),
+                hp.getTenHopDong(),
+                dinhDangNgay.format(hp.getNgayBatDau()),
+                dinhDangNgay.format(hp.getNgayKetThuc()),
+                hp.getGiaTien()
+             };
+            modelHopDong.addRow(objects);        
+        }
+    }
+    
+    
+    
     // private Border_Selected border;
-    private DefaultTableModel model;
+    private HopDong_Dao hopDong_Dao;
+    private DefaultTableModel modelHopDong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTim;
     private com.toedter.calendar.JDateChooser dchNgayBatDau;
     private com.toedter.calendar.JDateChooser dchNgayKetThuc;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton15;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
@@ -229,4 +310,6 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
+
+    
 }
