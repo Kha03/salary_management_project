@@ -4,12 +4,20 @@ import java.time.LocalDate;
 
 public class KiemTraChuoi {
 
+    public static boolean isNotEmpty(String str) {
+        return str.isEmpty();
+    }
+
     public static boolean isNumber(String str) {
         return str.matches("\\d+");
     }
 
     public static boolean ktTen(String str) {
         return str.matches("^\\p{Lu}[\\p{Ll}\\s]*( \\p{Lu}[\\p{Ll}]*)*$");
+    }
+
+    public static boolean ktDiaChi(String str) {
+        return str.matches( "^[\\p{L}0-9\\s,'.-]+$");
     }
 
     public static boolean ktSDT(String str) {
