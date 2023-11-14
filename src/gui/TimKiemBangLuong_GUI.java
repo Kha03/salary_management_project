@@ -143,19 +143,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMa.setForeground(new java.awt.Color(0, 96, 0));
-        txtMa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMaFocusLost(evt);
-            }
-        });
-        txtMa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 190, -1));
 
         txtChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -320,20 +307,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 741));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
-        // TODO add your handling code here:
-        txtMa.setBorder(Border_Selected.getFocuBofocusBorder());
-    }//GEN-LAST:event_txtMaFocusGained
-
-    private void txtMaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusLost
-        // TODO add your handling code here:
-        txtMa.setBorder(Border_Selected.getOriginalBorder());
-    }//GEN-LAST:event_txtMaFocusLost
-
-    private void txtMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaActionPerformed
-        // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaActionPerformed
 
     private void radNVSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radNVSXActionPerformed
         cmbPhanXuong.setVisible(true);

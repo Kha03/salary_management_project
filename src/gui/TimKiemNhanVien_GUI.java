@@ -13,16 +13,12 @@ import dao.PhongBan_Dao;
 import dao.TrinhDo_Dao;
 import entity.CapBac;
 import java.sql.SQLException;
-import entity.NhanVien;
 import entity.NhanVienHanhChanh;
 import entity.NhanVienSanXuat;
 import entity.PhanXuong;
 import entity.PhongBan;
 import entity.TrinhDo;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -145,19 +141,6 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         txtMa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMa.setForeground(new java.awt.Color(0, 96, 0));
-        txtMa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMaFocusLost(evt);
-            }
-        });
-        txtMa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 6, 190, 30));
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -303,20 +286,6 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
         
     }
     
-    private void txtMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusGained
-        // TODO add your handling code here:
-        txtMa.setBorder(Border_Selected.getFocuBofocusBorder());
-    }//GEN-LAST:event_txtMaFocusGained
-
-    private void txtMaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaFocusLost
-        // TODO add your handling code here:
-        txtMa.setBorder(Border_Selected.getOriginalBorder());
-    }//GEN-LAST:event_txtMaFocusLost
-
-    private void txtMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaActionPerformed
-        // System.out.println(jTextField2.getBorder());        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaActionPerformed
-
     private void cmbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGioiTinhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbGioiTinhActionPerformed

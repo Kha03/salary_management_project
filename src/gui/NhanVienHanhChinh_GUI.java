@@ -1,5 +1,6 @@
 package gui;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import dao.NhanVienHanhChanh_Dao;
@@ -17,7 +18,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -629,11 +633,13 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
             moNhapDuLieu();
             txtMa.setText(nhanVienHanhChanh_Dao.layMaTuDongNhanVien());
         } else {
-            if (themNhanVien()) {
-                dongNhapDuLieu();
-                btnCapNhat.setEnabled(true);
-                btnXoa.setEnabled(true);
-                btnThem.setText("Thêm");
+            if (kiemTraDuLieu()) {
+                if (themNhanVien()) {
+                    dongNhapDuLieu();
+                    btnCapNhat.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    btnThem.setText("Thêm");
+                }
             }
         }
     }
@@ -668,12 +674,14 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                 doDuLieuHeSoLuong();
                 moNhapDuLieu();
             } else {
-                if (capNhatNhanVien()) {
-                    kiemTraCapBac(maPhongBan, capBac);
-                    dongNhapDuLieu();
-                    btnCapNhat.setText("Cập Nhật");
-                    btnThem.setEnabled(true);
-                    btnXoa.setEnabled(true);
+                if (kiemTraDuLieu()) {
+                    if (capNhatNhanVien()) {
+                        kiemTraCapBac(maPhongBan, capBac);
+                        dongNhapDuLieu();
+                        btnCapNhat.setText("Cập Nhật");
+                        btnThem.setEnabled(true);
+                        btnXoa.setEnabled(true);
+                    }
                 }
             }
         } else if (hang.length == 0) {
@@ -832,6 +840,85 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
         txtChucVu.setEditable(false);
         cmbHeSoLuong.setEnabled(false);
     }
+
+    private boolean kiemTraRong(JComponent component, String thongBao) {
+        if (component instanceof JTextField) {
+            JTextField textField = (JTextField) component;
+            if (KiemTraChuoi.isNotEmpty(textField.getText())) {
+                textField.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JComboBox) {
+            JComboBox<?> comboBox = (JComboBox<?>) component;
+            if (comboBox.getSelectedIndex() == -1) {
+                comboBox.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JDateChooser) {
+            JDateChooser dateChooser = (JDateChooser) component;
+            if (dateChooser.getDate() == null) {
+                dateChooser.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean kiemTraDuLieuRong() {
+        if (kiemTraRong(txtTen, "*Không được để dữ liệu trống!")
+                || kiemTraRong(dchNgaySinh, "*Không được để dữ liệu trống!")
+                || kiemTraRong(cmbGioiTinh, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtDiaChi, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtDienThoai, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtMail, "*Không được để dữ liệu trống!")
+                || kiemTraRong(cmbPhongBan, "*Không được để dữ liệu trống!")
+                || kiemTraRong(dchNgayVaoLam, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtNgoaiNgu, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtChucVu, "*Không được để dữ liệu trống!")
+                || kiemTraRong(cmbCapBac, "*Không được để dữ liệu trống!")
+                || kiemTraRong(cmbHeSoLuong, "*Không được để dữ liệu trống!")) {
+            return false;
+        }
+        lblThongBao.setText("");
+        return true;
+    }
+
+    private boolean kiemTraDuLieu() {
+        if (kiemTraDuLieuRong()) {
+            if (!KiemTraChuoi.ktTen(txtTen.getText())) {
+                txtTen.requestFocus();
+                lblThongBao.setText("*Tên sai định dạng");
+                return false;
+            } else if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgaySinh.getDate()))) {
+                dchNgaySinh.requestFocus();
+                lblThongBao.setText("*Sai định dạng ngày");
+                return false;
+            } else if (!KiemTraChuoi.ktDiaChi(txtDiaChi.getText())) {
+                txtDiaChi.requestFocus();
+                lblThongBao.setText("*Địa chỉ sai định dạng");
+                return false;
+            } else if (!KiemTraChuoi.ktSDT(txtDienThoai.getText())) {
+                txtDienThoai.requestFocus();
+                lblThongBao.setText("*Số điện thoại sai định dạng");
+                return false;
+            } else if (!KiemTraChuoi.ktEmail(txtMail.getText())) {
+                txtMail.requestFocus();
+                lblThongBao.setText("*Mail sai định dạng");
+                return false;
+            } else if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgaySinh.getDate()))) {
+                dchNgayVaoLam.requestFocus();
+                lblThongBao.setText("*Ngày vào làm sai định dạng");
+                return false;
+            }
+            lblThongBao.setText("");
+            return true;
+        }
+        return false;
+    }
+
     private DefaultTableModel dtmNhanVien;
     private DefaultListModel dlmPhongBan;
     private SimpleDateFormat dinhDangNgay;
