@@ -1,11 +1,19 @@
 package gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import connect.ConnectDB;
+import dao.TaiKhoan_Dao;
+import entity.TaiKhoan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.UIManager;
@@ -41,7 +49,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         txtDangNhap = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtMatKhau = new javax.swing.JTextField();
+        txtMatKhau = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -79,11 +87,6 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         );
 
         txtDangNhap.setForeground(new java.awt.Color(0, 94, 0));
-        txtDangNhap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDangNhapActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,11 +97,6 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         jLabel4.setText("Mật Khẩu:");
 
         txtMatKhau.setForeground(new java.awt.Color(0, 94, 0));
-        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatKhauActionPerformed(evt);
-            }
-        });
         txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMatKhauKeyPressed(evt);
@@ -195,24 +193,16 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDangNhapActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDangNhapActionPerformed
-
-    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatKhauActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      //  if(txtDangNhap.getText().equalsIgnoreCase("123") && txtMatKhau.getText().equalsIgnoreCase("Kha")){
-            Home home = new Home();
-            home.setVisible(true);
-            setVisible(false);
-       // }
+        try {
+            dangNhap(txtDangNhap.getText(), txtMatKhau.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(DangNhap_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jButton1.doClick();
         }
     }//GEN-LAST:event_txtMatKhauKeyPressed
@@ -232,6 +222,30 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = currentDateTime.format(formatter);
         textField.setText(formattedDateTime);
+    }
+
+    private void dangNhap(String mataiKhoan, String matKhau) throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        if (kiemTraTaiKhoan(mataiKhoan, matKhau)) {
+            Home home = new Home(matKhau.substring(0, 2));
+            home.setVisible(true);
+            setVisible(false);
+        }
+    }
+
+    private boolean kiemTraTaiKhoan(String mataiKhoan, String matKhau) {
+        TaiKhoan_Dao taiKhoan_Dao = new TaiKhoan_Dao();
+        List<TaiKhoan> taiKhoans = taiKhoan_Dao.getTaiKhoan();
+        for (TaiKhoan taiKhoan : taiKhoans) {
+            if (taiKhoan.getMaTaiKhoan().equals(mataiKhoan)) {
+                if (taiKhoan.getMatKhau().equals(matKhau)) {
+                    return true;
+                }
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Sai tài khoản, hoặc mật khẩu!");
+        return false;
     }
 
     /**
@@ -268,6 +282,6 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private handle.panelround.PanelRound panelRound1;
     private javax.swing.JTextField txtDangNhap;
-    private javax.swing.JTextField txtMatKhau;
+    private javax.swing.JPasswordField txtMatKhau;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,7 @@ public class KiemTraChuoi {
     }
 
     public static boolean ktDiaChi(String str) {
-        return str.matches( "^[\\p{L}0-9\\s,'.-]+$");
+        return str.matches( "^[\\p{L}0-9\\s,.'/\\-]+$");
     }
 
     public static boolean ktSDT(String str) {

@@ -15,18 +15,30 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home(String quyen) {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
         initComponents();
-        taoMenu();
-        jPanel1.add(new Home_GUI());
-        menu1.setEvent((int index, int subIndex) -> {
-            try {
-                kiemTraNhanMenu(index, subIndex);
-            } catch (SQLException ex) {
-                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+        if (kiemTraMatKhau(quyen)) {
+            taoMenuHc();
+            jPanel1.add(new Home_GUI());
+            menu1.setEvent((int index, int subIndex) -> {
+                try {
+                    kiemTraNhanMenuHc(index, subIndex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+        } else {
+            taoMenuSx();
+            jPanel1.add(new Home_GUI());
+            menu1.setEvent((int index, int subIndex) -> {
+                try {
+                    kiemTraNhanMenuSx(index, subIndex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+        }
     }
 
     /**
@@ -65,7 +77,7 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kiemTraNhanMenu(int index, int subIndex) throws SQLException {
+    private void kiemTraNhanMenuHc(int index, int subIndex) throws SQLException {
         switch (index) {
             case 0 ->
                 hienThiTrang(new Home_GUI());
@@ -86,20 +98,10 @@ public class Home extends javax.swing.JFrame {
             case 2 -> {
                 switch (subIndex) {
                     case 1 ->
-                        hienThiTrang(new HopDong_GUI());
-                    case 2 ->
-                        hienThiTrang(new SanPham_GUI());
-                    default ->
-                        hienThiTrang(new CongDoan_GUI());
-                }
-            }
-            case 3 -> {
-                switch (subIndex) {
-                    case 1 ->
                         hienThiTrang(new CapNhatPhuCap_GUI());
                 }
             }
-            case 4 -> {
+            case 3 -> {
                 switch (subIndex) {
                     case 1 ->
                         hienThiTrang(new PhanCongSanXuat_GUI());
@@ -113,7 +115,7 @@ public class Home extends javax.swing.JFrame {
                         hienThiTrang(new TinhLuongSanXuat_GUI());
                 }
             }
-            case 5 -> {
+            case 4 -> {
                 switch (subIndex) {
                     case 1 ->
                         hienThiTrang(new TimKiemNhanVien_GUI());
@@ -125,10 +127,10 @@ public class Home extends javax.swing.JFrame {
                         hienThiTrang(new TimKiemBangLuong_GUI());
                 }
             }
-            case 6 -> {
+            case 5 -> {
                 switch (subIndex) {
                     case 1 ->
-                         hienThiTrang(new TimKiemHopDong_GUI());
+                        hienThiTrang(new TimKiemHopDong_GUI());
                     case 2 ->
                         hienThiTrang(new TimKiemSanPham_GUI());
                     default -> {
@@ -136,8 +138,8 @@ public class Home extends javax.swing.JFrame {
                     }
                 }
             }
-                    
-                case 7 -> {
+
+            case 6 -> {
                 switch (subIndex) {
                     case 1 ->
                         hienThiTrang(new BaoCaoLuong_GUI());
@@ -148,20 +150,47 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
-        private void hienThiTrang(Component com) {
+    private void kiemTraNhanMenuSx(int index, int subIndex) throws SQLException {
+        switch (index) {
+            case 0 ->
+                hienThiTrang(new Home_GUI());
+            case 1 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new HopDong_GUI());
+                    case 2 ->
+                        hienThiTrang(new SanPham_GUI());
+                    default ->
+                        hienThiTrang(new CongDoan_GUI());
+                }
+            }
+            case 2 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new TimKiemHopDong_GUI());
+                    case 2 ->
+                        hienThiTrang(new TimKiemSanPham_GUI());
+                    default -> {
+                        hienThiTrang(new TimKiemCongDoan_GUI());
+                    }
+                }
+            }
+            default -> {
+            }
+        }
+    }
+
+    private void hienThiTrang(Component com) {
         jPanel1.removeAll();
         jPanel1.add(com);
         jPanel1.repaint();
         jPanel1.revalidate();
     }
 
-    
-
-    private void taoMenu() {
+    private void taoMenuHc() {
         String[][] menuItems = new String[][]{
             {"Trang Chủ"},
             {"Danh Mục", "Nhân Viên Hành Chính", "Nhân Viên Sản Xuất", "Phòng Ban", "Phân Xưởng", "Phụ Cấp Nhân Viên"},
-            {"Danh Mục", "Hợp Đồng", "Sản Phẩm", "Công Đoạn"},
             {"Cập Nhật", "Cập Nhật Phụ Cấp Nhân Viên"},
             {"Xử Lý", "Phân Công Nhân Viên", "Chấm Công Hành Chính", "Chấm Công Sản Phẩm", "Tính Lương Hành Chính", "Tính Lương Sản Xuất"},
             {"Tìm Kiếm", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương"},
@@ -170,10 +199,16 @@ public class Home extends javax.swing.JFrame {
         menu1.setMenu(menuItems);
     }
 
-    private void kiemTraMatKhau(String pass) {
-        if (pass.equalsIgnoreCase("123")) {
+    private void taoMenuSx() {
+        String[][] menuItems = new String[][]{
+            {"Trang Chủ"},
+            {"Danh Mục", "Hợp Đồng", "Sản Phẩm", "Công Đoạn"},
+            {"Tìm Kiếm", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm", "Tìm Kiếm Công Đoạn"},};
+        menu1.setMenu(menuItems);
+    }
 
-        }
+    private boolean kiemTraMatKhau(String pass) {
+        return pass.equalsIgnoreCase("HC");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
