@@ -176,14 +176,14 @@ public class HopDong_GUI extends javax.swing.JPanel {
 
         dchNgayKetThuc.setBackground(new java.awt.Color(255, 255, 255));
         dchNgayKetThuc.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayKetThuc.setDateFormatString("dd/mm/yyyy");
+        dchNgayKetThuc.setDateFormatString("dd/MM/yyyy");
         dchNgayKetThuc.setEnabled(false);
         dchNgayKetThuc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(dchNgayKetThuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 190, 25));
 
         dchNgayBatDau.setBackground(new java.awt.Color(255, 255, 255));
         dchNgayBatDau.setForeground(new java.awt.Color(0, 96, 0));
-        dchNgayBatDau.setDateFormatString("dd/mm/yyyy");
+        dchNgayBatDau.setDateFormatString("dd/MM/yyyy");
         dchNgayBatDau.setEnabled(false);
         dchNgayBatDau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(dchNgayBatDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 190, 25));
