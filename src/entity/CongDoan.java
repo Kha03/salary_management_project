@@ -10,17 +10,27 @@ public class CongDoan {
     private String tenCongDoan;
     private float giaTien;
     private int tienDo;
+    private CongDoan congDoanTruoc;
 
-    public CongDoan(String maCongDoan, String tenCongDoan, float giaTien, int tienDo) {
+    public CongDoan(String maCongDoan, String tenCongDoan, float giaTien, int tienDo,CongDoan congDoanTruoc) {
         this.maCongDoan = maCongDoan;
         this.tenCongDoan = tenCongDoan;
         this.giaTien = giaTien;
         this.tienDo = tienDo;
+        this.congDoanTruoc = congDoanTruoc;
     }
 
     public CongDoan(String maCongDoan, String tenCongDoan) {
         this.maCongDoan = maCongDoan;
         this.tenCongDoan = tenCongDoan;
+    }
+
+    public CongDoan getCongDoanTruoc() {
+        return congDoanTruoc;
+    }
+
+    public void setCongDoanTruoc(CongDoan congDoanTruoc) {
+        this.congDoanTruoc = congDoanTruoc;
     }
 
     public void setTienDo(int tienDo) {

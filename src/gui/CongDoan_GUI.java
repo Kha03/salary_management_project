@@ -60,6 +60,8 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         txtGiaTien = new javax.swing.JTextField();
         txtTienDo = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        cmbCongDoanTruoc = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
@@ -180,7 +182,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         txtMaCongDoan.setEditable(false);
         txtMaCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaCongDoan.setForeground(new java.awt.Color(0, 96, 0));
-        add(txtMaCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 180, -1));
+        add(txtMaCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -190,7 +192,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         txtTenCongDoan.setEditable(false);
         txtTenCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTenCongDoan.setForeground(new java.awt.Color(0, 96, 0));
-        add(txtTenCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 180, -1));
+        add(txtTenCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Tên Công Đoạn:");
@@ -198,7 +200,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 120, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setText("Tiến Độ:");
+        jLabel17.setText("Số Lượng:");
         jLabel17.setToolTipText("");
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 110, -1));
 
@@ -234,12 +236,26 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         txtGiaTien.setEditable(false);
         txtGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtGiaTien.setForeground(new java.awt.Color(0, 96, 0));
-        add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 180, -1));
+        add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 180, -1));
 
         txtTienDo.setEditable(false);
         txtTienDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTienDo.setForeground(new java.awt.Color(0, 96, 0));
         add(txtTienDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 160, 80, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel21.setText("Công Đoạn Trước:");
+        jLabel21.setToolTipText("");
+        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 140, -1));
+
+        cmbCongDoanTruoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbCongDoanTruoc.setForeground(new java.awt.Color(0, 99, 0));
+        cmbCongDoanTruoc.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCongDoanTruocItemStateChanged(evt);
+            }
+        });
+        add(cmbCongDoanTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbHopDongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbHopDongItemStateChanged
@@ -286,6 +302,10 @@ public class CongDoan_GUI extends javax.swing.JPanel {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         xuLyXoa();
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void cmbCongDoanTruocItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCongDoanTruocItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCongDoanTruocItemStateChanged
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -309,7 +329,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         int i = 0;
         for (SanPham sanPham : sanPhams) {
             sanPhams.get(i).setCongDoanThucHien(congDoan_Dao.getDanhSachCongDoanTheoSanPham(sanPham.getMaSanPham()));
-            Object[] objects = {i, sanPham.getTenSanPham()};
+            Object[] objects = {i + 1, sanPham.getTenSanPham()};
             dtmSanPham.addRow(objects);
             i++;
         }
@@ -319,8 +339,10 @@ public class CongDoan_GUI extends javax.swing.JPanel {
     private void doDuLieuCongDoan(List<CongDoan> congDoans) {
         int i = 1;
         for (CongDoan congDoan : congDoans) {
-            Object[] objects = {i, congDoan.getTenCongDoan(), congDoan.getMaCongDoan(), df.format(congDoan.getGiaTien()) + "VND", congDoan.getTienDo()};
+            Object[] objects = {i, congDoan.getTenCongDoan(), congDoan.getMaCongDoan(), df.format(congDoan.getGiaTien()) + "VND", congDoan.getTienDo(),
+                congDoan.getCongDoanTruoc().getTenCongDoan()};
             dtmCongDoan.addRow(objects);
+            cmbCongDoanTruoc.addItem(congDoan.getTenCongDoan());
             i++;
         }
         this.congDoans = congDoans;
@@ -342,6 +364,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
             txtTenCongDoan.setText((String) tblCongDoan.getValueAt(hang, 1));
             txtGiaTien.setText((String) tblCongDoan.getValueAt(hang, 3));
             txtTienDo.setText(String.valueOf(tblCongDoan.getValueAt(hang, 4)));
+            cmbCongDoanTruoc.setSelectedItem((String) tblCongDoan.getValueAt(hang, 5));
         }
     }
 
@@ -380,13 +403,13 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         dtmCongDoan = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "STT", "Tên Công đoạn", "Mã công đoạn", "Đơn giá", "Tiến độ"}
+                    "STT", "Tên Công đoạn", "Mã công đoạn", "Đơn giá", "Số lượng", "Công đoạn trước"}
         ) {
             Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false,};
+                false, false, false, false, false, false};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -403,7 +426,8 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         tblCongDoan.getColumnModel().getColumn(1).setPreferredWidth(130);
         tblCongDoan.getColumnModel().getColumn(2).setPreferredWidth(150);
         tblCongDoan.getColumnModel().getColumn(3).setPreferredWidth(130);
-        tblCongDoan.getColumnModel().getColumn(4).setPreferredWidth(130);
+        tblCongDoan.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblCongDoan.getColumnModel().getColumn(5).setPreferredWidth(130);
         tblCongDoan.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
 
@@ -425,7 +449,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
             //chưa bắt lỗi rông txt tên pb
             if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Công Đoạn", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 CongDoan congDoan = new CongDoan(congDoan_Dao.layMaTuDongCongDoan(), txtTenCongDoan.getText(),
-                        Float.parseFloat(txtGiaTien.getText()), 0);
+                        Float.parseFloat(txtGiaTien.getText()), 0, congDoans.size() > 0 ? new CongDoan(congDoans.get(cmbCongDoanTruoc.getSelectedIndex()).getMaCongDoan(), "") :  new CongDoan("", ""));
                 if (congDoan_Dao.themCongDoan(congDoan, sanPhams.get(hang).getMaSanPham())) {
                     JOptionPane.showMessageDialog(this, "Thêm công đoạn thành công!");
                     dtmCongDoan.setRowCount(0);
@@ -466,7 +490,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         } else {
             if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Công Đoạn", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 CongDoan congDoan = new CongDoan(txtMaCongDoan.getText(), txtTenCongDoan.getText(),
-                        Float.parseFloat(txtGiaTien.getText()), Integer.parseInt(txtTienDo.getText()));
+                        Float.parseFloat(txtGiaTien.getText()), Integer.parseInt(txtTienDo.getText()),congDoans.size() > 0 ? new CongDoan(congDoans.get(cmbCongDoanTruoc.getSelectedIndex()).getMaCongDoan(), "") : new CongDoan("", ""));
                 if (congDoan_Dao.capNhatCongDoan(congDoan)) {
                     JOptionPane.showMessageDialog(this, "Cập nhật công đoạn thành công!");
                     dtmCongDoan.setRowCount(0);
@@ -559,6 +583,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         dtmCongDoan.setRowCount(0);
         dtmSanPham.setRowCount(0);
         cmbHopDong.removeAllItems();
+        cmbCongDoanTruoc.removeAllItems();
     }
 
     private void moNhapDuLieu() {
@@ -584,6 +609,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cmbCongDoanTruoc;
     private javax.swing.JComboBox<String> cmbHopDong;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
@@ -591,6 +617,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
