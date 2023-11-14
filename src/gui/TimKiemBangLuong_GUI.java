@@ -492,6 +492,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
         ConnectDB.getInstance();
         ConnectDB.connect();
         df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
+        jTable1.setModel(modelLuongHc);
         tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
         tinhLuongCongNhan_Dao  = new TinhLuongCongNhan_Dao();
         phongBan_Dao = new PhongBan_Dao();
