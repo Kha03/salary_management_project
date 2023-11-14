@@ -97,13 +97,7 @@
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Nh&#xe2;n vi&#xea;n H&#xe0;nh Ch&#xed;nh"/>
-                <StringItem index="1" value="Qu&#x1ea3;n L&#xfd;"/>
-                <StringItem index="2" value="Tr&#x1b0;&#x1edf;ng Ph&#xf2;ng"/>
-                <StringItem index="3" value="Nh&#xe2;n Vi&#xea;n Ph&#xe2;n X&#x1b0;&#x1edf;ng"/>
-                <StringItem index="4" value="T&#x1ed5; tr&#x1b0;&#x1edf;ng"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -403,14 +397,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Trung h&#x1ecd;c c&#x1a1; s&#x1edf;"/>
-                <StringItem index="1" value="Trung h&#x1ecd;c ph&#x1ed5; th&#xf4;ng"/>
-                <StringItem index="2" value="Cao &#x110;&#x1eb3;ng"/>
-                <StringItem index="3" value="&#x110;&#x1ea1;i H&#x1ecd;c"/>
-              </StringArray>
-            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTrinhDoActionPerformed"/>
@@ -431,12 +417,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="X&#x1b0;&#x1edf;ng L&#x1eaf;p R&#xe1;p"/>
-                <StringItem index="1" value="X&#x1b0;&#x1edf;ng Ch&#x1ebf; T&#xe1;c"/>
-              </StringArray>
             </Property>
           </Properties>
           <AuxValues>

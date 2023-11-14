@@ -48,13 +48,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="&#x1ed0;ng nh&#x1ef1;a"/>
-                <StringItem index="1" value="Bao b&#xec; nh&#x1ef1;a"/>
-                <StringItem index="2" value="G&#x1ed7; nh&#x1ef1;a"/>
-              </StringArray>
-            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -94,12 +87,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="X&#x1b0;&#x1edf;ng L&#x1eaf;p R&#xe1;p"/>
-                <StringItem index="1" value="X&#x1b0;&#x1edf;ng Ch&#x1ebf; T&#xe1;c"/>
-              </StringArray>
             </Property>
           </Properties>
           <Events>
@@ -259,15 +246,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Tr&#x1ed9;n Nguy&#xea;n Li&#x1ec7;u"/>
-                <StringItem index="1" value="T&#x1ea1;o H&#xec;nh"/>
-                <StringItem index="2" value="L&#x1eaf;p R&#xe1;p"/>
-                <StringItem index="3" value="L&#xe0;m Ngu&#x1ed9;i"/>
-                <StringItem index="4" value="&#xc9;p &#x111;&#xf9;n"/>
-              </StringArray>
             </Property>
           </Properties>
           <AuxValues>

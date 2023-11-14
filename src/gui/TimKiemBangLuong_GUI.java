@@ -163,13 +163,12 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cmbPhongBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhongBan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhongBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Tài Chính Kế Toán", "Phòng Nhân Sự" }));
         cmbPhongBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPhongBanActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 190, -1));
+        jPanel1.add(cmbPhongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 190, -1));
 
         btnThayDoiTim.add(radNVSX);
         radNVSX.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -184,7 +183,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 60, 190, -1));
 
         btnThayDoiTim.add(radNVHC);
@@ -234,7 +232,6 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
 
         cmbHeSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbHeSoLuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbHeSoLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1.0", "2.23", "5.686" }));
         jPanel1.add(cmbHeSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 80, -1));
 
         txtNgayCongThucTe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

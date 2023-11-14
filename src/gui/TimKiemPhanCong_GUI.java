@@ -73,7 +73,6 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
-        cmbSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ống nhựa", "Bao bì nhựa", "Gỗ nhựa" }));
         jDesktopPane1.add(cmbSanPham);
         cmbSanPham.setBounds(370, 180, 170, 26);
 
@@ -91,7 +90,6 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         cmbPhanXuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPhanXuongActionPerformed(evt);
@@ -168,7 +166,6 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
-        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trộn Nguyên Liệu", "Tạo Hình", "Lắp Ráp", "Làm Nguội", "Ép đùn" }));
         jDesktopPane1.add(cmbCongDoan);
         cmbCongDoan.setBounds(670, 180, 170, 26);
 
@@ -346,10 +343,10 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
             cmbPhanXuong.addItem(px.getTenPhanXuong());
         }
         for (CongDoan cd : congDoan_Dao.getDanhSachCongDoan()) {
-            cmbPhanXuong.addItem(cd.getTenCongDoan());
+            cmbCongDoan.addItem(cd.getTenCongDoan());
         }
         for (SanPham sp : sanPham_Dao.getDanhSachSanPham()) {
-            cmbPhanXuong.addItem(sp.getTenSanPham());
+            cmbSanPham.addItem(sp.getTenSanPham());
         }
     }
     private void timkiem() {

@@ -102,7 +102,6 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         cmbCapBac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbCapBac.setForeground(new java.awt.Color(0, 99, 0));
-        cmbCapBac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên Hành Chính", "Quản Lý", "Trưởng Phòng", "Nhân Viên Phân Xưởng", "Tổ trưởng" }));
         jPanel1.add(cmbCapBac, new org.netbeans.lib.awtextra.AbsoluteConstraints(835, 50, 190, -1));
 
         cmbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -204,7 +203,6 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         cmbTrinhDo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbTrinhDo.setForeground(new java.awt.Color(0, 99, 0));
-        cmbTrinhDo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trung học cơ sở", "Trung học phổ thông", "Cao Đẳng", "Đại Học" }));
         cmbTrinhDo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTrinhDoActionPerformed(evt);
@@ -214,7 +212,6 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
-        cmbPhanXuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xưởng Lắp Ráp", "Xưởng Chế Tác" }));
         jPanel1.add(cmbPhanXuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -340,13 +337,13 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
             cmbPhanXuong.addItem(px.getTenPhanXuong());
         }
         for (TrinhDo td : trinhDo_Dao.getDanhSachTrinhDo()) {
-            cmbPhanXuong.addItem(td.getTenTrinhDo());
+            cmbTrinhDo.addItem(td.getTenTrinhDo());
         }
         for (CapBac cb : capBac_Dao.getDanhSachCapBacHanhChinh()) {
-            cmbPhanXuong.addItem(cb.getTenCapBac());
+            cmbCapBac.addItem(cb.getTenCapBac());
         }
         for (CapBac cb : capBac_Dao.getDanhSachCapBacPhanXuong()) {
-            cmbPhanXuong.addItem(cb.getTenCapBac());
+            cmbCapBac.addItem(cb.getTenCapBac());
         }
     }
     private void timKiem(){
