@@ -430,9 +430,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (chkTu.isSelected()) {
-                System.out.println(dinhDangNgay.format(dchNgayChamCong.getDate()));
-                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
-                System.out.println(dinhDangNgay.format(cchc.getNgayLamViec()));
                 if (dchTu.getDate() != null && dchNgayChamCong.getDate() != null) {
                     if (!cchc.getNgayLamViec().before(dchTu.getDate()) &&
                         cchc.getNgayLamViec().before(dchNgayChamCong.getDate())) {
@@ -447,8 +444,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (spnTangCa != null) {
-                System.out.println(String.valueOf(cchc.getGioTangCa()));
-//                System.out.println(String.valueOf(giaTriTangCa));
                 int giaTriTangCa = (int) spnTangCa.getValue();
                 if (String.valueOf(cchc.getGioTangCa()).equalsIgnoreCase(String.valueOf(giaTriTangCa))) {
                     thoaMan = true;
@@ -496,9 +491,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (chkTu.isSelected()) {
-                System.out.println(dinhDangNgay.format(dchNgayChamCong.getDate()));
-                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
-                System.out.println(dinhDangNgay.format(ccsx.getNgayLamViec()));
                 if (dchTu.getDate() != null && dchNgayChamCong.getDate() != null) {
                     if (!ccsx.getNgayLamViec().before(dchTu.getDate()) &&
                         ccsx.getNgayLamViec().before(dchNgayChamCong.getDate())) {
