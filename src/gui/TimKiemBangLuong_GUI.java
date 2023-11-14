@@ -555,7 +555,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
             // Kiểm tra xem giá trị đã tồn tại trong combobox chưa
             boolean t = false;
             for (int i = 0; i < cmbHeSoLuong.getItemCount(); i++) {
-                if (heSoLuongString.equals(cmbHeSoLuong.getItemAt(i))) {
+                if (heSoLuongString.equals( cmbHeSoLuong.getItemAt(i))) {
                     t = true;
                     break;
                 }
