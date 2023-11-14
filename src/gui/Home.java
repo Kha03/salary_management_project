@@ -18,7 +18,7 @@ public class Home extends javax.swing.JFrame {
     public Home(String quyen) {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
         initComponents();
-        if (kiemTraMatKhau(quyen)) {
+        if (kiemTraMatKhau(quyen) == 1) {
             taoMenuHc();
             jPanel1.add(new Home_GUI());
             menu1.setEvent((int index, int subIndex) -> {
@@ -28,12 +28,22 @@ public class Home extends javax.swing.JFrame {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-        } else {
+        } else if (kiemTraMatKhau(quyen) == 2) {
             taoMenuSx();
             jPanel1.add(new Home_GUI());
             menu1.setEvent((int index, int subIndex) -> {
                 try {
                     kiemTraNhanMenuSx(index, subIndex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+        } else {
+            taoMenuQT();
+            jPanel1.add(new Home_GUI());
+            menu1.setEvent((int index, int subIndex) -> {
+                try {
+                    kiemTraNhanMenuQt(index, subIndex);
                 } catch (SQLException ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -150,6 +160,75 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
+    private void kiemTraNhanMenuQt(int index, int subIndex) throws SQLException {
+        switch (index) {
+            case 0 ->
+                hienThiTrang(new Home_GUI());
+            case 1 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new NhanVienHanhChinh_GUI());
+                    case 2 ->
+                        hienThiTrang(new NhanVienSanXuat_GUI());
+                    case 3 ->
+                        hienThiTrang(new PhongBan_GUI());
+                    case 4 ->
+                        hienThiTrang(new PhanXuong_GUI());
+                    case 5 ->
+                        hienThiTrang(new PhuCap_GUI());
+                    case 6 ->
+                        hienThiTrang(new HopDong_GUI());
+                    default ->
+                        hienThiTrang(new SanPham_GUI());
+                }
+            }
+            case 2 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new CapNhatPhuCap_GUI());
+                    case 2 ->
+                        hienThiTrang(new CongDoan_GUI());
+                    case 3 ->
+                        hienThiTrang(new PhanCongSanXuat_GUI());
+                    case 4 ->
+                        hienThiTrang(new ChamCongHanhChinh_GUI());
+                    case 5 ->
+                        hienThiTrang(new ChamCongSanPham_GUI());
+                    case 6 ->
+                        hienThiTrang(new TinhLuongHanhChinh_GUI());
+                    default ->
+                        hienThiTrang(new TinhLuongSanXuat_GUI());
+                }
+            }
+            case 3 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new TimKiemNhanVien_GUI());
+                    case 2 ->
+                        hienThiTrang(new TimKiemPhanCong_GUI());
+                    case 3 ->
+                        hienThiTrang(new TimKiemChamCong_GUI());
+                    case 4 ->
+                        hienThiTrang(new TimKiemBangLuong_GUI());
+                    case 5 ->
+                        hienThiTrang(new TimKiemHopDong_GUI());
+                    case 6 ->
+                        hienThiTrang(new TimKiemSanPham_GUI());
+                    default ->
+                        hienThiTrang(new TimKiemCongDoan_GUI());
+                }
+            }
+            case 4 -> {
+                switch (subIndex) {
+                    case 1 ->
+                        hienThiTrang(new BaoCaoLuong_GUI());
+                }
+            }
+            default -> {
+            }
+        }
+    }
+
     private void kiemTraNhanMenuSx(int index, int subIndex) throws SQLException {
         switch (index) {
             case 0 ->
@@ -193,8 +272,7 @@ public class Home extends javax.swing.JFrame {
             {"Danh Mục", "Nhân Viên Hành Chính", "Nhân Viên Sản Xuất", "Phòng Ban", "Phân Xưởng", "Phụ Cấp Nhân Viên"},
             {"Cập Nhật", "Cập Nhật Phụ Cấp Nhân Viên"},
             {"Xử Lý", "Phân Công Nhân Viên", "Chấm Công Hành Chính", "Chấm Công Sản Phẩm", "Tính Lương Hành Chính", "Tính Lương Sản Xuất"},
-            {"Tìm Kiếm", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương"},
-            {"Tìm Kiếm", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm", "Tìm Kiếm Công Đoạn"},
+            {"Tìm Kiếm Hành Chính", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương"},
             {"Báo Cáo Thống Kê", "Báo Cáo Khoản Chi Lương"},};
         menu1.setMenu(menuItems);
     }
@@ -203,12 +281,27 @@ public class Home extends javax.swing.JFrame {
         String[][] menuItems = new String[][]{
             {"Trang Chủ"},
             {"Danh Mục", "Hợp Đồng", "Sản Phẩm", "Công Đoạn"},
-            {"Tìm Kiếm", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm", "Tìm Kiếm Công Đoạn"},};
+            {"Tìm Kiếm Sản Xuất", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm", "Tìm Kiếm Công Đoạn"},};
         menu1.setMenu(menuItems);
     }
 
-    private boolean kiemTraMatKhau(String pass) {
-        return pass.equalsIgnoreCase("HC");
+    private void taoMenuQT() {
+        String[][] menuItems = new String[][]{
+            {"Trang Chủ"},
+            {"Danh Mục", "Nhân Viên Hành Chính", "Nhân Viên Sản Xuất", "Phòng Ban", "Phân Xưởng", "Phụ Cấp Nhân Viên", "Hợp Đồng", "Sản Phẩm",},
+            {"Xử Lý", "Cập Nhật Phụ Cấp Nhân Viên", "Cập Nhật Công Đoạn Sản Phẩm", "Phân Công Nhân Viên", "Chấm Công Hành Chính", "Chấm Công Sản Phẩm", "Tính Lương Hành Chính", "Tính Lương Sản Xuất"},
+            {"Tìm Kiếm", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm", "Tìm Kiếm Công Đoạn"},
+            {"Báo Cáo Thống Kê", "Báo Cáo Khoản Chi Lương"},};
+        menu1.setMenu(menuItems);
+    }
+
+    private int kiemTraMatKhau(String pass) {
+        if (pass.equalsIgnoreCase("HC")) {
+            return 1;
+        } else if (pass.equalsIgnoreCase("SX")) {
+            return 2;
+        }
+        return 3;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

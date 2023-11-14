@@ -124,7 +124,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
         jLabel5.setText("Phần Mềm Quản Lí Lương Sản Phẩm");
 
         txtMatKhau.setForeground(new java.awt.Color(0, 91, 0));
-        txtMatKhau.setText("HCNVHC001");
+        txtMatKhau.setText("QTNVHC001");
         txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMatKhauKeyPressed(evt);
