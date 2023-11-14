@@ -447,7 +447,10 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (spnTangCa != null) {
-                if (String.valueOf(cchc.getGioTangCa()).equalsIgnoreCase(spnTangCa.toString())) {
+                System.out.println(String.valueOf(cchc.getGioTangCa()));
+//                System.out.println(String.valueOf(giaTriTangCa));
+                int giaTriTangCa = (int) spnTangCa.getValue();
+                if (String.valueOf(cchc.getGioTangCa()).equalsIgnoreCase(String.valueOf(giaTriTangCa))) {
                     thoaMan = true;
                 }
             }
