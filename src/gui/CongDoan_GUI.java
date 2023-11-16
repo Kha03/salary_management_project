@@ -338,6 +338,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
 
     private void doDuLieuCongDoan(List<CongDoan> congDoans) {
         int i = 1;
+        cmbCongDoanTruoc.removeAllItems();
         for (CongDoan congDoan : congDoans) {
             Object[] objects = {i, congDoan.getTenCongDoan(), congDoan.getMaCongDoan(), df.format(congDoan.getGiaTien()) + "VND", congDoan.getTienDo(),
                 congDoan.getCongDoanTruoc().getTenCongDoan()};
@@ -449,7 +450,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
             //chưa bắt lỗi rông txt tên pb
             if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Công Đoạn", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 CongDoan congDoan = new CongDoan(congDoan_Dao.layMaTuDongCongDoan(), txtTenCongDoan.getText(),
-                        Float.parseFloat(txtGiaTien.getText()), 0, congDoans.size() > 0 ? new CongDoan(congDoans.get(cmbCongDoanTruoc.getSelectedIndex()).getMaCongDoan(), "") :  new CongDoan("", ""));
+                        Float.parseFloat(txtGiaTien.getText()), 0, congDoans.size() > 0 ? new CongDoan(congDoans.get(cmbCongDoanTruoc.getSelectedIndex()).getMaCongDoan(), "") : new CongDoan("", ""));
                 if (congDoan_Dao.themCongDoan(congDoan, sanPhams.get(hang).getMaSanPham())) {
                     JOptionPane.showMessageDialog(this, "Thêm công đoạn thành công!");
                     dtmCongDoan.setRowCount(0);
@@ -490,7 +491,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
         } else {
             if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Công Đoạn", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 CongDoan congDoan = new CongDoan(txtMaCongDoan.getText(), txtTenCongDoan.getText(),
-                        Float.parseFloat(txtGiaTien.getText()), Integer.parseInt(txtTienDo.getText()),congDoans.size() > 0 ? new CongDoan(congDoans.get(cmbCongDoanTruoc.getSelectedIndex()).getMaCongDoan(), "") : new CongDoan("", ""));
+                        Float.parseFloat(txtGiaTien.getText()), Integer.parseInt(txtTienDo.getText()), congDoans.size() > 0 ? new CongDoan(congDoans.get(cmbCongDoanTruoc.getSelectedIndex()).getMaCongDoan(), "") : new CongDoan("", ""));
                 if (congDoan_Dao.capNhatCongDoan(congDoan)) {
                     JOptionPane.showMessageDialog(this, "Cập nhật công đoạn thành công!");
                     dtmCongDoan.setRowCount(0);
@@ -554,6 +555,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
                 btnCapNhat.setEnabled(true);
                 btnXoa.setEnabled(true);
                 tblSanPham.setEnabled(true);
+                cmbHopDong.setEnabled(true);
                 btnThem.setText("Thêm");
                 btnCapNhat.setText("Cập Nhật");
                 return true;

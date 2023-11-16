@@ -38,6 +38,32 @@ public class CongDoan_Dao {
         return dsCongDoan;
     }
 
+    public CongDoan layCongDoanTruoc(String maCongDoan) {
+        CongDoan congDoan = null;
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            String sql = "SELECT"
+                    + " c1.*,c2.maCongDoan,c2.tenCongDoan,c2.tienDo"
+                    + " FROM"
+                    + " CongDoan c1"
+                    + " LEFT JOIN"
+                    + " CongDoan c2 ON c1.congDoanTruoc = c2.maCongDoan"
+                    + " WHERE c1.maCongDoan = '"+maCongDoan+"'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                //còn sai
+                congDoan = new CongDoan(resultSet.getString(1), resultSet.getString(2), resultSet.getFloat(3), resultSet.getInt(4),
+                        new CongDoan(resultSet.getString(7), resultSet.getString(8), 0, resultSet.getInt(9), null));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return congDoan;
+    }
+
     public List<CongDoan> getDanhSachCongDoanTheoSanPham(String maSanPham) {
         List<CongDoan> dsCongDoan = new ArrayList<>();
         ConnectDB.getInstance();
@@ -155,8 +181,8 @@ public class CongDoan_Dao {
             smt.setString(1, congDoan.getTenCongDoan());
             smt.setFloat(2, congDoan.getGiaTien());
             smt.setInt(3, congDoan.getTienDo());
-            smt.setString(4, congDoan.getMaCongDoan());
-            smt.setString(5, congDoan.getCongDoanTruoc().getMaCongDoan());
+            smt.setString(4, congDoan.getCongDoanTruoc().getMaCongDoan());
+            smt.setString(5, congDoan.getMaCongDoan());
             smt.executeUpdate();
         } catch (SQLException ex) {
             return false;
