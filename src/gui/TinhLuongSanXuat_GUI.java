@@ -662,7 +662,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         if (hangPhanXuong != -1) {
             tenFile = "Lương " + phanXuongs.get(hangPhanXuong).getTenPhanXuong() + " " + thang + "-" + nam + ".xlsx";
         } else {
-            tenFile = "Lương công ty.xlsx";
+            tenFile = "Lương công ty_" + thang + "-" + nam + ".xlsx";
         }
         // Tạo hộp thoại chọn tệp
         JFileChooser fileChooser = new JFileChooser();
@@ -727,7 +727,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
         if (hangPhanXuong != -1) {
             tenFile = "Lương " + phanXuongs.get(hangPhanXuong).getTenPhanXuong() + " " + thang + "-" + nam + ".pdf";
         } else {
-            tenFile = "Lương công ty.pdf";
+            tenFile = "Lương công ty_" + thang + "-" + nam + ".pdf";
         }
         // Tạo hộp thoại chọn tệp
         JFileChooser fileChooser = new JFileChooser();

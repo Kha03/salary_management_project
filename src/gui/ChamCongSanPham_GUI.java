@@ -1,5 +1,16 @@
 package gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import connect.ConnectDB;
 import dao.ChamCongSanPham_Dao;
 import dao.CongDoan_Dao;
@@ -10,13 +21,21 @@ import entity.CongDoan;
 import entity.PhanXuong;
 import entity.SanPham;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -375,7 +394,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
-        // TODO add your handling code here:
+        xuLyXuatPdf();
     }//GEN-LAST:event_btnXuatActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -834,6 +853,84 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
             }
             dtmChamCong.setRowCount(0);
             doDuLieuChamCong(chamCongSanPhamTam);
+        }
+    }
+
+    private void xuLyXuatPdf() {
+        String ngay = dinhDangNgay.format(dchNgayChamCong.getDate()).replace('/', '_');
+        String tenChamCong = "Chấm công sản phẩm" + "-" + ngay;
+        String tenFile = tenChamCong + ".pdf";
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .pdf
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFilePdf(filePath, tenFile);
+        }
+    }
+
+    private void xuatFilePdf(String filePath, String tenFile) {
+        Document document = new Document(PageSize.A3.rotate());
+        tenFile = tenFile.substring(0, tenFile.lastIndexOf('.'));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            float[] columnWidths = {5f, 10f, 15f, 10f, 10f, 10f, 10f, 10f, 10f, 10f};
+            // Sử dụng font Arial
+//            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
+            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(baseFont, 12);
+            PdfPTable pdfTable = new PdfPTable(columnWidths);
+            pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
+            // Tiêu đề
+            Font titleFont = new Font(baseFont, 28, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph(tenFile, titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingAfter(25f); // Khoảng cách dưới tiêu đề
+            document.add(titleParagraph);
+            // Thêm cột
+            for (int i = 0; i < tblChamCong.getColumnCount(); i++) {
+                PdfPCell cell = new PdfPCell(new Phrase((String) tblChamCong.getColumnName(i), font));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pdfTable.addCell(cell);
+            }
+            // Thêm dữ liệu
+            for (int i = 0; i < tblChamCong.getRowCount(); i++) {
+                for (int j = 0; j < tblChamCong.getColumnCount(); j++) {
+                    PdfPCell cell = null;
+                    if (tblChamCong.getValueAt(i, j) instanceof Boolean) {
+                        cell = new PdfPCell(new Phrase(tblChamCong.getValueAt(i, j).toString().equalsIgnoreCase("true") ? "Có" : "Nghỉ", font));
+                    } else {
+                        cell = new PdfPCell(new Phrase(tblChamCong.getValueAt(i, j).toString(), font));
+
+                    }
+                    // cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdfTable.addCell(cell);
+                }
+            }
+            document.add(pdfTable);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+            JOptionPane.showMessageDialog(this, "Xuất thành công");
         }
     }
 

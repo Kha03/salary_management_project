@@ -35,7 +35,6 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.InputStream;
 
 /**
  *
@@ -45,6 +44,8 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
 
     /**
      * Creates new form ChamCongHanhChinh
+     *
+     * @throws java.sql.SQLException
      */
     public TinhLuongHanhChinh_GUI() throws SQLException {
         initComponents();
@@ -774,7 +775,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         if (hangPhongBan != -1) {
             tenFile = "Lương " + phongBans.get(hangPhongBan).getTenPhongBan() + " " + thang + "-" + nam + ".xlsx";
         } else {
-            tenFile = "Lương công ty.xlsx";
+            tenFile = "Lương công ty_" + thang + "-" + nam + ".xlsx";
         }
         // Tạo hộp thoại chọn tệp
         JFileChooser fileChooser = new JFileChooser();
@@ -839,7 +840,7 @@ public class TinhLuongHanhChinh_GUI extends javax.swing.JPanel {
         if (hangPhongBan != -1) {
             tenFile = "Lương " + phongBans.get(hangPhongBan).getTenPhongBan() + " " + thang + "-" + nam + ".pdf";
         } else {
-            tenFile = "Lương công ty.pdf";
+            tenFile = "Lương công ty_" + thang + "-" + nam + ".pdf";
         }
         // Tạo hộp thoại chọn tệp
         JFileChooser fileChooser = new JFileChooser();

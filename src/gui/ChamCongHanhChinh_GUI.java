@@ -1,5 +1,16 @@
 package gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import connect.ConnectDB;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -11,12 +22,20 @@ import entity.PhongBan;
 import entity.NhanVienHanhChanh;
 import entity.ChamCongNhanVien;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -163,6 +182,11 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         chkLamViec.setAlignmentX(CENTER_ALIGNMENT);
         chkLamViec.setText("Làm việc");
         chkLamViec.setEnabled(false);
+        chkLamViec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLamViecActionPerformed(evt);
+            }
+        });
         add(chkLamViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 90, 20));
 
         spnGioTangCa.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
@@ -314,6 +338,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
+        xuLyXuatPdf();
     }//GEN-LAST:event_btnXuatActionPerformed
 
     private void chkToanBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkToanBoActionPerformed
@@ -378,6 +403,10 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
     private void spnGioTangCaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnGioTangCaStateChanged
         xuLySpnTangCa();
     }//GEN-LAST:event_spnGioTangCaStateChanged
+
+    private void chkLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLamViecActionPerformed
+        xuLyChkLamViec();
+    }//GEN-LAST:event_chkLamViecActionPerformed
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -388,12 +417,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         layNgayHienTai();
         doDuLieu();
     }
-
+    
     private void layNgayHienTai() {
         Calendar calendar = Calendar.getInstance();
         dchNgayChamCong.setDate(calendar.getTime());
     }
-
+    
     private void doDuLieuPhongBan(List<PhongBan> phongBans) {
         int i = 2;
         dtmPhongBan.addRow(new Object[]{"1", "Toàn công ty"});
@@ -405,7 +434,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         this.phongBans = phongBans;
         tblPhongBan.setRowSelectionInterval(0, 0);
     }
-
+    
     private void doDuLieuNhanVien(List<NhanVienHanhChanh> nhanVienHanhChanhs) {
         int i = 1;
         for (NhanVienHanhChanh nVien : nhanVienHanhChanhs) {
@@ -415,7 +444,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         }
         this.nhanVienHanhChanhs = nhanVienHanhChanhs;
     }
-
+    
     private void doDuLieuChamCong(List<ChamCongNhanVien> chamCongNhanViens) {
         int i = 1;
         for (ChamCongNhanVien chamCong : chamCongNhanViens) {
@@ -430,13 +459,13 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         }
         this.chamCongNhanViens = chamCongNhanViens;
     }
-
+    
     private void doDuLieu() {
         doDuLieuPhongBan(phongBan_Dao.getDanhSachPhongBan());
         doDuLieuNhanVien(nhanVienHanhChanh_Dao.getDanhSachNhanVienHanhChanh());
         doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
     }
-
+    
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
@@ -453,12 +482,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             boolean[] canEdit = new boolean[]{
                 false, false
             };
-
+            
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
@@ -481,12 +510,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             boolean[] canEdit = new boolean[]{
                 false, false
             };
-
+            
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
@@ -509,12 +538,12 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false, false, false, false
             };
-
+            
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
@@ -526,7 +555,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         tblChamCong.getColumnModel().getColumn(4).setCellRenderer(center);
         tblChamCong.getColumnModel().getColumn(6).setCellRenderer(center);
     }
-
+    
     public void layDuLieuLenText() {
         // Lấy vị trí hàng được chọn trong bảng và cho dữ liệu lên textfield
         int hang = tblChamCong.getSelectedRow();
@@ -538,7 +567,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             spnGioTangCa.setValue(tblChamCong.getValueAt(hang, 6));
         }
     }
-
+    
     private boolean taoChamCong() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Chấm Công", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
@@ -568,7 +597,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         }
         return false;
     }
-
+    
     private boolean capNhatChamCong() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
@@ -594,7 +623,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         }
         return false;
     }
-
+    
     private boolean xoaChamCong(int[] hang) {
         int soNhanVien = hang.length;
         for (int i = 0; i < soNhanVien; i++) {
@@ -606,7 +635,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         }
         return true;
     }
-
+    
     private void xuLyTao() {
         if (btnTao.getText().equalsIgnoreCase("Tạo")) {
             btnTao.setText("Xác Nhận");
@@ -631,7 +660,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             }
         }
     }
-
+    
     private void xuLySpnTangCa() {
         if (!chkLamViec.isSelected()) {
             lblThongBao.setText("* Nhân viên làm việc mới tăng ca!");
@@ -640,7 +669,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             lblThongBao.setText("");
         }
     }
-
+    
     private void xuLyCapNhat() {
         if (btnCapNhat.getText().equalsIgnoreCase("Cập Nhật")) {
             btnCapNhat.setText("Xác Nhận");
@@ -666,7 +695,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             }
         }
     }
-
+    
     private void xuLyXoa() {
         int[] hang = tblChamCong.getSelectedRows();
         if (hang.length != 0) {
@@ -682,7 +711,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng cần xóa!");
         }
     }
-
+    
     private void xuLyChkToanBo() {
         if (chkToanBo.isSelected()) {
             if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận")) {
@@ -698,14 +727,14 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             }
         }
     }
-
+    
     private void xuLyThayDoiNgayCham() {
         if (kiemTraNgay()) {
             dtmChamCong.setRowCount(0);
             doDuLieuChamCong(chamCongHanhChanh_Dao.getDanhSachChamCongNhanVienTheoNgay(dchNgayChamCong.getDate()));
         }
     }
-
+    
     private boolean kiemTraNgay() {
         if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
             lblThongBao.setText("* Sai định dạng ngày dd/mm/yyyy");
@@ -720,7 +749,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         lblThongBao.setText("");
         return true;
     }
-
+    
     private void xuLyThayDoiTblNhanVien() {
         int hang = tblNhanVien.getSelectedRow();
         if (hang != -1) {
@@ -729,7 +758,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             lblMa.setText(nVien.getMaNhanVienHanhChanh());
         }
     }
-
+    
     private void xuLyThayDoiTblPhongBan() {
         int hang = tblPhongBan.getSelectedRow();
         if (hang != -1) {
@@ -746,7 +775,91 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
             }
         }
     }
-
+    
+    private void xuLyXuatPdf() {
+        String ngay = dinhDangNgay.format(dchNgayChamCong.getDate()).replace('/', '_');
+        String tenChamCong = "Chấm công hành chính" + "-" + ngay;
+        String tenFile = tenChamCong + ".pdf";
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .pdf
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFilePdf(filePath, tenFile);
+        }
+    }
+    
+    private void xuatFilePdf(String filePath, String tenFile) {
+        Document document = new Document(PageSize.A3.rotate());
+        tenFile = tenFile.substring(0, tenFile.lastIndexOf('.'));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            float[] columnWidths = {5f, 20f, 20f, 15f, 15f, 15f, 10f};
+            // Sử dụng font Arial
+//            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
+            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(baseFont, 12);
+            PdfPTable pdfTable = new PdfPTable(columnWidths);
+            pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
+            // Tiêu đề
+            Font titleFont = new Font(baseFont, 28, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph(tenFile, titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingAfter(25f); // Khoảng cách dưới tiêu đề
+            document.add(titleParagraph);
+            // Thêm cột
+            for (int i = 0; i < tblChamCong.getColumnCount(); i++) {
+                PdfPCell cell = new PdfPCell(new Phrase((String) tblChamCong.getColumnName(i), font));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pdfTable.addCell(cell);
+            }
+            // Thêm dữ liệu
+            for (int i = 0; i < tblChamCong.getRowCount(); i++) {
+                for (int j = 0; j < tblChamCong.getColumnCount(); j++) {
+                    PdfPCell cell = null;
+                    if (tblChamCong.getValueAt(i, j) instanceof Boolean) {
+                        cell = new PdfPCell(new Phrase(tblChamCong.getValueAt(i, j).toString().equalsIgnoreCase("true") ? "Có" : "Nghỉ", font));
+                    } else {
+                        cell = new PdfPCell(new Phrase(tblChamCong.getValueAt(i, j).toString(), font));
+                        
+                    }
+                    // cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdfTable.addCell(cell);
+                }
+            }
+            document.add(pdfTable);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+            JOptionPane.showMessageDialog(this, "Xuất thành công");
+        }
+    }
+    
+    private void xuLyChkLamViec() {
+        if (!chkLamViec.isSelected()) {
+            spnGioTangCa.setValue(0);
+        }
+    }
+    
     public boolean lamMoiBtn() {
         if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận") || btnTao.getText().equalsIgnoreCase("Xác Nhận")) {
             int i = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát khỏi chỉnh sửa không", "Xác nhận", JOptionPane.YES_NO_OPTION);
@@ -764,7 +877,7 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         }
         return true;
     }
-
+    
     private void lamMoiDong() {
         dchNgayChamCong.setEnabled(true);
         chkLamViec.setSelected(false);
@@ -775,19 +888,19 @@ public class ChamCongHanhChinh_GUI extends javax.swing.JPanel {
         lblThongBao.setText("");
         spnGioTangCa.setValue(0);
     }
-
+    
     private void lamMoiBang() {
         dtmChamCong.setRowCount(0);
         dtmNhanVien.setRowCount(0);
         dtmPhongBan.setRowCount(0);
     }
-
+    
     private void moNhapDuLieu() {
         chkLamViec.setEnabled(true);
         chkToanBo.setEnabled(true);
         spnGioTangCa.setEnabled(true);
     }
-
+    
     private void dongNhapDuLieu() {
         chkLamViec.setEnabled(false);
         chkToanBo.setEnabled(false);
