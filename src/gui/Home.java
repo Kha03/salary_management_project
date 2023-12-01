@@ -222,6 +222,13 @@ public class Home extends javax.swing.JFrame {
                 switch (subIndex) {
                     case 1 ->
                         hienThiTrang(new BaoCaoLuong_GUI());
+                    case 2 ->
+                        hienThiTrang(new BaoCaoBieuDoLuong_GUI());
+                    case 3 ->
+                        hienThiTrang(new ThongKeLuongNhanVien_GUI());
+                    default -> {
+                        hienThiTrang(new ThongKeHieuSuatCongNhan_GUI());
+                    }
                 }
             }
             default -> {
@@ -291,7 +298,7 @@ public class Home extends javax.swing.JFrame {
             {"Danh Mục", "Nhân Viên Hành Chính", "Nhân Viên Sản Xuất", "Phòng Ban", "Phân Xưởng", "Phụ Cấp Nhân Viên", "Hợp Đồng", "Sản Phẩm",},
             {"Xử Lý", "Cập Nhật Phụ Cấp Nhân Viên", "Cập Nhật Công Đoạn Sản Phẩm", "Phân Công Nhân Viên", "Chấm Công Hành Chính", "Chấm Công Sản Phẩm", "Tính Lương Hành Chính", "Tính Lương Sản Xuất"},
             {"Tìm Kiếm", "Tìm Kiếm Nhân Viên", "Tìm Kiếm Phân Công", "Tìm Kiếm Chấm Công", "Tìm Kiếm Bảng Lương", "Tìm Kiếm Hợp Đồng", "Tìm Kiếm Sản Phẩm", "Tìm Kiếm Công Đoạn"},
-            {"Báo Cáo Thống Kê", "Báo Cáo Khoản Chi Lương"},};
+            {"Báo Cáo Thống Kê", "Báo Cáo Khoản Chi Lương", "Biểu Đồ Lương Đơn Vị", "Thống Kê Lương Nhân Viên", "Thống Kê Hiệu Suất Công Nhân"},};
         menu1.setMenu(menuItems);
     }
 

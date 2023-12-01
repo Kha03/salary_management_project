@@ -247,7 +247,7 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
         fileChooser.setDialogTitle("Chọn nơi lưu");
         // Đặt tên mặc định cho tệp
         fileChooser.setSelectedFile(new File(tenFile));
-        // Đặt bộ lọc cho chỉ chọn file có đuôi .xlsx
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .pdf
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
         fileChooser.setFileFilter(filter);
         //Đường dẫn mặc định

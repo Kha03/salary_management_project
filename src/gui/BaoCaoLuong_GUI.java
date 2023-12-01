@@ -1,5 +1,31 @@
 package gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import connect.ConnectDB;
+import dao.TinhLuongCongNhan_Dao;
+import dao.TinhLuongHanhChanh_Dao;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,9 +38,10 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
     /**
      * Creates new form ChamCongHanhChinh
      */
-    public BaoCaoLuong_GUI() {
+    public BaoCaoLuong_GUI() throws SQLException {
         initComponents();
         setTable();
+        initCommon();
     }
 
     /**
@@ -27,39 +54,41 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblPhanXuong = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbThang = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        ychNam = new com.toedter.calendar.JYearChooser();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tblPhongBan = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
+        lblPhongBanChiNhieu = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        lblPhongBanChiIt = new javax.swing.JLabel();
+        lblChiPhuCapPb = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
+        lblChiLuongCoBan = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
+        lblTongChiLuongPb = new javax.swing.JLabel();
         jButton16 = new javax.swing.JButton();
+        lblChiTangCa = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
+        lblPhanXuongChiNhieu = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
+        lblPhanXuongChiIt = new javax.swing.JLabel();
+        lblChiPhuCapPx = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
+        lblTongLuongChiPx = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        lblChiLuongSanPham = new javax.swing.JLabel();
         jButton14 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1366, 741));
@@ -69,8 +98,8 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Phân Xưởng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhanXuong.setBackground(new java.awt.Color(184, 206, 224));
+        tblPhanXuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -78,11 +107,11 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        tblPhanXuong.setToolTipText("");
+        tblPhanXuong.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblPhanXuong.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblPhanXuong.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(tblPhanXuong);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 390, 874, 350));
 
@@ -96,20 +125,31 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jLabel18.setToolTipText("");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 60, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 50, -1));
+        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        cmbThang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbThangItemStateChanged(evt);
+            }
+        });
+        add(cmbThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 60, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Năm:");
         jLabel15.setToolTipText("");
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 60, -1));
-        add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 65, 20));
+
+        ychNam.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                ychNamPropertyChange(evt);
+            }
+        });
+        add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 65, 20));
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Phòng Ban", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane5.setPreferredSize(new java.awt.Dimension(462, 430));
 
-        jTable5.setBackground(new java.awt.Color(184, 206, 224));
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhongBan.setBackground(new java.awt.Color(184, 206, 224));
+        tblPhongBan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,22 +157,21 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable5.setToolTipText("");
-        jTable5.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable5.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable5.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(jTable5);
+        tblPhongBan.setToolTipText("");
+        tblPhongBan.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        tblPhongBan.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        tblPhongBan.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(tblPhongBan);
 
         add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 40, 874, 350));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(58, 94, 58)), "Phòng Ban", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(58, 94, 58))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel31.setText("Kế Toán");
-        jLabel31.setToolTipText("");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 130, 20));
+        lblPhongBanChiNhieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhongBanChiNhieu.setForeground(new java.awt.Color(0, 99, 0));
+        lblPhongBanChiNhieu.setToolTipText("");
+        jPanel1.add(lblPhongBanChiNhieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 200, 20));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel32.setText("Phòng Ban Chi Nhiều Nhất:");
@@ -144,17 +183,15 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jLabel33.setToolTipText("");
         jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 200, -1));
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel34.setText("Kế Toán");
-        jLabel34.setToolTipText("");
-        jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 20));
+        lblPhongBanChiIt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhongBanChiIt.setForeground(new java.awt.Color(0, 99, 0));
+        lblPhongBanChiIt.setToolTipText("");
+        jPanel1.add(lblPhongBanChiIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 200, 20));
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel35.setText("100.000.000");
-        jLabel35.setToolTipText("");
-        jPanel1.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, 20));
+        lblChiPhuCapPb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblChiPhuCapPb.setForeground(new java.awt.Color(0, 99, 0));
+        lblChiPhuCapPb.setToolTipText("");
+        jPanel1.add(lblChiPhuCapPb, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 260, 20));
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel36.setText("Chi Phụ Cấp:");
@@ -166,50 +203,51 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jLabel37.setToolTipText("");
         jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 100, -1));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel38.setText("100.000.000");
-        jLabel38.setToolTipText("");
-        jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 130, 20));
-
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel39.setText("Chi Lương Cơ Bản:");
         jLabel39.setToolTipText("");
         jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, -1));
 
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel40.setText("100.000.000");
-        jLabel40.setToolTipText("");
-        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 130, 20));
+        lblChiLuongCoBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblChiLuongCoBan.setForeground(new java.awt.Color(0, 99, 0));
+        lblChiLuongCoBan.setToolTipText("");
+        jPanel1.add(lblChiLuongCoBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 250, 20));
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel41.setText("Tổng Chi Lương Phòng Ban:");
         jLabel41.setToolTipText("");
         jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 200, -1));
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel42.setText("100.000.000");
-        jLabel42.setToolTipText("");
-        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 130, 20));
+        lblTongChiLuongPb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTongChiLuongPb.setForeground(new java.awt.Color(0, 99, 0));
+        lblTongChiLuongPb.setToolTipText("");
+        jPanel1.add(lblTongChiLuongPb, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 200, 20));
 
         jButton16.setBackground(new java.awt.Color(152, 249, 152));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton16.setText("Xuất Báo Cáo");
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 130, 30));
+
+        lblChiTangCa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblChiTangCa.setForeground(new java.awt.Color(0, 99, 0));
+        lblChiTangCa.setToolTipText("");
+        jPanel1.add(lblChiTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 290, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 340));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(58, 94, 58)), "Phân Xưởng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(58, 94, 58))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel43.setText("Kế Toán");
-        jLabel43.setToolTipText("");
-        jPanel2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 130, 20));
+        lblPhanXuongChiNhieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhanXuongChiNhieu.setForeground(new java.awt.Color(0, 99, 0));
+        lblPhanXuongChiNhieu.setToolTipText("");
+        jPanel2.add(lblPhanXuongChiNhieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 200, 20));
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel44.setText("Phân Xưởng Chi Nhiều Nhất:");
@@ -221,17 +259,15 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jLabel45.setToolTipText("");
         jPanel2.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 200, -1));
 
-        jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel46.setText("Kế Toán");
-        jLabel46.setToolTipText("");
-        jPanel2.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 20));
+        lblPhanXuongChiIt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhanXuongChiIt.setForeground(new java.awt.Color(0, 99, 0));
+        lblPhanXuongChiIt.setToolTipText("");
+        jPanel2.add(lblPhanXuongChiIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 200, 20));
 
-        jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel47.setText("100.000.000");
-        jLabel47.setToolTipText("");
-        jPanel2.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, 20));
+        lblChiPhuCapPx.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblChiPhuCapPx.setForeground(new java.awt.Color(0, 99, 0));
+        lblChiPhuCapPx.setToolTipText("");
+        jPanel2.add(lblChiPhuCapPx, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 210, 20));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel48.setText("Chi Phụ Cấp:");
@@ -241,25 +277,39 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jLabel53.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel53.setText("Tổng Chi Lương Phân Xưởng:");
         jLabel53.setToolTipText("");
-        jPanel2.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 200, -1));
+        jPanel2.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 200, -1));
 
-        jLabel54.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel54.setForeground(new java.awt.Color(0, 99, 0));
-        jLabel54.setText("100.000.000");
-        jLabel54.setToolTipText("");
-        jPanel2.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 130, 20));
+        lblTongLuongChiPx.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTongLuongChiPx.setForeground(new java.awt.Color(0, 99, 0));
+        lblTongLuongChiPx.setToolTipText("");
+        jPanel2.add(lblTongLuongChiPx, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 180, 20));
 
         jButton15.setBackground(new java.awt.Color(152, 249, 152));
         jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton15.setText("Xuất Báo Cáo");
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 130, 30));
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 130, 30));
 
         jButton17.setBackground(new java.awt.Color(152, 249, 152));
         jButton17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton17.setText("Xuất Báo Cáo Cả Hai");
         jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 170, 30));
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel40.setText("Chi Lương Sản Phẩm:");
+        jLabel40.setToolTipText("");
+        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, -1));
+
+        lblChiLuongSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblChiLuongSanPham.setForeground(new java.awt.Color(0, 99, 0));
+        lblChiLuongSanPham.setToolTipText("");
+        jPanel2.add(lblChiLuongSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 230, 20));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 420, 300));
 
@@ -271,17 +321,129 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jButton14.setDisabledIcon(null);
         add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbThangItemStateChanged
+        xuLyThayDoiNgayThang();
+    }//GEN-LAST:event_cmbThangItemStateChanged
+
+    private void ychNamPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ychNamPropertyChange
+        xuLyThayDoiNgayThang();
+    }//GEN-LAST:event_ychNamPropertyChange
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        xuLyXuatPdfPb();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        xuLyXuatPdfPx();
+    }//GEN-LAST:event_jButton15ActionPerformed
+    private void initCommon() throws SQLException {
+        ConnectDB.getInstance();
+        ConnectDB.connect();
+        df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
+        tinhLuongCongNhan_Dao = new TinhLuongCongNhan_Dao();
+        tinhLuongHanhChanh_Dao = new TinhLuongHanhChanh_Dao();
+    }
+
+    private void doDuLieuLuongPb(List<Object[]> luongHanhChanhs) {
+        for (Object[] lhc : luongHanhChanhs) {
+            Object[] object = {lhc[0], lhc[1], df.format(lhc[2]) + "VND", df.format(lhc[3]) + "VND", df.format(lhc[4]) + "VND", df.format(lhc[5]) + "VND"};
+            dtmLuongPhongBan.addRow(object);
+        }
+        this.luongHanhChanhs = luongHanhChanhs;
+    }
+
+    private void doDuLieuLuongPx(List<Object[]> luongCongNhans) {
+        for (Object[] lhc : luongCongNhans) {
+            Object[] object = {lhc[0], lhc[1], df.format(lhc[2]) + "VND", df.format(lhc[3]) + "VND", df.format(lhc[4]) + "VND"};
+            dtmLuongPhanXuong.addRow(object);
+        }
+        this.luongCongNhans = luongCongNhans;
+    }
+
+    private void layDuLieuLenLbl(List<Object[]> luongHanhChanhs, List<Object[]> luongCongNhans) {
+        float tongChiPhuCapPb = 0;
+        float tongChiPhuCapPx = 0;
+        float tongChiLuongCoBan = 0;
+        float tongChiLuongSp = 0;
+        float tongChiTangCa = 0;
+        float tongChiLuongPb = 0;
+        float tongChiLuongPx = 0;
+        if (luongHanhChanhs.size() != 0) {
+            float PbChiNhieu = (float) luongHanhChanhs.get(0)[5];
+            float PbChiIt = (float) luongHanhChanhs.get(0)[5];
+            String pbChiNhieuStr = (String) luongHanhChanhs.get(0)[1];
+            String pbChiItStr = (String) luongHanhChanhs.get(0)[1];
+            for (Object[] lhc : luongHanhChanhs) {
+                tongChiLuongCoBan += (float) lhc[2];
+                tongChiPhuCapPb += (float) lhc[3];
+                tongChiTangCa += (float) lhc[4];
+                tongChiLuongPb += (float) lhc[5];
+                if (PbChiNhieu < (float) lhc[5]) {
+                    PbChiNhieu = (float) lhc[5];
+                    pbChiNhieuStr = (String) lhc[1];
+                }
+                if (PbChiIt > (float) lhc[5]) {
+                    PbChiIt = (float) lhc[5];
+                    pbChiItStr = (String) lhc[1];
+                }
+            }
+            lblPhongBanChiNhieu.setText(pbChiNhieuStr);
+            lblPhongBanChiIt.setText(pbChiItStr);
+            lblChiPhuCapPb.setText(df.format(tongChiPhuCapPb) + "VND");
+            lblChiTangCa.setText(df.format(tongChiTangCa) + "VND");
+            lblChiLuongCoBan.setText(df.format(tongChiLuongCoBan) + "VND");
+            lblTongChiLuongPb.setText(df.format(tongChiLuongPb) + "VND");
+        } else {
+            lblPhongBanChiNhieu.setText("");
+            lblPhongBanChiIt.setText("");
+            lblChiPhuCapPb.setText("");
+            lblChiTangCa.setText("");
+            lblChiLuongCoBan.setText("");
+            lblTongChiLuongPb.setText("");
+        }
+        if (luongCongNhans.size() != 0) {
+            float PxChiNhieu = (float) luongCongNhans.get(0)[4];
+            float PxChiIt = (float) luongCongNhans.get(0)[4];
+            String pxChiNhieuStr = (String) luongCongNhans.get(0)[1];
+            String pxChiItStr = (String) luongCongNhans.get(0)[1];
+            for (Object[] lcn : luongCongNhans) {
+                tongChiLuongSp += (float) lcn[2];
+                tongChiPhuCapPx += (float) lcn[3];
+                tongChiLuongPx += (float) lcn[4];
+                if (PxChiNhieu < (float) lcn[4]) {
+                    PxChiNhieu = (float) lcn[4];
+                    pxChiNhieuStr = (String) lcn[1];
+                }
+                if (PxChiIt > (float) lcn[4]) {
+                    PxChiIt = (float) lcn[4];
+                    pxChiItStr = (String) lcn[1];
+                }
+            }
+            lblPhanXuongChiNhieu.setText(pxChiNhieuStr);
+            lblPhanXuongChiIt.setText(pxChiItStr);
+            lblChiPhuCapPx.setText(df.format(tongChiPhuCapPx) + "VND");
+            lblChiLuongSanPham.setText(df.format(tongChiLuongSp) + "VND");
+            lblTongLuongChiPx.setText(df.format(tongChiLuongPx) + "VND");
+        } else {
+            lblPhanXuongChiNhieu.setText("");
+            lblPhanXuongChiIt.setText("");
+            lblChiPhuCapPx.setText("");
+            lblChiLuongSanPham.setText("");
+            lblTongLuongChiPx.setText("");
+        }
+    }
+
     private void setTable() {
         //setTable ở đây
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
 
         //table phân xưởng
-        modelPhanXuong = new DefaultTableModel(
-                new Object[][]{
-                    {"123", "Điêu Khắc", "1232", "232", "1111111"},},
+        dtmLuongPhanXuong = new DefaultTableModel(
+                new Object[][]{},
                 new String[]{
-                    "Mã phân xưởng", "Tên phân xưởng", "Tiền phụ cấp", "Sản phẩm hoàn thành", "Tổng lương sản phẩm"}
+                    "Mã phân xưởng", "Tên phân xưởng", "Lương sản phẩm", "Tiền phụ cấp", "Tổng lương sản phẩm"}
         ) {
             Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
@@ -299,13 +461,11 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelPhanXuong);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblPhanXuong.setModel(dtmLuongPhanXuong);
+        tblPhanXuong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         //table Phòng ban
-        modelPhongBan = new DefaultTableModel(
-                new Object[][]{
-                    {"122", "Kế toán", "12334", "111", "100", "1000"},
-                    {"222", "Nhân sự", "12332", "111", "100", "1000"},},
+        dtmLuongPhongBan = new DefaultTableModel(
+                new Object[][]{},
                 new String[]{
                     "Mã phòng Ban", "Tên phòng ban", "Lương cơ bản", "Tiền phụ cấp", "Tiền tăng ca", "Tổng lương"}
         ) {
@@ -325,48 +485,241 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable5.setModel(modelPhongBan);
-        jTable5.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        tblPhongBan.setModel(dtmLuongPhongBan);
+        tblPhongBan.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
 
     }
 
-    private DefaultTableModel modelPhanXuong;
-    private DefaultTableModel modelPhongBan;
+    private void xuLyThayDoiNgayThang() {
+        String thang = (String) cmbThang.getSelectedItem();
+        int nam = ychNam.getValue();
+        dtmLuongPhanXuong.setRowCount(0);
+        dtmLuongPhongBan.setRowCount(0);
+        doDuLieuLuongPb(tinhLuongHanhChanh_Dao.layBaoCaoTongLuongPhongBanTheoThang(thang + "-" + nam));
+        doDuLieuLuongPx(tinhLuongCongNhan_Dao.layBaoCaoTongLuongPhanXuongTheoThang(thang + "-" + nam));
+        layDuLieuLenLbl(luongHanhChanhs, luongCongNhans);
+    }
+
+    private void xuLyXuatPdfPb() {
+        String thang = (String) cmbThang.getSelectedItem();
+        int nam = ychNam.getValue();
+        String tenFile;
+        tenFile = "Báo cáo lương phòng ban_" + thang + "-" + nam + ".pdf";
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .xlsx
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFilePdfPb(filePath, tenFile);
+        }
+    }
+
+    private void xuatFilePdfPb(String filePath, String tenFile) {
+        Document document = new Document(PageSize.A3.rotate());
+        tenFile = tenFile.substring(0, tenFile.lastIndexOf('.'));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            float[] columnWidths = {10f, 15f, 15f, 15f, 15f, 15f};
+            // Sử dụng font Arial
+//            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
+            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(baseFont, 12);
+            PdfPTable pdfTable = new PdfPTable(columnWidths);
+            pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
+            // Tiêu đề
+            Font titleFont = new Font(baseFont, 28, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph(tenFile, titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingAfter(18f); // Khoảng cách dưới tiêu đề
+            document.add(titleParagraph);
+            //thông tin phân công
+            String phongBanChiNhieu = String.format("Phòng ban chi nhiều nhất: %-40s", lblPhongBanChiNhieu.getText());
+            String phongBanChiIt = String.format("Phòng ban chi ít nhất: %-40s", lblPhongBanChiIt.getText());
+            String chiPhuCapPb = String.format("Chi phụ cấp: %-40s", lblChiPhuCapPb.getText());
+            String chiTangCa = String.format("Chi tăng ca: %-40s", lblChiTangCa.getText());
+            String chiLuongCoBan = String.format("Chi lương cơ bản: %-40s", lblChiLuongCoBan.getText());
+            String tongChiLuongPb = String.format("Tổng chi lương: %-35s", lblTongChiLuongPb.getText());
+            String thongTinLuong = phongBanChiNhieu + phongBanChiIt + "\n\n" + chiPhuCapPb + chiTangCa + chiLuongCoBan + tongChiLuongPb;
+            Paragraph thongTinLuongPr = new Paragraph(thongTinLuong, font);
+            thongTinLuongPr.setSpacingAfter(18f); // Khoảng cách dưới tiêu đề
+            document.add(thongTinLuongPr);
+            // Thêm cột
+            for (int i = 0; i < tblPhongBan.getColumnCount(); i++) {
+                PdfPCell cell = new PdfPCell(new Phrase((String) tblPhongBan.getColumnName(i), font));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pdfTable.addCell(cell);
+            }
+            // Thêm dữ liệu
+            for (int i = 0; i < tblPhongBan.getRowCount(); i++) {
+                for (int j = 0; j < tblPhongBan.getColumnCount(); j++) {
+                    PdfPCell cell = new PdfPCell(new Phrase(tblPhongBan.getValueAt(i, j).toString(), font));
+                    // cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdfTable.addCell(cell);
+                }
+            }
+            document.add(pdfTable);
+            // Dòng "Giám đốc ký tên"
+            Font directorFont = new Font(baseFont, 18, Font.BOLDITALIC);
+            Paragraph directorParagraph = new Paragraph("\n\n\n\n\nGiám đốc ký tên", directorFont);
+            directorParagraph.setAlignment(Element.ALIGN_RIGHT);
+            document.add(directorParagraph);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+            JOptionPane.showMessageDialog(this, "Xuất thành công");
+        }
+    }
+
+    private void xuLyXuatPdfPx() {
+        String thang = (String) cmbThang.getSelectedItem();
+        int nam = ychNam.getValue();
+        String tenFile;
+        tenFile = "Báo cáo lương phân xưởng_" + thang + "-" + nam + ".pdf";
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .xlsx
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFilePdfPx(filePath, tenFile);
+        }
+    }
+
+    private void xuatFilePdfPx(String filePath, String tenFile) {
+        Document document = new Document(PageSize.A3.rotate());
+        tenFile = tenFile.substring(0, tenFile.lastIndexOf('.'));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            float[] columnWidths = {10f, 15f, 15f, 15f, 15f};
+            // Sử dụng font Arial
+//            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
+            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(baseFont, 12);
+            PdfPTable pdfTable = new PdfPTable(columnWidths);
+            pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
+            // Tiêu đề
+            Font titleFont = new Font(baseFont, 28, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph(tenFile, titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingAfter(18f); // Khoảng cách dưới tiêu đề
+            document.add(titleParagraph);
+            //thông tin phân công
+            String phanXuongChiNhieu = String.format("Phân xưởng chi nhiều nhất: %-40s", lblPhanXuongChiNhieu.getText());
+            String phanXuongChiIt = String.format("Phân xưởng chi ít nhất: %-40s", lblPhanXuongChiIt.getText());
+            String chiPhuCapPx = String.format("Chi phụ cấp: %-40s", lblChiPhuCapPx.getText());
+            String chiLuongSanPham = String.format("Chi lương sản phẩm: %-40s", lblChiLuongSanPham.getText());
+            String tongChiLuongPx = String.format("Tổng chi lương: %-35s", lblTongLuongChiPx.getText());
+            String thongTinLuong = phanXuongChiNhieu + phanXuongChiIt + "\n\n" + chiPhuCapPx + chiLuongSanPham + tongChiLuongPx;
+            Paragraph thongTinLuongPr = new Paragraph(thongTinLuong, font);
+            thongTinLuongPr.setSpacingAfter(18f); // Khoảng cách dưới tiêu đề
+            document.add(thongTinLuongPr);
+            // Thêm cột
+            for (int i = 0; i < tblPhanXuong.getColumnCount(); i++) {
+                PdfPCell cell = new PdfPCell(new Phrase((String) tblPhanXuong.getColumnName(i), font));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pdfTable.addCell(cell);
+            }
+            // Thêm dữ liệu
+            for (int i = 0; i < tblPhanXuong.getRowCount(); i++) {
+                for (int j = 0; j < tblPhanXuong.getColumnCount(); j++) {
+                    PdfPCell cell = new PdfPCell(new Phrase(tblPhanXuong.getValueAt(i, j).toString(), font));
+                    // cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdfTable.addCell(cell);
+                }
+            }
+            document.add(pdfTable);
+            // Dòng "Giám đốc ký tên"
+            Font directorFont = new Font(baseFont, 18, Font.BOLDITALIC);
+            Paragraph directorParagraph = new Paragraph("\n\n\n\n\nGiám đốc ký tên", directorFont);
+            directorParagraph.setAlignment(Element.ALIGN_RIGHT);
+            document.add(directorParagraph);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+            JOptionPane.showMessageDialog(this, "Xuất thành công");
+        }
+    }
+    private DefaultTableModel dtmLuongPhanXuong;
+    private DefaultTableModel dtmLuongPhongBan;
+    private TinhLuongHanhChanh_Dao tinhLuongHanhChanh_Dao;
+    private TinhLuongCongNhan_Dao tinhLuongCongNhan_Dao;
+    private DecimalFormat df;
+    private List<Object[]> luongHanhChanhs;
+    private List<Object[]> luongCongNhans;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbThang;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
+    private javax.swing.JLabel lblChiLuongCoBan;
+    private javax.swing.JLabel lblChiLuongSanPham;
+    private javax.swing.JLabel lblChiPhuCapPb;
+    private javax.swing.JLabel lblChiPhuCapPx;
+    private javax.swing.JLabel lblChiTangCa;
+    private javax.swing.JLabel lblPhanXuongChiIt;
+    private javax.swing.JLabel lblPhanXuongChiNhieu;
+    private javax.swing.JLabel lblPhongBanChiIt;
+    private javax.swing.JLabel lblPhongBanChiNhieu;
+    private javax.swing.JLabel lblTongChiLuongPb;
+    private javax.swing.JLabel lblTongLuongChiPx;
+    private javax.swing.JTable tblPhanXuong;
+    private javax.swing.JTable tblPhongBan;
+    private com.toedter.calendar.JYearChooser ychNam;
     // End of variables declaration//GEN-END:variables
 }
