@@ -1,12 +1,30 @@
 package gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import entity.NhanVienSanXuat;
 import entity.PhanCongSanXuat;
 import java.beans.PropertyVetoException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +37,7 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form demo
+     *
      * @param phanCongSanXuat
      */
     public ChiTietPhanCong_GUI(PhanCongSanXuat phanCongSanXuat) {
@@ -185,14 +204,14 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        xuLyXuatPdf();
     }//GEN-LAST:event_jButton14ActionPerformed
     private void initCommon(PhanCongSanXuat phanCongSanXuat) {
         dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         doDuLieuLbl(phanCongSanXuat);
         doDuLieuNhanVien(phanCongSanXuat.getNhanVienSanXuat());
     }
-    
+
     private void setTable() {
         dtmNhanVien = new DefaultTableModel(
                 new Object[][]{},
@@ -208,12 +227,12 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
                 false,
                 false,
                 false,};
-            
+
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-            
+
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
@@ -222,7 +241,7 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         tblNhanVien.setModel(dtmNhanVien);
         tblNhanVien.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
-    
+
     private void doDuLieuLbl(PhanCongSanXuat phanCongSanXuat) {
         lblMaPhanCong.setText(phanCongSanXuat.getMaPhanCong());
         lblPhanXuong.setText(phanCongSanXuat.getPhanXuong().getTenPhanXuong());
@@ -232,13 +251,99 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         lblSoNhanVien.setText(String.valueOf(phanCongSanXuat.getNhanVienSanXuat().size()));
         lblNgay.setText(dinhDangNgay.format(phanCongSanXuat.getNgayPhanCong()));
     }
-    
+
     private void doDuLieuNhanVien(List<NhanVienSanXuat> nhanVienSanXuats) {
         int i = 1;
         for (NhanVienSanXuat nhanVienSanXuat : nhanVienSanXuats) {
             Object[] object = {i, nhanVienSanXuat.getHoVaTen(), nhanVienSanXuat.getMaNhanVienSanXuat()};
             i++;
             dtmNhanVien.addRow(object);
+        }
+    }
+
+    private void xuLyXuatPdf() {
+        String ngay = lblNgay.getText().replace('/', '_');
+        String tenPhanCong = lblMaPhanCong.getText() + "-" + lblPhanXuong.getText() + ngay;
+        String tenFile = tenPhanCong + ".pdf";
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .pdf
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFilePdf(filePath, tenFile);
+        }
+    }
+
+    private void xuatFilePdf(String filePath, String tenFile) {
+        Document document = new Document(PageSize.A3.rotate());
+        tenFile = tenFile.substring(0, tenFile.lastIndexOf('.'));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            float[] columnWidths = {5f, 15f, 15f};
+            // Sử dụng font Arial
+//            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
+            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(baseFont, 12);
+            PdfPTable pdfTable = new PdfPTable(columnWidths);
+            pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
+            // Tiêu đề
+            Font titleFont = new Font(baseFont, 28, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph(tenFile, titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingAfter(25f); // Khoảng cách dưới tiêu đề
+            document.add(titleParagraph);
+            //thông tin phân công
+            String maPhanCong = String.format("Mã phân công: %-40s", lblMaPhanCong.getText());
+            String maSanPham = String.format("Mã sản phẩm: %-40s", lblMaSanPham.getText());
+            String congDoan = String.format("Công đoạn: %-40s", lblCongDoan.getText());
+            String phanXuong = String.format("Phân xưởng: %-40s", lblPhanXuong.getText());
+            String tenSanPham = String.format("Sản phẩm: %-40s", lblTenSanPham.getText());
+            String soNhanVien = String.format("Số nhân viên: %-35s", lblSoNhanVien.getText());
+            String ngay = String.format("Ngày phân công: %-35s", lblNgay.getText());
+
+            String thongTinSanPham = maPhanCong + maSanPham + congDoan + "\n\n" + phanXuong + tenSanPham + soNhanVien + ngay;
+
+            Paragraph thongTinSanPhamPr = new Paragraph(thongTinSanPham, font);
+            thongTinSanPhamPr.setSpacingAfter(18f); // Khoảng cách dưới tiêu đề
+            document.add(thongTinSanPhamPr);
+            // Thêm cột
+            for (int i = 0; i < tblNhanVien.getColumnCount(); i++) {
+                PdfPCell cell = new PdfPCell(new Phrase((String) tblNhanVien.getColumnName(i), font));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pdfTable.addCell(cell);
+            }
+            // Thêm dữ liệu
+            for (int i = 0; i < tblNhanVien.getRowCount(); i++) {
+                for (int j = 0; j < tblNhanVien.getColumnCount(); j++) {
+                    PdfPCell cell = new PdfPCell(new Phrase(tblNhanVien.getValueAt(i, j).toString(), font));
+                    // cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdfTable.addCell(cell);
+                }
+            }
+            document.add(pdfTable);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+            JOptionPane.showMessageDialog(this, "Xuất thành công");
         }
     }
     private DefaultTableModel dtmNhanVien;

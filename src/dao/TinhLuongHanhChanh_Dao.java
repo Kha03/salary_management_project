@@ -82,6 +82,40 @@ public class TinhLuongHanhChanh_Dao {
         return dsLuong;
     }
 
+    public List<Object[]> layBaoCaoTongLuongPhongBanTheoThang(String thang) {
+        ArrayList<Object[]> obArr = new ArrayList<Object[]>();
+        ConnectDB.getInstance();
+        Connection connection = ConnectDB.getConnection();
+        try {
+            String sql = "SELECT PhongBan.maPhongBan,PhongBan.tenPhongBan,"
+                    + " SUM(LuongHanhChinh.luongCoBan),"
+                    + " SUM(LuongHanhChinh.tienPhuCap),"
+                    + " SUM(LuongHanhChinh.tienTangCa),"
+                    + " SUM(LuongHanhChinh.luongThucLanh)"
+                    + " FROM LuongHanhChinh"
+                    + " INNER JOIN NhanVienHanhChinh ON LuongHanhChinh.maNhanVienHanhChinh = NhanVienHanhChinh.maNhanVienHanhChinh"
+                    + " INNER JOIN PhongBan ON NhanVienHanhChinh.maPhongBan = PhongBan.maPhongBan"
+                    + " WHERE LuongHanhChinh.thang = '" + thang + "'"
+                    + " GROUP BY PhongBan.maPhongBan,PhongBan.tenPhongBan";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                Object[] ob = new Object[6];
+                ob[0] = resultSet.getString(1);
+                ob[1] = resultSet.getString(2);
+                ob[2] = resultSet.getFloat(3);
+                ob[3] = resultSet.getFloat(4);
+                ob[4] = resultSet.getFloat(5);
+                ob[5] = resultSet.getFloat(6);
+                obArr.add(ob);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return obArr;
+    }
+
     public boolean taoBangLuong(LuongHanhChanh luongHanhChanh) {
         try {
             ConnectDB.getInstance();

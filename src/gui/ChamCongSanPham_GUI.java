@@ -1,20 +1,41 @@
 package gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import connect.ConnectDB;
 import dao.ChamCongSanPham_Dao;
 import dao.CongDoan_Dao;
 import dao.PhanXuong_Dao;
 import dao.SanPham_Dao;
 import entity.ChamCongSanPham;
+import entity.CongDoan;
 import entity.PhanXuong;
 import entity.SanPham;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,7 +81,6 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         lblSanPham = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        lblCongDoan = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         lblTienLuong = new javax.swing.JLabel();
         lblDonGia = new javax.swing.JLabel();
@@ -70,10 +90,15 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         btnLamMoi = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         txtSoLuong = new javax.swing.JTextField();
-        lblTongLuongPx = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         lblTenNhanVien = new javax.swing.JLabel();
         lblThongBao = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        lblSoLuongCdCham = new javax.swing.JLabel();
+        lblsoLuongCdTruoc = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        lblCongDoanTruoc = new javax.swing.JLabel();
+        cmbCongDoan = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1200, 674));
         setPreferredSize(new java.awt.Dimension(1200, 674));
@@ -134,7 +159,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblChamCong);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 1090, 480));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 1090, 450));
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59)));
 
@@ -178,7 +203,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Chấm Công Sản Phẩm");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1300, 40));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Tiền Lương:");
@@ -226,14 +251,9 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         add(lblSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 170, 20));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel22.setText("Công Đoạn:");
+        jLabel22.setText("Số Lượng Công Đoạn Trước:");
         jLabel22.setToolTipText("");
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 90, -1));
-
-        lblCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCongDoan.setForeground(new java.awt.Color(0, 99, 0));
-        lblCongDoan.setToolTipText("");
-        add(lblCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 170, 20));
+        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 210, -1));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel27.setText("Số Lượng:");
@@ -260,7 +280,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 btnXoaActionPerformed(evt);
             }
         });
-        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 220, 90, 30));
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 260, 90, 30));
 
         btnCham.setBackground(new java.awt.Color(152, 249, 152));
         btnCham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -273,7 +293,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 btnChamActionPerformed(evt);
             }
         });
-        add(btnCham, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 220, 140, 30));
+        add(btnCham, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 260, 140, 30));
 
         btnXuat.setBackground(new java.awt.Color(152, 249, 152));
         btnXuat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -284,7 +304,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 btnXuatActionPerformed(evt);
             }
         });
-        add(btnXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 180, 180, 30));
+        add(btnXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 220, 180, 30));
 
         btnLamMoi.setBackground(new java.awt.Color(152, 249, 152));
         btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -296,7 +316,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 btnLamMoiActionPerformed(evt);
             }
         });
-        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 220, 120, 30));
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 260, 120, 30));
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel30.setText("Đơn Giá:");
@@ -310,18 +330,11 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSoLuongKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSoLuongKeyTyped(evt);
+            }
         });
-        add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 80, -1));
-
-        lblTongLuongPx.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTongLuongPx.setForeground(new java.awt.Color(0, 99, 0));
-        lblTongLuongPx.setToolTipText("");
-        add(lblTongLuongPx, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 140, 20));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("Tổng Lương Phân Xưởng:");
-        jLabel16.setToolTipText("");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 180, -1));
+        add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, 80, -1));
 
         lblTenNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTenNhanVien.setForeground(new java.awt.Color(0, 99, 0));
@@ -331,11 +344,57 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
         lblThongBao.setToolTipText("");
-        add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 140, 350, 30));
+        add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 350, 30));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setText("Công Đoạn:");
+        jLabel23.setToolTipText("");
+        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 90, -1));
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel28.setText("Số Lượng Chấm:");
+        jLabel28.setToolTipText("");
+        add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 120, -1));
+
+        lblSoLuongCdCham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSoLuongCdCham.setForeground(new java.awt.Color(0, 99, 0));
+        lblSoLuongCdCham.setToolTipText("");
+        add(lblSoLuongCdCham, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 80, 20));
+
+        lblsoLuongCdTruoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblsoLuongCdTruoc.setForeground(new java.awt.Color(0, 99, 0));
+        lblsoLuongCdTruoc.setToolTipText("");
+        add(lblsoLuongCdTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 140, 90, 20));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setText("Công Đoạn Trước:");
+        jLabel24.setToolTipText("");
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 100, 130, -1));
+
+        lblCongDoanTruoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCongDoanTruoc.setForeground(new java.awt.Color(0, 99, 0));
+        lblCongDoanTruoc.setToolTipText("");
+        add(lblCongDoanTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 100, 210, 20));
+
+        cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbCongDoan.setEnabled(false);
+        cmbCongDoan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCongDoanItemStateChanged(evt);
+            }
+        });
+        cmbCongDoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCongDoanActionPerformed(evt);
+            }
+        });
+        add(cmbCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
-        // TODO add your handling code here:
+        xuLyXuatPdf();
     }//GEN-LAST:event_btnXuatActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -348,11 +407,11 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
-        xuLyThayDoiTblPxSp();
+        xuLyThayDoiTblPxSp(true);
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
     private void tblPhanXuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhanXuongMouseClicked
-        xuLyThayDoiTblPxSp();
+        xuLyThayDoiTblPxSp(true);
     }//GEN-LAST:event_tblPhanXuongMouseClicked
 
     private void dchNgayChamCongPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dchNgayChamCongPropertyChange
@@ -371,13 +430,13 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
 
     private void tblSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblSanPhamKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            xuLyThayDoiTblPxSp();
+            xuLyThayDoiTblPxSp(true);
         }
     }//GEN-LAST:event_tblSanPhamKeyReleased
 
     private void tblPhanXuongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPhanXuongKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            xuLyThayDoiTblPxSp();
+            xuLyThayDoiTblPxSp(true);
         }
     }//GEN-LAST:event_tblPhanXuongKeyReleased
 
@@ -394,6 +453,21 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
             btnCham.doClick();
         }
     }//GEN-LAST:event_txtSoLuongKeyPressed
+
+    private void cmbCongDoanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCongDoanItemStateChanged
+        xuLyThayDoiCmbCongDoan();
+    }//GEN-LAST:event_cmbCongDoanItemStateChanged
+
+    private void cmbCongDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCongDoanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCongDoanActionPerformed
+
+    private void txtSoLuongKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoLuongKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSoLuongKeyTyped
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -402,6 +476,8 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         chamCongSanPham_Dao = new ChamCongSanPham_Dao();
         sanPham_Dao = new SanPham_Dao();
         phanXuong_Dao = new PhanXuong_Dao();
+        congDoan_Dao = new CongDoan_Dao();
+        isAdjusting = false;
         layNgayHienTai();
         doDuLieu();
     }
@@ -445,24 +521,47 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         this.chamCongSanPhams = chamCongSanPhams;
     }
 
+    private void doDuLieuCongDoan(List<CongDoan> congDoans) {
+        this.congDoans = congDoans;
+        isAdjusting = true;
+        for (CongDoan congDoan : congDoans) {
+            cmbCongDoan.addItem(congDoan.getTenCongDoan());
+        }
+        cmbCongDoan.setSelectedIndex(-1);
+        isAdjusting = false;
+    }
+
     private void doDuLieu() {
         doDuLieuPhanXuong(phanXuong_Dao.getDanhSachPhanXuong());
         doDuLieuSanPham(sanPham_Dao.getDanhSachSanPham());
-        doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate()));
+        doDuLieuChamCong(ganThongTin(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate())));
     }
 
     public void layDuLieuLenText() {
         // Lấy vị trí hàng được chọn trong bảng và cho dữ liệu lên textfield
         int hang = tblChamCong.getSelectedRow();
-        if (hang != -1) {
+        if (hang != -1 && btnCham.getText().equalsIgnoreCase("Chấm Công")) {
+            isAdjusting = true;
+            cmbCongDoan.removeAllItems();
+//            congDoans = null;
+            CongDoan congDoan = congDoan_Dao.layCongDoanTruoc(chamCongSanPhams.get(hang).getCongDoan().getMaCongDoan());
+            //lấy công đoạn trước để hiển thị lên lable 
+            if (congDoan.getCongDoanTruoc().getTenCongDoan() == null) {
+                lblCongDoanTruoc.setText("Không có");
+            } else {
+                lblCongDoanTruoc.setText(congDoan.getCongDoanTruoc().getTenCongDoan());
+            }
+            lblSoLuongCdCham.setText(String.valueOf(congDoan.getTienDo()));
+            lblsoLuongCdTruoc.setText(String.valueOf(congDoan.getCongDoanTruoc().getTienDo()));
+            cmbCongDoan.addItem((String) tblChamCong.getValueAt(hang, 6));
             lblPhanXuong.setText((String) tblChamCong.getValueAt(hang, 1));
             lblTenNhanVien.setText((String) tblChamCong.getValueAt(hang, 2));
             lblMaNhanVien.setText((String) tblChamCong.getValueAt(hang, 3));
             lblSanPham.setText((String) tblChamCong.getValueAt(hang, 5));
-            lblCongDoan.setText((String) tblChamCong.getValueAt(hang, 6));
-            lblDonGia.setText((String)tblChamCong.getValueAt(hang, 7));
+            lblDonGia.setText((String) tblChamCong.getValueAt(hang, 7));
             txtSoLuong.setText(String.valueOf(tblChamCong.getValueAt(hang, 8)));
-            lblTienLuong.setText((String)tblChamCong.getValueAt(hang, 9));
+            lblTienLuong.setText((String) tblChamCong.getValueAt(hang, 9));
+            isAdjusting = false;
         }
     }
 
@@ -578,27 +677,28 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     private boolean chamCongSanPham() {
         int i = JOptionPane.showConfirmDialog(this, "Xác Nhận Chấm Công", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (i == JOptionPane.YES_OPTION) {
-            int[] soNhanVienChams = tblChamCong.getSelectedRows();
-            int soNhanVien = soNhanVienChams.length;
-            int soLuongDuocCham = soNhanVienChams.length;
-            float tinhLuong;
-            int soLuong = Integer.parseInt(txtSoLuong.getText());
-            for (int j = 0; j < soNhanVien; j++) {
-                tinhLuong = soLuong * chamCongSanPhams.get(soNhanVienChams[j]).getDonGia();
-                if (!chamCongSanPham_Dao.chamCongSanPham(chamCongSanPhams.get(soNhanVienChams[j]).getMaCongSanPham(),
-                        soLuong, tinhLuong)) {
-                    soLuongDuocCham--;
+            if (kiemTraSoLuongCham()) {
+                int[] soNhanVienChams = tblChamCong.getSelectedRows();
+                int soNhanVien = soNhanVienChams.length;
+                int soLuongDuocCham = soNhanVienChams.length;
+                float tinhLuong;
+                int soLuong = Integer.parseInt(txtSoLuong.getText());
+                for (int j = 0; j < soNhanVien; j++) {
+                    tinhLuong = soLuong * chamCongSanPhams.get(soNhanVienChams[j]).getDonGia();
+                    if (!chamCongSanPham_Dao.chamCongSanPham(chamCongSanPhams.get(soNhanVienChams[j]).getMaCongSanPham(),
+                            soLuong, tinhLuong)) {
+                        soLuongDuocCham--;
+                    }
+                    capNhatTienDo(soNhanVienChams[j], soLuong);
                 }
-                capNhatTienDo(soNhanVienChams[j], soLuong);
+                JOptionPane.showMessageDialog(this, soLuongDuocCham + " Nhân viên được chấm công");
+                return true;
             }
-            JOptionPane.showMessageDialog(this, soLuongDuocCham + " Nhân viên được chấm công");
-            return true;
         }
         return false;
     }
 
     private void capNhatTienDo(int viTri, int soLuong) {
-        CongDoan_Dao congDoan_Dao = new CongDoan_Dao();
         String maCongDoan = chamCongSanPhams.get(viTri).getCongDoan().getMaCongDoan();
         int tienDoHienTai = congDoan_Dao.layTienDo(maCongDoan);
         int tienDoCham = soLuong;
@@ -610,6 +710,36 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
             int tienDoMoi = tienDoCham - tienDoNhanVien;
             congDoan_Dao.capNhatTienDo(maCongDoan, tienDoHienTai + tienDoMoi);
         }
+        this.congDoans = congDoan_Dao.getDanhSachCongDoanTheoSanPham(sanPhams.get(tblSanPham.getSelectedRow()).getMaSanPham());
+    }
+
+    private boolean kiemTraChonChamCong() {
+        if (tblSanPham.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm để chấm");
+            return false;
+        }
+        if (cmbCongDoan.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn công đoạn để chấm");
+            return false;
+        }
+        if (txtSoLuong.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập số lượng chấm");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean kiemTraSoLuongCham() {
+        int soLuongCham = Integer.parseInt(txtSoLuong.getText()) * tblChamCong.getSelectedRows().length;
+        int soLuongCongDoanTruoc = Integer.parseInt(lblsoLuongCdTruoc.getText());
+        int soLuongCongDoanCham = Integer.parseInt(lblSoLuongCdCham.getText());
+        if (!lblCongDoanTruoc.getText().equalsIgnoreCase("Không có")) {
+            if (soLuongCham + soLuongCongDoanCham > soLuongCongDoanTruoc) {
+                JOptionPane.showMessageDialog(this, "Số lượng chấm vượt quá số lượng hoàn thành công đoạn trước");
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean xoaChamCong(int[] hang) {
@@ -624,22 +754,32 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         return true;
     }
 
+    private List<ChamCongSanPham> ganThongTin(List<ChamCongSanPham> chamCongSanPhams) {
+        this.ChamCongSanPhamChinhs = chamCongSanPhams;
+        return chamCongSanPhams;
+    }
+
     private void xuLyChamCong() {
         if (btnCham.getText().equalsIgnoreCase("Chấm Công")) {
             btnCham.setText("Xác Nhận");
             btnXoa.setEnabled(false);
             btnXuat.setEnabled(false);
             txtSoLuong.setEditable(true);
+            cmbCongDoan.setEnabled(true);
             lamMoiDong();
         } else {
             if (kiemTraNgay()) {
-                if (chamCongSanPham()) {
-                    dtmChamCong.setRowCount(0);
-                    doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate()));
-                    txtSoLuong.setEditable(false);
-                    btnXoa.setEnabled(true);
-                    btnXuat.setEnabled(true);
-                    btnCham.setText("Chấm Công");
+                if (kiemTraChonChamCong()) {
+                    if (chamCongSanPham()) {
+                        dtmChamCong.setRowCount(0);
+                        xuLyThayDoiTblPxSp(false);
+                        xuLyThayDoiCmbCongDoan();
+                        txtSoLuong.setEditable(false);
+                        cmbCongDoan.setEnabled(false);
+                        btnXoa.setEnabled(true);
+                        btnXuat.setEnabled(true);
+                        btnCham.setText("Chấm Công");
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Sai định dạng");
@@ -656,26 +796,141 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(this, "Xóa thành công");
                 }
                 dtmChamCong.setRowCount(0);
-                doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate()));
+                doDuLieuChamCong(ganThongTin(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate())));
             }
         } else {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng cần xóa!");
         }
     }
 
-    private void xuLyThayDoiTblPxSp() {
+    private void xuLyThayDoiTblPxSp(boolean suKien) {
         int hangPx = tblPhanXuong.getSelectedRow();
         int hangSp = tblSanPham.getSelectedRow();
         dtmChamCong.setRowCount(0);
         if (kiemTraNgay()) {
             if (hangPx != -1 && hangSp != -1) {
-                doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoPxSp(sanPhams.get(hangSp).getMaSanPham(),
-                        phanXuongs.get(hangPx).getMaPhanXuong(), dchNgayChamCong.getDate()));
+                lblSanPham.setText(sanPhams.get(hangSp).getTenSanPham());
+                lblPhanXuong.setText(phanXuongs.get(hangPx).getTenPhanXuong());
+                doDuLieuChamCong(ganThongTin(chamCongSanPham_Dao.getChamCongSanPhamTheoPxSp(sanPhams.get(hangSp).getMaSanPham(),
+                        phanXuongs.get(hangPx).getMaPhanXuong(), dchNgayChamCong.getDate())));
+                if (suKien) {
+                    cmbCongDoan.removeAllItems();
+                    doDuLieuCongDoan(congDoan_Dao.getDanhSachCongDoanTheoSanPham(sanPhams.get(hangSp).getMaSanPham()));
+                }
             } else if (hangPx != -1) {
-                doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoPhanXuong(phanXuongs.get(hangPx).getMaPhanXuong(), dchNgayChamCong.getDate()));
+                lblPhanXuong.setText(phanXuongs.get(hangPx).getTenPhanXuong());
+                doDuLieuChamCong(ganThongTin(chamCongSanPham_Dao.getChamCongSanPhamTheoPhanXuong(phanXuongs.get(hangPx).getMaPhanXuong(), dchNgayChamCong.getDate())));
             } else if (hangSp != -1) {
-                doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoSanPham(sanPhams.get(hangSp).getMaSanPham(), dchNgayChamCong.getDate()));
+                lblSanPham.setText(sanPhams.get(hangSp).getTenSanPham());
+                doDuLieuChamCong(ganThongTin(chamCongSanPham_Dao.getChamCongSanPhamTheoSanPham(sanPhams.get(hangSp).getMaSanPham(), dchNgayChamCong.getDate())));
+                if (suKien) {
+                    cmbCongDoan.removeAllItems();
+                    doDuLieuCongDoan(congDoan_Dao.getDanhSachCongDoanTheoSanPham(sanPhams.get(hangSp).getMaSanPham()));
+                }
             }
+        }
+    }
+
+    private void xuLyThayDoiCmbCongDoan() {
+        int i = cmbCongDoan.getSelectedIndex();
+        if (i != -1 && congDoans != null && !isAdjusting) {
+            if (congDoans.get(i).getCongDoanTruoc().getMaCongDoan() != null) {
+                CongDoan congDoanTruoc = congDoans.get(i).getCongDoanTruoc();
+                lblCongDoanTruoc.setText(congDoanTruoc.getTenCongDoan());
+                lblSoLuongCdCham.setText(String.valueOf(congDoans.get(i).getTienDo()));
+                lblsoLuongCdTruoc.setText(String.valueOf(congDoanTruoc.getTienDo()));
+            } else {
+                lblCongDoanTruoc.setText("Không có");
+                lblSoLuongCdCham.setText(String.valueOf(congDoans.get(i).getTienDo()));
+                lblsoLuongCdTruoc.setText("0");
+            }
+            List<ChamCongSanPham> chamCongSanPhamTam = new ArrayList<>();
+            String maCongDoan = congDoans.get(i).getMaCongDoan();
+            for (ChamCongSanPham ChamCongSanPham : this.ChamCongSanPhamChinhs) {
+                if (ChamCongSanPham.getCongDoan().getMaCongDoan().equalsIgnoreCase(maCongDoan)) {
+                    chamCongSanPhamTam.add(ChamCongSanPham);
+                }
+            }
+            dtmChamCong.setRowCount(0);
+            doDuLieuChamCong(chamCongSanPhamTam);
+        }
+    }
+
+    private void xuLyXuatPdf() {
+        String ngay = dinhDangNgay.format(dchNgayChamCong.getDate()).replace('/', '_');
+        String tenChamCong = "Chấm công sản phẩm" + "-" + ngay;
+        String tenFile = tenChamCong + ".pdf";
+        // Tạo hộp thoại chọn tệp
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu");
+        // Đặt tên mặc định cho tệp
+        fileChooser.setSelectedFile(new File(tenFile));
+        // Đặt bộ lọc cho chỉ chọn file có đuôi .pdf
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Pdf Files (*.pdf)", "pdf");
+        fileChooser.setFileFilter(filter);
+        //Đường dẫn mặc định
+        fileChooser.setCurrentDirectory(new File("D:\\"));
+        // Hiển thị hộp thoại chọn tệp và kiểm tra xem người dùng đã chọn đường dẫn hay chưa
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Lấy đường dẫn đã chọn
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            // Thêm đuôi .xlsx nếu người dùng không nhập
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            // In đường dẫn để kiểm tra
+            xuatFilePdf(filePath, tenFile);
+        }
+    }
+
+    private void xuatFilePdf(String filePath, String tenFile) {
+        Document document = new Document(PageSize.A3.rotate());
+        tenFile = tenFile.substring(0, tenFile.lastIndexOf('.'));
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+            document.open();
+            float[] columnWidths = {5f, 10f, 15f, 10f, 10f, 10f, 10f, 10f, 10f, 10f};
+            // Sử dụng font Arial
+//            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
+            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(baseFont, 12);
+            PdfPTable pdfTable = new PdfPTable(columnWidths);
+            pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
+            // Tiêu đề
+            Font titleFont = new Font(baseFont, 28, Font.BOLD);
+            Paragraph titleParagraph = new Paragraph(tenFile, titleFont);
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            titleParagraph.setSpacingAfter(25f); // Khoảng cách dưới tiêu đề
+            document.add(titleParagraph);
+            // Thêm cột
+            for (int i = 0; i < tblChamCong.getColumnCount(); i++) {
+                PdfPCell cell = new PdfPCell(new Phrase((String) tblChamCong.getColumnName(i), font));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                pdfTable.addCell(cell);
+            }
+            // Thêm dữ liệu
+            for (int i = 0; i < tblChamCong.getRowCount(); i++) {
+                for (int j = 0; j < tblChamCong.getColumnCount(); j++) {
+                    PdfPCell cell = null;
+                    if (tblChamCong.getValueAt(i, j) instanceof Boolean) {
+                        cell = new PdfPCell(new Phrase(tblChamCong.getValueAt(i, j).toString().equalsIgnoreCase("true") ? "Có" : "Nghỉ", font));
+                    } else {
+                        cell = new PdfPCell(new Phrase(tblChamCong.getValueAt(i, j).toString(), font));
+
+                    }
+                    // cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdfTable.addCell(cell);
+                }
+            }
+            document.add(pdfTable);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(TinhLuongHanhChinh_GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+            JOptionPane.showMessageDialog(this, "Xuất thành công");
         }
     }
 
@@ -694,7 +949,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     private void xuLyThayDoiNgayCham() {
         if (kiemTraNgay()) {
             dtmChamCong.setRowCount(0);
-            doDuLieuChamCong(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate()));
+            doDuLieuChamCong(ganThongTin(chamCongSanPham_Dao.getChamCongSanPhamTheoNgay(dchNgayChamCong.getDate())));
         }
     }
 
@@ -710,15 +965,18 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
         lblMaNhanVien.setText("");
         lblTenNhanVien.setText("");
         lblTienLuong.setText("");
-        lblCongDoan.setText("");
         lblDonGia.setText("");
         txtSoLuong.setText("");
+        lblsoLuongCdTruoc.setText("");
+        lblSoLuongCdCham.setText("");
+        lblCongDoanTruoc.setText("");
     }
 
     private void lamMoiBang() {
         dtmSanPham.setRowCount(0);
         dtmPhanXuong.setRowCount(0);
         dtmChamCong.setRowCount(0);
+        cmbCongDoan.removeAllItems();
     }
 
     public boolean lamMoiBtn() {
@@ -730,6 +988,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
                 btnXoa.setEnabled(true);
                 btnCham.setText("Chấm Công");
                 txtSoLuong.setEditable(false);
+                cmbCongDoan.setEnabled(false);
                 return true;
             }
             return false;
@@ -743,40 +1002,48 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
     private SimpleDateFormat dinhDangNgay;
     private DecimalFormat df;
     private List<ChamCongSanPham> chamCongSanPhams;
+    private List<ChamCongSanPham> ChamCongSanPhamChinhs;
     private List<SanPham> sanPhams;
     private List<PhanXuong> phanXuongs;
+    private List<CongDoan> congDoans;
     private ChamCongSanPham_Dao chamCongSanPham_Dao;
     private SanPham_Dao sanPham_Dao;
     private PhanXuong_Dao phanXuong_Dao;
+    private CongDoan_Dao congDoan_Dao;
+    boolean isAdjusting;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCham;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXuat;
+    private javax.swing.JComboBox<String> cmbCongDoan;
     private com.toedter.calendar.JDateChooser dchNgayChamCong;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblCongDoan;
+    private javax.swing.JLabel lblCongDoanTruoc;
     private javax.swing.JLabel lblDonGia;
     private javax.swing.JLabel lblMaNhanVien;
     private javax.swing.JLabel lblPhanXuong;
     private javax.swing.JLabel lblSanPham;
+    private javax.swing.JLabel lblSoLuongCdCham;
     private javax.swing.JLabel lblTenNhanVien;
     private javax.swing.JLabel lblThongBao;
     private javax.swing.JLabel lblTienLuong;
-    private javax.swing.JLabel lblTongLuongPx;
+    private javax.swing.JLabel lblsoLuongCdTruoc;
     private javax.swing.JTable tblChamCong;
     private javax.swing.JTable tblPhanXuong;
     private javax.swing.JTable tblSanPham;

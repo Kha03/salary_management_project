@@ -888,7 +888,7 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
 
     private boolean kiemTraDuLieu() {
         if (kiemTraDuLieuRong()) {
-            if (!KiemTraChuoi.ktTen(txtTen.getText())) {
+            if (!KiemTraChuoi.ktTen(txtTen.getText().trim())) {
                 txtTen.requestFocus();
                 lblThongBao.setText("*Tên sai định dạng");
                 return false;
@@ -896,15 +896,15 @@ public class NhanVienHanhChinh_GUI extends javax.swing.JPanel {
                 dchNgaySinh.requestFocus();
                 lblThongBao.setText("*Sai định dạng ngày");
                 return false;
-            } else if (!KiemTraChuoi.ktDiaChi(txtDiaChi.getText())) {
+            } else if (!KiemTraChuoi.ktDiaChi(txtDiaChi.getText().trim())) {
                 txtDiaChi.requestFocus();
                 lblThongBao.setText("*Địa chỉ sai định dạng");
                 return false;
-            } else if (!KiemTraChuoi.ktSDT(txtDienThoai.getText())) {
+            } else if (!KiemTraChuoi.ktSDT(txtDienThoai.getText().trim())) {
                 txtDienThoai.requestFocus();
                 lblThongBao.setText("*Số điện thoại sai định dạng");
                 return false;
-            } else if (!KiemTraChuoi.ktEmail(txtMail.getText())) {
+            } else if (!KiemTraChuoi.ktEmail(txtMail.getText().trim())) {
                 txtMail.requestFocus();
                 lblThongBao.setText("*Mail sai định dạng");
                 return false;

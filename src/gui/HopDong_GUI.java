@@ -1,5 +1,6 @@
 package gui;
 
+import com.toedter.calendar.JDateChooser;
 import connect.ConnectDB;
 import dao.HopDong_Dao;
 import dao.SanPham_Dao;
@@ -14,7 +15,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -61,6 +65,7 @@ public class HopDong_GUI extends javax.swing.JPanel {
         dchNgayBatDau = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         txtGiaTien = new javax.swing.JTextField();
+        lblThongBao = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -195,7 +200,17 @@ public class HopDong_GUI extends javax.swing.JPanel {
         txtGiaTien.setEditable(false);
         txtGiaTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtGiaTien.setForeground(new java.awt.Color(0, 96, 0));
+        txtGiaTien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGiaTienKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtGiaTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 210, -1));
+
+        lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        lblThongBao.setToolTipText("");
+        jPanel1.add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 360, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 1114, 230));
 
@@ -243,6 +258,13 @@ public class HopDong_GUI extends javax.swing.JPanel {
             layDuLieuLenText();
         }
     }//GEN-LAST:event_tblHopDongKeyReleased
+
+    private void txtGiaTienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaTienKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGiaTienKeyTyped
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -343,23 +365,24 @@ public class HopDong_GUI extends javax.swing.JPanel {
             btnXoa.setEnabled(false);
             btnThem.setText("Xác Nhận");
         } else {
-            //chưa bắt lỗi rông txt tên pb
-            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Hợp Đồng", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                HopDongSanXuat hopDongSanXuat = new HopDongSanXuat("", txtTenHopDong.getText(),
-                        dchNgayBatDau.getDate(), dchNgayKetThuc.getDate(),
-                        Float.parseFloat(txtGiaTien.getText()));
-                if (hopDong_Dao.themHopDong(hopDongSanXuat)) {
-                    JOptionPane.showMessageDialog(this, "Thêm hợp đồng thành công!");
-                    dtmHopDong.setRowCount(0);
-                    doDuLieuHopDong(hopDong_Dao.getDanhSachHopDong());
-                } else {
-                    JOptionPane.showMessageDialog(this, "Thêm hợp đồng thất bại!");
+            if (kiemTraDuLieu()) {
+                if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Hợp Đồng", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    HopDongSanXuat hopDongSanXuat = new HopDongSanXuat("", txtTenHopDong.getText(),
+                            dchNgayBatDau.getDate(), dchNgayKetThuc.getDate(),
+                            Float.parseFloat(txtGiaTien.getText()));
+                    if (hopDong_Dao.themHopDong(hopDongSanXuat)) {
+                        JOptionPane.showMessageDialog(this, "Thêm hợp đồng thành công!");
+                        dtmHopDong.setRowCount(0);
+                        doDuLieuHopDong(hopDong_Dao.getDanhSachHopDong());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thêm hợp đồng thất bại!");
 
+                    }
+                    dongNhapDuLieu();
+                    btnCapNhat.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    btnThem.setText("Thêm");
                 }
-                dongNhapDuLieu();
-                btnCapNhat.setEnabled(true);
-                btnXoa.setEnabled(true);
-                btnThem.setText("Thêm");
             }
         }
     }
@@ -378,22 +401,24 @@ public class HopDong_GUI extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Chọn một hợp đồng cần cập nhật!");
             }
         } else {
-            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Hợp Đồng", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                HopDongSanXuat hopDongSanXuat = new HopDongSanXuat(txtMaHopDong.getText(), txtTenHopDong.getText(),
-                        dchNgayBatDau.getDate(), dchNgayKetThuc.getDate(),
-                        Float.parseFloat(txtGiaTien.getText()));
-                if (hopDong_Dao.capNhatHopDong(hopDongSanXuat)) {
-                    JOptionPane.showMessageDialog(this, "Cập nhật hợp đồng thành công!");
-                    dtmHopDong.setRowCount(0);
-                    doDuLieuHopDong(hopDong_Dao.getDanhSachHopDong());
-                } else {
-                    JOptionPane.showMessageDialog(this, "Cập nhật hợp đồng thất bại!");
+            if (kiemTraDuLieu()) {
+                if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Hợp Đồng", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    HopDongSanXuat hopDongSanXuat = new HopDongSanXuat(txtMaHopDong.getText(), txtTenHopDong.getText(),
+                            dchNgayBatDau.getDate(), dchNgayKetThuc.getDate(),
+                            Float.parseFloat(txtGiaTien.getText()));
+                    if (hopDong_Dao.capNhatHopDong(hopDongSanXuat)) {
+                        JOptionPane.showMessageDialog(this, "Cập nhật hợp đồng thành công!");
+                        dtmHopDong.setRowCount(0);
+                        doDuLieuHopDong(hopDong_Dao.getDanhSachHopDong());
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Cập nhật hợp đồng thất bại!");
 
+                    }
+                    dongNhapDuLieu();
+                    btnThem.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    btnCapNhat.setText("Cập Nhật");
                 }
-                dongNhapDuLieu();
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
-                btnCapNhat.setText("Cập Nhật");
             }
         }
     }
@@ -431,6 +456,62 @@ public class HopDong_GUI extends javax.swing.JPanel {
             return false;
         }
         return true;
+    }
+
+    private boolean kiemTraRong(JComponent component, String thongBao) {
+        if (component instanceof JTextField) {
+            JTextField textField = (JTextField) component;
+            if (KiemTraChuoi.isNotEmpty(textField.getText())) {
+                textField.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JComboBox) {
+            JComboBox<?> comboBox = (JComboBox<?>) component;
+            if (comboBox.getSelectedIndex() == -1) {
+                comboBox.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JDateChooser dateChooser) {
+            if (dateChooser.getDate() == null) {
+                dateChooser.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean kiemTraDuLieuRong() {
+        if (kiemTraRong(dchNgayBatDau, "*Không được để dữ liệu trống!")
+                || kiemTraRong(dchNgayKetThuc, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtTenHopDong, "*Không được để dữ liệu trống!")) {
+            return false;
+        }
+        lblThongBao.setText("");
+        return true;
+    }
+
+    private boolean kiemTraDuLieu() {
+        if (kiemTraDuLieuRong()) {
+            if (!KiemTraChuoi.ktTen(txtTenHopDong.getText().trim())) {
+                txtTenHopDong.requestFocus();
+                lblThongBao.setText("*Tên sai định dạng");
+                return false;
+            } else if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayBatDau.getDate()))) {
+                dchNgayBatDau.requestFocus();
+                lblThongBao.setText("*Sai định dạng ngày");
+                return false;
+            } else if (!KiemTraChuoi.ktDateFormat(dinhDangNgay.format(dchNgayKetThuc.getDate()))) {
+                dchNgayKetThuc.requestFocus();
+                lblThongBao.setText("*Sai định dạng ngày");
+                return false;
+            }
+            lblThongBao.setText("");
+            return true;
+        }
+        return false;
     }
 
     private void lamMoiDong() {
@@ -483,6 +564,7 @@ public class HopDong_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblThongBao;
     private javax.swing.JList<String> lstSanPham;
     private javax.swing.JTable tblHopDong;
     private javax.swing.JTextField txtGiaTien;

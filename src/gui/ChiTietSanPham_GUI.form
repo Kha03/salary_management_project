@@ -58,7 +58,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Phi Anh &#x110;&#x1ea1;t thao nh&#x1b0;ca"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
@@ -75,7 +74,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="123"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
@@ -207,7 +205,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="123"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
@@ -266,7 +263,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="111111"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
@@ -283,7 +279,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="123"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
@@ -300,7 +295,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="63" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="111111"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
