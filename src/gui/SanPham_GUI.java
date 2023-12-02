@@ -1,5 +1,6 @@
 package gui;
 
+import com.toedter.calendar.JDateChooser;
 import connect.ConnectDB;
 import dao.CongDoan_Dao;
 import dao.HopDong_Dao;
@@ -12,7 +13,10 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -62,6 +66,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
         txtTenSanPham = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtDonViTinh = new javax.swing.JTextField();
+        lblThongBao = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -168,6 +173,11 @@ public class SanPham_GUI extends javax.swing.JPanel {
         txtSoLuong.setEditable(false);
         txtSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtSoLuong.setForeground(new java.awt.Color(0, 96, 0));
+        txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSoLuongKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -208,6 +218,11 @@ public class SanPham_GUI extends javax.swing.JPanel {
         txtDonGia.setEditable(false);
         txtDonGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDonGia.setForeground(new java.awt.Color(0, 96, 0));
+        txtDonGia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDonGiaKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 210, -1));
 
         txtTenSanPham.setEditable(false);
@@ -224,6 +239,11 @@ public class SanPham_GUI extends javax.swing.JPanel {
         txtDonViTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDonViTinh.setForeground(new java.awt.Color(0, 96, 0));
         jPanel1.add(txtDonViTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 210, -1));
+
+        lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        lblThongBao.setToolTipText("");
+        jPanel1.add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 360, 30));
 
         jDesktopPane1.add(jPanel1);
         jPanel1.setBounds(180, 52, 1114, 220);
@@ -324,6 +344,14 @@ public class SanPham_GUI extends javax.swing.JPanel {
             dongNhapDuLieu();
         }
     }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void txtSoLuongKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoLuongKeyTyped
+        kiemTraNhapSo(evt);
+    }//GEN-LAST:event_txtSoLuongKeyTyped
+
+    private void txtDonGiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDonGiaKeyTyped
+        kiemTraNhapSo(evt);
+    }//GEN-LAST:event_txtDonGiaKeyTyped
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -455,26 +483,27 @@ public class SanPham_GUI extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Chưa chọn hợp đồng để thêm!");
             }
         } else {
-            //chưa bắt lỗi rông txt tên pb
-            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Sản Phẩm", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                SanPham sanPham = new SanPham(sanPham_Dao.layMaTuDongSanPham(), txtTenSanPham.getText(),
-                        Float.parseFloat(txtDonGia.getText()), Integer.parseInt(txtSoLuong.getText()),
-                        txtDonViTinh.getText());
-                if (sanPham_Dao.themSanPham(sanPham, hopDongSanXuats.get(hang).getMaHopDong())) {
-                    JOptionPane.showMessageDialog(this, "Thêm sản phẩm thành công!");
-                    dtmSanPham.setRowCount(0);
-                    doDuLieuSanPham(sanPham_Dao.getDanhSachSanPhamTheoMaHd(hopDongSanXuats.get(hang).getMaHopDong()));
-                    hopDongSanXuats.get(hang).getSanPham().add(sanPham);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Thêm sản phẩm thất bại!");
+            if (kiemTraDuLieu()) {
+                if (JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Sản Phẩm", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    SanPham sanPham = new SanPham(sanPham_Dao.layMaTuDongSanPham(), txtTenSanPham.getText(),
+                            Float.parseFloat(txtDonGia.getText()), Integer.parseInt(txtSoLuong.getText()),
+                            txtDonViTinh.getText());
+                    if (sanPham_Dao.themSanPham(sanPham, hopDongSanXuats.get(hang).getMaHopDong())) {
+                        JOptionPane.showMessageDialog(this, "Thêm sản phẩm thành công!");
+                        dtmSanPham.setRowCount(0);
+                        doDuLieuSanPham(sanPham_Dao.getDanhSachSanPhamTheoMaHd(hopDongSanXuats.get(hang).getMaHopDong()));
+                        hopDongSanXuats.get(hang).getSanPham().add(sanPham);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thêm sản phẩm thất bại!");
 
+                    }
+                    dongNhapDuLieu();
+                    btnChiTiet.setEnabled(true);
+                    btnCapNhat.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    tblHopDong.setEnabled(true);
+                    btnThem.setText("Thêm");
                 }
-                dongNhapDuLieu();
-                btnChiTiet.setEnabled(true);
-                btnCapNhat.setEnabled(true);
-                btnXoa.setEnabled(true);
-                tblHopDong.setEnabled(true);
-                btnThem.setText("Thêm");
             }
         }
     }
@@ -498,25 +527,27 @@ public class SanPham_GUI extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Chọn hợp đồng cần cập nhật!");
             }
         } else {
-            if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Sản Phẩm", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                SanPham sanPham = new SanPham(txtMaSanPham.getText(), txtTenSanPham.getText(),
-                        Float.parseFloat(txtDonGia.getText()), Integer.parseInt(txtSoLuong.getText()),
-                        txtDonViTinh.getText());
-                if (sanPham_Dao.capNhatSanPham(sanPham)) {
-                    JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thành công!");
-                    dtmSanPham.setRowCount(0);
-                    doDuLieuSanPham(sanPham_Dao.getDanhSachSanPhamTheoMaHd(hopDongSanXuats.get(hangHd).getMaHopDong()));
-                    hopDongSanXuats.get(hangHd).getSanPham().set(hangSp[0], sanPham);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thất bại!");
+            if (kiemTraDuLieu()) {
+                if (JOptionPane.showConfirmDialog(this, "Xác Nhận Cập Nhật Sản Phẩm", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    SanPham sanPham = new SanPham(txtMaSanPham.getText(), txtTenSanPham.getText(),
+                            Float.parseFloat(txtDonGia.getText()), Integer.parseInt(txtSoLuong.getText()),
+                            txtDonViTinh.getText());
+                    if (sanPham_Dao.capNhatSanPham(sanPham)) {
+                        JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thành công!");
+                        dtmSanPham.setRowCount(0);
+                        doDuLieuSanPham(sanPham_Dao.getDanhSachSanPhamTheoMaHd(hopDongSanXuats.get(hangHd).getMaHopDong()));
+                        hopDongSanXuats.get(hangHd).getSanPham().set(hangSp[0], sanPham);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thất bại!");
 
+                    }
+                    dongNhapDuLieu();
+                    btnChiTiet.setEnabled(true);
+                    btnThem.setEnabled(true);
+                    btnXoa.setEnabled(true);
+                    tblHopDong.setEnabled(true);
+                    btnCapNhat.setText("Cập Nhật");
                 }
-                dongNhapDuLieu();
-                btnChiTiet.setEnabled(true);
-                btnThem.setEnabled(true);
-                btnXoa.setEnabled(true);
-                tblHopDong.setEnabled(true);
-                btnCapNhat.setText("Cập Nhật");
             }
         }
     }
@@ -550,11 +581,71 @@ public class SanPham_GUI extends javax.swing.JPanel {
         if (hang != -1) {
             CongDoan_Dao congDoan_Dao = new CongDoan_Dao();
             sanPhams.get(hang).setCongDoanThucHien(congDoan_Dao.getDanhSachCongDoanTheoSanPham(sanPhams.get(hang).getMaSanPham()));
-            ChiTietSanPham_GUI chiTietSanPham_GUI = new ChiTietSanPham_GUI( sanPhams.get(hang));
+            ChiTietSanPham_GUI chiTietSanPham_GUI = new ChiTietSanPham_GUI(sanPhams.get(hang));
             jDesktopPane1.add(chiTietSanPham_GUI).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm muốn xem");
         }
+    }
+
+    private void kiemTraNhapSo(java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }
+
+    private boolean kiemTraRong(JComponent component, String thongBao) {
+        if (component instanceof JTextField) {
+            JTextField textField = (JTextField) component;
+            if (KiemTraChuoi.isNotEmpty(textField.getText())) {
+                textField.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JComboBox) {
+            JComboBox<?> comboBox = (JComboBox<?>) component;
+            if (comboBox.getSelectedIndex() == -1) {
+                comboBox.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JDateChooser dateChooser) {
+            if (dateChooser.getDate() == null) {
+                dateChooser.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean kiemTraDuLieuRong() {
+        if (kiemTraRong(txtTenSanPham, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtDonGia, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtDonViTinh, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtSoLuong, "*Không được để dữ liệu trống!")) {
+            return false;
+        }
+        lblThongBao.setText("");
+        return true;
+    }
+
+    private boolean kiemTraDuLieu() {
+        if (kiemTraDuLieuRong()) {
+            if (!KiemTraChuoi.ktTen(txtTenSanPham.getText().trim())) {
+                txtTenSanPham.requestFocus();
+                lblThongBao.setText("*Tên sai định dạng");
+                return false;
+            } else if (!KiemTraChuoi.ktTen(txtDonViTinh.getText().trim())) {
+                txtDonViTinh.requestFocus();
+                lblThongBao.setText("*Đơn vị tính sai định dạng");
+                return false;
+            }
+            lblThongBao.setText("");
+            return true;
+        }
+        return false;
     }
 
     public boolean lamMoiBtn() {
@@ -634,6 +725,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JLabel lblThongBao;
     private javax.swing.JTable tblHopDong;
     private javax.swing.JTable tblSanPham;
     private javax.swing.JTextField txtDonGia;

@@ -89,7 +89,6 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jButton17 = new javax.swing.JButton();
         jLabel40 = new javax.swing.JLabel();
         lblChiLuongSanPham = new javax.swing.JLabel();
-        jButton14 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1366, 741));
         setPreferredSize(new java.awt.Dimension(1366, 741));
@@ -312,14 +311,6 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
         jPanel2.add(lblChiLuongSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 230, 20));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 420, 300));
-
-        jButton14.setBackground(new java.awt.Color(152, 249, 152));
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus.png"))); // NOI18N
-        jButton14.setText("Tạo");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.setDisabledIcon(null);
-        add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbThangItemStateChanged
@@ -685,7 +676,6 @@ public class BaoCaoLuong_GUI extends javax.swing.JPanel {
     private List<Object[]> luongCongNhans;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbThang;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;

@@ -39,19 +39,6 @@ public class ThongKeLuongNhanVien_GUI extends javax.swing.JPanel {
 
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblPhongBanChiNhieu = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        lblPhongBanChiIt = new javax.swing.JLabel();
-        lblChiPhuCapPb = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        lblChiLuongCoBan = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        lblTongChiLuongPb = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
-        lblChiTangCa = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         cmbThang = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
@@ -75,77 +62,6 @@ public class ThongKeLuongNhanVien_GUI extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(56, 91, 56)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblPhongBanChiNhieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPhongBanChiNhieu.setForeground(new java.awt.Color(0, 99, 0));
-        lblPhongBanChiNhieu.setToolTipText("");
-        jPanel1.add(lblPhongBanChiNhieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 200, 20));
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel32.setText("Phòng Ban Chi Nhiều Nhất:");
-        jLabel32.setToolTipText("");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
-
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel33.setText("Phòng Ban Chi Thấp Nhất:");
-        jLabel33.setToolTipText("");
-        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 200, -1));
-
-        lblPhongBanChiIt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPhongBanChiIt.setForeground(new java.awt.Color(0, 99, 0));
-        lblPhongBanChiIt.setToolTipText("");
-        jPanel1.add(lblPhongBanChiIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 200, 20));
-
-        lblChiPhuCapPb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblChiPhuCapPb.setForeground(new java.awt.Color(0, 99, 0));
-        lblChiPhuCapPb.setToolTipText("");
-        jPanel1.add(lblChiPhuCapPb, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 260, 20));
-
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel36.setText("Chi Phụ Cấp:");
-        jLabel36.setToolTipText("");
-        jPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
-
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel37.setText("Chi Tăng Ca:");
-        jLabel37.setToolTipText("");
-        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 100, -1));
-
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel39.setText("Chi Lương Cơ Bản:");
-        jLabel39.setToolTipText("");
-        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 140, -1));
-
-        lblChiLuongCoBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblChiLuongCoBan.setForeground(new java.awt.Color(0, 99, 0));
-        lblChiLuongCoBan.setToolTipText("");
-        jPanel1.add(lblChiLuongCoBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 250, 20));
-
-        jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel41.setText("Tổng Chi Lương Phòng Ban:");
-        jLabel41.setToolTipText("");
-        jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 200, -1));
-
-        lblTongChiLuongPb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTongChiLuongPb.setForeground(new java.awt.Color(0, 99, 0));
-        lblTongChiLuongPb.setToolTipText("");
-        jPanel1.add(lblTongChiLuongPb, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 200, 20));
-
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton16.setText("Xuất Báo Cáo");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 650, 130, 30));
-
-        lblChiTangCa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblChiTangCa.setForeground(new java.awt.Color(0, 99, 0));
-        lblChiTangCa.setToolTipText("");
-        jPanel1.add(lblChiTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 290, 20));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Tháng:");
@@ -220,9 +136,6 @@ public class ThongKeLuongNhanVien_GUI extends javax.swing.JPanel {
     private void ychNamPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ychNamPropertyChange
         xuLyThayDoiNgayThang();
     }//GEN-LAST:event_ychNamPropertyChange
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-    }//GEN-LAST:event_jButton16ActionPerformed
 
     private void cmbPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhongBanActionPerformed
         xuLyCmbPhongBan();
@@ -330,27 +243,14 @@ public class ThongKeLuongNhanVien_GUI extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbPhanXuong;
     private javax.swing.JComboBox<String> cmbPhongBan;
     private javax.swing.JComboBox<String> cmbThang;
-    private javax.swing.JButton jButton16;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblChiLuongCoBan;
-    private javax.swing.JLabel lblChiPhuCapPb;
-    private javax.swing.JLabel lblChiTangCa;
-    private javax.swing.JLabel lblPhongBanChiIt;
-    private javax.swing.JLabel lblPhongBanChiNhieu;
-    private javax.swing.JLabel lblTongChiLuongPb;
     private com.toedter.calendar.JYearChooser ychNam;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,10 +4,17 @@ import chart.BieuDoDuong;
 import chart.BieuDoTron;
 import connect.ConnectDB;
 import dao.ChamCongSanPham_Dao;
+import dao.CongDoan_Dao;
+import dao.HopDong_Dao;
+import dao.SanPham_Dao;
 import entity.ChamCongSanPham;
+import entity.CongDoan;
+import entity.HopDongSanXuat;
+import entity.SanPham;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import org.apache.commons.math3.dfp.Dfp;
 
 /**
  *
@@ -34,23 +41,12 @@ public class ThongKeHieuSuatCongNhan_GUI extends javax.swing.JPanel {
 
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblPhongBanChiNhieu = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        lblPhongBanChiIt = new javax.swing.JLabel();
-        lblChiPhuCapPb = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        lblChiLuongCoBan = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        lblTongChiLuongPb = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
-        lblChiTangCa = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        cmbThang = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        ychNam = new com.toedter.calendar.JYearChooser();
+        jLabel20 = new javax.swing.JLabel();
+        cmbHopDong = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        cmbCongDoan = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        cmbSanPham = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1366, 741));
@@ -65,160 +61,157 @@ public class ThongKeHieuSuatCongNhan_GUI extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(56, 91, 56)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPhongBanChiNhieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPhongBanChiNhieu.setForeground(new java.awt.Color(0, 99, 0));
-        lblPhongBanChiNhieu.setToolTipText("");
-        jPanel1.add(lblPhongBanChiNhieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 200, 20));
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setText("Hợp Đồng:");
+        jLabel20.setToolTipText("");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel32.setText("Phòng Ban Chi Nhiều Nhất:");
-        jLabel32.setToolTipText("");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
-
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel33.setText("Phòng Ban Chi Thấp Nhất:");
-        jLabel33.setToolTipText("");
-        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 200, -1));
-
-        lblPhongBanChiIt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPhongBanChiIt.setForeground(new java.awt.Color(0, 99, 0));
-        lblPhongBanChiIt.setToolTipText("");
-        jPanel1.add(lblPhongBanChiIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 200, 20));
-
-        lblChiPhuCapPb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblChiPhuCapPb.setForeground(new java.awt.Color(0, 99, 0));
-        lblChiPhuCapPb.setToolTipText("");
-        jPanel1.add(lblChiPhuCapPb, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 260, 20));
-
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel36.setText("Chi Phụ Cấp:");
-        jLabel36.setToolTipText("");
-        jPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
-
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel37.setText("Chi Tăng Ca:");
-        jLabel37.setToolTipText("");
-        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 100, -1));
-
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel39.setText("Chi Lương Cơ Bản:");
-        jLabel39.setToolTipText("");
-        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 140, -1));
-
-        lblChiLuongCoBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblChiLuongCoBan.setForeground(new java.awt.Color(0, 99, 0));
-        lblChiLuongCoBan.setToolTipText("");
-        jPanel1.add(lblChiLuongCoBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 250, 20));
-
-        jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel41.setText("Tổng Chi Lương Phòng Ban:");
-        jLabel41.setToolTipText("");
-        jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 200, -1));
-
-        lblTongChiLuongPb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTongChiLuongPb.setForeground(new java.awt.Color(0, 99, 0));
-        lblTongChiLuongPb.setToolTipText("");
-        jPanel1.add(lblTongChiLuongPb, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 200, 20));
-
-        jButton16.setBackground(new java.awt.Color(152, 249, 152));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton16.setText("Xuất Báo Cáo");
-        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 650, 130, 30));
-
-        lblChiTangCa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblChiTangCa.setForeground(new java.awt.Color(0, 99, 0));
-        lblChiTangCa.setToolTipText("");
-        jPanel1.add(lblChiTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 290, 20));
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setText("Tháng:");
-        jLabel18.setToolTipText("");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, -1));
-
-        cmbThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        cmbThang.addItemListener(new java.awt.event.ItemListener() {
+        cmbHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbHopDong.setForeground(new java.awt.Color(0, 99, 0));
+        cmbHopDong.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbThangItemStateChanged(evt);
+                cmbHopDongItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 60, -1));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Năm:");
-        jLabel15.setToolTipText("");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 60, 20));
-
-        ychNam.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                ychNamPropertyChange(evt);
+        cmbHopDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbHopDongActionPerformed(evt);
             }
         });
-        jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 65, 20));
+        jPanel1.add(cmbHopDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 210, -1));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setText("Công Đoạn:");
+        jLabel22.setToolTipText("");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        cmbCongDoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbCongDoan.setForeground(new java.awt.Color(0, 99, 0));
+        cmbCongDoan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCongDoanItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(cmbCongDoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 210, -1));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setText("Sản Phẩm:");
+        jLabel23.setToolTipText("");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        cmbSanPham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbSanPham.setForeground(new java.awt.Color(0, 99, 0));
+        cmbSanPham.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSanPhamItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(cmbSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 210, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 420, 690));
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 55, 880, 680));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbThangItemStateChanged
-        xuLyThayDoiNgayThang();
-    }//GEN-LAST:event_cmbThangItemStateChanged
+    private void cmbHopDongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbHopDongItemStateChanged
+        xuLyThayDoiCmbHopDong();
+    }//GEN-LAST:event_cmbHopDongItemStateChanged
 
-    private void ychNamPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ychNamPropertyChange
-        xuLyThayDoiNgayThang();
-    }//GEN-LAST:event_ychNamPropertyChange
+    private void cmbHopDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHopDongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbHopDongActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-    }//GEN-LAST:event_jButton16ActionPerformed
+    private void cmbCongDoanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCongDoanItemStateChanged
+        xuLyThayDoiCmbCongDoan();
+    }//GEN-LAST:event_cmbCongDoanItemStateChanged
+
+    private void cmbSanPhamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSanPhamItemStateChanged
+        xuLyThayDoiCmbSanPham();
+    }//GEN-LAST:event_cmbSanPhamItemStateChanged
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
         dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         chamCongSanPham_Dao = new ChamCongSanPham_Dao();
+        hopDong_Dao = new HopDong_Dao();
+        congDoan_Dao = new CongDoan_Dao();
+        sanPham_Dao = new SanPham_Dao();
         bieuDoDuong = new BieuDoDuong();
         jPanel2.add(bieuDoDuong.createDemoPanel("Hiệu suất nhân viên"));
-        taoBieuDo(chamCongSanPham_Dao.getChamCongSanPhamTheoThang("11-2023", "NVSX003"));
+        doDuLieuHopDong(hopDong_Dao.getDanhSachHopDong());
+    }
+
+    private void doDuLieuSanPham(List<SanPham> sanPhams) {
+        this.sanPhams = sanPhams;
+        for (SanPham sanPham : sanPhams) {
+            cmbSanPham.addItem(sanPham.getTenSanPham());
+        }
+    }
+
+    private void doDuLieuHopDong(List<HopDongSanXuat> hopDongSanXuats) {
+        this.hopDongs = hopDongSanXuats;
+        int soLuong = hopDongSanXuats.size();
+        for (int i = soLuong - 1; i >= 0; i--) {
+            cmbHopDong.addItem(hopDongSanXuats.get(i).getTenHopDong());
+        }
+    }
+
+    private void doDuLieuCongDoan(List<CongDoan> congDoans) {
+        this.congDoans = congDoans;
+        for (CongDoan congDoan : congDoans) {
+            cmbCongDoan.addItem(congDoan.getTenCongDoan());
+        }
+    }
+
+    private void xuLyThayDoiCmbSanPham() {
+        int hang = cmbSanPham.getSelectedIndex();
+        if (hang != -1) {
+            cmbCongDoan.removeAllItems();
+            doDuLieuCongDoan(congDoan_Dao.getDanhSachCongDoanTheoSanPham(sanPhams.get(hang).getMaSanPham()));
+        }
+    }
+
+    private void xuLyThayDoiCmbHopDong() {
+        int i = cmbHopDong.getSelectedIndex();
+        if (i != -1) {
+            int soLuong = hopDongs.size();
+            int viTri = soLuong - i - 1;
+            cmbSanPham.removeAllItems();
+            doDuLieuSanPham(sanPham_Dao.getDanhSachSanPhamTheoMaHd(hopDongs.get(viTri).getMaHopDong()));
+        }
+    }
+
+    private void xuLyThayDoiCmbCongDoan() {
+        int i = cmbCongDoan.getSelectedIndex();
+        if (i != -1) {
+            taoBieuDo(chamCongSanPham_Dao.getChamCongSanPhamTheoMaCongDoan(congDoans.get(i).getMaCongDoan()));
+        }
     }
 
     private void taoBieuDo(List<ChamCongSanPham> chamCongSanPhams) {
         bieuDoDuong.clearData();
         for (ChamCongSanPham chamCong : chamCongSanPhams) {
-            bieuDoDuong.addData(chamCong.getSoLuong(), chamCong.getNhanVienSanXuat().getMaNhanVienSanXuat(),dinhDangNgay.format(chamCong.getNgayLamViec()));
+            bieuDoDuong.addData(chamCong.getSoLuong(), chamCong.getNhanVienSanXuat().getHoVaTen(), dinhDangNgay.format(chamCong.getNgayLamViec()));
         }
     }
 
-    private void xuLyThayDoiNgayThang() {
-        String thang = (String) cmbThang.getSelectedItem();
-        int nam = ychNam.getValue();
-    }
+    private List<HopDongSanXuat> hopDongs;
+    private List<CongDoan> congDoans;
+    private List<SanPham> sanPhams;
+    private CongDoan_Dao congDoan_Dao;
+    private SanPham_Dao sanPham_Dao;
+    private HopDong_Dao hopDong_Dao;
     private SimpleDateFormat dinhDangNgay;
     private ChamCongSanPham_Dao chamCongSanPham_Dao;
     private BieuDoDuong bieuDoDuong;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbThang;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel41;
+    private javax.swing.JComboBox<String> cmbCongDoan;
+    private javax.swing.JComboBox<String> cmbHopDong;
+    private javax.swing.JComboBox<String> cmbSanPham;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblChiLuongCoBan;
-    private javax.swing.JLabel lblChiPhuCapPb;
-    private javax.swing.JLabel lblChiTangCa;
-    private javax.swing.JLabel lblPhongBanChiIt;
-    private javax.swing.JLabel lblPhongBanChiNhieu;
-    private javax.swing.JLabel lblTongChiLuongPb;
-    private com.toedter.calendar.JYearChooser ychNam;
     // End of variables declaration//GEN-END:variables
 }

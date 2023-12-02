@@ -1,5 +1,6 @@
 package gui;
 
+import com.toedter.calendar.JDateChooser;
 import connect.ConnectDB;
 import dao.PhuCap_Dao;
 import entity.PhuCap;
@@ -7,7 +8,10 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,6 +55,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         cmbThang = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         ychNam = new com.toedter.calendar.JYearChooser();
+        lblThongBao = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPhuCap = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -124,6 +129,11 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         txtSoTien.setEditable(false);
         txtSoTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtSoTien.setForeground(new java.awt.Color(0, 96, 0));
+        txtSoTien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSoTienKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtSoTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 150, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -167,6 +177,11 @@ public class PhuCap_GUI extends javax.swing.JPanel {
 
         ychNam.setEnabled(false);
         jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 65, 20));
+
+        lblThongBao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        lblThongBao.setToolTipText("");
+        jPanel1.add(lblThongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 360, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1294, 230));
 
@@ -240,6 +255,13 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         xuLyCapNhat();
     }//GEN-LAST:event_btnCapNhatActionPerformed
+
+    private void txtSoTienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoTienKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSoTienKeyTyped
     private void initCommon() throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
@@ -400,6 +422,53 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         }
     }
 
+    private boolean kiemTraRong(JComponent component, String thongBao) {
+        if (component instanceof JTextField) {
+            JTextField textField = (JTextField) component;
+            if (KiemTraChuoi.isNotEmpty(textField.getText())) {
+                textField.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JComboBox) {
+            JComboBox<?> comboBox = (JComboBox<?>) component;
+            if (comboBox.getSelectedIndex() == -1) {
+                comboBox.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        } else if (component instanceof JDateChooser dateChooser) {
+            if (dateChooser.getDate() == null) {
+                dateChooser.requestFocus();
+                lblThongBao.setText(thongBao);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean kiemTraDuLieuRong() {
+        if (kiemTraRong(txtTenPhuCap, "*Không được để dữ liệu trống!")
+                || kiemTraRong(txtSoTien, "*Không được để dữ liệu trống!")) {
+            return false;
+        }
+        lblThongBao.setText("");
+        return true;
+    }
+
+    private boolean kiemTraDuLieu() {
+        if (kiemTraDuLieuRong()) {
+            if (!KiemTraChuoi.ktTen(txtTenPhuCap.getText().trim())) {
+                txtTenPhuCap.requestFocus();
+                lblThongBao.setText("*Tên sai định dạng");
+                return false;
+            }
+            lblThongBao.setText("");
+            return true;
+        }
+        return false;
+    }
+
     public boolean lamMoiBtn() {
         if (btnCapNhat.getText().equalsIgnoreCase("Xác Nhận") || btnThem.getText().equalsIgnoreCase("Xác Nhận")) {
             int i = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát khỏi chỉnh sửa không", "Xác nhận", JOptionPane.YES_NO_OPTION);
@@ -468,6 +537,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblThongBao;
     private javax.swing.JTable tblPhuCap;
     private javax.swing.JTextField txtMaPhuCap;
     private javax.swing.JTextField txtSoTien;

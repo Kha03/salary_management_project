@@ -8,6 +8,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -29,8 +30,8 @@ public class BieuDoCot {
         CategoryPlot plot = (CategoryPlot) barChart.getPlot();
         plot.setBackgroundPaint(new Color(242, 242, 242));
         plot.getRenderer().setSeriesPaint(0, new Color(0, 100, 0));
-//        BarRenderer renderer = (BarRenderer) plot.getRenderer();
-//        renderer.setMaximumBarWidth(0.13); // Adjust this value to set the maximum width of the bars
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setMaximumBarWidth(0.13); // Adjust this value to set the maximum width of the bars
         return barChart;
     }
 

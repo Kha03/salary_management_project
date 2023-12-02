@@ -26,7 +26,7 @@ public class BieuDoDuong {
     private JFreeChart createChart(String tieuDe) {
         JFreeChart lineChart = ChartFactory.createLineChart(
                 tieuDe,
-                "Years", "Number of Schools",
+                "Ngày", "Số lượng",
                 createDataset(),
                 PlotOrientation.VERTICAL,
                 true, true, false);
