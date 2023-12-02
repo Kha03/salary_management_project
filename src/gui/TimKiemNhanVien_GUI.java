@@ -357,12 +357,12 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
                 }
             }
             if (!txtTen.getText().isEmpty()) {
-                if (nVien.getHoVaTen().toLowerCase().contains(txtTen.getText().toLowerCase())) {
+                if (nVien.getHoVaTen().toLowerCase().equalsIgnoreCase(txtTen.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
             if (cmbGioiTinh.getSelectedIndex() != -1) {
-                if ((nVien.isGioiTinh()? "Nam": "Nữ").toLowerCase().contains(cmbGioiTinh.getSelectedItem().toString().toLowerCase())) {
+                if ((nVien.isGioiTinh()? "Nam": "Nữ").toLowerCase().equalsIgnoreCase(cmbGioiTinh.getSelectedItem().toString().toLowerCase())) {
                     thoaMan = true;
                 }
             }
@@ -378,22 +378,22 @@ public class TimKiemNhanVien_GUI extends javax.swing.JPanel {
             }
 
             if (!txtSDT.getText().isEmpty()) {
-                if (nVien.getDienThoai().toLowerCase().contains(txtSDT.getText().toLowerCase())) {
+                if (nVien.getDienThoai().toLowerCase().equalsIgnoreCase(txtSDT.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
             if (!txtEmail.getText().isEmpty()) {
-                if (nVien.getEmail().toLowerCase().contains(txtEmail.getText().toLowerCase())) {
+                if (nVien.getEmail().toLowerCase().equalsIgnoreCase(txtEmail.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
             if (cmbPhongBan.getSelectedIndex() != -1) {
-                if (nVien.getPhongBan().getTenPhongBan().toLowerCase().contains(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
+                if (nVien.getPhongBan().getTenPhongBan().toLowerCase().equalsIgnoreCase(cmbPhongBan.getSelectedItem().toString().toLowerCase())) {
                     thoaMan = true;
                 }
             }
             if (cmbCapBac.getSelectedIndex() != -1) {
-                if (nVien.getCapBac().toLowerCase().contains(cmbCapBac.getSelectedItem().toString().toLowerCase())) {
+                if (nVien.getCapBac().toLowerCase().equalsIgnoreCase(cmbCapBac.getSelectedItem().toString().toLowerCase())) {
                     thoaMan = true;
                 }
             }
