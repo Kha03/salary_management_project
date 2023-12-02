@@ -17,6 +17,7 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form demo
+     * @param sanPham
      */
     public ChiTietSanPham_GUI(SanPham sanPham) {
         initComponents();
@@ -200,7 +201,6 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
         lblDonGia.setText(df.format(sanPham.getDonGia()));
         lblDonViTinh.setText(sanPham.getDonViTinh());
     }
-
     private void setTable() {
         dtmCongDoan = new DefaultTableModel(
                 new Object[][]{},
@@ -227,6 +227,7 @@ public class ChiTietSanPham_GUI extends javax.swing.JInternalFrame {
         tblCongDoan.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
     }
     private DefaultTableModel dtmCongDoan;
+    
     private DecimalFormat df;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDong;

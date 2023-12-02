@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
 
+    private SimpleDateFormat dinhDangNgay;
+
     /**
      * Creates new form demo
      * @param phanCongSanXuat
@@ -186,6 +188,7 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
     private void initCommon(PhanCongSanXuat phanCongSanXuat) {
+        dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         doDuLieuLbl(phanCongSanXuat);
         doDuLieuNhanVien(phanCongSanXuat.getNhanVienSanXuat());
     }
@@ -221,7 +224,6 @@ public class ChiTietPhanCong_GUI extends javax.swing.JInternalFrame {
     }
     
     private void doDuLieuLbl(PhanCongSanXuat phanCongSanXuat) {
-        SimpleDateFormat dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         lblMaPhanCong.setText(phanCongSanXuat.getMaPhanCong());
         lblPhanXuong.setText(phanCongSanXuat.getPhanXuong().getTenPhanXuong());
         lblMaSanPham.setText(phanCongSanXuat.getSanPham().getMaSanPham());

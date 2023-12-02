@@ -13,6 +13,8 @@ import entity.CongDoan;
 import entity.PhanXuong;
 import entity.SanPham;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -44,7 +46,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         cmbSanPham = new javax.swing.JComboBox<>();
-        jButton7 = new javax.swing.JButton();
+        btnXemChiTiet = new javax.swing.JButton();
         cmbPhanXuong = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         btnLamMoi = new javax.swing.JButton();
@@ -60,7 +62,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         chkTu = new javax.swing.JCheckBox();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        lblPhanCong = new javax.swing.JTable();
         jButton9 = new javax.swing.JButton();
         dchNgayPhanCong = new com.toedter.calendar.JDateChooser();
         dchTu = new com.toedter.calendar.JDateChooser();
@@ -76,17 +78,17 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jDesktopPane1.add(cmbSanPham);
         cmbSanPham.setBounds(370, 180, 170, 26);
 
-        jButton7.setBackground(new java.awt.Color(152, 249, 152));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton7.setText("Xem Chi Tiết");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnXemChiTiet.setBackground(new java.awt.Color(152, 249, 152));
+        btnXemChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXemChiTiet.setText("Xem Chi Tiết");
+        btnXemChiTiet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnXemChiTietActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(jButton7);
-        jButton7.setBounds(1170, 220, 120, 30);
+        jDesktopPane1.add(btnXemChiTiet);
+        btnXemChiTiet.setBounds(1170, 220, 120, 30);
 
         cmbPhanXuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbPhanXuong.setForeground(new java.awt.Color(0, 99, 0));
@@ -200,8 +202,8 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Phân Công", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        lblPhanCong.setBackground(new java.awt.Color(184, 206, 224));
+        lblPhanCong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -209,11 +211,11 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        lblPhanCong.setToolTipText("");
+        lblPhanCong.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        lblPhanCong.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        lblPhanCong.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(lblPhanCong);
 
         jDesktopPane1.add(jScrollPane4);
         jScrollPane4.setBounds(0, 270, 1300, 470);
@@ -241,11 +243,9 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 741));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        //ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI();
-       // jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
+        xuLyXemChiTiet();
+    }//GEN-LAST:event_btnXemChiTietActionPerformed
 
     private void cmbPhanXuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPhanXuongActionPerformed
         // TODO add your handling code here:
@@ -307,15 +307,15 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelChamCong);
-        jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
-        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(4).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(5).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(6).setPreferredWidth(60);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        lblPhanCong.setModel(modelChamCong);
+        lblPhanCong.getColumnModel().getColumn(0).setPreferredWidth(40);
+        lblPhanCong.getColumnModel().getColumn(1).setPreferredWidth(130);
+        lblPhanCong.getColumnModel().getColumn(2).setPreferredWidth(150);
+        lblPhanCong.getColumnModel().getColumn(3).setPreferredWidth(130);
+        lblPhanCong.getColumnModel().getColumn(4).setPreferredWidth(130);
+        lblPhanCong.getColumnModel().getColumn(5).setPreferredWidth(130);
+        lblPhanCong.getColumnModel().getColumn(6).setPreferredWidth(60);
+        lblPhanCong.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
         
         
         dchTu.setVisible(false);
@@ -356,15 +356,12 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
         for(PhanCongSanXuat pcsx :phanCong_Dao.getDanhSachPhanCong()){
             boolean thoaMan = false; 
             if (chkTu.isSelected()) {
-                System.out.println(dinhDangNgay.format(dchNgayPhanCong.getDate()));
-                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
-                System.out.println(dinhDangNgay.format(pcsx.getNgayPhanCong()));
                 if (dchTu.getDate() != null && dchNgayPhanCong.getDate() != null) {
-                    if (!pcsx.getNgayPhanCong().before(dchTu.getDate()) &&
-                        pcsx.getNgayPhanCong().before(dchNgayPhanCong.getDate())) {
+                    if (!pcsx.getNgayPhanCong().before(dchNgayPhanCong.getDate()) &&
+                        pcsx.getNgayPhanCong().before(dchTu.getDate())) {
                         thoaMan = true;
                     }
-                }
+                }//pcsx.getNgayPhanCong().before(dchNgayPhanCong.getDate())//pcsx.getNgayPhanCong().before(dchTu.getDate())
             }   else{
                 if (dchNgayPhanCong.getDate() != null) {
                     if(dinhDangNgay.format(pcsx.getNgayPhanCong()).equalsIgnoreCase(dinhDangNgay.format(dchNgayPhanCong.getDate()))) {
@@ -427,12 +424,12 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     }
     
     private void doDuLieu() {
-        doDuLieuPhanCongSanXuat();
+        doDuLieuPhanCongSanXuat(phanCong_Dao.getDanhSachPhanCong());
     }
     
-    private void doDuLieuPhanCongSanXuat() {
+    private void doDuLieuPhanCongSanXuat(List<PhanCongSanXuat> phanCongSanXuats) {
         int i=1;
-        for(PhanCongSanXuat pcsx :phanCong_Dao.getDanhSachPhanCong()){
+        for(PhanCongSanXuat pcsx :phanCongSanXuats){
             Object[] objects = {
                 i++,
                 pcsx.getPhanXuong().getTenPhanXuong(),
@@ -444,12 +441,21 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
             };
             modelChamCong.addRow(objects);
         }
+        this.phanCongSanXuats = phanCongSanXuats;
+    }
+    
+    private void xuLyXemChiTiet() {
+        int hang = lblPhanCong.getSelectedRow();
+        if (hang != -1) {
+            ChiTietPhanCong_GUI chiTietPhanCong_GUI = new ChiTietPhanCong_GUI(phanCongSanXuats.get(hang));
+            jDesktopPane1.add(chiTietPhanCong_GUI).setVisible(true);// TODO add your handling code here:
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần xem!");
+        }
     }
     
     
-    
-    
-    
+    private List<PhanCongSanXuat> phanCongSanXuats;
     private SanPham_Dao sanPham_Dao;
     private CongDoan_Dao congDoan_Dao;
     private PhanXuong_Dao phanXuong_Dao;
@@ -459,13 +465,13 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnTim;
+    private javax.swing.JButton btnXemChiTiet;
     private javax.swing.JCheckBox chkTu;
     private javax.swing.JComboBox<String> cmbCongDoan;
     private javax.swing.JComboBox<String> cmbPhanXuong;
     private javax.swing.JComboBox<String> cmbSanPham;
     private com.toedter.calendar.JDateChooser dchNgayPhanCong;
     private com.toedter.calendar.JDateChooser dchTu;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel14;
@@ -476,7 +482,7 @@ public class TimKiemPhanCong_GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable lblPhanCong;
     private javax.swing.JTextField txtMaSanPham;
     private javax.swing.JTextField txtSoNhanVien;
     // End of variables declaration//GEN-END:variables

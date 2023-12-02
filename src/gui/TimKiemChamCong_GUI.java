@@ -392,6 +392,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         dinhDangNgay = new SimpleDateFormat("dd/MM/yyyy");
         doDuLieu();
         doDulieucmb();
+        spnTangCa.setValue(-1);
         cmbPhongBan.setSelectedIndex(-1);
         cmbTrangThai.setSelectedIndex(-1);
         cmbCongDoan.setSelectedIndex(-1);
@@ -414,8 +415,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         }
     }
     private void timkiemChamCongHC(){
-        modelChamCongHanhChinh.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
-        
+        modelChamCongHanhChinh.setRowCount(0);
         int i=1;
         for(ChamCongNhanVien cchc : chamCongHanhChanh_Dao.getDanhSachChamCongNhanVien()){
             boolean thoaMan = false;
@@ -430,15 +430,12 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (chkTu.isSelected()) {
-                System.out.println(dinhDangNgay.format(dchNgayChamCong.getDate()));
-                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
-                System.out.println(dinhDangNgay.format(cchc.getNgayLamViec()));
                 if (dchTu.getDate() != null && dchNgayChamCong.getDate() != null) {
-                    if (!cchc.getNgayLamViec().before(dchTu.getDate()) &&
-                        cchc.getNgayLamViec().before(dchNgayChamCong.getDate())) {
+                    if (!cchc.getNgayLamViec().before(dchNgayChamCong.getDate()) &&
+                        cchc.getNgayLamViec().before(dchTu.getDate())) {
                         thoaMan = true;
                     }
-                }
+                }//cchc.getNgayLamViec().before(dchNgayChamCong.getDate())//cchc.getNgayLamViec().before(dchTu.getDate()
             }   else{
                 if (dchNgayChamCong.getDate() != null) {
                     if(dinhDangNgay.format(cchc.getNgayLamViec()).equalsIgnoreCase(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
@@ -447,8 +444,6 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (spnTangCa != null) {
-                System.out.println(String.valueOf(cchc.getGioTangCa()));
-//                System.out.println(String.valueOf(giaTriTangCa));
                 int giaTriTangCa = (int) spnTangCa.getValue();
                 if (String.valueOf(cchc.getGioTangCa()).equalsIgnoreCase(String.valueOf(giaTriTangCa))) {
                     thoaMan = true;
@@ -480,9 +475,8 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         }
     }
     private void timkiemCCSP(){
-         modelChamCongSanPham.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
-         
-         int i=1;
+        modelChamCongSanPham.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
+        int i=1;
         for(ChamCongSanPham ccsx : chamCongSanPham_Dao.getChamCongSanPham()){
             boolean thoaMan = false;
             if (!txtMa.getText().isEmpty()) {
@@ -496,15 +490,12 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
                 }
             }
             if (chkTu.isSelected()) {
-                System.out.println(dinhDangNgay.format(dchNgayChamCong.getDate()));
-                 System.out.println(dinhDangNgay.format(dchTu.getDate()));
-                System.out.println(dinhDangNgay.format(ccsx.getNgayLamViec()));
                 if (dchTu.getDate() != null && dchNgayChamCong.getDate() != null) {
-                    if (!ccsx.getNgayLamViec().before(dchTu.getDate()) &&
-                        ccsx.getNgayLamViec().before(dchNgayChamCong.getDate())) {
+                    if (!ccsx.getNgayLamViec().before(dchNgayChamCong.getDate()) &&
+                        ccsx.getNgayLamViec().before(dchTu.getDate())) {
                         thoaMan = true;
                     }
-                }
+                }//ccsx.getNgayLamViec().before(dchTu.getDate())//ccsx.getNgayLamViec().before(dchNgayChamCong.getDate())
             }   else{
                 if (dchNgayChamCong.getDate() != null) {
                     if(dinhDangNgay.format(ccsx.getNgayLamViec()).equalsIgnoreCase(dinhDangNgay.format(dchNgayChamCong.getDate()))) {
@@ -563,7 +554,7 @@ public class TimKiemChamCong_GUI extends javax.swing.JPanel {
         cmbSanPham.setSelectedIndex(-1);
         cmbPhongBan.setSelectedIndex(-1);
         cmbTrangThai.setSelectedIndex(-1);
-        spnTangCa.setValue(0);
+        spnTangCa.setValue(-1);
         txtSoLuong.setText("");
         dchTu.setVisible(false);
     }

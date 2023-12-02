@@ -9,6 +9,7 @@ import handle.borderselected.Border_Selected;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -45,7 +46,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         jScrollPane6 = new javax.swing.JScrollPane();
         tblHopDong = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jButton12 = new javax.swing.JButton();
+        btnChiTiet = new javax.swing.JButton();
         txtSoLuong = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -59,7 +60,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         btnTim = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        lblSanPham = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1300, 741));
@@ -95,16 +96,16 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton12.setBackground(new java.awt.Color(152, 249, 152));
-        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton12.setText("Xem Chi Tiết Sản Phẩm");
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnChiTiet.setBackground(new java.awt.Color(152, 249, 152));
+        btnChiTiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnChiTiet.setText("Xem Chi Tiết Sản Phẩm");
+        btnChiTiet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnChiTietActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 140, 180, 30));
+        jPanel1.add(btnChiTiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 140, 180, 30));
 
         txtSoLuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtSoLuong.setForeground(new java.awt.Color(0, 96, 0));
@@ -181,8 +182,8 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 96, 59), 2), "Danh Sách Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 99, 0))); // NOI18N
         jScrollPane4.setPreferredSize(new java.awt.Dimension(462, 430));
 
-        jTable4.setBackground(new java.awt.Color(184, 206, 224));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        lblSanPham.setBackground(new java.awt.Color(184, 206, 224));
+        lblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -190,11 +191,11 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
 
             }
         ));
-        jTable4.setToolTipText("");
-        jTable4.setSelectionBackground(new java.awt.Color(144, 237, 144));
-        jTable4.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jTable4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(jTable4);
+        lblSanPham.setToolTipText("");
+        lblSanPham.setSelectionBackground(new java.awt.Color(144, 237, 144));
+        lblSanPham.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        lblSanPham.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(lblSanPham);
 
         jDesktopPane1.add(jScrollPane4);
         jScrollPane4.setBounds(0, 278, 1300, 463);
@@ -219,11 +220,9 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-//        ChiTietSanPham_GUI chiTietSanPham_GUI = new ChiTietSanPham_GUI();
-//        jDesktopPane1.add(chiTietSanPham_GUI);
-//        chiTietSanPham_GUI.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
+        xuLyXemChiTiet();
+    }//GEN-LAST:event_btnChiTietActionPerformed
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
@@ -240,7 +239,8 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         lamMoiDong();
         lamMoiBang();
         doDuLieuHopDong(hopDongSanXuats);
-        doDuLieuSP();
+        doDuLieuSanPham(sanPham_Dao.getDanhSachSanPham());
+//        doDuLieuSP();
     }//GEN-LAST:event_btnLamMoiActionPerformed
     private void setTable() {
         //khoi tạo phụ cấp compnent
@@ -308,16 +308,16 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
                 return canEdit[columnIndex];
             }
         };
-        jTable4.setModel(modelSanPham);
+        lblSanPham.setModel(modelSanPham);
 
-        jTable4.getColumnModel().getColumn(0).setPreferredWidth(40);
-        jTable4.getColumnModel().getColumn(1).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(2).setPreferredWidth(150);
-        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
+        lblSanPham.getColumnModel().getColumn(0).setPreferredWidth(40);
+        lblSanPham.getColumnModel().getColumn(1).setPreferredWidth(130);
+        lblSanPham.getColumnModel().getColumn(2).setPreferredWidth(150);
+        lblSanPham.getColumnModel().getColumn(3).setPreferredWidth(130);
 //        jTable4.getColumnModel().getColumn(3).setPreferredWidth(130);
-        jTable4.getColumnModel().getColumn(4).setPreferredWidth(60);
-        jTable4.getColumnModel().getColumn(5).setPreferredWidth(130);
-        jTable4.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
+        lblSanPham.getColumnModel().getColumn(4).setPreferredWidth(60);
+        lblSanPham.getColumnModel().getColumn(5).setPreferredWidth(130);
+        lblSanPham.getTableHeader().setBackground(new java.awt.Color(50, 205, 50));
 
     }
 
@@ -327,10 +327,23 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         df = new DecimalFormat("#,##0"); // Số lẻ số # để hiển thị đủ chữ số thập phân
         sanPham_Dao = new SanPham_Dao();
         hopDong_Dao = new HopDong_Dao();
+        doDulieu();
+    }
+    
+    private void doDulieu(){
         doDuLieuHopDong(hopDong_Dao.getDanhSachHopDong());
         doDuLieuSanPham(sanPham_Dao.getDanhSachSanPham());
     }
     
+    private void xuLyXemChiTiet() {
+        int hang = lblSanPham.getSelectedRow();
+        if (hang != -1) {
+            ChiTietSanPham_GUI chiTietSanPham_GUI = new ChiTietSanPham_GUI(sanPhams.get(hang));
+            jDesktopPane1.add(chiTietSanPham_GUI).setVisible(true);// TODO add your handling code here:
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn nhân viên cần xem!");
+        }
+    }
     private  void timKiem(){
         modelSanPham.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng để hiển thị kết quả tìm kiếm mới
     
@@ -389,21 +402,6 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
         modelHopDong.setRowCount(0);
         modelSanPham.setRowCount(0);
     }
-    private void doDuLieuSP(){
-        int i =1;
-        for(SanPham sp: sanPham_Dao.getDanhSachSanPham()){
-            Object[] objects = {
-                i++,
-                sp.getTenSanPham(),
-                sp.getMaSanPham(),
-                sp.getSoLuong(),
-                df.format(sp.getDonGia())+"VND",
-                sp.getDonViTinh()
-            };    
-            modelSanPham.addRow(objects);
-                
-        }
-    }
     private void doDuLieuSanPham(List<SanPham> sanPhams) {
         int i = 1;
         for (SanPham sanPham : sanPhams) {
@@ -442,9 +440,9 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
     private DefaultTableModel modelSanPham;
     private Border_Selected border_Selected;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnTim;
-    private javax.swing.JButton jButton12;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -455,7 +453,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable lblSanPham;
     private javax.swing.JTable tblHopDong;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtDonViTinh;
