@@ -368,7 +368,7 @@ public class TimKiemSanPham_GUI extends javax.swing.JPanel {
                 }
             }
             if (!txtDonGia.getText().isEmpty()) {
-                if (String.valueOf(sp.getDonGia()).toLowerCase().equalsIgnoreCase(txtDonGia.getText().toLowerCase())) {
+                if (String.valueOf(df.format(sp.getDonGia())+"VND").toLowerCase().equalsIgnoreCase(txtDonGia.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }

@@ -620,7 +620,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 }
             }
             if (!txtTienPhuCapHc.getText().isEmpty()) {
-                if (String.valueOf(lg.getTienPhuCap()).toLowerCase().equalsIgnoreCase(txtTienPhuCapHc.getText().toLowerCase())) {
+                if (String.valueOf(df.format(lg.getTienPhuCap())+"VND").toLowerCase().equalsIgnoreCase(txtTienPhuCapHc.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
@@ -630,7 +630,7 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
                 }
             }
             if (!txtTienTangCa.getText().isEmpty()) {
-                if (String.valueOf(lg.getTienTangCa()).toLowerCase().equalsIgnoreCase(txtTienTangCa.getText().toLowerCase())) {
+                if (String.valueOf(df.format(lg.getTienTangCa())+"VND").toLowerCase().equalsIgnoreCase(txtTienTangCa.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
@@ -692,12 +692,12 @@ public class TimKiemBangLuong_GUI extends javax.swing.JPanel {
             }
                 
             if (!txtLuongSanPham.getText().isEmpty()) {
-                if (String.valueOf(lg.getTongLuongSanPham()).toLowerCase().equalsIgnoreCase(txtLuongSanPham.getText().toLowerCase())) {
+                if (String.valueOf(df.format(lg.getTongLuongSanPham())+ "VND").toLowerCase().equalsIgnoreCase(txtLuongSanPham.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }
-            if (!txtTienPhuCapHc.getText().isEmpty()) {
-                if (String.valueOf(lg.getTienPhuCap()).toLowerCase().equalsIgnoreCase(txtTienPhuCapHc.getText().toLowerCase())) {
+            if (!txtTienPhuCapSx.getText().isEmpty()) {
+                if (String.valueOf(df.format(lg.getTienPhuCap())+ "VND").toLowerCase().equalsIgnoreCase(txtTienPhuCapSx.getText().toLowerCase())) {
                     thoaMan = true;
                 }
             }

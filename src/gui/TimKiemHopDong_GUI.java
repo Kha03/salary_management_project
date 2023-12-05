@@ -228,7 +228,7 @@ public class TimKiemHopDong_GUI extends javax.swing.JPanel {
                 }
             }
             if (!txtGiaTien.getText().isEmpty()) {
-                if (String.valueOf(hp.getGiaTien()).equalsIgnoreCase(txtGiaTien.getText())) {
+                if (String.valueOf(df.format(hp.getGiaTien())+ "VND").equalsIgnoreCase(txtGiaTien.getText())) {
                     thoaMan = true;
                 }
             }
