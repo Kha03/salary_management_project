@@ -235,7 +235,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="123"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>
@@ -252,7 +251,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="123"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>
@@ -269,7 +267,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="122.00&#x111;"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>
@@ -286,7 +283,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="63" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="12/2022"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>

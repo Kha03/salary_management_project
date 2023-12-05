@@ -529,6 +529,7 @@ public class CongDoan_GUI extends javax.swing.JPanel {
                     txtTienDo.setEditable(true);
                     tblSanPham.setEnabled(false);
                     cmbCongDoanTruoc.setEnabled(true);
+                    doiStringTienSangSo();
                     btnCapNhat.setText("Xác Nhận");
                 } else {
                     JOptionPane.showMessageDialog(this, "Chọn một công đoạn cần cập nhật!");
@@ -598,6 +599,13 @@ public class CongDoan_GUI extends javax.swing.JPanel {
             dtmSanPham.setRowCount(0);
             doDuLieuSanPham(hopDongSanXuats.get(viTri).getSanPham());
         }
+    }
+
+    private void doiStringTienSangSo() {
+        // Loại bỏ dấu phân cách hàng nghìn và ký tự đơn vị
+        String cleanedStr = txtGiaTien.getText().replaceAll("[^\\d.]", "");
+        // Chuyển đổi chuỗi thành số nguyên
+        txtGiaTien.setText(cleanedStr);
     }
 
     private boolean kiemTraGia() {

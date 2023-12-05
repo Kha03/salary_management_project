@@ -374,6 +374,7 @@ public class PhuCap_GUI extends javax.swing.JPanel {
                 moNhapDuLieu();
                 btnThem.setEnabled(false);
                 btnXoa.setEnabled(false);
+                doiStringTienSangSo();
                 btnCapNhat.setText("Xác Nhận");
             } else {
                 JOptionPane.showMessageDialog(this, "Chọn 1 phụ cấp cần cập nhật!");
@@ -420,6 +421,13 @@ public class PhuCap_GUI extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Chưa chọn phụ cấp cần xóa!");
         }
+    }
+
+    private void doiStringTienSangSo() {
+        // Loại bỏ dấu phân cách hàng nghìn và ký tự đơn vị
+        String cleanedStr = txtSoTien.getText().replaceAll("[^\\d.]", "");
+        // Chuyển đổi chuỗi thành số nguyên
+        txtSoTien.setText(cleanedStr);
     }
 
     private boolean kiemTraRong(JComponent component, String thongBao) {

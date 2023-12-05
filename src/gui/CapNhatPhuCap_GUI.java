@@ -165,25 +165,21 @@ public class CapNhatPhuCap_GUI extends javax.swing.JPanel {
 
         lblTenPhuCap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTenPhuCap.setForeground(new java.awt.Color(0, 99, 0));
-        lblTenPhuCap.setText("123");
         lblTenPhuCap.setToolTipText("");
         jPanel1.add(lblTenPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 180, 20));
 
         lblMaPhuCap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblMaPhuCap.setForeground(new java.awt.Color(0, 99, 0));
-        lblMaPhuCap.setText("123");
         lblMaPhuCap.setToolTipText("");
         jPanel1.add(lblMaPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 180, 20));
 
         lblSoTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSoTien.setForeground(new java.awt.Color(0, 99, 0));
-        lblSoTien.setText("122.00đ");
         lblSoTien.setToolTipText("");
         jPanel1.add(lblSoTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 180, 20));
 
         lblThangHuong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThangHuong.setForeground(new java.awt.Color(0, 99, 0));
-        lblThangHuong.setText("12/2022");
         lblThangHuong.setToolTipText("");
         jPanel1.add(lblThangHuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 180, 20));
 

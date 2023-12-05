@@ -394,8 +394,7 @@ public class HopDong_GUI extends javax.swing.JPanel {
                 moNhapDuLieu();
                 btnThem.setEnabled(false);
                 btnXoa.setEnabled(false);
-//                //xoát vnd khi cap nhật
-//                txtGiaTien.setText(txtGiaTien.getText().substring(0, txtGiaTien.getText().length() - 3));
+                doiStringTienSangSo();
                 btnCapNhat.setText("Xác Nhận");
             } else {
                 JOptionPane.showMessageDialog(this, "Chọn một hợp đồng cần cập nhật!");
@@ -456,6 +455,13 @@ public class HopDong_GUI extends javax.swing.JPanel {
             return false;
         }
         return true;
+    }
+
+    private void doiStringTienSangSo() {
+        // Loại bỏ dấu phân cách hàng nghìn và ký tự đơn vị
+        String cleanedStr = txtGiaTien.getText().replaceAll("[^\\d.]", "");
+        // Chuyển đổi chuỗi thành số nguyên
+        txtGiaTien.setText(cleanedStr);
     }
 
     private boolean kiemTraRong(JComponent component, String thongBao) {

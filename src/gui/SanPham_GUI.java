@@ -10,8 +10,6 @@ import entity.SanPham;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -519,6 +517,7 @@ public class SanPham_GUI extends javax.swing.JPanel {
                     btnThem.setEnabled(false);
                     btnXoa.setEnabled(false);
                     tblHopDong.setEnabled(false);
+                    doiStringTienSangSo();
                     btnCapNhat.setText("Xác Nhận");
                 } else {
                     JOptionPane.showMessageDialog(this, "Chọn một sản phẩm cần cập nhật!");
@@ -586,6 +585,13 @@ public class SanPham_GUI extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm muốn xem");
         }
+    }
+
+    private void doiStringTienSangSo() {
+        // Loại bỏ dấu phân cách hàng nghìn và ký tự đơn vị
+        String cleanedStr = txtDonGia.getText().replaceAll("[^\\d.]", "");
+        // Chuyển đổi chuỗi thành số nguyên
+        txtDonGia.setText(cleanedStr);
     }
 
     private void kiemTraNhapSo(java.awt.event.KeyEvent evt) {

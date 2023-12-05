@@ -25,6 +25,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class DangNhap_GUI extends javax.swing.JFrame {
 
+    private static boolean screenShown = false;
+
     /**
      * Creates new form DangNhap_GUI
      */
@@ -244,10 +246,11 @@ public class DangNhap_GUI extends javax.swing.JFrame {
     private void dangNhap(String mataiKhoan, String matKhau) throws SQLException {
         ConnectDB.getInstance();
         ConnectDB.connect();
-        if (kiemTraTaiKhoan(mataiKhoan, matKhau)) {
+        if (kiemTraTaiKhoan(mataiKhoan, matKhau) && !screenShown) {
             Home home = new Home(matKhau.substring(0, 2));
             home.setVisible(true);
             setVisible(false);
+            screenShown = true;
         }
     }
 
