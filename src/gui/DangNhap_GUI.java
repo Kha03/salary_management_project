@@ -4,6 +4,7 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import connect.ConnectDB;
 import dao.TaiKhoan_Dao;
 import entity.TaiKhoan;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -31,6 +32,7 @@ public class DangNhap_GUI extends javax.swing.JFrame {
      * Creates new form DangNhap_GUI
      */
     public DangNhap_GUI() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/logo.png")));
         initComponents();
         taoThoiGian();
     }

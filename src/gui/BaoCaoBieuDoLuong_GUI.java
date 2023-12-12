@@ -77,8 +77,8 @@ public class BaoCaoBieuDoLuong_GUI extends javax.swing.JPanel {
         jPanel1.add(ychNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 65, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 420, 690));
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 880, 345));
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 880, 345));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 880, 340));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 880, 340));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbThangItemStateChanged

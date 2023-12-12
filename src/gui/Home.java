@@ -16,7 +16,7 @@ public class Home extends javax.swing.JFrame {
      * Creates new form Home
      */
     public Home(String quyen) {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/ava.jpg")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/logo.png")));
         initComponents();
         if (kiemTraMatKhau(quyen) == 1) {
             taoMenuHc();

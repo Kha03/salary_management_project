@@ -43,7 +43,7 @@ public class BieuDoTron {
     public JPanel createDemoPanel(String tieuDe) {
         JFreeChart chart = createChart(createDataset(), tieuDe);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(880, 345));
+        chartPanel.setPreferredSize(new Dimension(880, 340));
         // Đặt màu nền cho panel chứa biểu đồ (vùng xung quanh biểu đồ)
         chartPanel.setBackground(new Color(240, 240, 240));
         return chartPanel;
