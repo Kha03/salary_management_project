@@ -766,7 +766,7 @@ public class ChamCongSanPham_GUI extends javax.swing.JPanel {
             btnXuat.setEnabled(false);
             txtSoLuong.setEditable(true);
             cmbCongDoan.setEnabled(true);
-            lamMoiDong();
+           // lamMoiDong();
         } else {
             if (kiemTraNgay()) {
                 if (kiemTraChonChamCong()) {
