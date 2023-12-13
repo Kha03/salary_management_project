@@ -336,7 +336,7 @@ public class ChiTietLuongHanhChinh_GUI extends javax.swing.JInternalFrame {
             float[] columnWidths = {10f, 15f, 15f, 15f};
             // Sử dụng font Arial
 //            InputStream fontStream = TinhLuongHanhChinh_GUI.class.getResourceAsStream("/font/arial.ttf");
-            BaseFont baseFont = BaseFont.createFont("D://arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            BaseFont baseFont = BaseFont.createFont("src/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font font = new Font(baseFont, 12);
             PdfPTable pdfTable = new PdfPTable(columnWidths);
             pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang

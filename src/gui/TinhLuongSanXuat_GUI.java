@@ -761,7 +761,7 @@ public class TinhLuongSanXuat_GUI extends javax.swing.JPanel {
             document.open();
             float[] columnWidths = {5f, 10f, 15f, 10f, 10f, 10f};
             // Sử dụng font Arial
-            BaseFont baseFont = BaseFont.createFont("D:\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            BaseFont baseFont = BaseFont.createFont("src/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font font = new Font(baseFont, 12);
             PdfPTable pdfTable = new PdfPTable(columnWidths);
             pdfTable.setWidthPercentage(100); // Thiết lập độ rộng theo phần trăm của trang
